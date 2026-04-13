@@ -761,9 +761,15 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 520px) {
       .book-headline { font-size: 22px; }
-      .cover-front { width: 280px; height: 420px; }
+      .cover-book { transform: scale(0.72); transform-origin: top center; margin-bottom: -100px; }
+      .cover-wrap { margin-bottom: 1rem; }
       .cards-row { grid-template-columns: 1fr; }
-      .framework-grid { transform: scale(0.85); transform-origin: top center; }
+      .framework-grid { transform: scale(0.82); transform-origin: top center; margin-bottom: -60px; }
+    }
+
+    @media (max-width: 400px) {
+      .cover-book { transform: scale(0.62); margin-bottom: -140px; }
+      .framework-grid { transform: scale(0.72); margin-bottom: -90px; }
     }
 
   
