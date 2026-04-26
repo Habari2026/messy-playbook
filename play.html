@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messy Play™ — The Live Messy Project</title>
+  <meta name="description" content="Experiential cards grounded in real research. About 15 minutes solo — longer with a group, because the conversation is part of it. Free.">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --c-purple: #9b59b6;
+      --c-orange: #e67e22;
+      --c-blue: #3498db;
+      --c-yellow: #f1c40f;
+      --c-green: #27ae60;
+      --c-dark: #2c3e50;
+      --c-text: #2c3e50;
+      --c-body: #34495e;
+      --c-muted: #7f8c8d;
+      --c-border: #ecf0f1;
+      --c-bg: #f8f9fa;
+      --c-white: #ffffff;
+      --font-display: Arial, sans-serif;
+      --font-body: Arial, sans-serif;
+      --grad-brand: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--c-text);
+      background: var(--c-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      background: var(--c-dark);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    .nav-brand span { color: rgba(255,255,255,0.45); margin: 0 6px; }
+    .nav-right { display: flex; gap: 1.5rem; align-items: center; }
+    .nav-link {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: rgba(255,255,255,0.9); }
+    .nav-cta {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 100px;
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: rgba(255,255,255,0.2); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--grad-brand);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 70%, rgba(0,0,0,0.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 10vw, 6.5rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      
+      margin-bottom: 0.25rem;
+    }
+    .hero-title-tm {
+      font-size: 0.3em;
+      vertical-align: super;
+      font-weight: 700;
+      opacity: 0.7;
+    }
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: rgba(255,255,255,0.75);
+      margin: 1rem 0 0.75rem;
+      line-height: 1.5;
+    }
+    .hero-body {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      max-width: 440px;
+      margin: 0 auto 1.75rem;
+      line-height: 1.7;
+    }
+    .hero-badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.88);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+    .hero-badge-free {
+      background: rgba(255,255,255,0.22);
+      border-color: rgba(255,255,255,0.35);
+      color: #fff;
+      font-weight: 600;
+    }
+    .hero-scroll {
+      margin-top: 3rem;
+      color: rgba(255,255,255,0.3);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTIONS ── */
+    .section { padding: 5rem 2rem; }
+    .section-alt { background: var(--c-bg); }
+    .section-dark { background: var(--c-dark); }
+    .inner { max-width: 680px; margin: 0 auto; }
+    .inner-wide { max-width: 860px; margin: 0 auto; }
+    .inner-cards { max-width: 500px; margin: 0 auto; }
+
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-muted);
+      margin-bottom: 0.625rem;
+    }
+    .eyebrow-color { color: var(--c-purple); }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.15;
+      
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; opacity: 0.75; }
+    .section-body {
+      font-size: 16px;
+      color: var(--c-body);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .section-body + .section-body { margin-top: -0.25rem; }
+
+    /* ── WHY / HOW / WHAT ── */
+    .whw-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+    .whw-item {}
+    .whw-marker {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 13px;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .whw-marker-why { background: var(--c-purple); }
+    .whw-marker-how { background: var(--c-orange); }
+    .whw-marker-what { background: var(--c-green); }
+    .whw-heading {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.625rem;
+      line-height: 1.3;
+    }
+    .whw-body { font-size: 14px; color: var(--c-body); line-height: 1.7; }
+
+    /* ── ALIGNMENT ── */
+    .align-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      margin-top: 2rem;
+    }
+    .align-card {
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+    }
+    .align-card-m { background: #f5eef8; border-color: #d7bde2; }
+    .align-card-e { background: #fef5ec; border-color: #fad7a0; }
+    .align-card-s1 { background: #eaf4fc; border-color: #a9cce3; }
+    .align-card-s2 { background: #fff9e6; border-color: #f9e79f; }
+    .align-card-y { background: #eafaf1; border-color: #a9dfbf; }
+    .align-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .align-badge-m { background: var(--c-purple); }
+    .align-badge-e { background: var(--c-orange); }
+    .align-badge-s { background: var(--c-blue); }
+    .align-badge-s2 { background: #e0a800; color: #2c3e50; }
+    .align-badge-y { background: var(--c-green); }
+    .align-card-title { font-size: 13px; font-weight: 500; color: var(--c-text); margin-bottom: 2px; }
+    .align-card-sub { font-size: 11px; color: var(--c-muted); line-height: 1.45; }
+
+    /* ── CARDS SECTION ── */
+    .card-section-intro {
+      max-width: 560px;
+      margin: 0 auto 3.5rem;
+      text-align: center;
+    }
+    .card-wrapper {
+      max-width: 500px;
+      margin: 0 auto 3.5rem;
+    }
+    .card-wrapper:last-child { margin-bottom: 0; }
+    .card-wrapper-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.875rem;
+      padding-left: 2px;
+    }
+    .card-wrapper-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 4px;
+      color: #fff;
+    }
+    .cwb-00 { background: var(--c-dark); }
+    .cwb-01 { background: var(--c-purple); }
+    .cwb-02 { background: var(--c-orange); }
+    .cwb-03 { background: var(--c-blue); }
+    .cwb-04 { background: var(--c-yellow); color: var(--c-dark); }
+    .cwb-05 { background: var(--c-green); }
+    .card-wrapper-desc { font-size: 12px; color: var(--c-muted); }
+
+    /* ── THE CARDS (shared styles) ── */
+    .mp-card-outer { font-family: var(--font-body); }
+    .mp-header {
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.25rem 1.5rem;
+      border-bottom: none;
+    }
+    .mp-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.875rem;
+    }
+    .mp-header-meta { font-size: 11px; }
+    .mp-element-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 5px;
+    }
+    .mp-body {
+      background: #fff;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 1.5rem;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-top: none;
+    }
+    .mp-section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin: 0 0 0.5rem;
+    }
+    .mp-para { font-size: 14px; color: #34495e; line-height: 1.65; margin-bottom: 0.75rem; }
+    .mp-para:last-child { margin-bottom: 0; }
+    .mp-constraint-box {
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+    .mp-constraint-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.625rem; }
+    .mp-constraint-main { font-size: 14px; font-weight: 500; line-height: 1.5; margin-bottom: 0.75rem; }
+    .mp-constraint-note { font-size: 12px; }
+    .mp-rule { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 6px; }
+    .mp-rule-arrow { font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+    .mp-rule-text { font-size: 13px; line-height: 1.5; }
+    .mp-solo-note {
+      border-left: 2px solid rgba(0,0,0,0.12);
+      padding-left: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+    .mp-solo-text { font-size: 12px; color: #888; line-height: 1.65; }
+    .mp-solo-text strong { font-weight: 500; color: #666; }
+    .mp-btn {
+      display: block;
+      width: 100%;
+      padding: 0.7rem;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(0,0,0,0.15);
+      background: #fff;
+      color: #2c3e50;
+      transition: background 0.15s, border-color 0.15s;
+      text-align: center;
+    }
+    .mp-btn:hover { background: #f8f9fa; border-color: rgba(0,0,0,0.25); }
+    .mp-btn-primary {
+      background: #2c3e50;
+      color: #fff;
+      border-color: #2c3e50;
+      font-size: 14px;
+    }
+    .mp-btn-primary:hover { background: #1a252f; }
+    .mp-back-section {
+      background: #f8f9fa;
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-bottom: none;
+    }
+    .mp-notice-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 0.75rem; }
+    .mp-notice-q { font-size: 13px; color: #2c3e50; margin-bottom: 7px; line-height: 1.6; }
+    .mp-reveal-section { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-top: none; border-radius: 0 0 var(--radius) var(--radius); padding: 1.5rem; }
+    .mp-reveal-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 1rem; }
+    .mp-reveal-para { font-size: 14px; color: #34495e; line-height: 1.7; margin-bottom: 1rem; }
+    .mp-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }
+    .mp-pattern-box { background: #999; color: #555; border-radius: 10px; padding: 0.875rem; border: 1px solid rgba(0,0,0,0.06); }
+    .mp-pattern-label { font-size: 10px; font-weight: 600; color: #888; margin-bottom: 0.375rem; }
+    .mp-pattern-text { font-size: 13px; color: #2c3e50; line-height: 1.5; }
+    .mp-practice-box { background: #f8f9fa; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; border: 1px solid rgba(0,0,0,0.06); }
+    .mp-practice-label { font-size: 11px; font-weight: 500; color: #888; margin-bottom: 0.5rem; }
+    .mp-practice-text { font-size: 13px; color: #34495e; line-height: 1.6; font-style: italic; }
+    .mp-quote-box { border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; }
+    .mp-quote-text { font-size: 15px; font-weight: 500; line-height: 1.5; font-style: italic; }
+    .mp-attribution { border-top: 1px solid rgba(0,0,0,0.06); padding-top: 1rem; display: flex; justify-content: space-between; align-items: flex-end; }
+    .mp-attr-title { font-size: 11px; color: #888; line-height: 1.5; }
+    .mp-attr-sub { font-size: 10px; color: #aaa; margin-top: 2px; }
+    .mp-copyright { font-size: 10px; color: #bbb; text-align: center; margin-top: 0.875rem; }
+
+    /* Input styles */
+    .mp-input, .mp-textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.625rem 0.75rem;
+      font-size: 13px;
+      font-family: var(--font-body);
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: var(--radius-sm);
+      color: #2c3e50;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .mp-input:focus, .mp-textarea:focus { border-color: rgba(0,0,0,0.35); }
+    .mp-textarea { resize: none; line-height: 1.5; }
+
+    /* ── TEASER ── */
+    .teaser-eyebrow { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.75rem; }
+    .teaser-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      
+      margin-bottom: 1rem;
+    }
+    .teaser-body { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.75; max-width: 480px; margin-bottom: 2rem; }
+    .teaser-link {
+      display: inline-block;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      padding-bottom: 2px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .teaser-link:hover { color: #fff; border-color: rgba(255,255,255,0.6); }
+
+    /* ── FOOTER ── */
+    .footer { background: #1a252f; padding: 2.5rem 2rem; text-align: center; }
+    .footer-logo { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.95); margin-bottom: 0.75rem; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .footer-link { color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 500; text-decoration: none; transition: color 0.15s; }
+    .footer-link:hover { color: rgba(255,255,255,1); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.8; max-width: 520px; margin: 0 auto; }
+
+    /* ── DIVIDER ── */
+    .card-divider {
+      max-width: 500px;
+      margin: 0 auto 3.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .card-divider-line { flex: 1; height: 1px; background: var(--c-border); }
+    .card-divider-text { font-size: 11px; color: #bbb; white-space: nowrap; }
+
+    @media (max-width: 600px) {
+      .nav { padding: 0.875rem 1.25rem; }
+      .nav-right .nav-link { display: none; }
+      .hero { padding: 4rem 1.25rem 3.5rem; }
+      .section { padding: 3.5rem 1.25rem; }
+      .whw-grid { gap: 2rem; }
+      .mp-two-col { grid-template-columns: 1fr; }
+      .mp-attribution { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+    }
+    /* ── SMOOTH SCROLL ── */
+    html { scroll-behavior: smooth; }
+
+    /* ── PAGE NAV ── */
+    .page-nav {
+      position: sticky;
+      top: 53px;
+      z-index: 90;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--c-border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      pointer-events: none;
+    }
+    .page-nav.visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .page-nav a {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--c-muted);
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+    .page-nav a:hover { color: var(--c-text); }
+    .page-nav a.active {
+      color: var(--c-purple);
+      border-bottom-color: var(--c-purple);
+    }
+    .page-nav-cta {
+      margin-left: 1rem;
+      background: var(--c-dark);
+      color: #fff !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      padding: 0.375rem 0.875rem !important;
+      border-radius: 100px !important;
+      border-bottom: none !important;
+    }
+    .page-nav-cta:hover { background: #1a252f; color: #fff !important; }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 200;
+      width: 44px;
+      height: 44px;
+      background: var(--c-dark);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.25s ease, transform 0.25s ease, background 0.15s;
+      pointer-events: none;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .back-to-top:hover { background: var(--c-purple); }
+
+    @media (max-width: 600px) {
+      .page-nav a { padding: 0.625rem 0.625rem; font-size: 11px; }
+      .page-nav-cta { display: none; }
+      .back-to-top { bottom: 1.25rem; right: 1.25rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav class="nav">
+  <a href="https://messy-playbook.vercel.app/" class="nav-brand">
+    The MESSY Playbook™ <span>/</span> Messy Play
+  </a>
+  <div class="nav-right">
+    <a href="https://messy-playbook.vercel.app/#why" class="nav-link">Why MESSY?</a>
+    <a href="https://messy-playbook.vercel.app/#get" class="nav-cta">Get MESSY!</a>
+  </div>
+</nav>
+
+<!-- ── PAGE NAV ── -->
+<nav class="page-nav" id="page-nav" aria-label="Page sections">
+  <a href="#what">What is it?</a>
+  <a href="#set01">About Set 01</a>
+  <a href="#alignment">The Framework</a>
+  <a href="#cards">The Cards</a>
+  <a href="#closing">Reflect</a>
+  <a href="#attribution">Research</a>
+  <a href="#cards" class="page-nav-cta">Get MESSY! →</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">From the Live Messy Project</p>
+    <h1 class="hero-title">Messy Play<span class="hero-title-tm">™</span></h1>
+    <p class="hero-tagline">Real research. About 15 minutes. Free.</p>
+    <p class="hero-body">Each card takes one finding from an academic paper and turns it into something you can actually feel — alone or with people you know.</p>
+    <div class="hero-badges">
+      <span class="hero-badge hero-badge-free">Free — Set 01 available now</span>
+      <span class="hero-badge">Solo or group · ~15 min + conversation</span>
+      <span class="hero-badge">No facilitator needed</span>
+    </div>
+    <p class="hero-scroll">↓ scroll</p>
+  </div>
+</section>
+
+<!-- ── WHAT IS MESSY PLAY ── -->
+<section id="what" style="background:#fff;padding:3.5rem 2rem;border-bottom:1px solid var(--c-border);">
+  <div class="inner" style="max-width:640px;text-align:center;">
+    <p class="eyebrow" style="margin-bottom:1rem;">What is Messy Play?</p>
+    <p style="font-family:var(--font-display);font-size:clamp(1.2rem,3vw,1.6rem);font-weight:700;color:var(--c-text);line-height:1.45;margin-bottom:1rem;">A series of experiential learning cards — each one grounded in a real research paper.</p>
+    <p style="font-size:16px;color:var(--c-body);line-height:1.75;max-width:520px;margin:0 auto 1rem;">You do the experience first. Then you read why it works. The insight lands differently when you've felt it — not just read about it.</p>
+    <p style="font-size:16px;color:var(--c-body);line-height:1.75;max-width:520px;margin:0 auto;">Each card takes about 15 minutes solo. Works equally well with friends, family, or a small group. No facilitator. No prior knowledge. Just curiosity and a willingness to stay in the mess a little longer than feels comfortable.</p>
+  </div>
+</section>
+
+<!-- ── WHY / HOW / WHAT ── -->
+<section class="section" id="why">
+  <div class="inner">
+    <p class="eyebrow eyebrow-color">The idea behind Messy Play</p>
+    <h2 class="section-title">Research that lives in the body,<br><em>not just the brain.</em></h2>
+    <p class="section-body">Most self-improvement content tells you what to think. Messy Play asks you to feel something first — then explains the research after. That sequence changes what sticks.</p>
+  </div>
+  <div class="inner-wide">
+    <div class="whw-grid">
+      <div class="whw-item">
+        <div class="whw-marker whw-marker-why">W</div>
+        <h3 class="whw-heading">Why this exists</h3>
+        <p class="whw-body">Research that could change how you think about a problem stays locked in academic journals most people never open. The insights are real. The access isn't. Messy Play closes that gap — one card at a time.</p>
+      </div>
+      <div class="whw-item">
+        <div class="whw-marker whw-marker-how">H</div>
+        <h3 class="whw-heading">How it works</h3>
+        <p class="whw-body">The sequence is the method. You enter a situation before you understand why it was designed. You feel resistance, curiosity, or discomfort — whatever the card produces in you. Only after the experience does the research arrive to name what just happened. Understanding follows feeling. That's not just a design choice. It's why the insight sticks.</p>
+      </div>
+      <div class="whw-item">
+        <div class="whw-marker whw-marker-what">W</div>
+        <h3 class="whw-heading">What it is</h3>
+        <p class="whw-body">A growing series of card sets, each grounded in a different research paper. Every set contains six cards — five experiences plus an orientation card — one per element of the MESSY framework. Set 01 is built around Salmon &amp; Steinberg's 2007 research on productive mess. It's free. More sets are in development.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SET 01 SPECIFIC ── -->
+<section class="section" id="set01" style="background:#fff;padding:5rem 2rem;">
+  <div class="inner" style="max-width:680px;">
+
+    <div style="display:inline-flex;align-items:center;gap:8px;background:var(--c-dark);color:#fff;font-size:11px;font-weight:600;padding:5px 14px;border-radius:100px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;">
+      <span style="width:7px;height:7px;border-radius:50%;background:var(--c-green);display:inline-block;"></span>
+      Set 01 — Now available · Free
+    </div>
+
+    <h2 class="section-title" style="margin-bottom:0.5rem;">Staying in the Mess.</h2>
+    <p style="font-size:15px;color:var(--c-purple);font-weight:500;margin-bottom:1.5rem;">Based on Salmon &amp; Steinberg (2007)</p>
+
+    <!-- OVERVIEW -->
+    <div style="margin-bottom:3rem;">
+      <p class="eyebrow" style="margin-bottom:0.625rem;">Overview</p>
+      <p class="section-body">Most of us have a deeply trained reflex: when something gets complex, messy, or uncomfortable, we move toward resolution before we've understood what we're actually dealing with. We jump to solutions. We escape. We call the backward movement failure.</p>
+      <p class="section-body">This set is built around a single research paper — Salmon and Steinberg's 2007 study of social workers who chose to descend into what the researchers called "the swamp of important problems." Their finding was both counterintuitive and immediately recognizable: the problems most worth solving resist technical solutions. They require staying in the mess long enough, methodically enough, for something real to emerge.</p>
+      <p class="section-body">Five cards. Five practices. One coherent arc — from noticing the escape reflex, to practicing resistance, to building sustainable support, to releasing the judgment that backward is bad, to extracting the wisdom that only mess produces.</p>
+    </div>
+
+    <!-- LEARNER OUTCOMES -->
+    <div style="margin-bottom:3rem;">
+      <p class="eyebrow" style="margin-bottom:1rem;">What you'll walk away with</p>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:1rem 1.25rem;border:1px solid var(--c-border);border-radius:var(--radius-sm);border-left:3px solid var(--c-purple);">
+          <span style="font-size:11px;font-weight:700;color:var(--c-purple);flex-shrink:0;padding-top:2px;">01</span>
+          <p style="font-size:14px;color:var(--c-text);margin:0;line-height:1.65;">A felt sense of your own fix-it reflex — not just awareness of it in theory, but recognition of exactly when and how strongly it fires in real situations.</p>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:1rem 1.25rem;border:1px solid var(--c-border);border-radius:var(--radius-sm);border-left:3px solid var(--c-orange);">
+          <span style="font-size:11px;font-weight:700;color:var(--c-orange);flex-shrink:0;padding-top:2px;">02</span>
+          <p style="font-size:14px;color:var(--c-text);margin:0;line-height:1.65;">The experience of staying in a problem rather than resolving it prematurely — and the insight that the problem often looks different after you've stayed in it.</p>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:1rem 1.25rem;border:1px solid var(--c-border);border-radius:var(--radius-sm);border-left:3px solid var(--c-blue);">
+          <span style="font-size:11px;font-weight:700;color:var(--c-blue);flex-shrink:0;padding-top:2px;">03</span>
+          <p style="font-size:14px;color:var(--c-text);margin:0;line-height:1.65;">One concrete, simple support structure you've actually designed for yourself — not aspirational, but built for your worst days.</p>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:1rem 1.25rem;border:1px solid var(--c-border);border-radius:var(--radius-sm);border-left:3px solid var(--c-yellow);background:#fff;">
+          <span style="font-size:11px;font-weight:700;color:#856404;flex-shrink:0;padding-top:2px;">04</span>
+          <p style="font-size:14px;color:var(--c-text);margin:0;line-height:1.65;">A reframe of backward movement — the ability to see regression and non-linear progress as part of how things actually move, rather than evidence of failure.</p>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:1rem 1.25rem;border:1px solid var(--c-border);border-radius:var(--radius-sm);border-left:3px solid var(--c-green);">
+          <span style="font-size:11px;font-weight:700;color:var(--c-green);flex-shrink:0;padding-top:2px;">05</span>
+          <p style="font-size:14px;color:var(--c-text);margin:0;line-height:1.65;">Specific wisdom extracted from a real mess you've already lived through — something you couldn't have accessed without having stayed in it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEAL AUDIENCE -->
+    <div>
+      <p class="eyebrow" style="margin-bottom:1rem;">Who this is for</p>
+      <p class="section-body" style="margin-bottom:1.5rem;">This set will resonate most with people who regularly sit with other people's complexity — and their own.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:1.5rem;">
+        <div style="padding:1rem 1.25rem;background:var(--c-bg);border-radius:var(--radius-sm);border:1px solid var(--c-border);">
+          <p style="font-size:13px;font-weight:600;color:var(--c-text);margin:0 0 0.375rem;">Coaches &amp; facilitators</p>
+          <p style="font-size:12px;color:var(--c-muted);margin:0;line-height:1.55;">Who notice they jump to solutions before the real problem has surfaced</p>
+        </div>
+        <div style="padding:1rem 1.25rem;background:var(--c-bg);border-radius:var(--radius-sm);border:1px solid var(--c-border);">
+          <p style="font-size:13px;font-weight:600;color:var(--c-text);margin:0 0 0.375rem;">Leaders &amp; managers</p>
+          <p style="font-size:12px;color:var(--c-muted);margin:0;line-height:1.55;">Who feel pressure to have answers and find that pressure makes things worse</p>
+        </div>
+        <div style="padding:1rem 1.25rem;background:var(--c-bg);border-radius:var(--radius-sm);border:1px solid var(--c-border);">
+          <p style="font-size:13px;font-weight:600;color:var(--c-text);margin:0 0 0.375rem;">Parents &amp; partners</p>
+          <p style="font-size:12px;color:var(--c-muted);margin:0;line-height:1.55;">Who love someone going through something difficult and keep trying to fix what isn't theirs to fix</p>
+        </div>
+        <div style="padding:1rem 1.25rem;background:var(--c-bg);border-radius:var(--radius-sm);border:1px solid var(--c-border);">
+          <p style="font-size:13px;font-weight:600;color:var(--c-text);margin:0 0 0.375rem;">MESSY Playbook users</p>
+          <p style="font-size:12px;color:var(--c-muted);margin:0;line-height:1.55;">Who want to feel the framework rather than just understand it</p>
+        </div>
+        <div style="padding:1rem 1.25rem;background:var(--c-bg);border-radius:var(--radius-sm);border:1px solid var(--c-border);">
+          <p style="font-size:13px;font-weight:600;color:var(--c-text);margin:0 0 0.375rem;">Curious newcomers</p>
+          <p style="font-size:12px;color:var(--c-muted);margin:0;line-height:1.55;">Who haven't heard of the Playbook but are exhausted by optimization culture and ready for something honest</p>
+        </div>
+      </div>
+      <div style="background:var(--c-bg);border-radius:var(--radius-sm);padding:1rem 1.25rem;border:1px solid var(--c-border);border-left:3px solid var(--c-muted);">
+        <p style="font-size:13px;color:var(--c-muted);margin:0;line-height:1.65;"><strong style="color:var(--c-text);">This set is probably not for you if</strong> you're looking for techniques to resolve problems faster, strategies to eliminate complexity, or a system that rewards completion and optimization. These cards don't do any of that. They do the opposite.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── ALIGNMENT ── -->
+<section class="section section-alt" id="alignment">
+  <div class="inner">
+    <p class="eyebrow">Part of the MESSY Playbook ecosystem</p>
+    <h2 class="section-title">The felt sense of why<br>the framework matters.</h2>
+    <p class="section-body">The MESSY Playbook gives you a framework for working with complexity instead of against it. Messy Play gives you the direct experience of why that framework exists. Each card corresponds to one of the five MESSY practices. If you already have the Playbook, these cards deepen the work. If you're new, they're a doorway in.</p>
+    <div class="align-grid">
+      <div class="align-card align-card-m">
+        <span class="align-badge align-badge-m">M · Monitor</span>
+        <p class="align-card-title">Just notice.</p>
+        <p class="align-card-sub">Count your urges to fix without acting on them</p>
+      </div>
+      <div class="align-card align-card-e">
+        <span class="align-badge align-badge-e">E · Execute</span>
+        <p class="align-card-title">Don't fix it.</p>
+        <p class="align-card-sub">Stay in the problem 10 minutes before reaching for a solution</p>
+      </div>
+      <div class="align-card align-card-s1">
+        <span class="align-badge align-badge-s">S · Support</span>
+        <p class="align-card-title">Design your floor.</p>
+        <p class="align-card-sub">Strip your support down to the minimum that works</p>
+      </div>
+      <div class="align-card align-card-s2">
+        <span class="align-badge align-badge-s2">S · Surrender</span>
+        <p class="align-card-title">Name what moved.</p>
+        <p class="align-card-sub">Track direction — forward, back, sideways — no judgment</p>
+      </div>
+      <div class="align-card align-card-y">
+        <span class="align-badge align-badge-y">Y · Yield</span>
+        <p class="align-card-title">Harvest the mess.</p>
+        <p class="align-card-sub">Extract what only the mess could have taught you</p>
+      </div>
+    </div>
+    <p class="section-body" style="margin-top:1.75rem; font-size:14px;">Don't have the Playbook yet? <a href="https://messy-playbook.vercel.app/" style="color:var(--c-purple); text-decoration:none; font-weight:500;">Explore it here →</a></p>
+  </div>
+</section>
+
+<!-- ── CARDS SECTION ── -->
+<section class="section" id="cards">
+  <div class="card-section-intro">
+    <p class="eyebrow eyebrow-color">Set 01 — Six cards</p>
+    <h2 class="section-title">Start with the orientation card.</h2>
+    <p class="section-body" style="font-size:15px;">It frames the set and points you toward the right card for where you are right now. Then work through the remaining five in any order that makes sense. Each card takes about 15 minutes solo — plan for more in a group, because the conversation it starts is part of the experience.</p>
+  </div>
+
+  <!-- ORIENTATION CARD -->
+  <div class="card-wrapper">
+    <div class="card-wrapper-label">
+      <span class="card-wrapper-badge cwb-00">Orientation · Set 01</span>
+      <span class="card-wrapper-desc">Start here — before any of the five cards</span>
+    </div>
+    <div class="mp-card-outer" id="c00-outer">
+      <div id="c00-front">
+        <div class="mp-header" style="background:#2c3e50;">
+          <div class="mp-header-row">
+            <span class="mp-header-meta" style="color:rgba(255,255,255,0.45);">Messy Play™ · Set 01 · Orientation</span>
+            <span class="mp-element-badge" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.18);">Before you begin</span>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.625rem;font-weight:800;color:#fff;margin-bottom:0.25rem;">Start here.</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.45);">Five cards. One research paper. Zero optimization.</div>
+        </div>
+        <div class="mp-body">
+          <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:1.5rem;">
+            <div style="border-left:3px solid #9b59b6;padding-left:1rem;">
+              <p style="font-size:11px;font-weight:600;color:#9b59b6;margin:0 0 0.25rem;letter-spacing:0.05em;">Why this exists</p>
+              <p style="font-size:13px;color:#34495e;margin:0;line-height:1.65;">Most self-improvement keeps you on the high ground — safe, manageable, and ultimately unimportant. The problems that actually matter live in the swamp. These cards help you go there.</p>
+            </div>
+            <div style="border-left:3px solid #e67e22;padding-left:1rem;">
+              <p style="font-size:11px;font-weight:600;color:#e67e22;margin:0 0 0.25rem;letter-spacing:0.05em;">How it works</p>
+              <p style="font-size:13px;color:#34495e;margin:0;line-height:1.65;">Each card translates one research insight into a direct experience. You don't read about the finding. You feel it first. The research explains what just happened after.</p>
+            </div>
+            <div style="border-left:3px solid #27ae60;padding-left:1rem;">
+              <p style="font-size:11px;font-weight:600;color:#27ae60;margin:0 0 0.25rem;letter-spacing:0.05em;">What's in this set</p>
+              <p style="font-size:13px;color:#34495e;margin:0;line-height:1.65;">Five cards grounded in Salmon &amp; Steinberg's research on productive mess — one for each element of the MESSY framework. Solo or with people you actually know. No facilitator needed.</p>
+            </div>
+          </div>
+          <div style="border-top:1px solid #ecf0f1;padding-top:1.25rem;margin-bottom:1.25rem;">
+            <p style="font-size:11px;font-weight:600;color:#888;margin:0 0 0.75rem;letter-spacing:0.05em;">Where are you right now?</p>
+            <p style="font-size:12px;color:#888;margin:0 0 0.875rem;line-height:1.5;">Tap the one that resonates most. We'll tell you where to start.</p>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div onclick="c00Select(0)" id="c00r0" style="padding:0.625rem 0.875rem;border:1px solid #ecf0f1;border-radius:8px;cursor:pointer;font-size:13px;color:#2c3e50;line-height:1.5;transition:all 0.15s;">I keep jumping to solutions before I understand the problem</div>
+              <div onclick="c00Select(1)" id="c00r1" style="padding:0.625rem 0.875rem;border:1px solid #ecf0f1;border-radius:8px;cursor:pointer;font-size:13px;color:#2c3e50;line-height:1.5;transition:all 0.15s;">I want to slow down and notice what's actually happening</div>
+              <div onclick="c00Select(2)" id="c00r2" style="padding:0.625rem 0.875rem;border:1px solid #ecf0f1;border-radius:8px;cursor:pointer;font-size:13px;color:#2c3e50;line-height:1.5;transition:all 0.15s;">I need something simpler for when things get hard</div>
+              <div onclick="c00Select(3)" id="c00r3" style="padding:0.625rem 0.875rem;border:1px solid #ecf0f1;border-radius:8px;cursor:pointer;font-size:13px;color:#2c3e50;line-height:1.5;transition:all 0.15s;">I keep treating setbacks and regressions as failures</div>
+              <div onclick="c00Select(4)" id="c00r4" style="padding:0.625rem 0.875rem;border:1px solid #ecf0f1;border-radius:8px;cursor:pointer;font-size:13px;color:#2c3e50;line-height:1.5;transition:all 0.15s;">I have a mess I've been through that I haven't really processed</div>
+              <div onclick="c00Select(5)" id="c00r5" style="padding:0.625rem 0.875rem;border:1px solid #ecf0f1;border-radius:8px;cursor:pointer;font-size:13px;color:#2c3e50;line-height:1.5;transition:all 0.15s;">Not sure — I'll start from the beginning</div>
+            </div>
+            <div id="c00rec" style="display:none;margin-top:1rem;border-radius:8px;padding:0.875rem 1rem;border:1px solid #ecf0f1;">
+              <p style="font-size:11px;font-weight:600;color:#888;margin:0 0 0.25rem;">Start with</p>
+              <p id="c00rec-text" style="font-size:14px;font-weight:500;margin:0;"></p>
+            </div>
+          </div>
+          <button class="mp-btn" onclick="c00Flip()">See what's inside this set →</button>
+        </div>
+      </div>
+      <div id="c00-back" style="display:none;">
+        <div style="background:#2c3e50;border-radius:12px 12px 0 0;padding:1.25rem 1.5rem;">
+          <p style="font-size:11px;color:rgba(255,255,255,0.45);margin:0 0 0.375rem;">Set 01 · Five cards</p>
+          <div style="font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:#fff;">What's inside</div>
+        </div>
+        <div class="mp-reveal-section" style="border-radius:0 0 12px 12px;">
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem;">
+            <div style="display:flex;align-items:center;gap:10px;padding:0.75rem 1rem;border:1px solid #d7bde2;border-radius:8px;background:#f5eef8;">
+              <span style="background:#9b59b6;color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;flex-shrink:0;">01 · M</span>
+              <div><p style="font-size:13px;font-weight:500;color:#26215C;margin:0;">Just notice.</p><p style="font-size:11px;color:#7d56a0;margin:0;">Count your urges to fix without acting on them</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.75rem 1rem;border:1px solid #fad7a0;border-radius:8px;background:#fef5ec;">
+              <span style="background:#e67e22;color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;flex-shrink:0;">02 · E</span>
+              <div><p style="font-size:13px;font-weight:500;color:#412402;margin:0;">Don't fix it.</p><p style="font-size:11px;color:#a96216;margin:0;">Stay in the problem 10 minutes before a solution</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.75rem 1rem;border:1px solid #a9cce3;border-radius:8px;background:#eaf4fc;">
+              <span style="background:#3498db;color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;flex-shrink:0;">03 · S</span>
+              <div><p style="font-size:13px;font-weight:500;color:#042C53;margin:0;">Design your floor.</p><p style="font-size:11px;color:#2471a3;margin:0;">Strip your support down to the minimum that works</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.75rem 1rem;border:1px solid #f9e79f;border-radius:8px;background:#fff9e6;">
+              <span style="background:#f1c40f;color:#2c3e50;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;flex-shrink:0;">04 · S</span>
+              <div><p style="font-size:13px;font-weight:500;color:#2c3e50;margin:0;">Name what moved.</p><p style="font-size:11px;color:#856404;margin:0;">Track direction — forward, back, sideways — no judgment</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.75rem 1rem;border:1px solid #a9dfbf;border-radius:8px;background:#eafaf1;">
+              <span style="background:#27ae60;color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;flex-shrink:0;">05 · Y</span>
+              <div><p style="font-size:13px;font-weight:500;color:#173404;margin:0;">Harvest the mess.</p><p style="font-size:11px;color:#1e8449;margin:0;">Extract what only the mess could have taught you</p></div>
+            </div>
+          </div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem;border:1px solid rgba(0,0,0,0.06);">
+            <p style="font-size:11px;font-weight:500;color:#888;margin:0 0 0.375rem;">A note on sequence</p>
+            <p style="font-size:13px;color:#34495e;margin:0;line-height:1.6;">The cards have an internal logic — M through Y — but you don't have to follow it. Start where you are. Return to cards that didn't land the first time. The same card will feel different depending on where you are in your mess.</p>
+          </div>
+          <div style="border-top:1px solid rgba(0,0,0,0.06);padding-top:1rem;display:flex;justify-content:space-between;align-items:flex-end;">
+            <div>
+              <p style="font-size:11px;color:#888;margin:0;line-height:1.5;">Salmon &amp; Steinberg, "Staying in the Mess" (2007)</p>
+              <p style="font-size:10px;color:#aaa;margin:2px 0 0;">Social Work with Groups, Vol. 30(4), pp. 79–94</p>
+            </div>
+            <button class="mp-btn" style="width:auto;padding:0.375rem 0.75rem;font-size:12px;" onclick="c00Unflip()">← Back</button>
+          </div>
+          <p style="font-size:10px;color:#ccc;text-align:center;margin-top:0.875rem;">© 2026 Live Messy Project · Messy Play™ Series</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-divider"><div class="card-divider-line"></div><div class="card-divider-text">Card 01 of 5</div><div class="card-divider-line"></div></div>
+
+  <!-- CARD 01 — MONITOR -->
+  <div class="card-wrapper">
+    <div class="card-wrapper-label">
+      <span class="card-wrapper-badge cwb-01">01 · M · Monitor</span>
+      <span class="card-wrapper-desc">Count your urges to fix without acting on them</span>
+    </div>
+    <div class="mp-card-outer">
+      <div id="c01-front">
+        <div class="mp-header" style="background:#f5eef8;border:1px solid #d7bde2;">
+          <div class="mp-header-row">
+            <span class="mp-header-meta" style="color:#7d56a0;">Messy Play™ · Card 01 · ~15 min solo</span>
+            <span class="mp-element-badge" style="background:#9b59b6;color:#fff;">M · Monitor</span>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.625rem;font-weight:800;color:#26215C;margin-bottom:0.25rem;">Just notice.</div>
+          <div style="font-size:12px;color:#7d56a0;">Solo or with up to 6 people</div>
+        </div>
+        <div class="mp-body">
+          <p class="mp-section-label">The situation</p>
+          <p class="mp-para">Someone near you is talking about something difficult. A problem. A frustration. Something unresolved. They haven't asked for your help.</p>
+          <p class="mp-para" style="margin-bottom:1.25rem;">Your only job is to notice what happens inside you as you listen. Not fix it. Not respond differently. Just watch yourself.</p>
+          <div class="mp-constraint-box" style="background:#f5eef8;border:1px solid #d7bde2;">
+            <p class="mp-constraint-label" style="color:#7d56a0;">The constraint</p>
+            <p class="mp-constraint-main" style="color:#26215C;">Every time you feel the urge to fix, redirect, or resolve — mark it below. Say nothing. Just count.</p>
+            <p class="mp-constraint-note" style="color:#7d56a0;margin-bottom:0.5rem;">You're looking for:</p>
+            <div class="mp-rule"><span class="mp-rule-arrow" style="color:#9b59b6;">→</span><span class="mp-rule-text" style="color:#26215C;">The urge to offer a solution</span></div>
+            <div class="mp-rule"><span class="mp-rule-arrow" style="color:#9b59b6;">→</span><span class="mp-rule-text" style="color:#26215C;">The impulse to change the subject</span></div>
+            <div class="mp-rule"><span class="mp-rule-arrow" style="color:#9b59b6;">→</span><span class="mp-rule-text" style="color:#26215C;">The discomfort of not doing anything</span></div>
+          </div>
+          <div class="mp-solo-note">
+            <p class="mp-solo-text"><strong>Going solo?</strong> Recall a recent conversation where someone shared a problem. Replay it in your mind. Count every moment you felt the pull to intervene.</p>
+          </div>
+          <div style="text-align:center;margin-bottom:1.25rem;">
+            <div id="c01-count" style="font-size:56px;font-weight:700;font-family:var(--font-display);color:#9b59b6;line-height:1;margin-bottom:0.375rem;">0</div>
+            <p style="font-size:11px;color:#888;margin:0 0 1rem;">urges counted</p>
+            <div style="display:flex;gap:10px;justify-content:center;">
+              <button onclick="c01Inc()" style="flex:1;padding:0.75rem;font-size:15px;cursor:pointer;border-radius:8px;font-weight:600;background:#9b59b6;color:#fff;border:none;font-family:var(--font-body);">+ Mark an urge</button>
+              <button onclick="c01Dec()" class="mp-btn" style="padding:0.75rem 1rem;width:auto;">Undo</button>
+            </div>
+          </div>
+          <div style="border-top:1px solid #ecf0f1;padding-top:1.25rem;text-align:center;">
+            <p style="font-size:12px;color:#888;margin:0 0 0.75rem;">When the conversation ends, flip to the reveal.</p>
+            <button class="mp-btn mp-btn-primary" onclick="c01Flip()">See the reveal →</button>
+          </div>
+        </div>
+      </div>
+      <div id="c01-back" style="display:none;">
+        <div class="mp-back-section">
+          <p class="mp-notice-label">Take 2 minutes · What did you notice?</p>
+          <div id="c01-reveal-wrap" style="display:none;background:#f5eef8;border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.75rem;border:1px solid #d7bde2;">
+            <p style="font-size:11px;color:#7d56a0;margin:0 0 0.25rem;font-weight:500;">You counted</p>
+            <p style="font-size:24px;font-weight:700;font-family:var(--font-display);color:#9b59b6;margin:0;" id="c01-reveal-count">0</p>
+            <p style="font-size:11px;color:#7d56a0;margin:0;">urges. Does that number surprise you?</p>
+          </div>
+          <p class="mp-notice-q">When was the pull strongest? What triggered it?</p>
+          <p class="mp-notice-q">What happened to the conversation when you didn't act on it?</p>
+        </div>
+        <div class="mp-reveal-section">
+          <p class="mp-reveal-label">The reveal</p>
+          <p class="mp-reveal-para">In 2007, two professors identified a pattern so common it had become invisible. When people encounter genuinely complex human problems, they instinctively move toward resolution before they've understood what they're actually dealing with.</p>
+          <p class="mp-reveal-para">The urge you counted isn't a character flaw. It's a trained reflex — one that serves you well in simple situations and quietly sabotages you in complex ones.</p>
+          <div class="mp-practice-box">
+            <p class="mp-practice-label">From the research</p>
+            <p class="mp-practice-text">A social work student sits with a group of teenagers in open conflict. Every instinct says intervene — redirect, resolve, smooth it over. Instead she stays with the tension, tolerating the discomfort without jumping in. The conflict finds its own resolution. Something real happened that wouldn't have if she'd jumped in. — Salmon &amp; Steinberg (2007), p. 82</p>
+          </div>
+          <p class="mp-reveal-para">You can't navigate the swamp if you don't know you're in it. Noticing the urge is the first skill. Everything else follows from here.</p>
+          <div class="mp-quote-box" style="background:#f5eef8;border:1px solid #d7bde2;">
+            <p style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9b59b6;margin:0 0 0.5rem;">Interpretation — inspired by the research</p>
+            <p class="mp-quote-text" style="color:#26215C;">The swamp reveals itself to those who stop long enough to look.</p>
+          </div>
+          <div class="mp-attribution">
+            <div><p class="mp-attr-title">Salmon &amp; Steinberg, "Staying in the Mess" (2007)</p><p class="mp-attr-sub">Social Work with Groups, Vol. 30(4)</p></div>
+            <button class="mp-btn" style="width:auto;padding:0.375rem 0.75rem;font-size:12px;" onclick="c01Unflip()">← Back</button>
+          </div>
+          <p class="mp-copyright">© 2026 Live Messy Project · Messy Play™ Series · Card 01</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-divider"><div class="card-divider-line"></div><div class="card-divider-text">Card 02 of 5</div><div class="card-divider-line"></div></div>
+
+  <!-- CARD 02 — EXECUTE -->
+  <div class="card-wrapper">
+    <div class="card-wrapper-label">
+      <span class="card-wrapper-badge cwb-02">02 · E · Execute</span>
+      <span class="card-wrapper-desc">Stay in the problem before reaching for a solution</span>
+    </div>
+    <div class="mp-card-outer">
+      <div id="c02-front">
+        <div class="mp-header" style="background:#FAEEDA;border:1px solid #FAC775;border-bottom:none;">
+          <div class="mp-header-row">
+            <span class="mp-header-meta" style="color:#854F0B;">Messy Play™ · Card 02 · ~15 min solo</span>
+            <span class="mp-element-badge" style="background:#e67e22;color:#fff;">E · Execute</span>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.625rem;font-weight:800;color:#412402;margin-bottom:0.25rem;">Don't fix it.</div>
+          <div style="font-size:12px;color:#854F0B;">Solo or with up to 6 people</div>
+        </div>
+        <div class="mp-body">
+          <p class="mp-section-label">The situation</p>
+          <p class="mp-para">Someone you know is stuck. Same wall, different week. You've heard the story. You have thoughts. You probably know exactly what they should do.</p>
+          <p class="mp-para" style="margin-bottom:1.25rem;">Today your only job is to understand the problem better. Not fix it. Just understand it.</p>
+          <div class="mp-constraint-box" style="background:#FAEEDA;border:1px solid #FAC775;">
+            <p class="mp-constraint-label" style="color:#854F0B;">The constraint</p>
+            <p class="mp-constraint-main" style="color:#412402;">For 10 minutes, solutions are banned.</p>
+            <p class="mp-constraint-note" style="color:#854F0B;margin-bottom:0.5rem;">You may only:</p>
+            <div class="mp-rule"><span class="mp-rule-arrow" style="color:#e67e22;">→</span><span class="mp-rule-text" style="color:#412402;">Ask questions that make the problem clearer</span></div>
+            <div class="mp-rule"><span class="mp-rule-arrow" style="color:#e67e22;">→</span><span class="mp-rule-text" style="color:#412402;">Describe what you're noticing</span></div>
+            <div class="mp-rule"><span class="mp-rule-arrow" style="color:#e67e22;">→</span><span class="mp-rule-text" style="color:#412402;">Say what this reminds you of</span></div>
+          </div>
+          <div class="mp-solo-note">
+            <p class="mp-solo-text"><strong>Going solo?</strong> Think of something in your own life you keep trying to fix. Write for 10 minutes using only the three options above.</p>
+          </div>
+          <div style="text-align:center;">
+            <div id="c02-display" style="font-size:40px;font-weight:700;font-family:var(--font-display);color:#2c3e50;margin-bottom:0.75rem;display:none;">10:00</div>
+            <p id="c02-label" style="font-size:12px;color:#888;margin:0 0 0.625rem;display:none;">Stay in the mess. No fixing allowed.</p>
+            <div id="c02-done" style="display:none;margin-bottom:0.75rem;">
+              <p style="font-size:13px;color:#888;margin:0 0 0.875rem;line-height:1.5;">Time's up. Take a breath before you flip.</p>
+              <button class="mp-btn mp-btn-primary" onclick="c02Flip()">See the reveal →</button>
+            </div>
+            <button id="c02-start" class="mp-btn" onclick="c02Start()">Start 10-minute timer</button>
+          </div>
+        </div>
+      </div>
+      <div id="c02-back" style="display:none;">
+        <div class="mp-back-section">
+          <p class="mp-notice-label">Take 2 minutes · What did you notice?</p>
+          <p class="mp-notice-q">When did you feel the pull to fix it?</p>
+          <p class="mp-notice-q">What happened in you when you couldn't?</p>
+          <p class="mp-notice-q">Did the problem change shape as you stayed with it?</p>
+        </div>
+        <div class="mp-reveal-section">
+          <p class="mp-reveal-label">The reveal</p>
+          <p class="mp-reveal-para">In 2007, two professors studied what happens when people face genuinely complex human problems. They found two predictable failure patterns.</p>
+          <div class="mp-two-col">
+            <div class="mp-practice-box" style="margin:0;">
+              <p class="mp-practice-label">Pattern 1</p>
+              <p style="font-size:13px;color:#2c3e50;margin:0;line-height:1.5;">Jump to solutions before the problem is understood</p>
+            </div>
+            <div class="mp-practice-box" style="margin:0;">
+              <p class="mp-practice-label">Pattern 2</p>
+              <p style="font-size:13px;color:#2c3e50;margin:0;line-height:1.5;">Get so lost in the problem that resolution never comes</p>
+            </div>
+          </div>
+          <p class="mp-reveal-para">The productive path — what they called <em>methodical mucking around</em> — requires consciously resisting the fix-it instinct long enough for the real problem to emerge.</p>
+          <div class="mp-practice-box">
+            <p class="mp-practice-label">From the research</p>
+            <p class="mp-practice-text">A group debates whether eating during meetings should be allowed. The worker jumps straight to solutions. Nothing fits. The real problem — timing, agency rules, individual needs — was never identified. The solutions were answering the wrong question. — Salmon &amp; Steinberg (2007), pp. 90–91</p>
+          </div>
+          <div class="mp-quote-box" style="background:#FAEEDA;border:1px solid #FAC775;">
+            <p style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#e67e22;margin:0 0 0.5rem;">Interpretation — inspired by the research</p>
+            <p class="mp-quote-text" style="color:#412402;">The mess isn't the obstacle. It's the map.</p>
+          </div>
+          <div class="mp-attribution">
+            <div><p class="mp-attr-title">Salmon &amp; Steinberg, "Staying in the Mess" (2007)</p><p class="mp-attr-sub">Social Work with Groups, Vol. 30(4)</p></div>
+            <button class="mp-btn" style="width:auto;padding:0.375rem 0.75rem;font-size:12px;" onclick="c02Unflip()">← Back</button>
+          </div>
+          <p class="mp-copyright">© 2026 Live Messy Project · Messy Play™ Series · Card 02</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-divider"><div class="card-divider-line"></div><div class="card-divider-text">Card 03 of 5</div><div class="card-divider-line"></div></div>
+
+  <!-- CARD 03 — SUPPORT -->
+  <div class="card-wrapper">
+    <div class="card-wrapper-label">
+      <span class="card-wrapper-badge cwb-03">03 · S · Support</span>
+      <span class="card-wrapper-desc">Strip your support down to the minimum that works</span>
+    </div>
+    <div class="mp-card-outer">
+      <div id="c03-front">
+        <div class="mp-header" style="background:#E6F1FB;border:1px solid #B5D4F4;border-bottom:none;">
+          <div class="mp-header-row">
+            <span class="mp-header-meta" style="color:#185FA5;">Messy Play™ · Card 03 · ~15 min solo</span>
+            <span class="mp-element-badge" style="background:#3498db;color:#fff;">S · Support</span>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.625rem;font-weight:800;color:#042C53;margin-bottom:0.25rem;">Design your floor.</div>
+          <div style="font-size:12px;color:#185FA5;">Solo or with up to 6 people</div>
+        </div>
+        <div class="mp-body">
+          <div style="background:#f8f9fa;border-radius:8px;padding:0.625rem 0.875rem;margin-bottom:1rem;border:1px solid rgba(0,0,0,0.06);">
+            <p style="font-size:12px;color:#888;margin:0;line-height:1.6;">Cards 01 and 02 worked with what's happening now. This card — and the two that follow — ask you to look back. Past patterns. Past messes. What they reveal is often clearer from a little distance.</p>
+          </div>
+          <p class="mp-section-label">The situation</p>
+          <p class="mp-para">There's a messy situation in your life you regularly escape from. Not because you're weak. Because nothing you've built makes staying in it feel possible.</p>
+          <p class="mp-para" style="margin-bottom:1.25rem;">Today you're going to design the minimum thing that would keep you in the mess instead of out of it.</p>
+          <div class="mp-constraint-box" style="background:#E6F1FB;border:1px solid #B5D4F4;">
+            <p class="mp-constraint-label" style="color:#185FA5;">The constraint</p>
+            <p class="mp-constraint-main" style="color:#042C53;">Your support structure must be simpler than what you currently do. Not more elaborate.</p>
+            <p class="mp-constraint-note" style="color:#185FA5;margin-bottom:0.5rem;">Work through these three steps:</p>
+            <div class="mp-rule"><span class="mp-rule-arrow" style="color:#3498db;">1</span><span class="mp-rule-text" style="color:#042C53;">Name the mess you keep escaping from</span></div>
+            <div class="mp-rule"><span class="mp-rule-arrow" style="color:#3498db;">2</span><span class="mp-rule-text" style="color:#042C53;">Describe what you currently do when it gets hard</span></div>
+            <div class="mp-rule"><span class="mp-rule-arrow" style="color:#3498db;">3</span><span class="mp-rule-text" style="color:#042C53;">Strip it down to the one thing that actually matters</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:1.25rem;">
+            <div>
+              <p class="mp-section-label">Step 1 · The mess I keep escaping</p>
+              <textarea id="c03-s1" class="mp-textarea" rows="3" placeholder="What messy situation do you regularly avoid or exit early?"></textarea>
+            </div>
+            <div>
+              <p class="mp-section-label">Step 2 · What I currently do when it gets hard</p>
+              <textarea id="c03-s2" class="mp-textarea" rows="3" placeholder="The elaborate system, the avoidance strategy, the thing that takes you out of it..."></textarea>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.375rem;">
+                <p class="mp-section-label" style="margin:0;">Step 3 · The one simpler thing</p>
+                <p id="c03-wc" style="font-size:10px;color:#aaa;margin:0;">12 words max</p>
+              </div>
+              <textarea id="c03-s3" class="mp-textarea" rows="2" placeholder="Strip everything away. What's the floor?" oninput="c03WordCount()"></textarea>
+              <p id="c03-warn" style="font-size:11px;color:#e74c3c;margin:0.25rem 0 0;display:none;">Keep stripping. Simpler than that.</p>
+            </div>
+          </div>
+          <div class="mp-solo-note">
+            <p class="mp-solo-text"><strong>In a group?</strong> Each person works through the steps independently first, then shares their Step 3 answer. Whose is the simplest? Would anyone use someone else's?</p>
+          </div>
+          <button class="mp-btn mp-btn-primary" onclick="c03Flip()">See the reveal →</button>
+        </div>
+      </div>
+      <div id="c03-back" style="display:none;">
+        <div class="mp-back-section">
+          <p class="mp-notice-label">Take 2 minutes · What did you notice?</p>
+          <div id="c03-reveal-wrap" style="display:none;background:#E6F1FB;border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.75rem;border:1px solid #B5D4F4;">
+            <p style="font-size:11px;color:#185FA5;margin:0 0 0.25rem;font-weight:500;">Your floor</p>
+            <p id="c03-reveal-s3" style="font-size:13px;color:#042C53;margin:0;line-height:1.5;font-style:italic;"></p>
+          </div>
+          <p class="mp-notice-q">Was Step 3 harder or easier than you expected?</p>
+          <p class="mp-notice-q">What did you have to give up to get to your floor?</p>
+          <p class="mp-notice-q">Would you actually use this? What would get in the way?</p>
+        </div>
+        <div class="mp-reveal-section">
+          <p class="mp-reveal-label">The reveal</p>
+          <p class="mp-reveal-para">Salmon and Steinberg found that new practitioners standing at the edge of genuinely complex problems often try to jump over them entirely. Not because they're avoidant — because nothing they've built makes entering feel survivable.</p>
+          <p class="mp-reveal-para">Their insight was precise: descending into the swamp doesn't cause drowning if there's a method to the process. Support isn't about making the mess more comfortable. It's about making it possible to stay long enough for something real to happen.</p>
+          <div class="mp-practice-box">
+            <p class="mp-practice-label">Illustrative example</p>
+            <p class="mp-practice-text">A group worker designs one rule before entering a difficult conversation: ask one clarifying question before any response. Not a protocol. Not a system. One rule. It's enough to keep her in the mess when the pull to escape is strongest.</p>
+          </div>
+          <div class="mp-quote-box" style="background:#E6F1FB;border:1px solid #B5D4F4;">
+            <p style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#3498db;margin:0 0 0.5rem;">Interpretation — inspired by the research</p>
+            <p class="mp-quote-text" style="color:#042C53;">Support isn't comfort. It's the thing that keeps you from needing to escape.</p>
+          </div>
+          <div class="mp-attribution">
+            <div><p class="mp-attr-title">Salmon &amp; Steinberg, "Staying in the Mess" (2007)</p><p class="mp-attr-sub">Social Work with Groups, Vol. 30(4)</p></div>
+            <button class="mp-btn" style="width:auto;padding:0.375rem 0.75rem;font-size:12px;" onclick="c03Unflip()">← Back</button>
+          </div>
+          <p class="mp-copyright">© 2026 Live Messy Project · Messy Play™ Series · Card 03</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-divider"><div class="card-divider-line"></div><div class="card-divider-text">Card 04 of 5</div><div class="card-divider-line"></div></div>
+
+  <!-- CARD 04 — SURRENDER -->
+  <div class="card-wrapper">
+    <div class="card-wrapper-label">
+      <span class="card-wrapper-badge cwb-04">04 · S · Surrender</span>
+      <span class="card-wrapper-desc">Track direction — forward, back, sideways — no judgment</span>
+    </div>
+    <div class="mp-card-outer">
+      <div id="c04-front">
+        <div class="mp-header" style="background:#fff9e6;border:1px solid #f9e79f;border-bottom:none;">
+          <div class="mp-header-row">
+            <span class="mp-header-meta" style="color:#856404;">Messy Play™ · Card 04 · ~15 min solo</span>
+            <span class="mp-element-badge" style="background:#f1c40f;color:#2c3e50;">S · Surrender</span>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.625rem;font-weight:800;color:#2c3e50;margin-bottom:0.25rem;">Name what moved.</div>
+          <div style="font-size:12px;color:#856404;">Solo or with up to 6 people</div>
+        </div>
+        <div class="mp-body">
+          <p class="mp-section-label">The situation</p>
+          <p class="mp-para">Think of something that felt like failure or regression — a project, a relationship, a goal. Something that seemed to go backwards just when it should have moved forward.</p>
+          <p class="mp-para" style="margin-bottom:1.25rem;">You're going to map what actually moved. Not whether it was good or bad. Just direction.</p>
+          <div class="mp-constraint-box" style="background:#fff9e6;border:1px solid #f9e79f;">
+            <p class="mp-constraint-label" style="color:#856404;">The constraint</p>
+            <p class="mp-constraint-main" style="color:#2c3e50;">Describe each phase as a direction. No judgment allowed.</p>
+            <p class="mp-constraint-note" style="color:#856404;">Not "it went badly" or "we succeeded." Only: forward, back, or sideways.</p>
+          </div>
+          <div style="margin-bottom:1rem;">
+            <p class="mp-section-label">Name the situation</p>
+            <input type="text" id="c04-sit" class="mp-input" placeholder="What is it?">
+          </div>
+          <div style="margin-bottom:1rem;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.5rem;">
+              <p class="mp-section-label" style="margin:0;">Name the moves</p>
+              <p style="font-size:10px;color:#aaa;margin:0;">→ forward · ← back · ↔ sideways</p>
+            </div>
+            <div id="c04-moves"></div>
+            <button class="mp-btn" onclick="c04AddMove()" style="margin-top:4px;font-size:12px;padding:0.5rem;">+ Add a move</button>
+          </div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:0.875rem 1rem;margin-bottom:1.25rem;border:1px solid rgba(0,0,0,0.06);min-height:40px;display:flex;align-items:center;">
+            <div id="c04-pattern" style="width:100%;"><p style="font-size:12px;color:#aaa;text-align:center;margin:0;">Your movement pattern will appear here</p></div>
+          </div>
+          <div class="mp-solo-note">
+            <p class="mp-solo-text"><strong>In a group?</strong> Each person maps their own situation independently, then shares their pattern. What shapes appear? Does anyone see the same moves in a different order?</p>
+          </div>
+          <button class="mp-btn mp-btn-primary" onclick="c04Flip()">See the reveal →</button>
+        </div>
+      </div>
+      <div id="c04-back" style="display:none;">
+        <div class="mp-back-section">
+          <p class="mp-notice-label">Take 2 minutes · What did you notice?</p>
+          <div id="c04-reveal-wrap" style="display:none;background:#fff9e6;border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.75rem;border:1px solid #f9e79f;">
+            <p style="font-size:11px;color:#856404;margin:0 0 0.5rem;font-weight:500;">Your movement pattern</p>
+            <div id="c04-reveal-pattern"></div>
+          </div>
+          <p class="mp-notice-q">Where did you label a backward move as failure before today?</p>
+          <p class="mp-notice-q">What looks different now that you see it as movement rather than judgment?</p>
+          <p class="mp-notice-q">Did the overall shape surprise you?</p>
+        </div>
+        <div class="mp-reveal-section">
+          <p class="mp-reveal-label">The reveal</p>
+          <p class="mp-reveal-para">Salmon and Steinberg observed that even our best theories describe development as linear — beginnings, middles, endings. But in reality, progress in any genuinely complex situation moves forward, backward, and sideways — messily but eventually moving along.</p>
+          <p class="mp-reveal-para">The backward moves you named weren't failures. They were part of the movement. Difficult phases aren't exceptions to progress. They're how progress actually works in the swamp.</p>
+          <div class="mp-practice-box">
+            <p class="mp-practice-label">Illustrative example</p>
+            <p class="mp-practice-text">A group that had been progressing well suddenly regresses — old conflicts resurface, trust erodes. The worker who expects linear development panics and intervenes. The worker who understands non-linear progress recognizes it as a natural phase and stays. Three sessions later the group reaches a depth it couldn't have reached any other way.</p>
+          </div>
+          <div class="mp-quote-box" style="background:#fff9e6;border:1px solid #f9e79f;">
+            <p class="mp-quote-text" style="color:#2c3e50;">With practice will come not perfection but perspective.</p>
+          </div>
+          <div class="mp-attribution">
+            <div><p class="mp-attr-title">Salmon &amp; Steinberg, "Staying in the Mess" (2007)</p><p class="mp-attr-sub">Social Work with Groups, Vol. 30(4)</p></div>
+            <button class="mp-btn" style="width:auto;padding:0.375rem 0.75rem;font-size:12px;" onclick="c04Unflip()">← Back</button>
+          </div>
+          <p class="mp-copyright">© 2026 Live Messy Project · Messy Play™ Series · Card 04</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-divider"><div class="card-divider-line"></div><div class="card-divider-text">Card 05 of 5</div><div class="card-divider-line"></div></div>
+
+  <!-- CARD 05 — YIELD -->
+  <div class="card-wrapper">
+    <div class="card-wrapper-label">
+      <span class="card-wrapper-badge cwb-05">05 · Y · Yield</span>
+      <span class="card-wrapper-desc">Extract what only the mess could have taught you</span>
+    </div>
+    <div class="mp-card-outer">
+      <div id="c05-front">
+        <div class="mp-header" style="background:#eafaf1;border:1px solid #a9dfbf;border-bottom:none;">
+          <div class="mp-header-row">
+            <span class="mp-header-meta" style="color:#1e8449;">Messy Play™ · Card 05 · ~15 min solo</span>
+            <span class="mp-element-badge" style="background:#27ae60;color:#fff;">Y · Yield</span>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.625rem;font-weight:800;color:#173404;margin-bottom:0.25rem;">Harvest the mess.</div>
+          <div style="font-size:12px;color:#1e8449;">Solo or with up to 6 people</div>
+        </div>
+        <div class="mp-body">
+          <p class="mp-section-label">The situation</p>
+          <p class="mp-para">Think of a mess you've already lived through. Something genuinely difficult and unresolved for a long time. Not something you're in right now — something you came out the other side of.</p>
+          <p class="mp-para" style="margin-bottom:1.25rem;">You're going to extract what it actually taught you. Not what happened after. What the mess itself produced.</p>
+          <div class="mp-constraint-box" style="background:#eafaf1;border:1px solid #a9dfbf;">
+            <p class="mp-constraint-label" style="color:#1e8449;">The constraint</p>
+            <p class="mp-constraint-main" style="color:#173404;">Your answer cannot contain the word "but."</p>
+            <p class="mp-constraint-note" style="color:#1e8449;">"But" qualifies the mess away. Your wisdom lives in what's left when you remove it.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:1.25rem;">
+            <div>
+              <p class="mp-section-label">Name the mess</p>
+              <input type="text" id="c05-mess" class="mp-input" placeholder="What was it?">
+            </div>
+            <div>
+              <p class="mp-section-label">What did this teach you that a clean resolution would have prevented?</p>
+              <textarea id="c05-wisdom" class="mp-textarea" rows="4" placeholder="Write without censoring. The constraint comes after." oninput="c05CheckButs()"></textarea>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.375rem;">
+                <span id="c05-but-ind" style="font-size:11px;color:#aaa;"></span>
+              </div>
+              <div id="c05-but-nudge" style="display:none;background:#fdf0f0;border-radius:8px;padding:0.625rem 0.875rem;margin-top:0.5rem;border:1px solid #f5c6c6;">
+                <p style="font-size:12px;color:#c0392b;margin:0;line-height:1.5;">You used "but." Try removing everything after it. What's left? That's closer to the yield.</p>
+              </div>
+            </div>
+            <div>
+              <p class="mp-section-label">What would you have missed if it had resolved cleanly and quickly?</p>
+              <textarea id="c05-missed" class="mp-textarea" rows="2" placeholder="No buts here either."></textarea>
+            </div>
+          </div>
+          <div class="mp-solo-note">
+            <p class="mp-solo-text"><strong>In a group?</strong> Each person writes their wisdom, then reads it aloud. The group listens for buts that snuck through. When they find one, they ask: what would it sound like without that?</p>
+          </div>
+          <button class="mp-btn mp-btn-primary" onclick="c05Flip()">See the reveal →</button>
+        </div>
+      </div>
+      <div id="c05-back" style="display:none;">
+        <div class="mp-back-section">
+          <p class="mp-notice-label">Take 2 minutes · What did you notice?</p>
+          <div id="c05-reveal-wrap" style="display:none;background:#eafaf1;border-radius:8px;padding:0.875rem 1rem;margin-bottom:0.75rem;border:1px solid #a9dfbf;">
+            <p style="font-size:11px;color:#1e8449;margin:0 0 0.375rem;font-weight:500;">Your harvest</p>
+            <p id="c05-reveal-wisdom" style="font-size:13px;color:#173404;margin:0;line-height:1.6;font-style:italic;"></p>
+          </div>
+          <p class="mp-notice-q">Did removing "but" change what you thought you knew?</p>
+          <p class="mp-notice-q">What does this wisdom let you do or see differently now?</p>
+          <p class="mp-notice-q">Where else in your life might the same harvest be waiting?</p>
+        </div>
+        <div class="mp-reveal-section">
+          <p class="mp-reveal-label">The reveal</p>
+          <p class="mp-reveal-para">Salmon and Steinberg argued that mess has a function most people never access. It awakens. It scratches at comfort. It causes review, reflection, exploration, and action in ways that clean resolution simply cannot.</p>
+          <p class="mp-reveal-para">What you just did — extracting what the mess itself produced rather than just surviving it — is exactly the practice the research describes. The wisdom only becomes visible after you've stayed in it long enough.</p>
+          <p class="mp-reveal-para">The "but" constraint exists because qualification is the most common way people avoid their own yield. Remove the but. What's left is the real thing.</p>
+          <div class="mp-practice-box">
+            <p class="mp-practice-label">From the research</p>
+            <p class="mp-practice-text">Emily Wolf Newman wrote about the loneliness of being a social group worker — professionally isolated, speaking a language most colleagues didn't share. Salmon and Steinberg cite her account as an example of the kind of wisdom that only emerges from staying in difficult professional terrain rather than escaping it. — Newman (2002), cited in Salmon &amp; Steinberg (2007), p. 82</p>
+          </div>
+          <div class="mp-quote-box" style="background:#eafaf1;border:1px solid #a9dfbf;">
+            <p style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#27ae60;margin:0 0 0.5rem;">Interpretation — inspired by the research</p>
+            <p class="mp-quote-text" style="color:#173404;">What is this experience actually teaching me?</p>
+          </div>
+          <div class="mp-attribution">
+            <div><p class="mp-attr-title">Salmon &amp; Steinberg, "Staying in the Mess" (2007)</p><p class="mp-attr-sub">Social Work with Groups, Vol. 30(4)</p></div>
+            <button class="mp-btn" style="width:auto;padding:0.375rem 0.75rem;font-size:12px;" onclick="c05Unflip()">← Back</button>
+          </div>
+          <p class="mp-copyright">© 2026 Live Messy Project · Messy Play™ Series · Card 05</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CLOSING INTEGRATION ── -->
+<section id="closing" style="background:#fff;padding:4rem 2rem;border-top:1px solid var(--c-border);">
+  <div class="inner" style="max-width:560px;text-align:center;">
+    <p class="eyebrow eyebrow-color" style="margin-bottom:0.75rem;">You made it through all five.</p>
+    <h2 class="section-title" style="font-size:clamp(1.5rem,3.5vw,2.25rem);margin-bottom:1rem;">Now take three minutes.</h2>
+    <p class="section-body" style="font-size:15px;">Not to optimize what you learned. Just to let it settle. These questions aren't an assignment — they're an invitation to notice what the set produced in you.</p>
+    <div style="display:flex;flex-direction:column;gap:10px;margin:2rem 0;text-align:left;">
+      <div style="padding:1rem 1.25rem;border:1px solid var(--c-border);border-radius:var(--radius-sm);border-left:3px solid var(--c-purple);">
+        <p style="font-size:14px;color:var(--c-text);margin:0;line-height:1.65;">Which card landed hardest — and why do you think that one?</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border:1px solid var(--c-border);border-radius:var(--radius-sm);border-left:3px solid var(--c-orange);">
+        <p style="font-size:14px;color:var(--c-text);margin:0;line-height:1.65;">What shifted across the five cards that you didn't expect?</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border:1px solid var(--c-border);border-radius:var(--radius-sm);border-left:3px solid var(--c-green);">
+        <p style="font-size:14px;color:var(--c-text);margin:0;line-height:1.65;">What's one thing you'll do differently this week because of what you noticed?</p>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--c-muted);line-height:1.7;">The cards don't produce transformation. They reveal the capacity that was already there. You did the work. The mess was the teacher.</p>
+  </div>
+</section>
+
+<!-- ── ATTRIBUTION ── -->
+<section class="section section-alt" id="attribution" style="padding:3rem 2rem;">
+  <div class="inner" style="max-width:680px;">
+    <p class="eyebrow">Research attribution</p>
+    <h2 class="section-title" style="font-size:1.5rem;">The source behind Set 01.</h2>
+    <p class="section-body">Messy Play is grounded in real academic research. Set 01 draws entirely from the following paper. If the cards resonated, this is worth reading in full.</p>
+    <div style="background:#fff;border-radius:var(--radius);border:1px solid var(--c-border);padding:1.5rem;margin-top:1.5rem;">
+      <p style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-muted);margin:0 0 1rem;">APA 7th Edition</p>
+      <p style="font-size:14px;color:var(--c-body);line-height:1.8;margin:0 0 0.25rem;">Salmon, R., &amp; Steinberg, D. M. (2007). Staying in the mess: Teaching students and practitioners to work effectively in the swamp of important problems. <em>Social Work with Groups, 30</em>(4), 79–94.</p>
+      <a href="https://doi.org/10.1300/J009v30n04_06" target="_blank" rel="noopener" style="font-size:13px;color:var(--c-purple);text-decoration:none;border-bottom:1px solid rgba(155,89,182,0.3);padding-bottom:1px;">https://doi.org/10.1300/J009v30n04_06</a>
+      <div style="border-top:1px solid var(--c-border);margin-top:1.25rem;padding-top:1.25rem;">
+        <p style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-muted);margin:0 0 0.75rem;">MLA 9th Edition</p>
+        <p style="font-size:14px;color:var(--c-body);line-height:1.8;margin:0;">Salmon, Robert, and Dominique Moyse Steinberg. "Staying in the Mess: Teaching Students and Practitioners to Work Effectively in the Swamp of Important Problems." <em>Social Work with Groups</em>, vol. 30, no. 4, 2007, pp. 79–94.</p>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--c-muted);margin-top:1rem;line-height:1.6;">Messy Play uses insights from this research for educational and personal development purposes only. The experiences are original designs inspired by the research — not reproductions of the authors' materials. The original paper and all rights remain with the authors and publisher.</p>
+  </div>
+</section>
+
+<!-- ── TEASER ── -->
+<section class="section section-dark" style="text-align:center;">
+  <div class="inner">
+    <p class="teaser-eyebrow">What's coming</p>
+    <h2 class="teaser-title">Set 02 is in development.</h2>
+    <p class="teaser-body">Each set is grounded in a different piece of research. Set 01 comes from a 2007 paper on staying productively in the mess. Set 02 comes from somewhere entirely different. Same format. New insight. Same commitment to making research feel like something.</p>
+    <a href="https://messy-playbook.vercel.app/" class="teaser-link">Explore The MESSY Playbook →</a>
+    <div style="margin-top:3rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,0.1);">
+      <p style="font-family:var(--font-display);font-size:clamp(2.5rem,8vw,5rem);font-weight:800;color:#fff;line-height:1;letter-spacing:-0.01em;margin:0;">Get MESSY!</p>
+      <p style="font-size:14px;color:rgba(255,255,255,0.45);margin:0.75rem 0 0;line-height:1.6;">The mess isn't the obstacle. It's the map.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <p class="footer-logo">The MESSY Playbook™</p>
+  <div class="footer-links">
+    <a href="https://messy-playbook.vercel.app/" class="footer-link">The Playbook</a>
+    <a href="https://messy-playbook.vercel.app/book.html" class="footer-link">The Book</a>
+    <a href="https://messy-playbook.vercel.app/play.html" class="footer-link">Messy Play</a>
+    <a href="https://livemessy.gumroad.com" class="footer-link">Gumroad</a>
+    <a href="https://messy-playbook.vercel.app/#contact" class="footer-link">Contact</a>
+  </div>
+  <p class="footer-copy">© 2026 Live Messy Project. All rights reserved. Messy Play™ is part of The MESSY Playbook™ ecosystem.<br>
+  Research attribution: Salmon, R., &amp; Steinberg, D. M. (2007). <em>Social Work with Groups, 30</em>(4), 79–94.<br>
+  For educational purposes and personal exploration only. Not therapy or professional counseling.</p>
+</footer>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- CARD JAVASCRIPT — NAMESPACED BY CARD ID   -->
+<!-- ══════════════════════════════════════════ -->
+<script>
+// ── CARD 00 — ORIENTATION ──────────────────
+(function() {
+  var recs = [
+    { text: 'Card 02 · E · Execute — "Don\'t fix it."', bg: '#FAEEDA', color: '#412402', border: '#FAC775' },
+    { text: 'Card 01 · M · Monitor — "Just notice."', bg: '#f5eef8', color: '#26215C', border: '#d7bde2' },
+    { text: 'Card 03 · S · Support — "Design your floor."', bg: '#E6F1FB', color: '#042C53', border: '#B5D4F4' },
+    { text: 'Card 04 · S · Surrender — "Name what moved."', bg: '#fff9e6', color: '#2c3e50', border: '#f9e79f' },
+    { text: 'Card 05 · Y · Yield — "Harvest the mess."', bg: '#eafaf1', color: '#173404', border: '#a9dfbf' },
+    { text: 'Card 01 · M · Monitor — "Just notice." — the natural place to begin.', bg: '#f5eef8', color: '#26215C', border: '#d7bde2' }
+  ];
+
+  window.c00Select = function(i) {
+    for (var j = 0; j < 6; j++) {
+      var el = document.getElementById('c00r' + j);
+      if (el) { el.style.background = ''; el.style.borderColor = ''; el.style.fontWeight = ''; }
+    }
+    var sel = document.getElementById('c00r' + i);
+    if (sel) { sel.style.background = '#f8f9fa'; sel.style.borderColor = 'rgba(0,0,0,0.2)'; sel.style.fontWeight = '500'; }
+    var r = recs[i];
+    var rec = document.getElementById('c00rec');
+    var rt = document.getElementById('c00rec-text');
+    rec.style.display = 'block';
+    rec.style.background = r.bg;
+    rec.style.borderColor = r.border;
+    rt.textContent = r.text;
+    rt.style.color = r.color;
+  };
+
+  window.c00Flip = function() {
+    document.getElementById('c00-front').style.display = 'none';
+    document.getElementById('c00-back').style.display = 'block';
+  };
+  window.c00Unflip = function() {
+    document.getElementById('c00-back').style.display = 'none';
+    document.getElementById('c00-front').style.display = 'block';
+  };
+})();
+
+// ── CARD 01 — MONITOR ──────────────────────
+(function() {
+  var count = 0;
+  window.c01Inc = function() {
+    count++;
+    document.getElementById('c01-count').textContent = count;
+  };
+  window.c01Dec = function() {
+    if (count > 0) { count--; document.getElementById('c01-count').textContent = count; }
+  };
+  window.c01Flip = function() {
+    var rw = document.getElementById('c01-reveal-wrap');
+    var rc = document.getElementById('c01-reveal-count');
+    if (rw && rc) { rc.textContent = count; rw.style.display = 'block'; }
+    document.getElementById('c01-front').style.display = 'none';
+    document.getElementById('c01-back').style.display = 'block';
+  };
+  window.c01Unflip = function() {
+    document.getElementById('c01-back').style.display = 'none';
+    document.getElementById('c01-front').style.display = 'block';
+  };
+})();
+
+// ── CARD 02 — EXECUTE ──────────────────────
+(function() {
+  var secs = 600;
+  var interval = null;
+  window.c02Start = function() {
+    document.getElementById('c02-start').style.display = 'none';
+    document.getElementById('c02-display').style.display = 'block';
+    document.getElementById('c02-label').style.display = 'block';
+    interval = setInterval(function() {
+      secs--;
+      var m = Math.floor(secs / 60);
+      var s = secs % 60;
+      document.getElementById('c02-display').textContent = m + ':' + String(s).padStart(2, '0');
+      if (secs <= 0) {
+        clearInterval(interval);
+        document.getElementById('c02-display').style.display = 'none';
+        document.getElementById('c02-label').style.display = 'none';
+        document.getElementById('c02-done').style.display = 'block';
+      }
+    }, 1000);
+  };
+  window.c02Flip = function() {
+    document.getElementById('c02-front').style.display = 'none';
+    document.getElementById('c02-back').style.display = 'block';
+  };
+  window.c02Unflip = function() {
+    document.getElementById('c02-back').style.display = 'none';
+    document.getElementById('c02-front').style.display = 'block';
+  };
+})();
+
+// ── CARD 03 — SUPPORT ──────────────────────
+(function() {
+  window.c03WordCount = function() {
+    var val = document.getElementById('c03-s3').value;
+    var words = val.trim() === '' ? 0 : val.trim().split(/\s+/).length;
+    var rem = 12 - words;
+    var wc = document.getElementById('c03-wc');
+    var warn = document.getElementById('c03-warn');
+    if (rem >= 0) {
+      wc.textContent = rem + ' words remaining';
+      wc.style.color = rem <= 3 ? '#3498db' : '#aaa';
+      warn.style.display = 'none';
+    } else {
+      wc.textContent = Math.abs(rem) + ' words over';
+      wc.style.color = '#e74c3c';
+      warn.style.display = 'block';
+    }
+  };
+  window.c03Flip = function() {
+    var s3 = document.getElementById('c03-s3').value.trim();
+    if (s3) {
+      document.getElementById('c03-reveal-s3').textContent = s3;
+      document.getElementById('c03-reveal-wrap').style.display = 'block';
+    }
+    document.getElementById('c03-front').style.display = 'none';
+    document.getElementById('c03-back').style.display = 'block';
+  };
+  window.c03Unflip = function() {
+    document.getElementById('c03-back').style.display = 'none';
+    document.getElementById('c03-front').style.display = 'block';
+  };
+})();
+
+// ── CARD 04 — SURRENDER ────────────────────
+(function() {
+  var moves = [];
+  function dirStyle(active, dir) {
+    if (!active) return '';
+    var s = {
+      fwd: 'background:#EAF3DE;border-color:#97C459;color:#3B6D11;',
+      back: 'background:#FAECE7;border-color:#F0997B;color:#993C1D;',
+      side: 'background:#E6F1FB;border-color:#85B7EB;color:#185FA5;'
+    };
+    return s[dir] || '';
+  }
+  function renderMoves() {
+    var c = document.getElementById('c04-moves');
+    if (!c) return;
+    c.innerHTML = moves.map(function(m, i) {
+      return '<div style="display:flex;gap:5px;align-items:center;margin-bottom:7px;">' +
+        '<input type="text" placeholder="What happened..." oninput="c04UpdateText(' + i + ',this.value)" value="' + (m.text||'').replace(/"/g,'&quot;') + '" style="flex:1;min-width:0;padding:6px 9px;font-size:13px;border:1px solid rgba(0,0,0,0.15);border-radius:8px;font-family:inherit;color:#2c3e50;background:#fff;outline:none;">' +
+        '<button onclick="c04SetDir(' + i + ',\'fwd\')" style="padding:5px 7px;font-size:12px;cursor:pointer;border-radius:8px;flex-shrink:0;border:1px solid rgba(0,0,0,0.15);background:#fff;' + dirStyle(m.dir==='fwd','fwd') + '">→</button>' +
+        '<button onclick="c04SetDir(' + i + ',\'back\')" style="padding:5px 7px;font-size:12px;cursor:pointer;border-radius:8px;flex-shrink:0;border:1px solid rgba(0,0,0,0.15);background:#fff;' + dirStyle(m.dir==='back','back') + '">←</button>' +
+        '<button onclick="c04SetDir(' + i + ',\'side\')" style="padding:5px 7px;font-size:12px;cursor:pointer;border-radius:8px;flex-shrink:0;border:1px solid rgba(0,0,0,0.15);background:#fff;' + dirStyle(m.dir==='side','side') + '">↔</button>' +
+        '<button onclick="c04Remove(' + i + ')" style="padding:5px 6px;font-size:12px;cursor:pointer;border-radius:8px;flex-shrink:0;border:1px solid rgba(0,0,0,0.12);background:#fff;color:#888;">×</button>' +
+        '</div>';
+    }).join('');
+    renderPattern();
+  }
+  function renderPattern() {
+    var el = document.getElementById('c04-pattern');
+    if (!el) return;
+    var d = moves.filter(function(m) { return m.dir; });
+    if (!d.length) { el.innerHTML = '<p style="font-size:12px;color:#aaa;text-align:center;margin:0;">Your movement pattern will appear here</p>'; return; }
+    var cfg = {
+      fwd:{bg:'#EAF3DE',color:'#3B6D11',border:'#97C459',label:'→ Forward'},
+      back:{bg:'#FAECE7',color:'#993C1D',border:'#F0997B',label:'← Back'},
+      side:{bg:'#E6F1FB',color:'#185FA5',border:'#85B7EB',label:'↔ Side'}
+    };
+    var pills = d.map(function(m) {
+      var cv = cfg[m.dir];
+      return '<span style="background:' + cv.bg + ';color:' + cv.color + ';border:1px solid ' + cv.border + ';font-size:11px;padding:3px 9px;border-radius:20px;white-space:nowrap;">' + cv.label + '</span>';
+    }).join('<span style="color:#ccc;font-size:11px;padding:0 2px;">·</span>');
+    el.innerHTML = '<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">' + pills + '</div>';
+  }
+  window.c04AddMove = function() { moves.push({text:'',dir:null}); renderMoves(); };
+  window.c04SetDir = function(i,d) { moves[i].dir=d; renderMoves(); };
+  window.c04UpdateText = function(i,v) { moves[i].text=v; };
+  window.c04Remove = function(i) { moves.splice(i,1); renderMoves(); };
+  window.c04Flip = function() {
+    var d = moves.filter(function(m){return m.dir;});
+    if (d.length) {
+      document.getElementById('c04-reveal-pattern').innerHTML = document.getElementById('c04-pattern').innerHTML;
+      document.getElementById('c04-reveal-wrap').style.display = 'block';
+    }
+    document.getElementById('c04-front').style.display = 'none';
+    document.getElementById('c04-back').style.display = 'block';
+  };
+  window.c04Unflip = function() {
+    document.getElementById('c04-back').style.display = 'none';
+    document.getElementById('c04-front').style.display = 'block';
+  };
+  // Initialize with 3 empty moves
+  moves.push({text:'',dir:null}); moves.push({text:'',dir:null}); moves.push({text:'',dir:null});
+  renderMoves();
+})();
+
+// ── CARD 05 — YIELD ────────────────────────
+(function() {
+  window.c05CheckButs = function() {
+    var text = document.getElementById('c05-wisdom').value;
+    var matches = text.match(/\bbut\b/gi) || [];
+    var count = matches.length;
+    var ind = document.getElementById('c05-but-ind');
+    var nudge = document.getElementById('c05-but-nudge');
+    if (count > 0) {
+      ind.textContent = count + ' "but"' + (count > 1 ? 's' : '') + ' detected';
+      ind.style.color = '#c0392b';
+      nudge.style.display = 'block';
+    } else if (text.trim().length > 0) {
+      ind.textContent = 'Clean harvest — no buts';
+      ind.style.color = '#27ae60';
+      nudge.style.display = 'none';
+    } else {
+      ind.textContent = '';
+      nudge.style.display = 'none';
+    }
+  };
+  window.c05Flip = function() {
+    var wisdom = document.getElementById('c05-wisdom').value.trim();
+    if (wisdom) {
+      document.getElementById('c05-reveal-wisdom').textContent = wisdom;
+      document.getElementById('c05-reveal-wrap').style.display = 'block';
+    }
+    document.getElementById('c05-front').style.display = 'none';
+    document.getElementById('c05-back').style.display = 'block';
+  };
+  window.c05Unflip = function() {
+    document.getElementById('c05-back').style.display = 'none';
+    document.getElementById('c05-front').style.display = 'block';
+  };
+})();
+</script>
+
+<!-- ── BACK TO TOP BUTTON ── -->
+<button
+  class="back-to-top"
+  id="back-to-top"
+  onclick="window.scrollTo({top:0,behavior:'smooth'})"
+  aria-label="Back to top"
+  title="Back to top"
+>↑</button>
+
+<!-- ── JUMP NAV + BACK TO TOP JAVASCRIPT ── -->
+<script>
+(function() {
+
+  var pageNav = document.getElementById('page-nav');
+  var backToTop = document.getElementById('back-to-top');
+  var hero = document.getElementById('hero');
+  var navLinks = pageNav ? pageNav.querySelectorAll('a[href^="#"]') : [];
+
+  // Section order for active detection
+  var sectionIds = ['what','why','set01','alignment','cards','closing','attribution'];
+
+  // Show/hide page nav based on hero visibility
+  if (hero && pageNav) {
+    var heroObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          pageNav.classList.remove('visible');
+        } else {
+          pageNav.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    heroObserver.observe(hero);
+  }
+
+  // Show/hide back to top based on scroll position
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 400) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    }, { passive: true });
+  }
+
+  // Active section highlighting
+  if (pageNav && navLinks.length) {
+    var sections = sectionIds.map(function(id) {
+      return document.getElementById(id);
+    }).filter(Boolean);
+
+    var sectionObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var activeId = entry.target.id;
+          navLinks.forEach(function(link) {
+            var href = link.getAttribute('href');
+            if (href === '#' + activeId) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, {
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    });
+
+    sections.forEach(function(section) {
+      sectionObserver.observe(section);
+    });
+  }
+
+})();
+</script>
+</body>
+</html>
