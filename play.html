@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Messy Plays™ — Staying in the Mess · The Live Messy Project</title>
   <meta name="description" content="Messy Plays — experiential learning cards grounded in real research. Staying in the Mess is the first play, based on Salmon &amp; Steinberg (2007). About 15 minutes solo — longer with a group. Free.">
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Messy Plays™ — Staying in the Mess · The Live Messy Project" />
+  <meta property="og:description" content="Experiential learning cards grounded in real research. Each play turns one finding from a real research paper into something you can feel, not just read." />
+  <meta property="og:site_name"   content="The MESSY Playbook™" />
+  <meta name="twitter:card"       content="summary" />
+  <meta name="twitter:title"      content="Messy Plays™ — The Live Messy Project" />
+  <meta name="twitter:description" content="Research that lives in the body, not just the brain. Free to start." />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -21,8 +32,8 @@
       --c-border: #ecf0f1;
       --c-bg: #f8f9fa;
       --c-white: #ffffff;
-      --font-display: Arial, sans-serif;
-      --font-body: Arial, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
       --grad-brand: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --radius: 12px;
       --radius-sm: 8px;
@@ -75,6 +86,23 @@
       transition: background 0.15s;
     }
     .nav-cta:hover { background: rgba(255,255,255,0.2); }
+
+    .hero-home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 1.5rem;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.15s;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding-bottom: 2px;
+    }
+    .hero-home-link:hover { color: rgba(255,255,255,0.9); border-bottom-color: rgba(255,255,255,0.5); }
 
     /* ── HERO ── */
     .hero {
@@ -521,14 +549,20 @@
     .page-nav-cta:hover { background: #1a252f; color: #fff !important; }
 
     /* ── BACK TO TOP ── */
-    .back-to-top {
+    /* ── FLOATING NAV ── */
+    .float-nav {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
       z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .float-btn {
       width: 44px;
       height: 44px;
-      background: var(--c-dark);
+      background: var(--grad-brand);
       color: #fff;
       border: none;
       border-radius: 50%;
@@ -537,23 +571,26 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 16px rgba(102,126,234,0.4);
       opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.25s ease, transform 0.25s ease, background 0.15s;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.15s;
       pointer-events: none;
     }
-    .back-to-top.visible {
+    .float-btn.visible {
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
     }
-    .back-to-top:hover { background: var(--c-purple); }
+    .float-btn:hover {
+      box-shadow: 0 6px 20px rgba(102,126,234,0.55);
+      transform: translateY(-2px);
+    }
 
     @media (max-width: 600px) {
       .page-nav a { padding: 0.625rem 0.625rem; font-size: 11px; }
       .page-nav-cta { display: none; }
-      .back-to-top { bottom: 1.25rem; right: 1.25rem; }
+      .float-nav { bottom: 1.25rem; right: 1.25rem; }
     }
 
   </style>
@@ -567,6 +604,8 @@
   </a>
   <div class="nav-right">
     <a href="https://messy-playbook.vercel.app/#why" class="nav-link">Why MESSY?</a>
+    <a href="https://messy-playbook.vercel.app/#what" class="nav-link">The Playbook</a>
+    <a href="https://messy-playbook.vercel.app/thinking.html" class="nav-link">The Thinking</a>
     <a href="https://messy-playbook.vercel.app/#get" class="nav-cta">Get MESSY!</a>
   </div>
 </nav>
@@ -585,6 +624,7 @@
 <!-- ── HERO ── -->
 <section class="hero" id="hero">
   <div class="hero-inner">
+    <a href="https://messy-playbook.vercel.app/" class="hero-home-link" aria-label="Back to The MESSY Playbook homepage">← The MESSY Playbook™</a>
     <p class="hero-eyebrow">From the Live Messy Project</p>
     <h1 class="hero-title">Messy Plays<span class="hero-title-tm">™</span></h1>
     <p class="hero-tagline">Staying in the Mess · Set 01</p>
@@ -1310,7 +1350,7 @@
     <div style="background:#fff;border-radius:var(--radius);border:1px solid var(--c-border);padding:1.5rem;margin-top:1.5rem;">
       <p style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-muted);margin:0 0 1rem;">APA 7th Edition</p>
       <p style="font-size:14px;color:var(--c-body);line-height:1.8;margin:0 0 0.25rem;">Salmon, R., &amp; Steinberg, D. M. (2007). Staying in the mess: Teaching students and practitioners to work effectively in the swamp of important problems. <em>Social Work with Groups, 30</em>(4), 79–94.</p>
-      <a href="https://doi.org/10.1300/J009v30n04_06" target="_blank" rel="noopener" style="font-size:13px;color:var(--c-purple);text-decoration:none;border-bottom:1px solid rgba(155,89,182,0.3);padding-bottom:1px;">https://doi.org/10.1300/J009v30n04_06</a>
+      <a href="https://doi.org/10.1300/J009v30n04_06" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--c-purple);text-decoration:none;border-bottom:1px solid rgba(155,89,182,0.3);padding-bottom:1px;">https://doi.org/10.1300/J009v30n04_06</a>
       <div style="border-top:1px solid var(--c-border);margin-top:1.25rem;padding-top:1.25rem;">
         <p style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-muted);margin:0 0 0.75rem;">MLA 9th Edition</p>
         <p style="font-size:14px;color:var(--c-body);line-height:1.8;margin:0;">Salmon, Robert, and Dominique Moyse Steinberg. "Staying in the Mess: Teaching Students and Practitioners to Work Effectively in the Swamp of Important Problems." <em>Social Work with Groups</em>, vol. 30, no. 4, 2007, pp. 79–94.</p>
@@ -1339,7 +1379,7 @@
   <p class="footer-logo">The MESSY Playbook™</p>
   <div class="footer-links">
     <a href="https://messy-playbook.vercel.app/" class="footer-link">The Playbook</a>
-    <a href="https://messy-playbook.vercel.app/book.html" class="footer-link">The Book</a>
+    <a href="https://messy-playbook.vercel.app/thinking.html" class="footer-link">The Thinking</a>
     <a href="https://messy-playbook.vercel.app/play.html" class="footer-link">Messy Plays</a>
     <a href="https://livemessy.gumroad.com" class="footer-link">Gumroad</a>
     <a href="https://messy-playbook.vercel.app/#contact" class="footer-link">Contact</a>
@@ -1579,21 +1619,17 @@
 })();
 </script>
 
-<!-- ── BACK TO TOP BUTTON ── -->
-<button
-  class="back-to-top"
-  id="back-to-top"
-  onclick="window.scrollTo({top:0,behavior:'smooth'})"
-  aria-label="Back to top"
-  title="Back to top"
->↑</button>
+<!-- ── FLOATING NAV ── -->
+<div class="float-nav" aria-label="Page navigation">
+  <button class="float-btn" id="floatTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <button class="float-btn" id="floatBottom" aria-label="Jump to bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">↓</button>
+</div>
 
 <!-- ── JUMP NAV + BACK TO TOP JAVASCRIPT ── -->
 <script>
 (function() {
 
   var pageNav = document.getElementById('page-nav');
-  var backToTop = document.getElementById('back-to-top');
   var hero = document.getElementById('hero');
   var navLinks = pageNav ? pageNav.querySelectorAll('a[href^="#"]') : [];
 
@@ -1614,16 +1650,19 @@
     heroObserver.observe(hero);
   }
 
-  // Show/hide back to top based on scroll position
-  if (backToTop) {
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 400) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    }, { passive: true });
+  // ── Floating nav buttons ──────────────────────────────────
+  var floatTop    = document.getElementById('floatTop');
+  var floatBottom = document.getElementById('floatBottom');
+
+  function updateFloatBtns() {
+    var scrollY   = window.scrollY;
+    var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    if (floatTop)    floatTop.classList.toggle('visible', scrollY > 400);
+    if (floatBottom) floatBottom.classList.toggle('visible', scrollY < maxScroll - 200);
   }
+
+  window.addEventListener('scroll', updateFloatBtns, { passive: true });
+  updateFloatBtns();
 
   // Active section highlighting
   if (pageNav && navLinks.length) {

@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Book — The MESSY Playbook™</title>
   <meta name="description" content="The forthcoming book from the Live Messy Project. Stop trying to be better. Start being honest." />
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="The Book — The MESSY Playbook™" />
+  <meta property="og:description" content="The forthcoming book from the Live Messy Project. Stop trying to be better. Start being honest." />
+  <meta property="og:site_name"   content="The MESSY Playbook™" />
+  <meta name="twitter:card"       content="summary" />
+  <meta name="twitter:title"      content="The Book — The MESSY Playbook™" />
+  <meta name="twitter:description" content="Forthcoming. This page exists before the book does — which feels right." />
 
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -315,6 +323,12 @@
     .contact-status.success { display: block; background: rgba(39,174,96,0.1); border: 1px solid var(--y); color: #1a7a42; }
     .contact-status.error { display: block; background: rgba(231,76,60,0.08); border: 1px solid #e74c3c; color: #c0392b; }
 
+    /* ── FLOATING NAV ───────────────────────────────────────── */
+    .float-nav { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; display: flex; flex-direction: column; gap: 0.5rem; }
+    .float-btn { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 4px 14px rgba(102,126,234,0.4); opacity: 0; transform: translateY(8px); transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s; pointer-events: none; }
+    .float-btn.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .float-btn:hover { box-shadow: 0 6px 20px rgba(102,126,234,0.55); transform: translateY(-2px); }
+
     /* ── FOOTER ─────────────────────────────────────────────── */
     footer { padding: 2rem var(--pad); border-top: 1px solid var(--rule); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
     .footer-logo { font-family:var(--font-display); font-weight:700; font-size:0.95rem; color: var(--dark); }
@@ -462,7 +476,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: var(--font-body);
       background: #2c3e50;
       color: #ffffff;
       line-height: 1.6;
@@ -584,7 +598,7 @@
     .cover-spine-text {
       transform: rotate(-90deg);
       white-space: nowrap;
-      font-family: Arial, sans-serif;
+      font-family: var(--font-body);
       font-weight: 900;
       font-size: 11px;
       color: rgba(255,255,255,0.7);
@@ -624,7 +638,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: Arial, sans-serif;
+      font-family: var(--font-body);
       font-weight: 900;
       font-size: 16px;
       color: white;
@@ -653,7 +667,7 @@
     }
 
     .cover-footer-author {
-      font-family: Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 10px;
       font-weight: bold;
       letter-spacing: 0.1em;
@@ -682,7 +696,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: Arial, sans-serif;
+      font-family: var(--font-body);
       font-weight: 900;
       font-size: 13px;
     }
@@ -790,9 +804,10 @@
         <li><a href="index.html#what">The Playbook</a></li>
         <li><a href="index.html#tiers">How It Works</a></li>
         <li><a href="index.html#faq">FAQ</a></li>
-        <li><a href="book.html" aria-current="page">The Book</a></li>
+        <li><a href="play.html">Messy Plays</a></li>
+        <li><a href="thinking.html">The Thinking</a></li>
       </ul>
-      <a href="index.html#get" class="nav-cta">Get the Program</a>
+      <a href="index.html#get" class="nav-cta">Get MESSY!</a>
       <button
         class="nav-menu-btn"
         aria-label="Open navigation menu"
@@ -806,17 +821,30 @@
   <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <div class="mobile-nav-panel">
       <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
-      <a href="index.html#why" onclick="closeMobileNav()">Why MESSY?</a>
+      <a href="index.html#why"   onclick="closeMobileNav()">Why MESSY?</a>
       <a href="index.html#what"  onclick="closeMobileNav()">The Playbook</a>
       <a href="index.html#tiers" onclick="closeMobileNav()">How It Works</a>
       <a href="index.html#faq"   onclick="closeMobileNav()">FAQ</a>
-      <a href="book.html" onclick="closeMobileNav()">The Book</a>
-      <a href="index.html#get"   onclick="closeMobileNav()" class="mobile-nav-cta">Get the Program</a>
+      <a href="play.html"        onclick="closeMobileNav()">Messy Plays</a>
+      <a href="thinking.html"    onclick="closeMobileNav()">The Thinking</a>
+      <a href="index.html#get"   onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
     </div>
+  </div>
+
+  <!-- FLOATING NAV -->
+  <div class="float-nav" aria-label="Page navigation">
+    <button class="float-btn" id="floatTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <button class="float-btn" id="floatBottom" aria-label="Jump to bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">↓</button>
   </div>
 
 <main id="main-content">
 <div class="book-page">
+
+  <nav aria-label="Breadcrumb" style="display:inline-flex;align-items:center;gap:0.4rem;margin-bottom:1.25rem;font-size:0.8rem;font-weight:500;color:var(--muted);">
+    <a href="index.html" style="color:var(--muted);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;" onmouseover="this.style.color='var(--dark)'" onmouseout="this.style.color='var(--muted)'">← Home</a>
+    <span aria-hidden="true" style="color:var(--rule);font-size:0.7rem;">/</span>
+    <span style="color:var(--mid);font-weight:600;">The Book</span>
+  </nav>
 
   <span class="eyebrow" aria-hidden="true">Forthcoming · Live Messy Project</span>
 
@@ -1010,6 +1038,15 @@
   <footer aria-label="Site footer">
     <div class="footer-logo">The MESSY Playbook<span aria-hidden="true">™</span></div>
     <p class="footer-tagline">Growth happens <em>in</em> the mess, not after you clean it up.</p>
+    <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0;font-size:13px;">
+      <a href="index.html#why"   style="color:var(--muted);text-decoration:none;">Why MESSY?</a>
+      <a href="index.html#what"  style="color:var(--muted);text-decoration:none;">The Playbook</a>
+      <a href="index.html#tiers" style="color:var(--muted);text-decoration:none;">How It Works</a>
+      <a href="play.html"        style="color:var(--muted);text-decoration:none;">Messy Plays</a>
+      <a href="thinking.html"    style="color:var(--muted);text-decoration:none;">The Thinking</a>
+      <a href="book.html"        style="color:var(--dark);font-weight:600;text-decoration:none;">The Book</a>
+      <a href="https://livemessy.gumroad.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:none;">Gumroad</a>
+    </div>
     <p class="footer-copy">© 2026 Live Messy Project. All rights reserved.</p>
   </footer>
 
@@ -1053,6 +1090,20 @@
         e.preventDefault(); first.focus();
       }
     });
+
+    // ── Floating nav buttons ────────────────────────────────────
+    const floatTop    = document.getElementById('floatTop');
+    const floatBottom = document.getElementById('floatBottom');
+
+    function updateFloatBtns() {
+      const scrollY   = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      floatTop.classList.toggle('visible', scrollY > 400);
+      floatBottom.classList.toggle('visible', scrollY < maxScroll - 200);
+    }
+
+    window.addEventListener('scroll', updateFloatBtns, { passive: true });
+    updateFloatBtns();
   </script>
 </body>
 </html>
