@@ -442,8 +442,8 @@
 
   <!-- FLOATING NAV -->
   <div class="float-nav" aria-label="Page navigation">
-    <button class="float-btn" id="floatTop" aria-label="Previous section" onclick="(function(){var ids=['origin', 'research', 'reading'];var st=window.pageYOffset||document.documentElement.scrollTop;for(var i=ids.length-1;i>=0;i--){var el=document.getElementById(ids[i]);if(el&&el.offsetTop<st-50){el.scrollIntoView({behavior:'smooth'});return;}}})()">↑</button>
-    <button class="float-btn visible" id="floatBottom" aria-label="Next section" onclick="(function(){var ids=['origin', 'research', 'reading'];var st=window.pageYOffset||document.documentElement.scrollTop;for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.offsetTop>st+50){el.scrollIntoView({behavior:'smooth'});return;}}})()">↓</button>
+    <button class="float-btn" id="floatTop" aria-label="Previous section">↑</button>
+    <button class="float-btn visible" id="floatBottom" aria-label="Next section">↓</button>
   </div>
 
   <a href="#main-content" class="skip-nav">Skip to main content</a>
@@ -869,7 +869,7 @@
 
     function navigatePrev() {
       for (var i = sectionNav.length - 1; i >= 0; i--) {
-        if (sectionNav[i].getBoundingClientRect().top < -10) {
+        if (sectionNav[i].getBoundingClientRect().top < -50) {
           sectionNav[i].scrollIntoView({ behavior: 'smooth' });
           return;
         }
@@ -878,7 +878,7 @@
 
     function navigateNext() {
       for (var i = 0; i < sectionNav.length; i++) {
-        if (sectionNav[i].getBoundingClientRect().top > 10) {
+        if (sectionNav[i].getBoundingClientRect().top > 100) {
           sectionNav[i].scrollIntoView({ behavior: 'smooth' });
           return;
         }
@@ -888,9 +888,9 @@
     function updateFloatBtns() {
       if (!sectionNav.length) return;
       var first = sectionNav[0].getBoundingClientRect().top;
-      var last  = sectionNav[sectionNav.length - 1].getBoundingClientRect().top;
+      var last  = sectionNav[sectionNav.length - 1].getBoundingClientRect().bottom;
       floatTop.classList.toggle('visible', first < -50);
-      floatBottom.classList.toggle('visible', last > 50);
+      floatBottom.classList.toggle('visible', last > window.innerHeight + 50);
     }
 
     if (floatTop)    floatTop.addEventListener('click', navigatePrev);
