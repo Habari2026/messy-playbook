@@ -105,23 +105,6 @@
       .pillars-grid { grid-template-columns: 1fr; }
     }
 
-    /* ── BREADCRUMB ─────────────────────────────────────────── */
-    .breadcrumb {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      margin-bottom: 1.25rem;
-      font-size: 0.8rem; font-weight: 500;
-      color: var(--muted);
-    }
-    .breadcrumb a {
-      color: var(--muted);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: color 0.2s;
-    }
-    .breadcrumb a:hover { color: var(--dark); }
-    .breadcrumb-sep { font-size: 0.7rem; color: var(--rule); }
-    .breadcrumb-current { color: var(--mid); font-weight: 600; }
-
     /* ── PAGE HERO ──────────────────────────────────────────── */
     .page-hero {
       padding-top: 8rem;
@@ -509,11 +492,6 @@
     <section class="page-hero">
       <div class="page-hero-bg" aria-hidden="true"></div>
       <div class="wrap page-hero-content">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="index.html">← Home</a>
-          <span class="breadcrumb-sep" aria-hidden="true">/</span>
-          <span class="breadcrumb-current">The Thinking Behind MESSY</span>
-        </nav>
         <div class="page-hero-tag">
           <span class="dot" aria-hidden="true"></span>
           <span class="page-hero-tag-text">The Thinking Behind MESSY</span>
@@ -918,9 +896,6 @@
       for (let i = 0; i < sectionNav.length; i++) {
         const top = sectionNav[i].getBoundingClientRect().top + window.scrollY;
         if (top > scrollTop + 10) { target = sectionNav[i]; break; }
-      }
-      if (target) scrollToSection(target);
-    }
       }
       if (target) scrollToSection(target);
     }
