@@ -1407,7 +1407,7 @@
     function goDown() {
       for (var i = 0; i < navIds.length; i++) {
         var el = document.getElementById(navIds[i]);
-        if (el && el.getBoundingClientRect().top > 50) { el.scrollIntoView({behavior:'smooth'}); return; }
+        if (el && el.getBoundingClientRect().top > 100) { el.scrollIntoView({behavior:'smooth'}); return; }
       }
     }
 
