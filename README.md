@@ -37,7 +37,7 @@ Updates deploy automatically. No Vercel login required.
 1. Download updated `.html` file(s)
 2. Go to [github.com/Habari2026/messy-playbook](https://github.com/Habari2026/messy-playbook)
 3. Click **Add file** → **Upload files**
-4. Drag file(s) into the upload box
+4. Click **choose your files** to select file(s) from your computer (do not drag — large files may be truncated)
 5. Add a commit message → click **Commit changes**
 
 Vercel detects the commit and deploys within ~60 seconds.
@@ -77,6 +77,7 @@ Each page includes:
 - 3 navigable sections: origin → research → reading
 - Four research pillars with verified DOI/URL citations
 - Annotated further reading list (7 sources)
+- `scroll-padding-top: 72px` accounts for fixed site nav
 
 ---
 
