@@ -484,17 +484,10 @@
 </head>
 <body>
 
-  <!-- FLOATING NAV -->
+    <!-- FLOATING NAV -->
   <div class="float-nav" aria-label="Page navigation">
-    <button class="float-btn" id="floatTop" aria-label="Previous section" onclick="(function(){var ids=['hero', 'why', 'what', 'tiers', 'inside', 'faq', 'messy-play', 'messy-plays', 'get', 'contact'];var st=window.pageYOffset||document.documentElement.scrollTop;for(var i=ids.length-1;i>=0;i--){var el=document.getElementById(ids[i]);if(el&&el.offsetTop<st-50){el.scrollIntoView({behavior:'smooth'});return;}}})()">↑</button>
-    <button class="float-btn visible" id="floatBottom" aria-label="Next section" onclick="var ids=['hero','why','what','tiers','inside','faq','messy-play','messy-plays','get','contact'];var st=window.pageYOffset||document.documentElement.scrollTop;for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.offsetTop>st+100){el.scrollIntoView({behavior:'smooth'});return;}}">st+100&&!found){
-      found=true;
-      console.log('Scrolling to '+ids[i]);
-      el.scrollIntoView({behavior:'smooth'});
-    }
-  }
-  if(!found)console.log('No target found');
-">↓</button>
+    <button class="float-btn" id="floatTop" aria-label="Previous section">&#8593;</button>
+    <button class="float-btn visible" id="floatBottom" aria-label="Next section">&#8595;</button>
   </div>
 
   <a href="#main-content" class="skip-nav">Skip to main content</a>
@@ -1399,46 +1392,40 @@
       });
     }
 
-        // ── Section-by-section floating nav ────────────────────────
-    var floatTop    = document.getElementById('floatTop');
-    var floatBottom = document.getElementById('floatBottom');
+            // ── Float nav ──────────────────────────────────────────────
+    var btnUp   = document.getElementById('floatTop');
+    var btnDown = document.getElementById('floatBottom');
+    var navIds  = ['hero','why','what','tiers','inside','faq','messy-play','messy-plays','get','contact'];
 
-    var sectionIds = ['hero','why','what','tiers','inside','faq','messy-play','messy-plays','get','contact'];
-    var sectionNav = sectionIds.map(function(id) {
-      return document.getElementById(id);
-    }).filter(function(el) { return el !== null; });
-
-    function navigatePrev() {
-      for (var i = sectionNav.length - 1; i >= 0; i--) {
-        if (sectionNav[i].getBoundingClientRect().top < -10) {
-          sectionNav[i].scrollIntoView({ behavior: 'smooth' });
-          return;
-        }
+    function goUp() {
+      var st = window.pageYOffset;
+      for (var i = navIds.length - 1; i >= 0; i--) {
+        var el = document.getElementById(navIds[i]);
+        if (el && el.offsetTop < st - 50) { el.scrollIntoView({behavior:'smooth'}); return; }
       }
     }
 
-    function navigateNext() {
-      for (var i = 0; i < sectionNav.length; i++) {
-        if (sectionNav[i].getBoundingClientRect().top > 10) {
-          sectionNav[i].scrollIntoView({ behavior: 'smooth' });
-          return;
-        }
+    function goDown() {
+      var st = window.pageYOffset;
+      for (var i = 0; i < navIds.length; i++) {
+        var el = document.getElementById(navIds[i]);
+        if (el && el.offsetTop > st + 50) { el.scrollIntoView({behavior:'smooth'}); return; }
       }
     }
 
-    function updateFloatBtns() {
-      if (!sectionNav.length) return;
-      var first = sectionNav[0].getBoundingClientRect().top;
-      var last  = sectionNav[sectionNav.length - 1].getBoundingClientRect().top;
-      floatTop.classList.toggle('visible', first < -50);
-      floatBottom.classList.toggle('visible', last > 50);
+    function updateBtns() {
+      var st    = window.pageYOffset;
+      var first = document.getElementById(navIds[0]);
+      var last  = document.getElementById(navIds[navIds.length-1]);
+      if (btnUp)   btnUp.classList.toggle('visible',   first ? st > first.offsetTop + 50  : false);
+      if (btnDown) btnDown.classList.toggle('visible', last  ? st < last.offsetTop  - 50  : false);
     }
 
-    if (floatTop)    floatTop.addEventListener('click', navigatePrev);
-    if (floatBottom) floatBottom.addEventListener('click', navigateNext);
-    window.addEventListener('scroll', updateFloatBtns, { passive: true });
-    window.addEventListener('load', updateFloatBtns);
-    setTimeout(updateFloatBtns, 500);
+    if (btnUp)   btnUp.addEventListener('click',   goUp);
+    if (btnDown) btnDown.addEventListener('click', goDown);
+    window.addEventListener('scroll', updateBtns, {passive:true});
+    window.addEventListener('load',   updateBtns);
+    setTimeout(updateBtns, 500);
   </script>
 </body>
 </html>
