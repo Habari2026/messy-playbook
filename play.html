@@ -48,66 +48,40 @@
     }
 
     /* ── NAV ── */
-    .nav {
-      background: var(--c-dark);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-brand {
-      color: rgba(255,255,255,0.9);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-    }
-    .nav-brand span { color: rgba(255,255,255,0.45); margin: 0 6px; }
-    .nav-right { display: flex; gap: 1.5rem; align-items: center; }
-    .nav-link {
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      font-size: 13px;
-      transition: color 0.15s;
-    }
-    .nav-link:hover { color: rgba(255,255,255,0.9); }
-    .nav-cta {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.9);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 500;
-      padding: 6px 14px;
-      border-radius: 100px;
-      transition: background 0.15s;
-    }
-    .nav-cta:hover { background: rgba(255,255,255,0.2); }
+    nav.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,248,243,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #ddd8cc; }
+    .nav-inner { max-width: 1100px; margin-inline: auto; padding: 1rem clamp(1.5rem,5vw,4rem); display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: #1e2a35; text-decoration: none; }
+    .nav-logo span { color: #e67e22; }
+    .nav-links { display: flex; gap: 1rem; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em; color: #3d5060; transition: color 0.2s; padding: 0.25rem 0; text-decoration: none; }
+    .nav-links a:hover { color: #1e2a35; }
+    .nav-links a.active { color: #1e2a35; font-weight: 600; border-bottom: 2px solid #9b59b6; padding-bottom: 0.15rem; }
+    .nav-cta-btn { padding: 0.75rem 2.5rem; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff !important; border-radius: 2rem; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.02em; min-height: 44px; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s; text-decoration: none; }
+    .nav-cta-btn:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(102,126,234,0.4); }
+    .nav-menu-btn { display: none; background: none; border: 1.5px solid #ddd8cc; border-radius: 8px; padding: 0.45rem 0.6rem; cursor: pointer; color: #1e2a35; font-size: 1.1rem; line-height: 1; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; transition: border-color 0.2s; }
+    .nav-menu-btn:hover { border-color: #1e2a35; }
+    .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: rgba(30,42,53,0.55); backdrop-filter: blur(4px); }
+    .mobile-nav.open { display: block; }
+    .mobile-nav-panel { position: absolute; top: 0; right: 0; width: min(320px,85vw); height: 100%; background: #faf8f3; display: flex; flex-direction: column; overflow: hidden; box-shadow: -8px 0 32px rgba(0,0,0,0.15); }
+    .mobile-nav-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; border-bottom: 1px solid #ddd8cc; flex-shrink: 0; }
+    .mobile-nav-header-logo { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: #1e2a35; }
+    .mobile-nav-header-logo span { color: #e67e22; }
+    .mobile-nav-close { background: none; border: 1.5px solid #ddd8cc; border-radius: 8px; padding: 0.4rem 0.65rem; cursor: pointer; color: #1e2a35; font-size: 1.1rem; line-height: 1; min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, background 0.2s; }
+    .mobile-nav-close:hover { border-color: #1e2a35; background: white; }
+    .mobile-nav-links { flex: 1; overflow-y: auto; padding: 0.75rem 1rem; display: flex; flex-direction: column; gap: 0.25rem; }
+    .mobile-nav-panel a { display: block; padding: 0.9rem 1rem; font-size: 1rem; font-weight: 500; color: #3d5060; border-radius: 8px; border: 1px solid transparent; transition: background 0.15s, color 0.15s; text-decoration: none; }
+    .mobile-nav-panel a:hover { background: white; color: #1e2a35; border-color: #ddd8cc; }
+    .mobile-nav-panel .mobile-nav-cta { margin-top: 0.75rem; background: linear-gradient(135deg,#667eea,#764ba2); color: white !important; font-weight: 700; text-align: center; border-radius: 2rem; border-color: transparent; }
 
-    .hero-home-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      margin-bottom: 1.5rem;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.15s;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-      padding-bottom: 2px;
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta-btn { display: none; }
+      .nav-menu-btn { display: inline-flex; }
     }
-    .hero-home-link:hover { color: rgba(255,255,255,0.9); border-bottom-color: rgba(255,255,255,0.5); }
 
     /* ── HERO ── */
     .hero {
       background: var(--grad-brand);
-      padding: 6rem 2rem 5rem;
+      padding: 8rem 2rem 5rem;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -485,8 +459,6 @@
     .card-divider-text { font-size: 11px; color: #bbb; white-space: nowrap; }
 
     @media (max-width: 600px) {
-      .nav { padding: 0.875rem 1.25rem; }
-      .nav-right .nav-link { display: none; }
       .hero { padding: 4rem 1.25rem 3.5rem; }
       .section { padding: 3.5rem 1.25rem; }
       .whw-grid { gap: 2rem; }
@@ -494,12 +466,12 @@
       .mp-attribution { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
     }
     /* ── SMOOTH SCROLL ── */
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 115px; }
 
     /* ── PAGE NAV ── */
     .page-nav {
       position: sticky;
-      top: 53px;
+      top: 65px;
       z-index: 90;
       background: rgba(255,255,255,0.96);
       backdrop-filter: blur(8px);
@@ -598,17 +570,42 @@
 <body>
 
 <!-- ── NAVIGATION ── -->
-<nav class="nav">
-  <a href="https://messy-playbook.vercel.app/" class="nav-brand">
-    The MESSY Playbook™ <span>/</span> Messy Plays
-  </a>
-  <div class="nav-right">
-    <a href="https://messy-playbook.vercel.app/#why" class="nav-link">Why MESSY?</a>
-    <a href="https://messy-playbook.vercel.app/#what" class="nav-link">The Playbook</a>
-    <a href="https://messy-playbook.vercel.app/thinking.html" class="nav-link">The Thinking</a>
-    <a href="https://messy-playbook.vercel.app/#get" class="nav-cta">Get MESSY!</a>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="The MESSY Playbook home">
+      The MESSY Playbook<span>™</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#why">Why MESSY?</a></li>
+      <li><a href="index.html#what">The Playbook</a></li>
+      <li><a href="index.html#tiers">How It Works</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="play.html" class="active">Messy Plays</a></li>
+      <li><a href="thinking.html">The Thinking</a></li>
+    </ul>
+    <a href="index.html#get" class="nav-cta-btn">Get MESSY!</a>
+    <button class="nav-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-play">☰</button>
   </div>
 </nav>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-nav" id="mobile-nav-play" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mobile-nav-panel">
+    <div class="mobile-nav-header">
+      <span class="mobile-nav-header-logo">The MESSY Playbook<span>™</span></span>
+      <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html#why"   onclick="closeMobileNav()">Why MESSY?</a>
+      <a href="index.html#what"  onclick="closeMobileNav()">The Playbook</a>
+      <a href="index.html#tiers" onclick="closeMobileNav()">How It Works</a>
+      <a href="index.html#faq"   onclick="closeMobileNav()">FAQ</a>
+      <a href="play.html"        onclick="closeMobileNav()">Messy Plays</a>
+      <a href="thinking.html"    onclick="closeMobileNav()">The Thinking</a>
+      <a href="index.html#get"   onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
+    </div>
+  </div>
+</div>
 
 <!-- ── PAGE NAV ── -->
 <nav class="page-nav" id="page-nav" aria-label="Page sections">
@@ -624,7 +621,6 @@
 <!-- ── HERO ── -->
 <section class="hero" id="hero">
   <div class="hero-inner">
-    <a href="https://messy-playbook.vercel.app/" class="hero-home-link" aria-label="Back to The MESSY Playbook homepage">← The MESSY Playbook™</a>
     <p class="hero-eyebrow">From the Live Messy Project</p>
     <h1 class="hero-title">Messy Plays<span class="hero-title-tm">™</span></h1>
     <p class="hero-tagline">Staying in the Mess · Set 01</p>
@@ -1621,8 +1617,8 @@
 
 <!-- ── FLOATING NAV ── -->
 <div class="float-nav" aria-label="Page navigation">
-  <button class="float-btn" id="floatTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-  <button class="float-btn" id="floatBottom" aria-label="Jump to bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">↓</button>
+  <button class="float-btn" id="floatTop" aria-label="Previous section">↑</button>
+  <button class="float-btn" id="floatBottom" aria-label="Next section">↓</button>
 </div>
 
 <!-- ── JUMP NAV + BACK TO TOP JAVASCRIPT ── -->
@@ -1650,19 +1646,65 @@
     heroObserver.observe(hero);
   }
 
-  // ── Floating nav buttons ──────────────────────────────────
-  var floatTop    = document.getElementById('floatTop');
-  var floatBottom = document.getElementById('floatBottom');
+          // ── Section-by-section floating nav ────────────────────────
+    const floatTop    = document.getElementById('floatTop');
+    const floatBottom = document.getElementById('floatBottom');
 
-  function updateFloatBtns() {
-    var scrollY   = window.scrollY;
-    var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    if (floatTop)    floatTop.classList.toggle('visible', scrollY > 400);
-    if (floatBottom) floatBottom.classList.toggle('visible', scrollY < maxScroll - 200);
-  }
+    const sectionNav = ['hero', 'what', 'why', 'set01', 'alignment', 'cards', 'closing', 'attribution']
+      .map(id => document.getElementById(id)).filter(Boolean);
 
-  window.addEventListener('scroll', updateFloatBtns, { passive: true });
-  updateFloatBtns();
+    function getViewportMid() {
+      return window.scrollY + window.innerHeight / 2;
+    }
+
+    function scrollToSection(el) {
+      const navEl = document.querySelector('nav.site-nav') || document.querySelector('nav');
+      const navHeight = navEl ? navEl.offsetHeight : 0;
+      const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    }
+
+        function navigatePrev() {
+      // Find the last section whose top is meaningfully above current scroll position
+      const scrollTop = window.scrollY;
+      const navHeight = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 0;
+      let target = null;
+      for (let i = sectionNav.length - 1; i >= 0; i--) {
+        const top = sectionNav[i].getBoundingClientRect().top + window.scrollY;
+        if (top < scrollTop - 10) { target = sectionNav[i]; break; }
+      }
+      if (target) scrollToSection(target);
+    }
+
+    function navigateNext() {
+      // Find the first section whose top is meaningfully below current scroll position
+      const scrollTop = window.scrollY;
+      const navHeight = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 0;
+      let target = null;
+      for (let i = 0; i < sectionNav.length; i++) {
+        const top = sectionNav[i].getBoundingClientRect().top + window.scrollY;
+        if (top > scrollTop + 10) { target = sectionNav[i]; break; }
+      }
+      if (target) scrollToSection(target);
+    }
+      }
+      if (target) scrollToSection(target);
+    }
+
+    function updateFloatBtns() {
+      const mid = getViewportMid();
+      const firstTop = sectionNav[0] ? sectionNav[0].getBoundingClientRect().top + window.scrollY : 0;
+      floatTop.classList.toggle('visible', window.scrollY > firstTop + 100);
+      const hasNext = sectionNav.some(el => {
+        return el.getBoundingClientRect().top + window.scrollY > mid + 50;
+      });
+      floatBottom.classList.toggle('visible', hasNext);
+    }
+
+    if (floatTop)    floatTop.addEventListener('click', navigatePrev);
+    if (floatBottom) floatBottom.addEventListener('click', navigateNext);
+    window.addEventListener('scroll', updateFloatBtns, { passive: true });
+    updateFloatBtns();
 
   // Active section highlighting
   if (pageNav && navLinks.length) {
@@ -1691,6 +1733,52 @@
 
     sections.forEach(function(section) {
       sectionObserver.observe(section);
+    });
+  }
+
+  // ── Site nav (mobile drawer) ──────────────────────────────
+  var menuBtn   = document.querySelector('.nav-menu-btn');
+  var closeBtn  = document.querySelector('.mobile-nav-close');
+  var mobileNav = document.getElementById('mobile-nav-play');
+  var lastFocus = null;
+
+  function openMobileNav() {
+    lastFocus = document.activeElement;
+    mobileNav.classList.add('open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  if (menuBtn) menuBtn.addEventListener('click', openMobileNav);
+  if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
+  if (mobileNav) {
+    mobileNav.addEventListener('click', function(e) {
+      if (e.target === mobileNav) closeMobileNav();
+    });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) closeMobileNav();
+  });
+
+  // Focus trap
+  if (mobileNav) {
+    mobileNav.addEventListener('keydown', function(e) {
+      if (!mobileNav.classList.contains('open') || e.key !== 'Tab') return;
+      const focusable = mobileNav.querySelectorAll('button, a');
+      const first = focusable[0];
+      const last  = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
     });
   }
 

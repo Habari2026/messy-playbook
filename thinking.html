@@ -86,9 +86,13 @@
     .nav-menu-btn[aria-expanded="true"] { border-color: var(--dark); }
     .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: rgba(30,42,53,0.55); backdrop-filter: blur(4px); }
     .mobile-nav.open { display: block; }
-    .mobile-nav-panel { position: absolute; top: 0; right: 0; width: min(320px, 85vw); height: 100%; background: var(--cream); padding: 1.5rem; display: flex; flex-direction: column; gap: 0.25rem; overflow-y: auto; box-shadow: -8px 0 32px rgba(0,0,0,0.15); }
-    .mobile-nav-close { align-self: flex-end; background: none; border: 1.5px solid var(--rule); border-radius: 8px; padding: 0.4rem 0.65rem; cursor: pointer; color: var(--dark); font-size: 1.1rem; line-height: 1; min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; transition: border-color 0.2s; }
-    .mobile-nav-close:hover { border-color: var(--dark); }
+    .mobile-nav-panel { position: absolute; top: 0; right: 0; width: min(320px, 85vw); height: 100%; background: var(--cream); display: flex; flex-direction: column; overflow: hidden; box-shadow: -8px 0 32px rgba(0,0,0,0.15); }
+    .mobile-nav-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; border-bottom: 1px solid var(--rule); flex-shrink: 0; }
+    .mobile-nav-header-logo { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--dark); }
+    .mobile-nav-header-logo span { color: var(--e); }
+    .mobile-nav-close { background: none; border: 1.5px solid var(--rule); border-radius: 8px; padding: 0.4rem 0.65rem; cursor: pointer; color: var(--dark); font-size: 1.1rem; line-height: 1; min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, background 0.2s; }
+    .mobile-nav-close:hover { border-color: var(--dark); background: white; }
+    .mobile-nav-links { flex: 1; overflow-y: auto; padding: 0.75rem 1rem; display: flex; flex-direction: column; gap: 0.25rem; }
     .mobile-nav-panel a { display: block; padding: 0.9rem 1rem; font-size: 1rem; font-weight: 500; color: var(--mid); border-radius: 8px; border: 1px solid transparent; transition: background 0.15s, color 0.15s; }
     .mobile-nav-panel a:hover { background: white; color: var(--dark); border-color: var(--rule); }
     .mobile-nav-panel .mobile-nav-cta { margin-top: 0.75rem; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: white !important; font-weight: 700; text-align: center; border-radius: 2rem; border-color: transparent; }
@@ -455,8 +459,8 @@
 
   <!-- FLOATING NAV -->
   <div class="float-nav" aria-label="Page navigation">
-    <button class="float-btn" id="floatTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <button class="float-btn" id="floatBottom" aria-label="Jump to bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">↓</button>
+    <button class="float-btn" id="floatTop" aria-label="Previous section">↑</button>
+    <button class="float-btn" id="floatBottom" aria-label="Next section">↓</button>
   </div>
 
   <a href="#main-content" class="skip-nav">Skip to main content</a>
@@ -483,14 +487,19 @@
   <!-- Mobile nav drawer -->
   <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <div class="mobile-nav-panel">
-      <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
-      <a href="index.html#why"   onclick="closeMobileNav()">Why MESSY?</a>
-      <a href="index.html#what"  onclick="closeMobileNav()">The Playbook</a>
-      <a href="index.html#tiers" onclick="closeMobileNav()">How It Works</a>
-      <a href="index.html#faq"   onclick="closeMobileNav()">FAQ</a>
-      <a href="play.html"        onclick="closeMobileNav()">Messy Plays</a>
-      <a href="thinking.html"    onclick="closeMobileNav()">The Thinking</a>
-      <a href="index.html#get"   onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-header-logo">The MESSY Playbook<span>™</span></span>
+        <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="index.html#why"   onclick="closeMobileNav()">Why MESSY?</a>
+        <a href="index.html#what"  onclick="closeMobileNav()">The Playbook</a>
+        <a href="index.html#tiers" onclick="closeMobileNav()">How It Works</a>
+        <a href="index.html#faq"   onclick="closeMobileNav()">FAQ</a>
+        <a href="play.html"        onclick="closeMobileNav()">Messy Plays</a>
+        <a href="thinking.html"    onclick="closeMobileNav()">The Thinking</a>
+        <a href="index.html#get"   onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
+      </div>
     </div>
   </div>
 
@@ -758,6 +767,40 @@
             </div>
           </div>
 
+          <div class="reading-item">
+            <div class="reading-badge b-comp" aria-label="Action Research">AR</div>
+            <div>
+              <p class="reading-title">The Purpose of Mess in Action Research: Building Rigour Through a Messy Turn</p>
+              <p class="reading-author">Tina Cook · Educational Action Research · June 2009</p>
+              <p class="reading-desc">A peer-reviewed argument — 207 citations strong — that mess in research is not a failure of method but a vital, purposeful part of how new knowing emerges. Cook distinguishes between the "studium" (what we already know and can code) and the "punctum" (what we sense but cannot yet articulate) — and argues that the "messy area" between them is exactly where transformation happens. One of the clearest scholarly defenses of why mess is information, not sloppiness.</p>
+              <span class="reading-why">Why it matters for MESSY</span>
+              <br>
+              <a href="https://doi.org/10.1080/09650790902914241" class="reading-link" target="_blank" rel="noopener noreferrer">Read via DOI ↗</a>
+            </div>
+          </div>
+
+          <div class="reading-item">
+            <div class="reading-badge b-soc" aria-label="Social Work">SW</div>
+            <div>
+              <p class="reading-title">Staying in the Mess: Teaching Students and Practitioners to Work Effectively in the Swamp of Important Problems</p>
+              <p class="reading-author">Robert Salmon & Dominique Moyse Steinberg · Social Work with Groups, Vol. 30(4), pp. 79–94 · 2007</p>
+              <p class="reading-desc">Drawing on Donald Schön's metaphor of the "swamp of important problems," Salmon and Steinberg make the case that the messy, confusing, hard-to-predict problems of real human life are precisely where meaningful work happens — and that the instinct to jump to solutions before staying with the problem is what most often fails people. This paper is also the direct research foundation for Messy Plays™ Play 01: Staying in the Mess.</p>
+              <span class="reading-why">Why it matters for MESSY</span>
+              <br>
+              <a href="https://doi.org/10.1300/J009v30n04_06" class="reading-link" target="_blank" rel="noopener noreferrer">Read via DOI ↗</a>
+            </div>
+          </div>
+
+          <div class="reading-item">
+            <div class="reading-badge b-mes2" aria-label="Philosophy">PH</div>
+            <div>
+              <p class="reading-title">The Messy Self — Introduction</p>
+              <p class="reading-author">Jennifer Rosner (Ed.) · Paradigm Publishers · 2006</p>
+              <p class="reading-desc">The introduction to this edited collection frames the "messy self" as a philosophical starting point — the idea that human identity is not a fixed, optimizable thing but something inherently unresolved, layered, and in process. Where much of personal development culture tries to tidy the self into a coherent, high-performing unit, this work takes the opposite position: that the mess of who we are is not incidental but essential. A philosophical companion to the MESSY framework's anti-optimization premise.</p>
+              <span class="reading-why">Why it matters for MESSY</span>
+            </div>
+          </div>
+
         </div><!-- /reading-list -->
       </div>
     </section>
@@ -837,17 +880,63 @@
       }
     });
 
-    // ── Floating nav buttons ────────────────────────────────────
+        // ── Section-by-section floating nav ────────────────────────
     const floatTop    = document.getElementById('floatTop');
     const floatBottom = document.getElementById('floatBottom');
 
-    function updateFloatBtns() {
-      const scrollY    = window.scrollY;
-      const maxScroll  = document.documentElement.scrollHeight - window.innerHeight;
-      floatTop.classList.toggle('visible', scrollY > 400);
-      floatBottom.classList.toggle('visible', scrollY < maxScroll - 200);
+    const sectionNav = ['origin', 'research', 'reading']
+      .map(id => document.getElementById(id)).filter(Boolean);
+
+    function getViewportMid() {
+      return window.scrollY + window.innerHeight / 2;
     }
 
+    function scrollToSection(el) {
+      const navEl = document.querySelector('nav.site-nav') || document.querySelector('nav');
+      const navHeight = navEl ? navEl.offsetHeight : 0;
+      const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    }
+
+        function navigatePrev() {
+      // Find the last section whose top is meaningfully above current scroll position
+      const scrollTop = window.scrollY;
+      const navHeight = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 0;
+      let target = null;
+      for (let i = sectionNav.length - 1; i >= 0; i--) {
+        const top = sectionNav[i].getBoundingClientRect().top + window.scrollY;
+        if (top < scrollTop - 10) { target = sectionNav[i]; break; }
+      }
+      if (target) scrollToSection(target);
+    }
+
+    function navigateNext() {
+      // Find the first section whose top is meaningfully below current scroll position
+      const scrollTop = window.scrollY;
+      const navHeight = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 0;
+      let target = null;
+      for (let i = 0; i < sectionNav.length; i++) {
+        const top = sectionNav[i].getBoundingClientRect().top + window.scrollY;
+        if (top > scrollTop + 10) { target = sectionNav[i]; break; }
+      }
+      if (target) scrollToSection(target);
+    }
+      }
+      if (target) scrollToSection(target);
+    }
+
+    function updateFloatBtns() {
+      const mid = getViewportMid();
+      const firstTop = sectionNav[0] ? sectionNav[0].getBoundingClientRect().top + window.scrollY : 0;
+      floatTop.classList.toggle('visible', window.scrollY > firstTop + 100);
+      const hasNext = sectionNav.some(el => {
+        return el.getBoundingClientRect().top + window.scrollY > mid + 50;
+      });
+      floatBottom.classList.toggle('visible', hasNext);
+    }
+
+    if (floatTop)  floatTop.addEventListener('click', navigatePrev);
+    if (floatBottom) floatBottom.addEventListener('click', navigateNext);
     window.addEventListener('scroll', updateFloatBtns, { passive: true });
     updateFloatBtns();
 

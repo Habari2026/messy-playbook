@@ -365,15 +365,27 @@
       width: min(320px, 85vw);
       height: 100%;
       background: var(--cream);
-      padding: 1.5rem;
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
-      overflow-y: auto;
+      overflow: hidden;
       box-shadow: -8px 0 32px rgba(0,0,0,0.15);
     }
+    .mobile-nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--rule);
+      flex-shrink: 0;
+    }
+    .mobile-nav-header-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--dark);
+    }
+    .mobile-nav-header-logo span { color: var(--e); }
     .mobile-nav-close {
-      align-self: flex-end;
       background: none;
       border: 1.5px solid var(--rule);
       border-radius: 8px;
@@ -387,10 +399,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1rem;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, background 0.2s;
     }
-    .mobile-nav-close:hover { border-color: var(--dark); }
+    .mobile-nav-close:hover { border-color: var(--dark); background: white; }
+    .mobile-nav-links {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
     .mobile-nav-panel a {
       display: block;
       padding: 0.9rem 1rem;
@@ -400,6 +419,7 @@
       border-radius: 8px;
       border: 1px solid transparent;
       transition: background 0.15s, color 0.15s;
+      text-decoration: none;
     }
     .mobile-nav-panel a:hover { background: white; color: var(--dark); border-color: var(--rule); }
     .mobile-nav-panel .mobile-nav-cta {
@@ -411,7 +431,7 @@
       border-radius: 2rem;
       border-color: transparent;
     }
-    .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); }
+    .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; }
     @media (max-width: 900px) {
       .tiers-grid, .get-grid { grid-template-columns: 1fr; }
       .inside-grid { grid-template-columns: 1fr; }
@@ -460,8 +480,8 @@
 
   <!-- FLOATING NAV -->
   <div class="float-nav" aria-label="Page navigation">
-    <button class="float-btn" id="floatTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <button class="float-btn" id="floatBottom" aria-label="Jump to bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">↓</button>
+    <button class="float-btn" id="floatTop" aria-label="Previous section">↑</button>
+    <button class="float-btn" id="floatBottom" aria-label="Next section">↓</button>
   </div>
 
   <a href="#main-content" class="skip-nav">Skip to main content</a>
@@ -493,14 +513,19 @@
   <!-- MOBILE NAV DRAWER -->
   <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <div class="mobile-nav-panel">
-      <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
-      <a href="#why"   onclick="closeMobileNav()">Why MESSY?</a>
-      <a href="#what"  onclick="closeMobileNav()">The Playbook</a>
-      <a href="#tiers" onclick="closeMobileNav()">How It Works</a>
-      <a href="#faq"   onclick="closeMobileNav()">FAQ</a>
-      <a href="play.html" onclick="closeMobileNav()">Messy Plays</a>
-      <a href="thinking.html" onclick="closeMobileNav()">The Thinking</a>
-      <a href="#get"   onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-header-logo">The MESSY Playbook<span>™</span></span>
+        <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="#why"          onclick="closeMobileNav()">Why MESSY?</a>
+        <a href="#what"         onclick="closeMobileNav()">The Playbook</a>
+        <a href="#tiers"        onclick="closeMobileNav()">How It Works</a>
+        <a href="#faq"          onclick="closeMobileNav()">FAQ</a>
+        <a href="play.html"     onclick="closeMobileNav()">Messy Plays</a>
+        <a href="thinking.html" onclick="closeMobileNav()">The Thinking</a>
+        <a href="#get"          onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
+      </div>
     </div>
   </div>
 
@@ -1324,17 +1349,69 @@
       });
     }
 
-    // ── Floating nav buttons ────────────────────────────────────
+    // ── Section-by-section floating nav ────────────────────────
     const floatTop    = document.getElementById('floatTop');
     const floatBottom = document.getElementById('floatBottom');
 
-    function updateFloatBtns() {
-      const scrollY    = window.scrollY;
-      const maxScroll  = document.documentElement.scrollHeight - window.innerHeight;
-      floatTop.classList.toggle('visible', scrollY > 400);
-      floatBottom.classList.toggle('visible', scrollY < maxScroll - 200);
+    // All navigable sections in page order
+    const sectionNav = [
+      'hero', 'why', 'what', 'tiers', 'inside',
+      'faq', 'messy-play', 'messy-plays', 'get', 'contact'
+    ].map(id => document.getElementById(id)).filter(Boolean);
+
+    function getViewportMid() {
+      return window.scrollY + window.innerHeight / 2;
     }
 
+    function scrollToSection(el) {
+      const navHeight = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 0;
+      const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    }
+
+        function navigatePrev() {
+      // Find the last section whose top is meaningfully above current scroll position
+      const scrollTop = window.scrollY;
+      const navHeight = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 0;
+      let target = null;
+      for (let i = sectionNav.length - 1; i >= 0; i--) {
+        const top = sectionNav[i].getBoundingClientRect().top + window.scrollY;
+        if (top < scrollTop - 10) { target = sectionNav[i]; break; }
+      }
+      if (target) scrollToSection(target);
+    }
+
+    function navigateNext() {
+      // Find the first section whose top is meaningfully below current scroll position
+      const scrollTop = window.scrollY;
+      const navHeight = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 0;
+      let target = null;
+      for (let i = 0; i < sectionNav.length; i++) {
+        const top = sectionNav[i].getBoundingClientRect().top + window.scrollY;
+        if (top > scrollTop + 10) { target = sectionNav[i]; break; }
+      }
+      if (target) scrollToSection(target);
+    }
+      }
+      if (target) scrollToSection(target);
+    }
+
+    function updateFloatBtns() {
+      const mid = getViewportMid();
+
+      // Show ↑ if not already at or above the first section
+      const firstTop = sectionNav[0] ? sectionNav[0].getBoundingClientRect().top + window.scrollY : 0;
+      floatTop.classList.toggle('visible', window.scrollY > firstTop + 100);
+
+      // Show ↓ if there is a section below the midpoint
+      const hasNext = sectionNav.some(el => {
+        return el.getBoundingClientRect().top + window.scrollY > mid + 50;
+      });
+      floatBottom.classList.toggle('visible', hasNext);
+    }
+
+    floatTop.addEventListener('click', navigatePrev);
+    floatBottom.addEventListener('click', navigateNext);
     window.addEventListener('scroll', updateFloatBtns, { passive: true });
     updateFloatBtns();
   </script>
