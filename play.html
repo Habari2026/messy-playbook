@@ -1618,7 +1618,7 @@
 <!-- ── FLOATING NAV ── -->
 <div class="float-nav" aria-label="Page navigation">
   <button class="float-btn" id="floatTop" aria-label="Previous section">↑</button>
-  <button class="float-btn" id="floatBottom" aria-label="Next section">↓</button>
+  <button class="float-btn visible" id="floatBottom" aria-label="Next section">↓</button>
 </div>
 
 <!-- ── JUMP NAV + BACK TO TOP JAVASCRIPT ── -->
@@ -1704,7 +1704,8 @@
     if (floatTop)    floatTop.addEventListener('click', navigatePrev);
     if (floatBottom) floatBottom.addEventListener('click', navigateNext);
     window.addEventListener('scroll', updateFloatBtns, { passive: true });
-    updateFloatBtns();
+    window.addEventListener('load', updateFloatBtns);
+    setTimeout(updateFloatBtns, 300);
 
   // Active section highlighting
   if (pageNav && navLinks.length) {
