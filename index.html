@@ -1398,27 +1398,24 @@
     var navIds  = ['hero','why','what','tiers','inside','faq','messy-play','messy-plays','get','contact'];
 
     function goUp() {
-      var st = window.pageYOffset;
       for (var i = navIds.length - 1; i >= 0; i--) {
         var el = document.getElementById(navIds[i]);
-        if (el && el.offsetTop < st - 50) { el.scrollIntoView({behavior:'smooth'}); return; }
+        if (el && el.getBoundingClientRect().top < -50) { el.scrollIntoView({behavior:'smooth'}); return; }
       }
     }
 
     function goDown() {
-      var st = window.pageYOffset;
       for (var i = 0; i < navIds.length; i++) {
         var el = document.getElementById(navIds[i]);
-        if (el && el.offsetTop > st + 50) { el.scrollIntoView({behavior:'smooth'}); return; }
+        if (el && el.getBoundingClientRect().top > 50) { el.scrollIntoView({behavior:'smooth'}); return; }
       }
     }
 
     function updateBtns() {
-      var st    = window.pageYOffset;
       var first = document.getElementById(navIds[0]);
       var last  = document.getElementById(navIds[navIds.length-1]);
-      if (btnUp)   btnUp.classList.toggle('visible',   first ? st > first.offsetTop + 50  : false);
-      if (btnDown) btnDown.classList.toggle('visible', last  ? st < last.offsetTop  - 50  : false);
+      if (btnUp)   btnUp.classList.toggle('visible',   first ? first.getBoundingClientRect().top < -50 : false);
+      if (btnDown) btnDown.classList.toggle('visible', last  ? last.getBoundingClientRect().bottom > window.innerHeight + 50 : false);
     }
 
     if (btnUp)   btnUp.addEventListener('click',   goUp);
