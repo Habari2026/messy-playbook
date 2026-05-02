@@ -1,925 +1,145 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Thinking Behind MESSY — The MESSY Playbook™</title>
-  <meta name="description" content="The science, research, and ideas that shaped The MESSY Playbook. From Manufacturing Execution Systems to complexity science — here's where MESSY comes from." />
-
-  <!-- Open Graph -->
-  <meta property="og:type"        content="website" />
-  <meta property="og:title"       content="The Thinking Behind MESSY — The MESSY Playbook™" />
-  <meta property="og:description" content="The science, research, and ideas that shaped the framework." />
-  <meta property="og:site_name"   content="The MESSY Playbook™" />
-  <meta name="twitter:card"       content="summary" />
-  <meta name="twitter:title"      content="The Thinking Behind MESSY" />
-  <meta name="twitter:description" content="Where The MESSY Playbook comes from — and why it works." />
-
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ── Variables ──────────────────────────────────────────── */
-    :root {
-      --cream:      #faf8f3;
-      --dark:       #1e2a35;
-      --mid:        #3d5060;
-      --muted:      #56707f;
-      --on-dark:    #b8cad6;
-      --on-dark-sub:#8fafc5;
-      --rule:       #ddd8cc;
-      --m:  #9b59b6;
-      --e:  #e67e22;
-      --s:  #3498db;
-      --ss-bg: #f1c40f;
-      --y:  #27ae60;
-      --grad-start: #667eea;
-      --grad-end:   #764ba2;
-      --focus:      #667eea;
-      --font-display: 'Playfair Display', Georgia, serif;
-      --font-body:    'DM Sans', system-ui, sans-serif;
-      --max: 1100px;
-      --pad: clamp(1.5rem, 5vw, 4rem);
-    }
-
-    /* ── Reset ──────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-    body { font-family: var(--font-body); background: var(--cream); color: var(--dark); line-height: 1.7; font-size: clamp(16px, 1.6vw, 18px); -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-decoration: none; }
-
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-
-    .skip-nav { position: absolute; top: -100%; left: 1rem; z-index: 9999; padding: 0.75rem 1.5rem; background: var(--dark); color: var(--cream); font-weight: 600; font-size: 0.9rem; border-radius: 0 0 8px 8px; transition: top 0.2s; }
-    .skip-nav:focus { top: 0; outline: 3px solid var(--focus); outline-offset: 2px; }
-
-    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
-    .btn-primary:focus-visible, .btn-ghost:focus-visible, .nav-cta:focus-visible { border-radius: 2rem; }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-      html { scroll-behavior: auto; }
-    }
-
-    /* ── Utilities ──────────────────────────────────────────── */
-    .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); }
-    .eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
-    .divider { border: none; border-top: 1px solid var(--rule); }
-
-    /* ── NAV ────────────────────────────────────────────────── */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,248,243,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
-    .nav-inner { max-width: var(--max); margin-inline: auto; padding: 1rem var(--pad); display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--dark); }
-    .nav-logo span { color: var(--e); }
-    .nav-links { display: flex; gap: 1rem; list-style: none; align-items: center; }
-    .nav-links a { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em; color: var(--mid); transition: color 0.2s; padding: 0.25rem 0; }
-    .nav-links a:hover { color: var(--dark); }
-    .nav-links a.active { color: var(--dark); font-weight: 600; border-bottom: 2px solid var(--m); padding-bottom: 0.15rem; }
-    .nav-cta { padding: 0.75rem 2.5rem; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: #ffffff !important; border-radius: 2rem; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.02em; min-height: 44px; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s; }
-    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(102,126,234,0.4); }
-
-    /* Mobile Nav */
-    .nav-menu-btn { display: none; background: none; border: 1.5px solid var(--rule); border-radius: 8px; padding: 0.45rem 0.6rem; cursor: pointer; color: var(--dark); font-size: 1.1rem; line-height: 1; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; transition: border-color 0.2s, background 0.2s; }
-    .nav-menu-btn:hover { border-color: var(--dark); background: var(--cream); }
-    .nav-menu-btn[aria-expanded="true"] { border-color: var(--dark); }
-    .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: rgba(30,42,53,0.55); backdrop-filter: blur(4px); }
-    .mobile-nav.open { display: block; }
-    .mobile-nav-panel { position: absolute; top: 0; right: 0; width: min(320px, 85vw); height: 100%; background: var(--cream); display: flex; flex-direction: column; overflow: hidden; box-shadow: -8px 0 32px rgba(0,0,0,0.15); }
-    .mobile-nav-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; border-bottom: 1px solid var(--rule); flex-shrink: 0; }
-    .mobile-nav-header-logo { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--dark); }
-    .mobile-nav-header-logo span { color: var(--e); }
-    .mobile-nav-close { background: none; border: 1.5px solid var(--rule); border-radius: 8px; padding: 0.4rem 0.65rem; cursor: pointer; color: var(--dark); font-size: 1.1rem; line-height: 1; min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, background 0.2s; }
-    .mobile-nav-close:hover { border-color: var(--dark); background: white; }
-    .mobile-nav-links { flex: 1; overflow-y: auto; padding: 0.75rem 1rem; display: flex; flex-direction: column; gap: 0.25rem; }
-    .mobile-nav-panel a { display: block; padding: 0.9rem 1rem; font-size: 1rem; font-weight: 500; color: var(--mid); border-radius: 8px; border: 1px solid transparent; transition: background 0.15s, color 0.15s; }
-    .mobile-nav-panel a:hover { background: white; color: var(--dark); border-color: var(--rule); }
-    .mobile-nav-panel .mobile-nav-cta { margin-top: 0.75rem; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: white !important; font-weight: 700; text-align: center; border-radius: 2rem; border-color: transparent; }
-    .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; }
-
-    @media (max-width: 768px) {
-      .nav-links, .nav-cta { display: none; }
-      .nav-menu-btn { display: inline-flex; }
-      .origin-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-      .pillars-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ── PAGE HERO ──────────────────────────────────────────── */
-    .page-hero {
-      padding-top: 8rem;
-      padding-bottom: 5rem;
-      position: relative;
-      text-align: center;
-    }
-    .page-hero-bg {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(135deg, rgba(102,126,234,0.07), rgba(118,75,162,0.09) 50%, transparent),
-        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(155,89,182,0.06), transparent 70%);
-      pointer-events: none;
-    }
-    .page-hero-content { position: relative; max-width: 780px; margin-inline: auto; }
-    .page-hero-tag {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      margin-bottom: 1.75rem; padding: 0.4rem 1rem;
-      border: 1px solid var(--rule); border-radius: 2rem;
-      background: white;
-    }
-    .page-hero-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--m); animation: pulse 2s ease-in-out infinite; }
-    .page-hero-tag-text { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(0.85)} }
-
-    .page-hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 5.5vw, 4rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
-      animation: fadeUp 0.8s ease both;
-    }
-    .page-hero h1 em {
-      font-style: italic;
-      background: linear-gradient(135deg, var(--grad-start), var(--grad-end) 60%, var(--m));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .page-hero-sub {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--mid);
-      max-width: 560px;
-      margin-inline: auto;
-      animation: fadeUp 0.8s 0.15s ease both;
-    }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-
-    /* ── SECTION SHELLS ─────────────────────────────────────── */
-    .section { padding-block: 5rem; }
-    .section-alt { background: white; }
-    .section-dark { background: var(--dark); color: var(--cream); }
-
-    .section-label {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      margin-bottom: 1rem;
-    }
-    .section-label-line { width: 28px; height: 2px; background: var(--m); border-radius: 2px; }
-    .section-label-text { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--m); }
-
-    .section-heading {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 900;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
-    }
-    .section-heading em { font-style: italic; color: var(--m); }
-    .section-heading-dark em { font-style: italic; color: var(--on-dark); }
-
-    .prose { max-width: 680px; }
-    .prose p { color: var(--mid); margin-bottom: 1.25rem; }
-    .prose p:last-child { margin-bottom: 0; }
-    .prose strong { color: var(--dark); font-weight: 600; }
-
-    /* ── ORIGIN SECTION ─────────────────────────────────────── */
-    .origin-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-    @media (max-width: 720px) {
-      .origin-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-    }
-
-    .origin-callout {
-      background: linear-gradient(135deg, rgba(102,126,234,0.06), rgba(118,75,162,0.08));
-      border: 1px solid rgba(102,126,234,0.2);
-      border-radius: 16px;
-      padding: 2rem;
-      position: relative;
-      top: 0.5rem;
-    }
-    .origin-callout-label {
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--m);
-      margin-bottom: 1rem;
-    }
-    .origin-callout blockquote {
-      font-family: var(--font-display);
-      font-size: clamp(1.05rem, 2vw, 1.2rem);
-      font-style: italic;
-      color: var(--dark);
-      line-height: 1.6;
-      border-left: 3px solid var(--m);
-      padding-left: 1.25rem;
-      margin-bottom: 1.25rem;
-    }
-    .origin-callout-source {
-      font-size: 0.8rem; color: var(--muted);
-      display: flex; align-items: center; gap: 0.5rem;
-    }
-    .origin-callout-source::before { content: '—'; }
-
-    .mes-bridge {
-      margin-top: 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 0.75rem;
-      align-items: center;
-    }
-    .mes-bridge-box {
-      border: 1px solid var(--rule);
-      border-radius: 12px;
-      padding: 1.1rem 1.25rem;
-      background: white;
-    }
-    .mes-bridge-box-label {
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--muted);
-      margin-bottom: 0.35rem;
-    }
-    .mes-bridge-box-title { font-weight: 700; font-size: 0.95rem; color: var(--dark); }
-    .mes-bridge-box-sub { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
-    .mes-bridge-arrow { font-size: 1.4rem; color: var(--m); text-align: center; }
-    @media (max-width: 500px) {
-      .mes-bridge { grid-template-columns: 1fr; }
-      .mes-bridge-arrow { transform: rotate(90deg); }
-    }
-
-    /* ── RESEARCH PILLARS ───────────────────────────────────── */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-    @media (max-width: 720px) {
-      .pillars-grid { grid-template-columns: 1fr; }
-    }
-
-    .pillar-card {
-      border: 1px solid var(--rule);
-      border-radius: 16px;
-      padding: 2rem;
-      background: var(--cream);
-      position: relative;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .pillar-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(30,42,53,0.08); }
-
-    .pillar-number {
-      width: 36px; height: 36px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.8rem; font-weight: 800; color: white;
-      margin-bottom: 1.25rem;
-      flex-shrink: 0;
-    }
-    .pillar-number.n1 { background: var(--m); }
-    .pillar-number.n2 { background: var(--e); }
-    .pillar-number.n3 { background: var(--s); }
-    .pillar-number.n4 { background: var(--y); }
-
-    .pillar-title {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 0.75rem;
-      line-height: 1.3;
-    }
-    .pillar-body {
-      font-size: 0.92rem;
-      color: var(--mid);
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-    .pillar-citation {
-      border-top: 1px solid var(--rule);
-      padding-top: 1.1rem;
-      margin-top: auto;
-    }
-    .pillar-citation-label {
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
-    .pillar-citation-text {
-      font-size: 0.82rem; color: var(--mid);
-      font-style: italic;
-      line-height: 1.5;
-    }
-    .pillar-citation-link {
-      display: inline-flex; align-items: center; gap: 0.3rem;
-      margin-top: 0.5rem;
-      font-size: 0.78rem; font-weight: 600;
-      color: var(--grad-start);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-    .pillar-citation-link:hover { color: var(--m); }
-
-    /* ── HONEST NOTE ─────────────────────────────────────────── */
-    .honest-note {
-      margin-top: 3rem;
-      background: linear-gradient(135deg, rgba(102,126,234,0.05), rgba(118,75,162,0.07));
-      border: 1px solid rgba(102,126,234,0.18);
-      border-radius: 16px;
-      padding: 2rem 2.25rem;
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
-    }
-    .honest-note-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
-    .honest-note-body { font-size: 0.92rem; color: var(--mid); line-height: 1.7; }
-    .honest-note-body strong { color: var(--dark); }
-
-    /* ── FURTHER READING ────────────────────────────────────── */
-    .reading-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 1.25rem; }
-
-    .reading-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 1.25rem;
-      align-items: start;
-      padding: 1.6rem;
-      background: white;
-      border: 1px solid var(--rule);
-      border-radius: 14px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .reading-item:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(30,42,53,0.07); }
-
-    .reading-badge {
-      width: 44px; height: 44px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.05em;
-      text-align: center; line-height: 1.2; color: white;
-      flex-shrink: 0;
-    }
-    .reading-badge.b-mes   { background: var(--s); }
-    .reading-badge.b-mes2  { background: var(--y); color: var(--dark); }
-    .reading-badge.b-comp  { background: var(--m); }
-    .reading-badge.b-soc   { background: var(--e); }
-    .reading-badge.b-psych { background: var(--y); color: var(--dark); }
-
-    .reading-title {
-      font-family: var(--font-display);
-      font-weight: 700; font-size: 1rem;
-      color: var(--dark); margin-bottom: 0.3rem;
-      line-height: 1.35;
-    }
-    .reading-author { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.6rem; }
-    .reading-desc { font-size: 0.88rem; color: var(--mid); line-height: 1.65; margin-bottom: 0.75rem; }
-    .reading-why {
-      display: inline-block;
-      font-size: 0.77rem; font-weight: 600;
-      padding: 0.25rem 0.7rem;
-      border-radius: 2rem;
-      background: rgba(102,126,234,0.08);
-      color: var(--grad-start);
-      margin-bottom: 0.6rem;
-    }
-    .reading-link {
-      font-size: 0.8rem; color: var(--grad-start);
-      text-decoration: underline; text-underline-offset: 3px;
-      font-weight: 600;
-      display: inline-flex; align-items: center; gap: 0.25rem;
-    }
-    .reading-link:hover { color: var(--m); }
-
-    /* ── LOOP FOOTER CTA ────────────────────────────────────── */
-    .thinking-cta {
-      text-align: center;
-      padding-block: 5rem;
-      background: var(--dark);
-      position: relative;
-      overflow: hidden;
-    }
-    .thinking-cta-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 60% at 20% 50%, rgba(102,126,234,0.12), transparent),
-        radial-gradient(ellipse 50% 50% at 80% 50%, rgba(155,89,182,0.1), transparent);
-      pointer-events: none;
-    }
-    .thinking-cta-inner { position: relative; max-width: 600px; margin-inline: auto; }
-    .thinking-cta h2 {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 900; color: white;
-      line-height: 1.15; margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-    }
-    .thinking-cta h2 em { font-style: italic; color: var(--on-dark); }
-    .thinking-cta p { color: var(--on-dark-sub); font-size: 1rem; margin-bottom: 2rem; line-height: 1.7; }
-    .thinking-cta .btn-light {
-      display: inline-flex; align-items: center;
-      padding: 0.9rem 2.25rem;
-      background: white; color: var(--dark);
-      border-radius: 2rem; font-weight: 700; font-size: 0.95rem;
-      transition: transform 0.15s, box-shadow 0.2s;
-    }
-    .thinking-cta .btn-light:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.15); }
-
-    /* ── FOOTER ─────────────────────────────────────────────── */
-    footer { padding: 2rem var(--pad); border-top: 1px solid var(--rule); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
-    .footer-logo { font-family:var(--font-display); font-weight:700; font-size:0.95rem; color: var(--dark); }
-    .footer-logo span { color: var(--e); }
-    .footer-tagline { font-family:var(--font-display); font-style:italic; color: var(--mid); font-size:0.9rem; }
-    .footer-copy { font-size: 0.75rem; color: var(--muted); }
-
-    /* ── BACK TO TOP ─────────────────────────────────────────── */
-    /* ── FLOATING NAV ───────────────────────────────────────── */
-    .float-nav { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; display: flex; flex-direction: column; gap: 0.5rem; }
-    .float-btn { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 4px 14px rgba(102,126,234,0.4); opacity: 0; transform: translateY(8px); transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s; pointer-events: none; }
-    .float-btn.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    .float-btn:hover { box-shadow: 0 6px 20px rgba(102,126,234,0.55); transform: translateY(-2px); }
-  </style>
-</head>
-<body>
-
-  <!-- FLOATING NAV -->
-  <div class="float-nav" aria-label="Page navigation">
-    <button class="float-btn" id="floatTop" aria-label="Previous section" onclick="(function(){var ids=['origin', 'research', 'reading'];var st=window.pageYOffset||document.documentElement.scrollTop;for(var i=ids.length-1;i>=0;i--){var el=document.getElementById(ids[i]);if(el&&el.offsetTop<st-50){el.scrollIntoView({behavior:'smooth'});return;}}})()">↑</button>
-    <button class="float-btn visible" id="floatBottom" aria-label="Next section" onclick="(function(){var ids=['origin', 'research', 'reading'];var st=window.pageYOffset||document.documentElement.scrollTop;for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.offsetTop>st+50){el.scrollIntoView({behavior:'smooth'});return;}}})()">↓</button>
-  </div>
-
-  <a href="#main-content" class="skip-nav">Skip to main content</a>
-
-  <!-- ── NAV ── -->
-  <nav aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="The MESSY Playbook home">
-        The MESSY Playbook<span>™</span>
-      </a>
-      <ul class="nav-links" role="list">
-        <li><a href="index.html#why">Why MESSY?</a></li>
-        <li><a href="index.html#what">The Playbook</a></li>
-        <li><a href="index.html#tiers">How It Works</a></li>
-        <li><a href="index.html#faq">FAQ</a></li>
-        <li><a href="play.html">Messy Plays</a></li>
-        <li><a href="thinking.html" class="active">The Thinking</a></li>
-      </ul>
-      <a href="index.html#get" class="nav-cta">Get MESSY!</a>
-      <button class="nav-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">☰</button>
-    </div>
-  </nav>
-
-  <!-- Mobile nav drawer -->
-  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
-    <div class="mobile-nav-panel">
-      <div class="mobile-nav-header">
-        <span class="mobile-nav-header-logo">The MESSY Playbook<span>™</span></span>
-        <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
-      </div>
-      <div class="mobile-nav-links">
-        <a href="index.html#why"   onclick="closeMobileNav()">Why MESSY?</a>
-        <a href="index.html#what"  onclick="closeMobileNav()">The Playbook</a>
-        <a href="index.html#tiers" onclick="closeMobileNav()">How It Works</a>
-        <a href="index.html#faq"   onclick="closeMobileNav()">FAQ</a>
-        <a href="play.html"        onclick="closeMobileNav()">Messy Plays</a>
-        <a href="thinking.html"    onclick="closeMobileNav()">The Thinking</a>
-        <a href="index.html#get"   onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
-      </div>
-    </div>
-  </div>
-
-  <main id="main-content">
-
-    <!-- ── PAGE HERO ── -->
-    <section class="page-hero">
-      <div class="page-hero-bg" aria-hidden="true"></div>
-      <div class="wrap page-hero-content">
-        <div class="page-hero-tag">
-          <span class="dot" aria-hidden="true"></span>
-          <span class="page-hero-tag-text">The Thinking Behind MESSY</span>
-        </div>
-        <h1>The <em>science, research,</em> and ideas that shaped the framework.</h1>
-        <p class="page-hero-sub">MESSY wasn't invented. It was derived. Here's where it comes from — and why the logic holds.</p>
-      </div>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- ── SECTION 1: THE ORIGIN ── -->
-    <section class="section" id="origin">
-      <div class="wrap">
-        <div class="section-label">
-          <div class="section-label-line" aria-hidden="true"></div>
-          <span class="section-label-text">The Origin</span>
-        </div>
-        <h2 class="section-heading">It started in a <em>factory.</em></h2>
-
-        <div class="origin-layout">
-          <div>
-            <div class="prose">
-              <p>I didn't set out to build a personal development framework. I stumbled onto the idea while reading about manufacturing software — and what I found there reframed everything I thought I knew about why self-improvement keeps failing people.</p>
-              <p>The software is called a <strong>Manufacturing Execution System</strong> — MES. It's the real-time backbone of modern production floors. MES occupies a specific, well-defined position in manufacturing operations: it sits between the high-level business planning system, which generates the ideal production schedule, and the actual physical factory floor, where machines break, materials arrive late, and workers have bad days.</p>
-              <p>The defining problem MES was built to solve: <strong>the plan is never the reality.</strong> An ERP system says "produce 10,000 units today, starting at 6am, using Line 3." MES is the system that watches what actually happens — Line 3 goes down at 8am, a batch of raw material fails quality inspection, two operators call out — and responds to <em>that</em> reality rather than pretending the original plan still applies.</p>
-              <p>Critically: MES does not try to make the factory floor clean, predictable, or ideal. It is designed to <strong>work with mess.</strong> Variance, exceptions, and deviations are inputs to be managed — not failures to be eliminated. That's not a compromise. That is the design philosophy.</p>
-              <p>The insight that became MESSY: what if we applied that same operating logic to being human? Not trying to eliminate the complexity. Not measuring ourselves against what should be happening. But building a practice that helps us work honestly with what's actually happening — and getting better at that response over time.</p>
-            </div>
-          </div>
-
-          <div>
-            <div class="origin-callout">
-              <p class="origin-callout-label">The original insight</p>
-              <blockquote>"I studied Manufacturing Execution Systems — the software backbone of modern production. MES tracks what's actually happening on the shop floor, bridges the gap between planning and reality, and helps manufacturers work with messy, real-world conditions rather than ideal scenarios. What if we could apply those same principles to being human?"</blockquote>
-              <p class="origin-callout-source">The Live Messy Project</p>
-            </div>
-
-            <div class="mes-bridge">
-              <div class="mes-bridge-box">
-                <p class="mes-bridge-box-label">MES does this</p>
-                <p class="mes-bridge-box-title">Bridges plan vs. reality</p>
-                <p class="mes-bridge-box-sub">Works with real-world production conditions — not ideal ones</p>
-              </div>
-              <div class="mes-bridge-arrow" aria-hidden="true">→</div>
-              <div class="mes-bridge-box">
-                <p class="mes-bridge-box-label">MESSY does this</p>
-                <p class="mes-bridge-box-title">Bridges the "should gap"</p>
-                <p class="mes-bridge-box-sub">Works with who you actually are — not who you should be</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- ── SECTION 2: THE RESEARCH ── -->
-    <section class="section section-alt" id="research">
-      <div class="wrap">
-        <div class="section-label">
-          <div class="section-label-line" aria-hidden="true"></div>
-          <span class="section-label-text">The Research</span>
-        </div>
-        <h2 class="section-heading">Four pillars. <em>Verified.</em></h2>
-        <p style="color: var(--mid); max-width: 620px; margin-top: 0.5rem;">
-          MESSY draws on peer-reviewed research, international industry standards, and complexity science. These aren't decorations — each source addresses a different layer of the argument.
-        </p>
-
-        <div class="pillars-grid">
-
-          <!-- Pillar 1 -->
-          <div class="pillar-card">
-            <div class="pillar-number n1" aria-label="Pillar 1">01</div>
-            <h3 class="pillar-title">The critique of self-optimization culture</h3>
-            <p class="pillar-body">
-              The pressure to "optimize yourself" isn't a neutral self-improvement ideal — it's a historically specific, culturally constructed ideology. Sociologists Nehring and Röcke formally identify self-optimization as a central socio-cultural trend in contemporary Western life, situated at the intersection of neoliberal capitalism, therapeutic culture, and a commercial personal development industry that profits from treating human beings as enterprises to be managed for maximum output.
-            </p>
-            <div class="pillar-citation">
-              <p class="pillar-citation-label">Source</p>
-              <p class="pillar-citation-text">Nehring, D. &amp; Röcke, A. (2023). Self-optimisation: Conceptual, discursive and historical perspectives. <em>Current Sociology</em>.</p>
-              <a href="https://doi.org/10.1177/00113921221146575" class="pillar-citation-link" target="_blank" rel="noopener noreferrer">
-                DOI: 10.1177/00113921221146575 ↗
-              </a>
-            </div>
-          </div>
-
-          <!-- Pillar 2 -->
-          <div class="pillar-card">
-            <div class="pillar-number n2" aria-label="Pillar 2">02</div>
-            <h3 class="pillar-title">The empirical failure rate of self-improvement</h3>
-            <p class="pillar-body">
-              Conventional self-improvement systematically fails the people who attempt it — not because they lack discipline, but because the systems are designed for their best day and deployed on every other kind. Psychologist John Norcross tracked self-improvement attempts over a two-year period and found that 81% had failed by the end of that window. This isn't a motivation problem. It's a design problem.
-            </p>
-            <div class="pillar-citation">
-              <p class="pillar-citation-label">Source</p>
-              <p class="pillar-citation-text">Norcross, J.C. &amp; Vangarelli, D.J. (1988). The resolution solution: Longitudinal examination of New Year's change attempts. <em>Journal of Substance Abuse</em>, 1(2), 127–134.</p>
-              <a href="https://doi.org/10.1016/s0899-3289(88)80016-6" class="pillar-citation-link" target="_blank" rel="noopener noreferrer">
-                DOI: 10.1016/s0899-3289(88)80016-6 ↗
-              </a>
-            </div>
-          </div>
-
-          <!-- Pillar 3 -->
-          <div class="pillar-card">
-            <div class="pillar-number n3" aria-label="Pillar 3">03</div>
-            <h3 class="pillar-title">Complexity science and domain-appropriate responses</h3>
-            <p class="pillar-body">
-              Dave Snowden — founder and Chief Scientific Officer of The Cynefin Company — argues that the most common leadership failure is applying ordered, best-practice approaches to situations that are inherently complex. His framework is precise: structure and optimization work well in ordered, predictable contexts. They break down in complex ones, where cause and effect are only visible in retrospect. Individual human beings are complex adaptive systems. Which means the optimization model is the wrong approach applied to the wrong domain.
-            </p>
-            <div class="pillar-citation">
-              <p class="pillar-citation-label">Source</p>
-              <p class="pillar-citation-text">Snowden, D.J. &amp; Boone, M.E. (2007). A leader's framework for decision making. <em>Harvard Business Review</em>, 85, 68–76.</p>
-              <a href="https://hbr.org/2007/11/a-leaders-framework-for-decision-making" class="pillar-citation-link" target="_blank" rel="noopener noreferrer">
-                HBR, November 2007 ↗
-              </a>
-            </div>
-          </div>
-
-          <!-- Pillar 4 -->
-          <div class="pillar-card">
-            <div class="pillar-number n4" aria-label="Pillar 4">04</div>
-            <h3 class="pillar-title">MES standards as the structural foundation</h3>
-            <p class="pillar-body">
-              The MES origin isn't metaphorical — it's grounded in formally published, internationally recognised specifications. The ISA-95 standard defines MES as the Level 3 layer between business planning and the factory floor, specifically tasked with bridging the gap between the ideal plan and real-world conditions. The MESA-11 model, published in 1996, established the 11 core functions of any MES platform — all oriented toward managing real production conditions in real time.
-            </p>
-            <div class="pillar-citation">
-              <p class="pillar-citation-label">Sources</p>
-              <p class="pillar-citation-text">International Society of Automation. <em>ANSI/ISA-95: Enterprise-Control System Integration</em> (Parts 1–6).</p>
-              <a href="https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard" class="pillar-citation-link" target="_blank" rel="noopener noreferrer">
-                ISA-95 Standard ↗
-              </a>
-              <br>
-              <p class="pillar-citation-text" style="margin-top:0.5rem;">Manufacturing Enterprise Solutions Association International. <em>MESA-11 Model</em> (1996).</p>
-              <a href="https://mesa.org/topics-resources/mesa-model/history-of-the-mesa-models/" class="pillar-citation-link" target="_blank" rel="noopener noreferrer">
-                MESA International ↗
-              </a>
-            </div>
-          </div>
-
-        </div><!-- /pillars-grid -->
-
-        <div class="honest-note">
-          <div class="honest-note-icon" aria-hidden="true">🤝</div>
-          <div class="honest-note-body">
-            <strong>An honest note on interpretation.</strong> This page cites real, peer-reviewed sources accurately and attributes them properly. The application of complexity science and MES principles to personal development is an extension of these frameworks into a new domain — it is not claimed to be a formal academic work or a formally endorsed application of any of these frameworks. Where there is interpretation, it is the author's. Any errors in that interpretation are also the author's. If you notice something that seems off, please <a href="index.html#contact" style="color: var(--grad-start); text-decoration: underline; text-underline-offset: 3px;">get in touch</a>.
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- ── SECTION 3: FURTHER READING ── -->
-    <section class="section" id="reading">
-      <div class="wrap">
-        <div class="section-label">
-          <div class="section-label-line" aria-hidden="true"></div>
-          <span class="section-label-text">For Further Reading</span>
-        </div>
-        <h2 class="section-heading">Go deeper. <em>If you want to.</em></h2>
-        <p style="color: var(--mid); max-width: 620px; margin-top: 0.5rem;">
-          Not a bibliography. A curated list — each source chosen because it illuminates a specific part of what MESSY is built on. A note on why each source matters, and where to find it.
-        </p>
-
-        <div class="reading-list">
-
-          <div class="reading-item">
-            <div class="reading-badge b-comp" aria-label="Complexity science">CX</div>
-            <div>
-              <p class="reading-title">A Leader's Framework for Decision Making</p>
-              <p class="reading-author">Dave Snowden &amp; Mary Boone · Harvard Business Review · 2007</p>
-              <p class="reading-desc">The canonical introduction to the Cynefin framework. Argues — with rigour — that different contexts require fundamentally different responses, and that the most dangerous leadership error is applying ordered solutions to complex problems. This is the theoretical spine behind MESSY's rejection of one-size-fits-all self-improvement.</p>
-              <span class="reading-why">Why it matters for MESSY</span>
-              <br>
-              <a href="https://hbr.org/2007/11/a-leaders-framework-for-decision-making" class="reading-link" target="_blank" rel="noopener noreferrer">Read on HBR ↗</a>
-            </div>
-          </div>
-
-          <div class="reading-item">
-            <div class="reading-badge b-soc" aria-label="Sociology">SO</div>
-            <div>
-              <p class="reading-title">Self-optimisation: Conceptual, Discursive and Historical Perspectives</p>
-              <p class="reading-author">Daniel Nehring &amp; Anja Röcke · Current Sociology · 2023</p>
-              <p class="reading-desc">If you've ever wanted the academic language for why self-help culture feels exhausting, this is it. Open-access peer-reviewed article that traces self-optimization as a historically specific ideological phenomenon — not an innocent aspiration. Sobering and clarifying in equal measure.</p>
-              <span class="reading-why">Why it matters for MESSY</span>
-              <br>
-              <a href="https://doi.org/10.1177/00113921221146575" class="reading-link" target="_blank" rel="noopener noreferrer">Read open access ↗</a>
-            </div>
-          </div>
-
-          <div class="reading-item">
-            <div class="reading-badge b-mes" aria-label="MES Standards">MES</div>
-            <div>
-              <p class="reading-title">ANSI/ISA-95: Enterprise-Control System Integration Standard</p>
-              <p class="reading-author">International Society of Automation · Parts 1–6</p>
-              <p class="reading-desc">The formal international standard that defines what MES actually is, what it does, and where it sits in the manufacturing hierarchy. If you want to verify that the MES foundation of MESSY is real and not invented, this is the primary source — the primary international standard governing how MES systems are designed and implemented.</p>
-              <span class="reading-why">Why it matters for MESSY</span>
-              <br>
-              <a href="https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard" class="reading-link" target="_blank" rel="noopener noreferrer">View at ISA ↗</a>
-            </div>
-          </div>
-
-          <div class="reading-item">
-            <div class="reading-badge b-mes2" aria-label="MESA">MESA</div>
-            <div>
-              <p class="reading-title">History of the MESA Models</p>
-              <p class="reading-author">Manufacturing Enterprise Solutions Association International · 1996–present</p>
-              <p class="reading-desc">The industry body that originally codified the 11 core functions of a Manufacturing Execution System in 1996. The MESA-11 model is the practical companion to the ISA-95 standard — defining not just the architecture but the operational functions of MES platforms. The parallel to MESSY's five practices is intentional and traceable.</p>
-              <span class="reading-why">Why it matters for MESSY</span>
-              <br>
-              <a href="https://mesa.org/topics-resources/mesa-model/history-of-the-mesa-models/" class="reading-link" target="_blank" rel="noopener noreferrer">View at MESA ↗</a>
-            </div>
-          </div>
-
-          <div class="reading-item">
-            <div class="reading-badge b-mes" aria-label="IBM">IBM</div>
-            <div>
-              <p class="reading-title">What Is a Manufacturing Execution System (MES)?</p>
-              <p class="reading-author">IBM Think · ibm.com/think/topics/mes-system</p>
-              <p class="reading-desc">IBM's plain-language explainer on what MES actually does — written for a general business audience rather than an engineering one. Covers real-time data collection, the bridge between ERP and shop floor, quality management, and how MES enables informed decision-making under real-world conditions. A reliable, accessible entry point for anyone who wants to verify the MES foundation of MESSY without wading through technical standards documents.</p>
-              <span class="reading-why">Why it matters for MESSY</span>
-              <br>
-              <a href="https://www.ibm.com/think/topics/mes-system" class="reading-link" target="_blank" rel="noopener noreferrer">Read at IBM Think ↗</a>
-            </div>
-          </div>
-
-          <div class="reading-item">
-            <div class="reading-badge b-comp" aria-label="Wikipedia">WP</div>
-            <div>
-              <p class="reading-title">Manufacturing Execution System</p>
-              <p class="reading-author">Wikipedia · en.wikipedia.org/wiki/Manufacturing_execution_system</p>
-              <p class="reading-desc">A well-maintained Wikipedia article covering the full history, functional scope, and standards hierarchy of MES — including the MESA-11 model, the ISA-95 standard, and the Level 3 positioning between ERP and process control. Particularly useful for tracing how the field evolved and how governing standards like ANSI/ISA-95 formally defined MES scope. A good starting point for the curious reader before diving into primary sources.</p>
-              <span class="reading-why">Why it matters for MESSY</span>
-              <br>
-              <a href="https://en.wikipedia.org/wiki/Manufacturing_execution_system" class="reading-link" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
-            </div>
-          </div>
-
-          <div class="reading-item">
-            <div class="reading-badge b-psych" aria-label="Psychology">PSY</div>
-            <div>
-              <p class="reading-title">The Resolution Solution: Longitudinal Examination of New Year's Change Attempts</p>
-              <p class="reading-author">John C. Norcross &amp; Dominic J. Vangarelli · Journal of Substance Abuse · 1988</p>
-              <p class="reading-desc">The two-year longitudinal study behind the 81% failure rate. Not a hot take — a carefully tracked empirical study of what actually happens when people try to change using conventional self-improvement approaches. The failure rate isn't an indictment of willpower. It's an indictment of systems designed for ideal conditions.</p>
-              <span class="reading-why">Why it matters for MESSY</span>
-              <br>
-              <a href="https://doi.org/10.1016/s0899-3289(88)80016-6" class="reading-link" target="_blank" rel="noopener noreferrer">View via DOI ↗</a>
-            </div>
-          </div>
-
-          <div class="reading-item">
-            <div class="reading-badge b-comp" aria-label="Action Research">AR</div>
-            <div>
-              <p class="reading-title">The Purpose of Mess in Action Research: Building Rigour Through a Messy Turn</p>
-              <p class="reading-author">Tina Cook · Educational Action Research · June 2009</p>
-              <p class="reading-desc">A peer-reviewed argument — 207 citations strong — that mess in research is not a failure of method but a vital, purposeful part of how new knowing emerges. Cook distinguishes between the "studium" (what we already know and can code) and the "punctum" (what we sense but cannot yet articulate) — and argues that the "messy area" between them is exactly where transformation happens. One of the clearest scholarly defenses of why mess is information, not sloppiness.</p>
-              <span class="reading-why">Why it matters for MESSY</span>
-              <br>
-              <a href="https://doi.org/10.1080/09650790902914241" class="reading-link" target="_blank" rel="noopener noreferrer">Read via DOI ↗</a>
-            </div>
-          </div>
-
-          <div class="reading-item">
-            <div class="reading-badge b-soc" aria-label="Social Work">SW</div>
-            <div>
-              <p class="reading-title">Staying in the Mess: Teaching Students and Practitioners to Work Effectively in the Swamp of Important Problems</p>
-              <p class="reading-author">Robert Salmon & Dominique Moyse Steinberg · Social Work with Groups, Vol. 30(4), pp. 79–94 · 2007</p>
-              <p class="reading-desc">Drawing on Donald Schön's metaphor of the "swamp of important problems," Salmon and Steinberg make the case that the messy, confusing, hard-to-predict problems of real human life are precisely where meaningful work happens — and that the instinct to jump to solutions before staying with the problem is what most often fails people. This paper is also the direct research foundation for Messy Plays™ Play 01: Staying in the Mess.</p>
-              <span class="reading-why">Why it matters for MESSY</span>
-              <br>
-              <a href="https://doi.org/10.1300/J009v30n04_06" class="reading-link" target="_blank" rel="noopener noreferrer">Read via DOI ↗</a>
-            </div>
-          </div>
-
-          <div class="reading-item">
-            <div class="reading-badge b-mes2" aria-label="Philosophy">PH</div>
-            <div>
-              <p class="reading-title">The Messy Self — Introduction</p>
-              <p class="reading-author">Jennifer Rosner (Ed.) · Paradigm Publishers · 2006</p>
-              <p class="reading-desc">The introduction to this edited collection frames the "messy self" as a philosophical starting point — the idea that human identity is not a fixed, optimizable thing but something inherently unresolved, layered, and in process. Where much of personal development culture tries to tidy the self into a coherent, high-performing unit, this work takes the opposite position: that the mess of who we are is not incidental but essential. A philosophical companion to the MESSY framework's anti-optimization premise.</p>
-              <span class="reading-why">Why it matters for MESSY</span>
-            </div>
-          </div>
-
-        </div><!-- /reading-list -->
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ── DARK CTA ── -->
-  <section class="thinking-cta" aria-labelledby="cta-heading">
-    <div class="thinking-cta-bg" aria-hidden="true"></div>
-    <div class="wrap thinking-cta-inner">
-      <h2 id="cta-heading">Enough reading. <em>Ready to get MESSY?</em></h2>
-      <p>The framework is free to use. Pay what feels right. Every document included — ready to use immediately.</p>
-      <a href="index.html#get" class="btn-light">Get the Playbook →</a>
-    </div>
-  </section>
-
-  <!-- ── FOOTER ── -->
-  <footer aria-label="Site footer">
-    <div class="footer-logo">The MESSY Playbook<span aria-hidden="true">™</span></div>
-    <p class="footer-tagline">Growth happens <em>in</em> the mess, not after you clean it up.</p>
-    <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0;font-size:13px;">
-      <a href="index.html#why"   style="color:var(--muted);text-decoration:none;">Why MESSY?</a>
-      <a href="index.html#what"  style="color:var(--muted);text-decoration:none;">The Playbook</a>
-      <a href="index.html#tiers" style="color:var(--muted);text-decoration:none;">How It Works</a>
-      <a href="book.html"        style="color:var(--muted);text-decoration:none;">The Book</a>
-      <a href="play.html"        style="color:var(--muted);text-decoration:none;">Messy Plays</a>
-      <a href="thinking.html"    style="color:var(--dark);font-weight:600;text-decoration:none;">The Thinking</a>
-      <a href="https://livemessy.gumroad.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:none;">Gumroad</a>
-    </div>
-    <p class="footer-copy">© 2026 Live Messy Project. All rights reserved.<br>
-    The MESSY Playbook™ and Messy Plays™ are projects of the Live Messy Project.<br>
-    For educational purposes and personal exploration only. Not therapy or professional counseling.</p>
-  </footer>
-
-  <script>
-    // ── Mobile navigation ───────────────────────────────────────
-    const menuBtn    = document.querySelector('.nav-menu-btn');
-    const closeBtn   = document.querySelector('.mobile-nav-close');
-    const mobileNav  = document.getElementById('mobile-nav');
-    let   lastFocus  = null;
-
-    function openMobileNav() {
-      lastFocus = document.activeElement;
-      mobileNav.classList.add('open');
-      menuBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      closeBtn.focus();
-    }
-
-    function closeMobileNav() {
-      mobileNav.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      if (lastFocus) lastFocus.focus();
-    }
-
-    if (menuBtn) menuBtn.addEventListener('click', openMobileNav);
-    if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
-
-    if (mobileNav) mobileNav.addEventListener('click', function(e) {
-      if (e.target === mobileNav) closeMobileNav();
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeMobileNav();
-    });
-
-    if (mobileNav) mobileNav.addEventListener('keydown', function(e) {
-      if (!mobileNav.classList.contains('open') || e.key !== 'Tab') return;
-      const focusable = mobileNav.querySelectorAll('button, a');
-      const first = focusable[0];
-      const last  = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault(); last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault(); first.focus();
-      }
-    });
-
-                // ── Section-by-section floating nav ────────────────────────
-    var floatTop    = document.getElementById('floatTop');
-    var floatBottom = document.getElementById('floatBottom');
-
-    var sectionIds = ['origin','research','reading'];
-    var sectionNav = sectionIds.map(function(id) {
-      return document.getElementById(id);
-    }).filter(function(el) { return el !== null; });
-
-    function navigatePrev() {
-      for (var i = sectionNav.length - 1; i >= 0; i--) {
-        if (sectionNav[i].getBoundingClientRect().top < -10) {
-          sectionNav[i].scrollIntoView({ behavior: 'smooth' });
-          return;
-        }
-      }
-    }
-
-    function navigateNext() {
-      for (var i = 0; i < sectionNav.length; i++) {
-        if (sectionNav[i].getBoundingClientRect().top > 10) {
-          sectionNav[i].scrollIntoView({ behavior: 'smooth' });
-          return;
-        }
-      }
-    }
-
-    function updateFloatBtns() {
-      if (!sectionNav.length) return;
-      var first = sectionNav[0].getBoundingClientRect().top;
-      var last  = sectionNav[sectionNav.length - 1].getBoundingClientRect().top;
-      floatTop.classList.toggle('visible', first < -50);
-      floatBottom.classList.toggle('visible', last > 50);
-    }
-
-    if (floatTop)    floatTop.addEventListener('click', navigatePrev);
-    if (floatBottom) floatBottom.addEventListener('click', navigateNext);
-    window.addEventListener('scroll', updateFloatBtns, { passive: true });
-    window.addEventListener('load', updateFloatBtns);
-    setTimeout(updateFloatBtns, 500);
-
-    // ── Scroll-triggered fade-in ────────────────────────────────
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!prefersReducedMotion) {
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(el => {
-          if (el.isIntersecting) {
-            el.target.style.opacity = '1';
-            el.target.style.transform = 'translateY(0)';
-            obs.unobserve(el.target);
-          }
-        });
-      }, { threshold: 0.08 });
-
-      document.querySelectorAll('.pillar-card, .reading-item, .origin-callout').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(16px)';
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        obs.observe(el);
-      });
-    }
-  </script>
-
-</body>
-</html>
+↑ ↓
+Skip to main content
+The MESSY Playbook™
+		Why MESSY?
+		The Playbook
+		How It Works
+		FAQ
+		Messy Plays
+		The Thinking
+Get MESSY!
+
+
+THE THINKING BEHIND MESSY
+The science, research, and ideas that shaped the framework.
+MESSY wasn't invented. It was derived. Here's where it comes from — and why the logic holds.
+
+
+THE ORIGIN
+It started in a factory.
+I didn't set out to build a personal development framework. I stumbled onto the idea while reading about manufacturing software — and what I found there reframed everything I thought I knew about why self-improvement keeps failing people.
+The software is called a Manufacturing Execution System — MES. It's the real-time backbone of modern production floors. MES occupies a specific, well-defined position in manufacturing operations: it sits between the high-level business planning system, which generates the ideal production schedule, and the actual physical factory floor, where machines break, materials arrive late, and workers have bad days.
+The defining problem MES was built to solve: the plan is never the reality. An ERP system says "produce 10,000 units today, starting at 6am, using Line 3." MES is the system that watches what actually happens — Line 3 goes down at 8am, a batch of raw material fails quality inspection, two operators call out — and responds to that reality rather than pretending the original plan still applies.
+Critically: MES does not try to make the factory floor clean, predictable, or ideal. It is designed to work with mess. Variance, exceptions, and deviations are inputs to be managed — not failures to be eliminated. That's not a compromise. That is the design philosophy.
+The insight that became MESSY: what if we applied that same operating logic to being human? Not trying to eliminate the complexity. Not measuring ourselves against what should be happening. But building a practice that helps us work honestly with what's actually happening — and getting better at that response over time.
+THE ORIGINAL INSIGHT
+"I studied Manufacturing Execution Systems — the software backbone of modern production. MES tracks what's actually happening on the shop floor, bridges the gap between planning and reality, and helps manufacturers work with messy, real-world conditions rather than ideal scenarios. What if we could apply those same principles to being human?"
+The Live Messy Project
+MES DOES THIS
+Bridges plan vs. reality
+Works with real-world production conditions — not ideal ones
+→
+MESSY DOES THIS
+Bridges the "should gap"
+Works with who you actually are — not who you should be
+
+
+THE RESEARCH
+Four pillars. Verified.
+MESSY draws on peer-reviewed research, international industry standards, and complexity science. These aren't decorations — each source addresses a different layer of the argument.
+01
+The critique of self-optimization culture
+The pressure to "optimize yourself" isn't a neutral self-improvement ideal — it's a historically specific, culturally constructed ideology. Sociologists Nehring and Röcke formally identify self-optimization as a central socio-cultural trend in contemporary Western life, situated at the intersection of neoliberal capitalism, therapeutic culture, and a commercial personal development industry that profits from treating human beings as enterprises to be managed for maximum output.
+SOURCE
+Nehring, D. & Röcke, A. (2023). Self-optimisation: Conceptual, discursive and historical perspectives. Current Sociology.
+DOI: 10.1177/00113921221146575 ↗
+02
+The empirical failure rate of self-improvement
+Conventional self-improvement systematically fails the people who attempt it — not because they lack discipline, but because the systems are designed for their best day and deployed on every other kind. Psychologist John Norcross tracked self-improvement attempts over a two-year period and found that 81% had failed by the end of that window. This isn't a motivation problem. It's a design problem.
+SOURCE
+Norcross, J.C. & Vangarelli, D.J. (1988). The resolution solution: Longitudinal examination of New Year's change attempts. Journal of Substance Abuse, 1(2), 127–134.
+DOI: 10.1016/s0899-3289(88)80016-6 ↗
+03
+Complexity science and domain-appropriate responses
+Dave Snowden — founder and Chief Scientific Officer of The Cynefin Company — argues that the most common leadership failure is applying ordered, best-practice approaches to situations that are inherently complex. His framework is precise: structure and optimization work well in ordered, predictable contexts. They break down in complex ones, where cause and effect are only visible in retrospect. Individual human beings are complex adaptive systems. Which means the optimization model is the wrong approach applied to the wrong domain.
+SOURCE
+Snowden, D.J. & Boone, M.E. (2007). A leader's framework for decision making. Harvard Business Review, 85, 68–76.
+HBR, November 2007 ↗
+04
+MES standards as the structural foundation
+The MES origin isn't metaphorical — it's grounded in formally published, internationally recognised specifications. The ISA-95 standard defines MES as the Level 3 layer between business planning and the factory floor, specifically tasked with bridging the gap between the ideal plan and real-world conditions. The MESA-11 model, published in 1996, established the 11 core functions of any MES platform — all oriented toward managing real production conditions in real time.
+SOURCES
+International Society of Automation. ANSI/ISA-95: Enterprise-Control System Integration (Parts 1–6).
+ISA-95 Standard ↗ 
+Manufacturing Enterprise Solutions Association International. MESA-11 Model (1996).
+MESA International ↗
+🤝
+An honest note on interpretation. This page cites real, peer-reviewed sources accurately and attributes them properly. The application of complexity science and MES principles to personal development is an extension of these frameworks into a new domain — it is not claimed to be a formal academic work or a formally endorsed application of any of these frameworks. Where there is interpretation, it is the author's. Any errors in that interpretation are also the author's. If you notice something that seems off, please get in touch.
+
+
+FOR FURTHER READING
+Go deeper. If you want to.
+Not a bibliography. A curated list — each source chosen because it illuminates a specific part of what MESSY is built on. A note on why each source matters, and where to find it.
+CX
+A Leader's Framework for Decision Making
+Dave Snowden & Mary Boone · Harvard Business Review · 2007
+The canonical introduction to the Cynefin framework. Argues — with rigour — that different contexts require fundamentally different responses, and that the most dangerous leadership error is applying ordered solutions to complex problems. This is the theoretical spine behind MESSY's rejection of one-size-fits-all self-improvement.
+Why it matters for MESSY 
+Read on HBR ↗
+SO
+Self-optimisation: Conceptual, Discursive and Historical Perspectives
+Daniel Nehring & Anja Röcke · Current Sociology · 2023
+If you've ever wanted the academic language for why self-help culture feels exhausting, this is it. Open-access peer-reviewed article that traces self-optimization as a historically specific ideological phenomenon — not an innocent aspiration. Sobering and clarifying in equal measure.
+Why it matters for MESSY 
+Read open access ↗
+MES
+ANSI/ISA-95: Enterprise-Control System Integration Standard
+International Society of Automation · Parts 1–6
+The formal international standard that defines what MES actually is, what it does, and where it sits in the manufacturing hierarchy. If you want to verify that the MES foundation of MESSY is real and not invented, this is the primary source — the primary international standard governing how MES systems are designed and implemented.
+Why it matters for MESSY 
+View at ISA ↗
+MESA
+History of the MESA Models
+Manufacturing Enterprise Solutions Association International · 1996–present
+The industry body that originally codified the 11 core functions of a Manufacturing Execution System in 1996. The MESA-11 model is the practical companion to the ISA-95 standard — defining not just the architecture but the operational functions of MES platforms. The parallel to MESSY's five practices is intentional and traceable.
+Why it matters for MESSY 
+View at MESA ↗
+IBM
+What Is a Manufacturing Execution System (MES)?
+IBM Think · ibm.com/think/topics/mes-system
+IBM's plain-language explainer on what MES actually does — written for a general business audience rather than an engineering one. Covers real-time data collection, the bridge between ERP and shop floor, quality management, and how MES enables informed decision-making under real-world conditions. A reliable, accessible entry point for anyone who wants to verify the MES foundation of MESSY without wading through technical standards documents.
+Why it matters for MESSY 
+Read at IBM Think ↗
+WP
+Manufacturing Execution System
+Wikipedia · en.wikipedia.org/wiki/Manufacturing_execution_system
+A well-maintained Wikipedia article covering the full history, functional scope, and standards hierarchy of MES — including the MESA-11 model, the ISA-95 standard, and the Level 3 positioning between ERP and process control. Particularly useful for tracing how the field evolved and how governing standards like ANSI/ISA-95 formally defined MES scope. A good starting point for the curious reader before diving into primary sources.
+Why it matters for MESSY 
+Read on Wikipedia ↗
+PSY
+The Resolution Solution: Longitudinal Examination of New Year's Change Attempts
+John C. Norcross & Dominic J. Vangarelli · Journal of Substance Abuse · 1988
+The two-year longitudinal study behind the 81% failure rate. Not a hot take — a carefully tracked empirical study of what actually happens when people try to change using conventional self-improvement approaches. The failure rate isn't an indictment of willpower. It's an indictment of systems designed for ideal conditions.
+Why it matters for MESSY 
+View via DOI ↗
+AR
+The Purpose of Mess in Action Research: Building Rigour Through a Messy Turn
+Tina Cook · Educational Action Research · June 2009
+A peer-reviewed argument — 207 citations strong — that mess in research is not a failure of method but a vital, purposeful part of how new knowing emerges. Cook distinguishes between the "studium" (what we already know and can code) and the "punctum" (what we sense but cannot yet articulate) — and argues that the "messy area" between them is exactly where transformation happens. One of the clearest scholarly defenses of why mess is information, not sloppiness.
+Why it matters for MESSY 
+Read via DOI ↗
+SW
+Staying in the Mess: Teaching Students and Practitioners to Work Effectively in the Swamp of Important Problems
+Robert Salmon & Dominique Moyse Steinberg · Social Work with Groups, Vol. 30(4), pp. 79–94 · 2007
+Drawing on Donald Schön's metaphor of the "swamp of important problems," Salmon and Steinberg make the case that the messy, confusing, hard-to-predict problems of real human life are precisely where meaningful work happens — and that the instinct to jump to solutions before staying with the problem is what most often fails people. This paper is also the direct research foundation for Messy Plays™ Play 01: Staying in the Mess.
+Why it matters for MESSY 
+Read via DOI ↗
+PH
+The Messy Self — Introduction
+Jennifer Rosner (Ed.) · Paradigm Publishers · 2006
+The introduction to this edited collection frames the "messy self" as a philosophical starting point — the idea that human identity is not a fixed, optimizable thing but something inherently unresolved, layered, and in process. Where much of personal development culture tries to tidy the self into a coherent, high-performing unit, this work takes the opposite position: that the mess of who we are is not incidental but essential. A philosophical companion to the MESSY framework's anti-optimization premise.
+Why it matters for MESSY
+
+Enough reading. Ready to get MESSY?
+The framework is free to use. Pay what feels right. Every document included — ready to use immediately.
+Get the Playbook →
+The MESSY Playbook™
+Growth happens in the mess, not after you clean it up.
+Why MESSY?
+The Playbook
+How It Works
+The Book
+Messy Plays
+The Thinking
+Gumroad
+© 2026 Live Messy Project. All rights reserved. The MESSY Playbook™ and Messy Plays™ are projects of the Live Messy Project. For educational purposes and personal exploration only. Not therapy or professional counseling.
