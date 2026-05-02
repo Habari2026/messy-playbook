@@ -1,0 +1,1437 @@
+<!DOCTYPE html> 
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The MESSY Playbook™ — Self-Honesty for People Tired of Being Optimized</title>
+  <meta name="description" content="The MESSY Playbook is an anti-optimization approach that helps you work with your complexity instead of against it. Monitor, Execute, Support, Surrender, Yield." />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="The MESSY Playbook™ — Self-Honesty for People Tired of Being Optimized" />
+  <meta property="og:description" content="An anti-optimization approach that helps you work WITH your complexity instead of against it." />
+  <meta property="og:site_name"   content="The MESSY Playbook™" />
+  <meta name="twitter:card"       content="summary" />
+  <meta name="twitter:title"      content="The MESSY Playbook™" />
+  <meta name="twitter:description" content="Self-honesty for people tired of being optimized." />
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Variables ──────────────────────────────────────────── */
+    :root {
+      --cream:      #faf8f3;
+      --dark:       #1e2a35;
+      --mid:        #3d5060;
+      --muted:      #56707f;
+      --on-dark:    #b8cad6;
+      --on-dark-sub:#8fafc5;
+      --rule:       #ddd8cc;
+      --m:  #9b59b6;
+      --e:  #e67e22;
+      --s:  #3498db;
+      --ss-bg: #f1c40f;
+      --y:  #27ae60;
+      --grad-start: #667eea;
+      --grad-end:   #764ba2;
+      --focus:      #667eea;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+      --max: 1100px;
+      --pad: clamp(1.5rem, 5vw, 4rem);
+    }
+
+    /* ── Reset ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--dark); line-height: 1.7; font-size: clamp(16px, 1.6vw, 18px); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    .skip-nav { position: absolute; top: -100%; left: 1rem; z-index: 9999; padding: 0.75rem 1.5rem; background: var(--dark); color: var(--cream); font-weight: 600; font-size: 0.9rem; border-radius: 0 0 8px 8px; transition: top 0.2s; }
+    .skip-nav:focus { top: 0; outline: 3px solid var(--focus); outline-offset: 2px; }
+
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+    .btn-primary:focus-visible, .btn-ghost:focus-visible, .nav-cta:focus-visible { border-radius: 2rem; }
+
+    /* ── Utilities ──────────────────────────────────────────── */
+    .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); }
+    .eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .divider { border: none; border-top: 1px solid var(--rule); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ── NAV ────────────────────────────────────────────────── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,248,243,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
+    .nav-inner { max-width: var(--max); margin-inline: auto; padding: 1rem var(--pad); display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--dark); }
+    .nav-logo span { color: var(--e); }
+    .nav-links { display: flex; gap: 1rem; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em; color: var(--mid); transition: color 0.2s; padding: 0.25rem 0; }
+    .nav-links a:hover { color: var(--dark); }
+    .nav-cta { padding: 0.75rem 2.5rem; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: #ffffff !important; border-radius: 2rem; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.02em; min-height: 44px; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s; }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(102,126,234,0.4); }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    #hero { min-height: 100svh; display: grid; place-items: center; padding-top: 5rem; position: relative; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg,rgba(102,126,234,0.08),rgba(118,75,162,0.10) 50%,transparent), radial-gradient(ellipse 60% 50% at 80% 20%,rgba(155,89,182,0.07),transparent 70%), radial-gradient(ellipse 50% 60% at 10% 80%,rgba(39,174,96,0.05),transparent 70%); pointer-events: none; }
+    .hero-content { position: relative; text-align: center; max-width: 820px; padding: 2rem var(--pad); }
+    .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; padding: 0.4rem 1rem; border: 1px solid var(--rule); border-radius: 2rem; background: white; }
+    .hero-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--e); animation: pulse 2s ease-in-out infinite; }
+    .hero-tag-text { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(0.85)} }
+
+    .hero-title { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 0.4rem; animation: fadeUp 0.8s ease both; }
+    .hero-title-inner { display: inline; background: linear-gradient(135deg, var(--grad-start), var(--grad-end) 60%, var(--m)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+    @supports not (-webkit-background-clip: text) { .hero-title { color: var(--grad-end); background: none; } }
+    .hero-title .tm { font-size: 0.35em; vertical-align: super; font-weight: 400; letter-spacing: 0; }
+    .hero-subtitle { font-family: var(--font-display); font-size: clamp(1.1rem, 2.5vw, 1.45rem); font-weight: 400; font-style: italic; color: var(--mid); margin-bottom: 2.5rem; animation: fadeUp 0.8s 0.15s ease both; }
+
+    .hero-loop { display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 3rem; animation: fadeUp 0.8s 0.3s ease both; flex-wrap: wrap; justify-content: center; }
+    .loop-pill { padding: 0.45rem 0.9rem; border-radius: 2rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; color: white; transition: transform 0.2s; }
+    .loop-pill.m  { background: var(--m); }
+    .loop-pill.e  { background: var(--e); }
+    .loop-pill.s1 { background: var(--s); }
+    .loop-pill.s2 { background: var(--ss-bg); color: var(--dark); }
+    .loop-pill.y  { background: var(--y); }
+    .loop-arrow { color: var(--muted); font-size: 0.9rem; }
+
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s 0.45s ease both; }
+    .btn-primary { padding: 0.9rem 2rem; background: var(--dark); color: var(--cream); border-radius: 2rem; font-weight: 600; font-size: 0.9rem; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; border: 2px solid transparent; }
+    .btn-primary:hover { background: linear-gradient(135deg,var(--grad-start),var(--grad-end)); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.35); }
+    .btn-ghost { padding: 0.9rem 2rem; border: 2px solid var(--rule); border-radius: 2rem; font-weight: 500; font-size: 0.9rem; color: var(--mid); transition: border-color 0.2s, color 0.2s, transform 0.15s; }
+    .btn-ghost:hover { border-color: var(--dark); color: var(--dark); transform: translateY(-2px); }
+
+    .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.4rem; color: var(--muted); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; animation: fadeIn 1.5s 1s ease both; }
+    .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--muted), transparent); animation: scrollLine 2s ease-in-out infinite; }
+    @keyframes scrollLine { 0%{opacity:0;transform:scaleY(0);transform-origin:top} 50%{opacity:1;transform:scaleY(1);transform-origin:top} 100%{opacity:0;transform:scaleY(1);transform-origin:bottom} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+    /* ── SECTION LABEL ──────────────────────────────────────── */
+    .slabel { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 3rem; }
+    .slabel-word { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; flex-shrink: 0; }
+    .slabel-line { flex: 1; height: 1px; }
+    .slabel-desc { font-family: var(--font-display); font-size: 0.85rem; font-style: italic; flex-shrink: 0; }
+
+    /* ── ORIGIN CARD ────────────────────────────────────────── */
+    .origin-card { background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
+    .origin-card::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; background: linear-gradient(to right,var(--grad-start),var(--grad-end),var(--m),var(--e),var(--s),var(--ss-bg),var(--y)); }
+    .origin-card .eyebrow { margin-bottom: 0.8rem; display: block; }
+    .origin-card blockquote { font-family: var(--font-display); font-size: 1rem; font-style: italic; color: var(--dark); line-height: 1.6; margin-bottom: 0.9rem; }
+    .origin-card .source { font-size: 0.8rem; color: var(--muted); font-weight: 500; letter-spacing: 0.04em; }
+
+    /* ── FRAMEWORK CARDS ────────────────────────────────────── */
+    .cards-stack { display: flex; flex-direction: column; gap: 2px; margin-bottom: 3rem; }
+    .f-card { display: grid; grid-template-columns: 80px 1fr auto; overflow: hidden; transition: transform 0.2s; }
+    .f-card:first-child { border-radius: 12px 12px 0 0; }
+    .f-card:last-child  { border-radius: 0 0 12px 12px; }
+    .f-card:hover { transform: scaleX(1.004); z-index: 1; }
+    .f-card-letter { display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 2.8rem; font-weight: 900; color: white; }
+    .f-card-body { padding: 1.6rem 1.5rem; background: rgba(255,255,255,0.04); border-left: 1px solid rgba(255,255,255,0.07); }
+    .f-card-body .card-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-sub); margin-bottom: 0.35rem; display: block; }
+    .f-card-body h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: white; margin-bottom: 0.6rem; }
+    .f-card-body p { font-size: 0.9rem; color: var(--on-dark); line-height: 1.7; margin-bottom: 0.75rem; }
+    .f-card-body .reality { font-size: 0.82rem; color: var(--on-dark-sub); font-style: italic; border-left: 2px solid rgba(255,255,255,0.18); padding-left: 0.75rem; line-height: 1.6; }
+    .f-card-body .reality strong { font-style: normal; color: var(--on-dark); }
+    .f-card-quote { padding: 1.6rem 1.5rem; background: rgba(255,255,255,0.02); border-left: 1px solid rgba(255,255,255,0.07); max-width: 280px; display: flex; align-items: center; }
+    .f-card-quote p { font-family: var(--font-display); font-style: italic; font-size: 0.87rem; color: var(--on-dark-sub); line-height: 1.6; }
+    .f-card.m  .f-card-letter { background: var(--m); }
+    .f-card.e  .f-card-letter { background: var(--e); }
+    .f-card.s1 .f-card-letter { background: var(--s); }
+    .f-card.s2 .f-card-letter { background: var(--ss-bg); color: var(--dark); }
+    .f-card.y  .f-card-letter { background: var(--y); }
+
+    /* ── LOOP DIAGRAM ───────────────────────────────────────── */
+    .loop-diagram { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; padding: 2rem; text-align: center; margin-bottom: 3.5rem; }
+    .loop-diagram .eyebrow { margin-bottom: 0.8rem; display: block; color: var(--on-dark-sub); }
+    .loop-diagram p { font-size: 0.88rem; color: var(--on-dark); max-width: 480px; margin-inline: auto; margin-bottom: 1.5rem; line-height: 1.7; }
+    .loop-pills { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.4rem; }
+    .loop-arrow-lg { color: var(--on-dark-sub); font-size: 1.1rem; }
+
+    /* ── PRACTICE ───────────────────────────────────────────── */
+    .practice-hd { margin-bottom: 2rem; }
+    .practice-hd h3 { font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.5rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: white; margin-bottom: 0.7rem; }
+    .practice-hd p { color: var(--on-dark); max-width: 500px; font-size: 0.95rem; line-height: 1.75; }
+    .practice-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .practice-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; transition: transform 0.2s, border-color 0.2s; }
+    .practice-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.2); }
+    .practice-card .dur { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-sub); margin-bottom: 0.7rem; display: block; }
+    .practice-card h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 0.7rem; }
+    .practice-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .practice-card ul li { font-size: 0.87rem; color: var(--on-dark); display: flex; gap: 0.6rem; line-height: 1.55; }
+    .practice-card ul li::before { content:'→'; color: var(--e); flex-shrink:0; font-size:0.8rem; margin-top:2px; }
+    .practice-note { margin-top: 1.5rem; padding: 1.3rem 1.6rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; display: flex; align-items: flex-start; gap: 1.2rem; font-size: 0.88rem; color: var(--on-dark); line-height: 1.65; }
+    .practice-note .badge { flex-shrink:0; font-family: var(--font-display); font-size:0.95rem; font-style:italic; color:white; font-weight:700; white-space:nowrap; }
+
+    /* ── THREE TIERS ────────────────────────────────────────── */
+    #tiers { padding: clamp(4rem,8vw,7rem) 0; }
+    .tiers-intro { max-width: 620px; margin-bottom: 3rem; }
+    .tiers-intro h2 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--dark); margin-bottom: 0.8rem; }
+    .tiers-intro p { color: var(--mid); font-size: 0.97rem; line-height: 1.8; }
+    .tiers-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 2rem; }
+    .tier-card { background: white; border: 2px solid var(--rule); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+    .tier-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+    .tier-card.taster { border-color: var(--m); }
+    .tier-card.self-study { border-color: var(--s); }
+    .tier-card.facilitated { border-color: var(--y); }
+    .tier-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1rem; }
+    .tier-card.taster .tier-badge { color: var(--m); }
+    .tier-card.self-study .tier-badge { color: var(--s); }
+    .tier-card.facilitated .tier-badge { color: var(--y); }
+    .tier-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .tier-card.taster .tier-dot { background: var(--m); }
+    .tier-card.self-study .tier-dot { background: var(--s); }
+    .tier-card.facilitated .tier-dot { background: var(--y); }
+    .tier-name { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
+    .tier-duration { font-size: 0.8rem; font-weight: 600; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 1rem; }
+    .tier-desc { font-size: 0.9rem; color: var(--mid); line-height: 1.7; margin-bottom: 1.2rem; flex: 1; }
+    .tier-includes { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.5rem; }
+    .tier-includes li { font-size: 0.83rem; color: var(--mid); display: flex; gap: 0.6rem; line-height: 1.4; }
+    .tier-includes li::before { content: '→'; flex-shrink: 0; font-size: 0.75rem; margin-top: 2px; }
+    .tier-card.taster .tier-includes li::before { color: var(--m); }
+    .tier-card.self-study .tier-includes li::before { color: var(--s); }
+    .tier-card.facilitated .tier-includes li::before { color: var(--y); }
+    .tier-cta { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; border-radius: 2rem; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s, transform 0.15s; text-align: center; min-height: 44px; }
+    .tier-card.taster .tier-cta { background: var(--m); color: white; }
+    .tier-card.self-study .tier-cta { background: var(--s); color: white; }
+    .tier-card.facilitated .tier-cta { background: var(--y); color: white; }
+    .tier-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+    .tiers-note { background: white; border: 1px solid var(--rule); border-left: 3px solid var(--grad-start); border-radius: 0 10px 10px 0; padding: 1.2rem 1.6rem; font-size: 0.9rem; color: var(--mid); line-height: 1.65; }
+    .tiers-note strong { color: var(--dark); }
+
+    /* ── INSIDE ─────────────────────────────────────────────── */
+    #inside { padding: clamp(4rem,8vw,7rem) 0; background: var(--dark); }
+    .inside-intro h2 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: white; margin-bottom: 0.8rem; }
+    .inside-intro p { color: var(--on-dark); font-size: 0.97rem; line-height: 1.8; max-width: 540px; margin-bottom: 2.5rem; }
+    .inside-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+    .inside-col-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-dark-sub); margin-bottom: 0.8rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .inside-item { display: flex; gap: 0.75rem; padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.88rem; color: var(--on-dark); line-height: 1.5; }
+    .inside-item:last-child { border-bottom: none; }
+    .inside-item-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--e); flex-shrink: 0; margin-top: 6px; }
+    .inside-item strong { color: white; display: block; font-size: 0.88rem; margin-bottom: 1px; }
+    .inside-free-note { margin-top: 2rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem 2rem; display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+    .free-badge { font-family: var(--font-display); font-size: 2.5rem; font-weight: 900; color: var(--ss-bg); line-height: 1; flex-shrink: 0; }
+    .free-text h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
+    .free-text p { font-size: 0.88rem; color: var(--on-dark); line-height: 1.65; }
+
+    /* ── FAQ ────────────────────────────────────────────────── */
+    #faq { padding: clamp(4rem,8vw,7rem) 0; }
+    .faq-intro-quote { background: white; border: 1px solid var(--rule); border-left: 4px solid var(--grad-start); border-radius: 0 12px 12px 0; padding: 1.4rem 1.8rem; margin-bottom: 3rem; font-family: var(--font-display); font-style: italic; font-size: 1.05rem; color: var(--dark); line-height: 1.65; }
+    .faq-intro-quote strong { font-style: normal; color: var(--e); }
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    details.faq-item { border: 1px solid var(--rule); border-radius: 0; background: white; overflow: hidden; transition: box-shadow 0.2s; }
+    details.faq-item:first-child { border-radius: 12px 12px 0 0; }
+    details.faq-item:last-child  { border-radius: 0 0 12px 12px; }
+    details.faq-item + details.faq-item { border-top: none; }
+    details.faq-item[open] { box-shadow: 0 4px 20px rgba(0,0,0,0.07); z-index: 1; position: relative; }
+    details.faq-item summary { display: flex; align-items: center; gap: 1rem; padding: 1.3rem 1.5rem; cursor: pointer; list-style: none; font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--dark); border-left: 4px solid transparent; transition: background 0.15s, border-color 0.2s; }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::marker { display: none; }
+    details.faq-item summary:hover { background: var(--cream); }
+    details.faq-item[open] summary { background: var(--cream); }
+    details.faq-item .faq-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-body); font-size: 0.75rem; font-weight: 800; color: white; }
+    details.faq-item .faq-chevron { margin-left: auto; flex-shrink: 0; color: var(--muted); font-size: 0.8rem; transition: transform 0.25s; }
+    details.faq-item[open] .faq-chevron { transform: rotate(180deg); }
+    .faq-body { padding: 0 1.5rem 1.5rem 1.5rem; border-left: 4px solid transparent; }
+    .faq-body p { font-size: 0.95rem; color: var(--mid); line-height: 1.75; margin-bottom: 1rem; }
+    .faq-body p:last-child { margin-bottom: 0; }
+    .faq-highlight { background: var(--cream); border-radius: 8px; padding: 1rem 1.2rem; margin-top: 0.5rem; font-size: 0.9rem; color: var(--mid); line-height: 1.7; }
+    .faq-highlight strong { color: var(--dark); display: block; margin-bottom: 0.4rem; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .faq-highlight ul { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; padding: 0; }
+    .faq-highlight ul li { display: flex; gap: 0.6rem; }
+    .faq-highlight ul li::before { content: '→'; color: var(--e); flex-shrink: 0; margin-top: 2px; }
+    .faq-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+    .faq-tag { padding: 0.3rem 0.85rem; border: 1.5px solid var(--rule); border-radius: 2rem; font-size: 0.78rem; font-weight: 600; color: var(--mid); background: white; }
+    .faq-not { margin-top: 1rem; padding: 0.9rem 1.2rem; border: 1px solid var(--rule); border-radius: 8px; font-size: 0.88rem; color: var(--mid); line-height: 1.65; }
+    .faq-not strong { color: var(--dark); }
+    .faq-disclaimer { margin-top: 2.5rem; padding: 1.2rem 1.5rem; border: 1px solid var(--rule); border-radius: 10px; font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+    .faq-disclaimer strong { color: var(--mid); }
+    details.faq-item:nth-child(1) summary, details.faq-item:nth-child(1)[open] .faq-body { border-left-color: var(--m); }
+    details.faq-item:nth-child(2) summary, details.faq-item:nth-child(2)[open] .faq-body { border-left-color: var(--e); }
+    details.faq-item:nth-child(3) summary, details.faq-item:nth-child(3)[open] .faq-body { border-left-color: var(--s); }
+    details.faq-item:nth-child(4) summary, details.faq-item:nth-child(4)[open] .faq-body { border-left-color: var(--ss-bg); }
+    details.faq-item:nth-child(5) summary, details.faq-item:nth-child(5)[open] .faq-body { border-left-color: var(--y); }
+    details.faq-item:nth-child(6) summary, details.faq-item:nth-child(6)[open] .faq-body { border-left-color: var(--dark); }
+    details.faq-item:nth-child(7) summary, details.faq-item:nth-child(7)[open] .faq-body { border-left-color: var(--grad-start); }
+    details.faq-item:nth-child(8) summary, details.faq-item:nth-child(8)[open] .faq-body { border-left-color: var(--e); }
+    details.faq-item:nth-child(9) summary, details.faq-item:nth-child(9)[open] .faq-body { border-left-color: var(--y); }
+    details.faq-item:nth-child(10) summary, details.faq-item:nth-child(10)[open] .faq-body { border-left-color: var(--s); }
+    details.faq-item:nth-child(11) summary, details.faq-item:nth-child(11)[open] .faq-body { border-left-color: var(--m); }
+    details.faq-item:nth-child(1) .faq-num { background: var(--m); }
+    details.faq-item:nth-child(2) .faq-num { background: var(--e); }
+    details.faq-item:nth-child(3) .faq-num { background: var(--s); }
+    details.faq-item:nth-child(4) .faq-num { background: var(--ss-bg); color: var(--dark); }
+    details.faq-item:nth-child(5) .faq-num { background: var(--y); }
+    details.faq-item:nth-child(6) .faq-num { background: var(--dark); }
+    details.faq-item:nth-child(7) .faq-num { background: var(--grad-start); }
+    details.faq-item:nth-child(8) .faq-num { background: var(--e); }
+    details.faq-item:nth-child(9) .faq-num { background: var(--y); }
+    details.faq-item:nth-child(10) .faq-num { background: var(--s); }
+    details.faq-item:nth-child(11) .faq-num { background: var(--m); }
+
+    /* ── Get MESSY! ────────────────────────────────────── */
+    #get { padding: clamp(4rem,8vw,7rem) 0; background: var(--dark); }
+    .get-intro { text-align: center; max-width: 600px; margin-inline: auto; margin-bottom: 3rem; }
+    .get-intro .eyebrow { display: block; margin-bottom: 1rem; color: var(--on-dark-sub); }
+    .get-intro h2 { font-family: var(--font-display); font-size: clamp(2rem,4vw,3rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; color: white; margin-bottom: 0.9rem; }
+    .get-intro h2 em { color: var(--e); font-style: normal; }
+    .get-intro p { color: var(--on-dark); font-size: 0.97rem; line-height: 1.8; }
+    .get-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
+    .get-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; }
+    .get-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.22); }
+    .get-card-badge { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .get-card:nth-child(1) .get-card-badge { color: var(--m); }
+    .get-card:nth-child(2) .get-card-badge { color: var(--s); }
+    .get-card:nth-child(3) .get-card-badge { color: var(--y); }
+    .get-card-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 0.25rem; }
+    .get-card-sub { font-size: 0.78rem; color: var(--on-dark-sub); letter-spacing: 0.05em; margin-bottom: 1.2rem; }
+    .get-card-price { margin-bottom: 1rem; }
+    .price-min { font-size: 0.75rem; color: var(--on-dark-sub); margin-bottom: 0.1rem; }
+    .price-suggested { font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: white; line-height: 1; }
+    .price-suggested span { font-size: 1rem; font-weight: 400; color: var(--on-dark-sub); margin-left: 0.2rem; }
+    .get-card-desc { font-size: 0.87rem; color: var(--on-dark); line-height: 1.65; margin-bottom: 1.5rem; flex: 1; }
+    .get-card-btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.8rem 1.5rem; border-radius: 2rem; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s, transform 0.15s; min-height: 44px; text-align: center; }
+    .get-card:nth-child(1) .get-card-btn { background: var(--m); color: white; }
+    .get-card:nth-child(2) .get-card-btn { background: var(--s); color: white; }
+    .get-card:nth-child(3) .get-card-btn { background: linear-gradient(135deg,var(--grad-start),var(--grad-end)); color: white; }
+    .get-card-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .get-pwyw-note { text-align: center; font-size: 0.85rem; color: var(--on-dark-sub); line-height: 1.65; max-width: 540px; margin-inline: auto; }
+    .get-pwyw-note a { color: var(--on-dark); text-decoration: underline; }
+
+    /* ── CONTACT ────────────────────────────────────────────── */
+    #contact { padding: clamp(4rem,8vw,7rem) 0; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(3rem,6vw,6rem); align-items: start; }
+    .contact-left h2 { font-family: var(--font-display); font-size: clamp(2rem,4vw,3rem); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; color: var(--dark); margin-bottom: 1rem; }
+    .contact-left h2 em { color: var(--e); font-style: italic; }
+    .contact-left p { color: var(--mid); font-size: 0.97rem; line-height: 1.75; margin-bottom: 1.2rem; }
+    .contact-promise { display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.2rem; background: white; border: 1px solid var(--rule); border-left: 3px solid var(--y); border-radius: 0 8px 8px 0; font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
+    .contact-promise-icon { flex-shrink:0; font-size:1rem; margin-top:1px; }
+    .contact-form-wrap { background: white; border: 1px solid var(--rule); border-radius: 16px; padding: 2rem; }
+    .contact-form-wrap h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .form-group input, .form-group textarea { width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--rule); border-radius: 8px; font-family: var(--font-body); font-size: 0.92rem; color: var(--dark); background: var(--cream); transition: border-color 0.2s, background 0.2s; outline: none; resize: vertical; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--grad-start); background: white; }
+    .form-group textarea { min-height: 130px; line-height: 1.6; }
+    .contact-submit { width: 100%; padding: 0.9rem 1.5rem; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: white; border: none; border-radius: 8px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.02em; cursor: pointer; transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s; min-height: 48px; }
+    .contact-submit:hover { opacity: 0.92; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.35); }
+    .contact-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .contact-status { margin-top: 1rem; padding: 0.85rem 1rem; border-radius: 8px; font-size: 0.88rem; line-height: 1.55; display: none; }
+    .contact-status.success { display: block; background: rgba(39,174,96,0.1); border: 1px solid var(--y); color: #1a7a42; }
+    .contact-status.error { display: block; background: rgba(231,76,60,0.08); border: 1px solid #e74c3c; color: #c0392b; }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer { padding: 2rem var(--pad); border-top: 1px solid var(--rule); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .footer-logo { font-family:var(--font-display); font-weight:700; font-size:0.95rem; color: var(--dark); }
+    .footer-logo span { color: var(--e); }
+    .footer-tagline { font-family:var(--font-display); font-style:italic; color: var(--mid); font-size:0.9rem; }
+    .footer-copy { font-size: 0.75rem; color: var(--muted); }
+
+    /* ── HAMBURGER / MOBILE NAV ─────────────────────────────── */
+    .nav-menu-btn {
+      display: none;
+      background: none;
+      border: 1.5px solid var(--rule);
+      border-radius: 8px;
+      padding: 0.45rem 0.6rem;
+      cursor: pointer;
+      color: var(--dark);
+      font-size: 1.1rem;
+      line-height: 1;
+      min-height: 44px;
+      min-width: 44px;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .nav-menu-btn:hover { border-color: var(--dark); background: var(--cream); }
+    .nav-menu-btn[aria-expanded="true"] { border-color: var(--dark); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 99;
+      background: rgba(30,42,53,0.55);
+      backdrop-filter: blur(4px);
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav-panel {
+      position: absolute;
+      top: 0; right: 0;
+      width: min(320px, 85vw);
+      height: 100%;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: -8px 0 32px rgba(0,0,0,0.15);
+    }
+    .mobile-nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--rule);
+      flex-shrink: 0;
+    }
+    .mobile-nav-header-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--dark);
+    }
+    .mobile-nav-header-logo span { color: var(--e); }
+    .mobile-nav-close {
+      background: none;
+      border: 1.5px solid var(--rule);
+      border-radius: 8px;
+      padding: 0.4rem 0.65rem;
+      cursor: pointer;
+      color: var(--dark);
+      font-size: 1.1rem;
+      line-height: 1;
+      min-height: 44px;
+      min-width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .mobile-nav-close:hover { border-color: var(--dark); background: white; }
+    .mobile-nav-links {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .mobile-nav-panel a {
+      display: block;
+      padding: 0.9rem 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--mid);
+      border-radius: 8px;
+      border: 1px solid transparent;
+      transition: background 0.15s, color 0.15s;
+      text-decoration: none;
+    }
+    .mobile-nav-panel a:hover { background: white; color: var(--dark); border-color: var(--rule); }
+    .mobile-nav-panel .mobile-nav-cta {
+      margin-top: 0.75rem;
+      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      color: white !important;
+      font-weight: 700;
+      text-align: center;
+      border-radius: 2rem;
+      border-color: transparent;
+    }
+    .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; }
+    @media (max-width: 900px) {
+      .tiers-grid, .get-grid { grid-template-columns: 1fr; }
+      .inside-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .two-col { grid-template-columns: 1fr !important; }
+      .f-card { grid-template-columns: 60px 1fr; }
+      .f-card-quote { display: none; }
+      .f-card-letter { font-size: 2rem; }
+      .practice-grid { grid-template-columns: 1fr !important; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-menu-btn { display: inline-flex; }
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+    }
+
+    /* ── FLOATING NAV ───────────────────────────────────────── */
+    .float-nav { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; display: flex; flex-direction: column; gap: 0.5rem; }
+    .float-btn { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 4px 14px rgba(102,126,234,0.4); opacity: 0; transform: translateY(8px); transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s; pointer-events: none; }
+    .float-btn.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .float-btn:hover { box-shadow: 0 6px 20px rgba(102,126,234,0.55); transform: translateY(-2px); }
+    .section-top-link {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0.5rem var(--pad) 0;
+      max-width: var(--max);
+      margin-inline: auto;
+    }
+    .section-top-link a {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color 0.2s;
+    }
+    .section-top-link a:hover { color: var(--grad-end); }
+  </style>
+</head>
+<body>
+
+    <!-- FLOATING NAV -->
+  <div class="float-nav" aria-label="Page navigation">
+    <button class="float-btn" id="floatTop" aria-label="Previous section" onclick="var ids=['hero','why','what','tiers','inside','faq','messy-play','messy-plays','get','contact'];var st=window.pageYOffset||document.documentElement.scrollTop;for(var i=ids.length-1;i>=0;i--){var el=document.getElementById(ids[i]);if(el&&el.offsetTop&lt;st-50){el.scrollIntoView({behavior:'smooth'});return;}}">&#8593;</button>
+    <button class="float-btn visible" id="floatBottom" aria-label="Next section" onclick="var ids=['hero','why','what','tiers','inside','faq','messy-play','messy-plays','get','contact'];var st=window.pageYOffset||document.documentElement.scrollTop;for(var i=0;i&lt;ids.length;i++){var el=document.getElementById(ids[i]);if(el&amp;&amp;el.offsetTop&gt;st+100){el.scrollIntoView({behavior:'smooth'});return;}}">&#8595;</button>
+  </div>
+
+  <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+  <!-- NAV -->
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="The MESSY Playbook — return to top">
+        The MESSY Playbook<span aria-hidden="true">™</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#why">Why MESSY?</a></li>
+        <li><a href="#what">The Playbook</a></li>
+        <li><a href="#tiers">How It Works</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="play.html">Messy Plays</a></li>
+        <li><a href="thinking.html">The Thinking</a></li>
+      </ul>
+      <a href="#get" class="nav-cta">Get MESSY!</a>
+      <button
+        class="nav-menu-btn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >☰</button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-header-logo">The MESSY Playbook<span>™</span></span>
+        <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="#why"          onclick="closeMobileNav()">Why MESSY?</a>
+        <a href="#what"         onclick="closeMobileNav()">The Playbook</a>
+        <a href="#tiers"        onclick="closeMobileNav()">How It Works</a>
+        <a href="#faq"          onclick="closeMobileNav()">FAQ</a>
+        <a href="play.html"     onclick="closeMobileNav()">Messy Plays</a>
+        <a href="thinking.html" onclick="closeMobileNav()">The Thinking</a>
+        <a href="#get"          onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ══ HERO ══ -->
+    <section id="hero" aria-label="Introduction">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="hero-tag" aria-hidden="true">
+          <span class="dot"></span>
+          <span class="hero-tag-text">The Live Messy Project</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-title-inner">The MESSY<br>Playbook<span class="tm" aria-label="trademark">™</span></span>
+        </h1>
+        <p class="hero-subtitle">Self-Honesty for People Tired of Being Optimized</p>
+        <div class="hero-loop" aria-label="The MESSY framework: Monitor, Execute, Support, Surrender, Yield — a continuous loop">
+          <span class="loop-pill m" aria-hidden="true">M</span><span class="loop-arrow" aria-hidden="true">→</span>
+          <span class="loop-pill e" aria-hidden="true">E</span><span class="loop-arrow" aria-hidden="true">→</span>
+          <span class="loop-pill s1" aria-hidden="true">S</span><span class="loop-arrow" aria-hidden="true">→</span>
+          <span class="loop-pill s2" aria-hidden="true">S</span><span class="loop-arrow" aria-hidden="true">→</span>
+          <span class="loop-pill y" aria-hidden="true">Y</span><span class="loop-arrow" aria-hidden="true">↺</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#what" class="btn-primary">Explore the Playbook</a>
+          <a href="#get" class="btn-ghost">Get MESSY!</a>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-line"></div>
+        <span>scroll</span>
+      </div>
+    </section>
+
+
+  <div class="section-top-link"><a href="#hero">↑ Back to top</a></div>
+    <hr class="divider" />
+
+    <!-- ══ WHY ══ -->
+    <section id="why" aria-labelledby="why-heading" style="padding:clamp(4rem,8vw,7rem) 0;">
+      <div class="wrap">
+
+        <div class="slabel" aria-hidden="true">
+          <span class="slabel-word" style="color:var(--grad-start);">Why</span>
+          <span class="slabel-line" style="background:var(--rule);"></span>
+          <span class="slabel-desc" style="color:var(--muted);">Do You Recognize Yourself?</span>
+        </div>
+
+        <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start;margin-bottom:3rem;">
+          <div>
+            <h2 id="why-heading" style="font-family:var(--font-display);font-size:clamp(1.5rem,4vw,3.2rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:var(--dark);margin-bottom:1.5rem;">
+              Read these slowly.<br><em style="color:var(--e);font-style:normal;">Notice which ones land.</em>
+            </h2>
+            <div style="display:flex;flex-direction:column;gap:0.9rem;">
+              <div style="background:white;border-left:4px solid var(--m);border-radius:0 8px 8px 0;padding:1rem 1.2rem;font-size:0.93rem;color:var(--mid);line-height:1.65;">You've tried the morning routines, the productivity systems, the habit trackers. They work for a while. Then they don't. And you blame yourself for not sticking with them.</div>
+              <div style="background:white;border-left:4px solid var(--e);border-radius:0 8px 8px 0;padding:1rem 1.2rem;font-size:0.93rem;color:var(--mid);line-height:1.65;">You show up one way at work and another way at home — and you're exhausted from managing multiple versions of yourself. Somewhere along the way, you lost track of who you actually are.</div>
+              <div style="background:white;border-left:4px solid var(--s);border-radius:0 8px 8px 0;padding:1rem 1.2rem;font-size:0.93rem;color:var(--mid);line-height:1.65;">You've achieved things. Hit goals. Checked boxes. But it doesn't feel like you thought it would. Something's still missing, and more achievement isn't filling it.</div>
+              <div style="background:white;border-left:4px solid var(--ss-bg);border-radius:0 8px 8px 0;padding:1rem 1.2rem;font-size:0.93rem;color:var(--mid);line-height:1.65;">You only share the polished version — the wins, the insights, the "figured it out" moments. The messy middle? You keep that hidden. It feels safer that way. But also lonelier.</div>
+              <div style="background:white;border-left:4px solid var(--y);border-radius:0 8px 8px 0;padding:1rem 1.2rem;font-size:0.93rem;color:var(--mid);line-height:1.65;">You keep waiting until you have it together before you really go for what you want. But "together" never quite arrives. So you stay stuck, preparing for a readiness that doesn't come.</div>
+              <div style="background:white;border-left:4px solid var(--dark);border-radius:0 8px 8px 0;padding:1rem 1.2rem;font-size:0.93rem;color:var(--mid);line-height:1.65;">You're tired. Not just physically. Tired of performing. Tired of optimizing. Tired of the gap between who you're supposed to be and who you actually are.</div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:1.2rem;">
+
+            <div style="background:linear-gradient(135deg,var(--grad-start),var(--grad-end));color:white;padding:2rem;border-radius:16px;text-align:center;">
+              <p style="font-family:var(--font-display);font-size:1.35rem;font-weight:700;line-height:1.3;margin-bottom:1rem;">"What if the problem isn't you?"</p>
+              <p style="font-size:0.9rem;opacity:0.92;line-height:1.7;">What if every system that failed you was designed for a version of human that doesn't actually exist? What if the answer isn't <strong>more optimization</strong> — but learning to work <strong>with</strong> your complexity instead of against it?</p>
+            </div>
+
+            <div class="origin-card">
+              <span class="eyebrow">The Origin</span>
+              <blockquote>"I studied Manufacturing Execution Systems — the software backbone of modern production. MES tracks what's actually happening on the shop floor, bridges the gap between planning and reality, and helps manufacturers work with messy, real-world conditions rather than ideal scenarios. What if we could apply those same principles to being human?"</blockquote>
+              <p class="source">— The Live Messy Project</p>
+            </div>
+
+            <div style="background:white;border:1px solid var(--rule);border-radius:12px;padding:1.5rem;">
+              <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.9rem;">If you recognized yourself above...</p>
+              <p style="font-family:var(--font-display);font-size:1rem;font-style:italic;color:var(--dark);line-height:1.65;">You're not broken. You're not lazy. You're not "bad at follow-through." You're a complex human being asked to perform like a simple machine. And there's another way.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div style="background:white;border:1px solid var(--rule);border-radius:12px;padding:2rem;">
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:1.2rem;">What MESSY is <em style="font-weight:400;color:var(--mid);">not:</em></h3>
+          <ul role="list" class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;list-style:none;">
+            <li style="display:flex;align-items:flex-start;gap:0.7rem;padding:0.75rem 1rem;border:1px solid var(--rule);border-radius:8px;font-size:0.9rem;color:var(--mid);"><span aria-hidden="true" style="flex-shrink:0;color:var(--muted);font-size:0.8rem;margin-top:3px;">✕</span>A productivity hack that will "transform your life"</li>
+            <li style="display:flex;align-items:flex-start;gap:0.7rem;padding:0.75rem 1rem;border:1px solid var(--rule);border-radius:8px;font-size:0.9rem;color:var(--mid);"><span aria-hidden="true" style="flex-shrink:0;color:var(--muted);font-size:0.8rem;margin-top:3px;">✕</span>A framework that ignores your actual humanity</li>
+            <li style="display:flex;align-items:flex-start;gap:0.7rem;padding:0.75rem 1rem;border:1px solid var(--rule);border-radius:8px;font-size:0.9rem;color:var(--mid);"><span aria-hidden="true" style="flex-shrink:0;color:var(--muted);font-size:0.8rem;margin-top:3px;">✕</span>Another optimization system disguised as wisdom</li>
+            <li style="display:flex;align-items:flex-start;gap:0.7rem;padding:0.75rem 1rem;border:1px solid var(--rule);border-radius:8px;font-size:0.9rem;color:var(--mid);"><span aria-hidden="true" style="flex-shrink:0;color:var(--muted);font-size:0.8rem;margin-top:3px;">✕</span>A way to do more, be more, or achieve more</li>
+            <li style="display:flex;align-items:flex-start;gap:0.7rem;padding:0.75rem 1rem;border:1px solid var(--rule);border-radius:8px;font-size:0.9rem;color:var(--mid);grid-column:1/-1;"><span aria-hidden="true" style="flex-shrink:0;color:var(--muted);font-size:0.8rem;margin-top:3px;">✕</span>A system that asks you to separate who you are at work from who you are everywhere else</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+
+  <div class="section-top-link"><a href="#hero">↑ Back to top</a></div>
+    <hr class="divider" />
+
+    <!-- ══ WHAT — Framework ══ -->
+    <section id="what" aria-labelledby="what-heading" style="padding:clamp(4rem,8vw,7rem) 0;background:var(--dark);">
+      <div class="wrap">
+
+        <div class="slabel" aria-hidden="true">
+          <span class="slabel-word" style="color:var(--y);">What</span>
+          <span class="slabel-line" style="background:rgba(255,255,255,0.1);"></span>
+          <span class="slabel-desc" style="color:var(--on-dark-sub);">The Framework</span>
+        </div>
+
+        <div style="text-align:center;margin-bottom:clamp(2.5rem,4vw,4rem);">
+          <p style="font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);font-weight:900;letter-spacing:0.25em;margin-bottom:1rem;" aria-label="M E S S Y">
+            <span style="color:var(--m);">M</span><span style="color:rgba(255,255,255,0.3);">·</span><span style="color:var(--e);">E</span><span style="color:rgba(255,255,255,0.3);">·</span><span style="color:var(--s);">S</span><span style="color:rgba(255,255,255,0.3);">·</span><span style="color:var(--ss-bg);">S</span><span style="color:rgba(255,255,255,0.3);">·</span><span style="color:var(--y);">Y</span>
+          </p>
+          <h2 id="what-heading" style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.1;letter-spacing:-0.03em;color:white;margin-bottom:0.8rem;">Each letter is a practice<br>in self-honesty.</h2>
+          <p style="color:var(--on-dark);max-width:500px;margin-inline:auto;font-size:0.97rem;line-height:1.75;">Not a checklist. Not a system to follow perfectly. A set of honest questions to ask yourself — across all areas of life, all at once.</p>
+        </div>
+
+        <div class="cards-stack">
+
+          <article class="f-card m" aria-label="M — Monitor: Cultivate Self-Awareness">
+            <div class="f-card-letter" aria-hidden="true">M</div>
+            <div class="f-card-body">
+              <span class="card-label">Monitor</span>
+              <h3>Cultivate Self-Awareness</h3>
+              <p>Before you can grow, you need to check in — whether that's noticing your energy before a difficult conversation or sensing the real dynamics in a room where everyone's saying "everything's fine." Notice what's actually happening, not what should be happening.</p>
+              <p class="reality"><strong>Reality Check:</strong> What am I deliberately NOT noticing? What would a trusted friend say I'm avoiding?</p>
+            </div>
+            <div class="f-card-quote" aria-hidden="true"><p>"You can't shift what you don't see, whether it's a pattern in your marriage or dysfunction in your team."</p></div>
+          </article>
+
+          <article class="f-card e" aria-label="E — Execute: Take Aligned Action">
+            <div class="f-card-letter" aria-hidden="true">E</div>
+            <div class="f-card-body">
+              <span class="card-label">Execute</span>
+              <h3>Take Aligned (or 'MESSY') Action</h3>
+              <p>This isn't hustle culture. It's aligned action based on reality. One real step beats a dozen perfect plans. That might mean sending the difficult email, having the uncomfortable conversation, taking a walk to clear your head, or simply resting when you're depleted.</p>
+              <p class="reality"><strong>Reality Check:</strong> What if I took imperfect action today? What would good enough look like in this project or relationship?</p>
+            </div>
+            <div class="f-card-quote" aria-hidden="true"><p>"Progress doesn't need to be dramatic to be meaningful, whether you're working on a project or working on yourself."</p></div>
+          </article>
+
+          <article class="f-card s1" aria-label="S — Support: Design Supportive Habits">
+            <div class="f-card-letter" aria-hidden="true">S</div>
+            <div class="f-card-body">
+              <span class="card-label">Support</span>
+              <h3>Design Supportive Habits</h3>
+              <p>Goals are easy. Support systems are hard. It's not about rigid productivity systems — it's about creating rhythms that hold you when things get overwhelming. Design habits that work for your actual life, not your aspirational one. Build scaffolding for bad days.</p>
+              <p class="reality"><strong>Reality Check:</strong> What would my system look like if I designed it for my worst day? How can I make this sustainable when I'm overwhelmed?</p>
+            </div>
+            <div class="f-card-quote" aria-hidden="true"><p>"Most people design support for their best day — then feel like failures on regular ones."</p></div>
+          </article>
+
+          <article class="f-card s2" aria-label="S — Surrender: Embrace Imperfection">
+            <div class="f-card-letter" aria-hidden="true">S</div>
+            <div class="f-card-body">
+              <span class="card-label">Surrender</span>
+              <h3>Embrace Imperfection</h3>
+              <p>Here's where most optimization systems break down — but real life begins. This isn't giving up. It's letting go of the exhausting myth that things must look a certain way to be valid. Share your process, not just your polish. Vulnerability creates connection. Performance creates distance.</p>
+              <p class="reality"><strong>Reality Check:</strong> What am I protecting by only sharing polished results? Where am I performing control instead of actually having it?</p>
+            </div>
+            <div class="f-card-quote" aria-hidden="true"><p>"Growth is not tidy. Relationships are not predictable. You are allowed to be human in all of it."</p></div>
+          </article>
+
+          <article class="f-card y" aria-label="Y — Yield: Reflect and Grow">
+            <div class="f-card-letter" aria-hidden="true">Y</div>
+            <div class="f-card-body">
+              <span class="card-label">Yield</span>
+              <h3>Reflect and Grow</h3>
+              <p>We don't just act. We harvest. Yield asks: "What is this experience actually teaching me?" — whether that's the project that didn't go as planned or the argument with your partner that revealed something important. This is where experience becomes wisdom. Integration over optimization.</p>
+              <p class="reality"><strong>Reality Check:</strong> What if I reflected through play instead of analysis? What would I discover if I drew this experience or told it as a story?</p>
+            </div>
+            <div class="f-card-quote" aria-hidden="true"><p>"We don't just act. We harvest. What is this experience actually teaching me?"</p></div>
+          </article>
+
+        </div>
+
+        <div class="loop-diagram" role="region" aria-label="The MESSY Continuous Learning Loop">
+          <span class="eyebrow">The Continuous Learning Loop</span>
+          <p>YIELD insights inform your next MONITOR session, creating continuous learning across life and work. Each cycle builds on the last, creating wisdom that applies everywhere.</p>
+          <div class="loop-pills">
+            <span class="loop-pill m" aria-hidden="true">Monitor</span><span class="loop-arrow-lg" aria-hidden="true">→</span>
+            <span class="loop-pill e" aria-hidden="true">Execute</span><span class="loop-arrow-lg" aria-hidden="true">→</span>
+            <span class="loop-pill s1" aria-hidden="true">Support</span><span class="loop-arrow-lg" aria-hidden="true">→</span>
+            <span class="loop-pill s2" aria-hidden="true">Surrender</span><span class="loop-arrow-lg" aria-hidden="true">→</span>
+            <span class="loop-pill y" aria-hidden="true">Yield</span><span class="loop-arrow-lg" aria-hidden="true">↺</span>
+          </div>
+        </div>
+
+        <div class="practice-hd">
+          <span class="eyebrow" style="display:block;margin-bottom:0.7rem;color:var(--on-dark-sub);">The Practice</span>
+          <h3 style="font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:white;margin-bottom:0.7rem;">No apps. No tracking.<br>Just honest reflection.</h3>
+          <p>The power is in the practice, not the performance. MESSY fits into the real texture of your day — not the version of your day that looked good on a to-do list.</p>
+        </div>
+        <div class="practice-grid" role="list">
+          <div class="practice-card" role="listitem">
+            <span class="dur">Daily · 3–5 minutes · Morning</span>
+            <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:white;margin-bottom:0.7rem;">Morning Check-In</h4>
+            <ul>
+              <li><strong style="color:var(--on-dark);">Monitor:</strong> What's my energy and what's really going on today?</li>
+              <li><strong style="color:var(--on-dark);">Execute:</strong> What one thing matters most today?</li>
+              <li><strong style="color:var(--on-dark);">Support:</strong> What do I need to show up well?</li>
+            </ul>
+          </div>
+          <div class="practice-card" role="listitem">
+            <span class="dur">Daily · End of Day · Evening</span>
+            <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:white;margin-bottom:0.7rem;">Evening Reflection</h4>
+            <ul>
+              <li><strong style="color:var(--on-dark);">Surrender:</strong> What am I trying to control that I can let go of?</li>
+              <li><strong style="color:var(--on-dark);">Yield:</strong> What did today teach me about being human?</li>
+            </ul>
+          </div>
+          <div class="practice-card" role="listitem">
+            <span class="dur">Weekly · 15–20 minutes</span>
+            <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:white;margin-bottom:0.7rem;">Cross-Domain Review</h4>
+            <ul>
+              <li>How are different areas of my life affecting each other?</li>
+              <li>What patterns am I noticing?</li>
+              <li>Where am I trying to be perfect instead of real?</li>
+              <li>What insights from one area can help in another?</li>
+            </ul>
+          </div>
+        </div>
+        <div class="practice-note">
+          <span class="badge">Monthly Recalibration</span>
+          <span>Every 30 days: Are my support systems serving my whole self? Where am I fragmenting myself unnecessarily? What quality gates am I hitting repeatedly? Compassionate, honest, and grounded in what's real.</span>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider" style="border-color:rgba(255,255,255,0.07);" />
+
+    <!-- ══ THREE TIERS ══ -->
+    <section id="tiers" aria-labelledby="tiers-heading" style="padding:clamp(4rem,8vw,7rem) 0;">
+      <div class="wrap">
+
+        <div class="slabel" aria-hidden="true">
+          <span class="slabel-word" style="color:var(--s);">How It Works</span>
+          <span class="slabel-line" style="background:var(--rule);"></span>
+          <span class="slabel-desc" style="color:var(--muted);">Three Ways In</span>
+        </div>
+
+        <div class="tiers-intro">
+          <h2 id="tiers-heading">Start where you are.<br>Go as deep as you want.</h2>
+          <p>Three ways to experience MESSY — each one a complete experience on its own. They build on each other naturally, but there's no wrong place to begin.</p>
+        </div>
+
+        <div class="tiers-grid">
+
+          <div class="tier-card taster">
+            <div class="tier-badge"><span class="tier-dot" aria-hidden="true"></span>Tier 1 · Start Here</div>
+            <div class="tier-name">MESSY Taster</div>
+            <div class="tier-duration">75 minutes · Standalone · Facilitated</div>
+            <p class="tier-desc">A single-session introduction built entirely around MONITOR — the first and most foundational MESSY practice. You'll experience the Reality vs. Should Gap exercise, write a Mess Permission Slip, and practice sharing something unresolved without receiving advice.</p>
+            <ul class="tier-includes">
+              <li>Framework overview (all five elements)</li>
+              <li>MONITOR experiential deep-dive</li>
+              <li>Partner sharing (no advice-giving)</li>
+              <li>Mess Permission Slip take-home artifact</li>
+            </ul>
+            <a href="#get" class="tier-cta">Get the Taster →</a>
+          </div>
+
+          <div class="tier-card self-study">
+            <div class="tier-badge"><span class="tier-dot" aria-hidden="true"></span>Tier 2 · Go at Your Own Pace</div>
+            <div class="tier-name">Self-Study Program</div>
+            <div class="tier-duration">6 weeks · Self-directed · No facilitator needed</div>
+            <p class="tier-desc">A structured independent journey through all five MESSY practices. One element per week, at your own pace. No tracking, no grades, no performance. The Self-Study Guide even tells you what to do when MESSY starts feeling like work.</p>
+            <ul class="tier-includes">
+              <li>Self-Study Guide with 6-week structure</li>
+              <li>Program Workbook (all five sessions)</li>
+              <li>11 Activity Cards for ongoing practice</li>
+              <li>Weekly + 30-day Reflection Tools</li>
+            </ul>
+            <a href="#get" class="tier-cta">Get the Self-Study Program →</a>
+          </div>
+
+          <div class="tier-card facilitated">
+            <div class="tier-badge"><span class="tier-dot" aria-hidden="true"></span>Tier 3 · The Full Experience</div>
+            <div class="tier-name">6-Session Facilitated Program</div>
+            <div class="tier-duration">6 × 1 hour · Weekly · Cohort-based</div>
+            <p class="tier-desc">The full program with a facilitator and cohort. Each weekly session covers one practice, with real-world homework between sessions and partner activities that require human witness — especially in SURRENDER and YIELD. Closes with a Living MESSY integration session.</p>
+            <ul class="tier-includes">
+              <li>Sessions 1–5: one element per week</li>
+              <li>Partner activities and group sharing</li>
+              <li>Weekly homework with real-life application</li>
+              <li>Session 6: Living MESSY integration</li>
+            </ul>
+            <a href="#get" class="tier-cta">Get the Full Program →</a>
+          </div>
+
+        </div>
+
+        <p class="tiers-note"><strong>Not sure where to start?</strong> The Taster is designed for exactly that. It's a complete experience on its own — and if it resonates, both other paths are there when you're ready.</p>
+
+      </div>
+    </section>
+
+
+  <div class="section-top-link"><a href="#hero">↑ Back to top</a></div>
+    <hr class="divider" />
+
+    <!-- ══ WHAT'S INSIDE ══ -->
+    <section id="inside" aria-labelledby="inside-heading">
+      <div class="wrap">
+
+        <div class="slabel" aria-hidden="true">
+          <span class="slabel-word" style="color:var(--e);">What's Inside</span>
+          <span class="slabel-line" style="background:rgba(255,255,255,0.1);"></span>
+          <span class="slabel-desc" style="color:var(--on-dark-sub);">The Complete System</span>
+        </div>
+
+        <div class="inside-intro">
+          <h2 id="inside-heading">A complete ecosystem<br>of resources.</h2>
+          <p>Every document in the system is designed to work alone and together. There's nothing missing — each tier has everything it needs from day one.</p>
+        </div>
+
+        <div class="inside-grid">
+          <div>
+            <p class="inside-col-label">Facilitation Materials</p>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Facilitator's Master Guide</strong>Complete session agendas, facilitation scripts, group size guidance, and troubleshooting for the Taster and full program.</div></div>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>MESSY Taster Handout</strong>Participant handout for the 75-minute standalone session. Works on its own.</div></div>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>6-Session Program Workbook</strong>In-session activities and weekly homework for all five elements plus Living MESSY.</div></div>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Framework Overview</strong>One-page quick reference with Reality Check prompts for all five practices.</div></div>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Reflection Tools</strong>Weekly prompts, 30-day follow-up questions, and ongoing practice tools.</div></div>
+          </div>
+          <div>
+            <p class="inside-col-label">Participant &amp; Practice Resources</p>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Self-Study Guide</strong>How to use the resources independently, a 6-week structure, and what to do when MESSY starts feeling like work.</div></div>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Digital Activity Cards</strong>11 small, low-stakes experiments for ongoing practice — organized by element.</div></div>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Do You Recognize Yourself?</strong>The entry-point piece for anyone encountering MESSY for the first time.</div></div>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>What Is The MESSY Playbook?</strong>A full overview with elevator pitches, audience fit, and program options.</div></div>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>A Different Kind of Coaching</strong>For coaches who want to understand how MESSY integrates personal and professional development.</div></div>
+          </div>
+        </div>
+
+        <div class="inside-free-note">
+          <div class="free-badge" aria-hidden="true">Free.</div>
+          <div class="free-text">
+            <h3>Everything above is free to use with your clients.</h3>
+            <p>No licensing fees. No ongoing costs. No application required. The only ask is that you keep the attribution — The MESSY Playbook™, Live Messy Project — intact in the materials. Or use the Pay What You Want option to support the project.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider" style="border-color:rgba(255,255,255,0.07);" />
+
+    <!-- ══ FAQ ══ -->
+    <section id="faq" aria-labelledby="faq-heading">
+      <div class="wrap">
+
+        <div class="slabel" aria-hidden="true">
+          <span class="slabel-word" style="color:var(--s);">FAQ</span>
+          <span class="slabel-line" style="background:var(--rule);"></span>
+          <span class="slabel-desc" style="color:var(--muted);">Common Questions</span>
+        </div>
+
+        <h2 id="faq-heading" style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1.5rem;">Questions people ask<br>before they get MESSY.</h2>
+
+        <p class="faq-intro-quote">
+          "But wait — another framework? Another system? Another way to optimize my life?"<br><br>
+          <strong>Actually, no.</strong> This isn't about solving your challenges. It's about fundamentally changing how you relate to them.
+        </p>
+
+        <div class="faq-list" role="list">
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">1</span>What is The MESSY Playbook?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>The MESSY Playbook is an <strong>anti-optimization approach</strong> to personal development. Instead of trying to fix, optimize, or perfect you, it helps you work <em>with</em> your complexity — not against it.</p>
+              <p>Each letter stands for a practice: <strong>Monitor</strong> (self-awareness), <strong>Execute</strong> (aligned action), <strong>Support</strong> (designing for real life), <strong>Surrender</strong> (letting go of control), and <strong>Yield</strong> (turning experience into wisdom). These five practices form a continuous loop — not a linear checklist.</p>
+              <div class="faq-highlight">
+                <strong>The origin</strong>
+                The framework grew out of a study of Manufacturing Execution Systems — the software that helps factories work with real, messy production conditions rather than ideal ones. The insight: the most effective systems work WITH complexity, not against it. The same principle applies to being human.
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">2</span>Why is it called "MESSY"? Doesn't that sound... messy?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>Yes. Intentionally. MESSY is an acronym (Monitor, Execute, Support, Surrender, Yield), but the word itself is the point.</p>
+              <p>Most personal development frameworks try to help you eliminate mess — the uncertainty, the complexity, the imperfection. MESSY argues that the mess isn't the problem. The mess is information. The mess is where real life happens. Growth doesn't occur after you clean it up. It occurs in it.</p>
+              <div class="faq-highlight">
+                <strong>The tagline</strong>
+                "Self-honesty for people tired of being optimized." The framework isn't named MESSY despite the connotation — it's named MESSY because of it.
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">3</span>Is this therapy or professional counseling?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>No. The MESSY Playbook is for personal exploration and growth — not therapy or clinical mental health treatment. It's a framework for self-honesty and integration, not clinical intervention.</p>
+              <div class="faq-highlight">
+                <strong>Important</strong>
+                The creator of The MESSY Playbook is not a psychologist, therapist, or licensed mental health professional. If you're navigating serious mental health, relationship, or life challenges, please connect with a qualified professional. MESSY can complement that work — it is not a substitute for it.
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">4</span>Who is this for?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>People who are tired of optimization culture but still want to grow. People who have tried the systems and found them wanting. People who want a personal development approach that treats them as a whole, complex human being rather than an efficiency problem to solve.</p>
+              <div class="faq-tags" aria-label="People MESSY is designed for">
+                <span class="faq-tag">Recovering Perfectionists</span>
+                <span class="faq-tag">Exhausted High-Achievers</span>
+                <span class="faq-tag">Coaches &amp; Facilitators</span>
+                <span class="faq-tag">People in Transition</span>
+                <span class="faq-tag">Anti-Optimization Advocates</span>
+                <span class="faq-tag">Anyone Tired of Performing</span>
+              </div>
+              <div class="faq-not">
+                <strong>Not for you if:</strong> You want quick fixes, magic bullets, or another productivity system. MESSY requires curiosity about your complexity — not a desire to eliminate it.
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">5</span>What's the difference between the three ways in?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>All three use the same framework. The difference is depth, structure, and whether you need other people in the room.</p>
+              <div class="faq-highlight">
+                <strong>Tier 1 · Start Here — MESSY Taster</strong>
+                75 minutes, facilitated, covers MONITOR only. The goal is to give you a real taste of one practice — not an overview of all five. Standalone value, no commitment to continue.
+              </div>
+              <div class="faq-highlight" style="margin-top:0.5rem;">
+                <strong>Tier 2 · Go at Your Own Pace — Self-Study Program</strong>
+                6 weeks, self-directed, works through all five elements using the workbook, activity cards, and reflection tools. No facilitator needed. Some partner-dependent exercises have solo adaptations built in.
+              </div>
+              <div class="faq-highlight" style="margin-top:0.5rem;">
+                <strong>Tier 3 · The Full Experience — 6-Session Facilitated Program</strong>
+                6 weekly hours with a cohort. Each session covers one element with partner activities, homework, and a closing integration session. The SURRENDER element in particular requires human witness — this is the tier where that work fully lands.
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">6</span>How is this different from other personal development frameworks?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>Most frameworks try to make you better. MESSY tries to make you honest.</p>
+              <div class="faq-highlight">
+                <strong>The key distinctions</strong>
+                <ul>
+                  <li>It doesn't compartmentalize work and personal development — they're the same system</li>
+                  <li>It designs for your worst day, not your best day</li>
+                  <li>It measures curiosity, not success</li>
+                  <li>It treats mess as information rather than a problem to eliminate</li>
+                  <li>It explicitly tells you what to do when the framework itself starts feeling like optimization</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">7</span>What if MESSY starts feeling like another thing on my to-do list?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>Stop. That's the signal. The Self-Study Guide has an entire section called "When MESSY Starts Feeling Like Work" that addresses this directly.</p>
+              <div class="faq-highlight">
+                <strong>The reset prompts</strong>
+                <ul>
+                  <li><em>Tracking your MESSY progress?</em> Delete the tracking. There's no score, no leaderboard. There's just you being human.</li>
+                  <li><em>MESSY feels like a to-do?</em> Drop everything except noticing. Just MONITOR for a week. No action required.</li>
+                  <li><em>Performing imperfection?</em> Ask what you're trying to prove. Real mess doesn't need an audience.</li>
+                  <li><em>Trying to get "really good at this"?</em> There's no "good at" being human. The goal is authenticity, not mastery.</li>
+                </ul>
+              </div>
+              <p>The framework is here to work with your life — not to become another demand on it. Use what serves you. Ignore what doesn't.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">8</span>Is it really free?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>Yes. The MESSY Playbook is free to use — for yourself or with your clients. The complete system is available as a Pay What You Want download, with a suggested price that reflects the development time involved and a minimum that's low enough to not be a real barrier.</p>
+              <p>The only ask is attribution: keep "The MESSY Playbook™, Live Messy Project" intact in the materials wherever they appear. That's it. No licensing agreements, no ongoing costs, no certification required.</p>
+              <div class="faq-highlight">
+                <strong>Why free?</strong>
+                The framework is built around anti-optimization. Charging a premium for it would feel philosophically inconsistent. The goal is for it to reach the people it's for — not to extract maximum revenue from each transaction.
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">9</span>What are Messy Plays?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>Messy Plays are short, research-grounded experiential cards — each one takes a single finding from a real academic paper and turns it into something you can actually feel, not just read about. Alone or with people you know. About 15 minutes. No facilitator needed.</p>
+              <p>The idea is simple: insight lands differently when you've experienced it first. Each Play gives you the experience before the explanation. Play 01 — <em>Staying in the Mess</em> — is based on Salmon & Steinberg (2007) and focuses on the MONITOR practice. It's free.</p>
+              <div class="faq-highlight">
+                <strong>Where to find them</strong>
+                Messy Plays are available at <a href="play.html" style="color:var(--grad-start);text-decoration:underline;text-underline-offset:3px;">messy-playbook.vercel.app/play</a> — free to start, with more plays in development. They work alongside the Playbook or completely on their own.
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">10</span>Is there research behind this? Where does MESSY come from?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>Yes — and the intellectual lineage is documented. MESSY draws on peer-reviewed research, international industry standards, and complexity science. It's not a collection of good ideas. It's a framework derived from a specific body of thought.</p>
+              <div class="faq-highlight">
+                <strong>The short version</strong>
+                The framework originates in Manufacturing Execution Systems (MES) — industrial software designed to work with real, messy production conditions rather than ideal ones. The complexity science of Dave Snowden (Cynefin framework, HBR 2007) provides the theoretical bridge. Peer-reviewed sociology (Nehring & Röcke, 2023) frames the critique of self-optimization culture. And empirical research on self-improvement failure rates (Norcross & Vangarelli, 1988) grounds the problem MESSY is designed to address.
+              </div>
+              <p>The full evidence base — with citations, DOIs, and an annotated reading list — lives on <a href="thinking.html" style="color:var(--grad-start);text-decoration:underline;text-underline-offset:3px;">The Thinking Behind MESSY</a> page.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">11</span>Is there a book?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>Yes — it's coming. The MESSY Playbook book is in development, expanding the framework into a full-length work that goes deeper into the origin story, the research, and what it actually looks and feels like to live inside each of the five practices.</p>
+              <div class="faq-highlight">
+                <strong>Why the page exists before the book does</strong>
+                That feels right for a framework built around working with reality rather than performing readiness. The placeholder is honest: something is coming, and you can find it at <a href="book.html" style="color:var(--grad-start);text-decoration:underline;text-underline-offset:3px;">the book page</a> when it arrives.
+              </div>
+            </div>
+          </details>
+
+        </div>
+
+        <div class="faq-disclaimer">
+          <strong>Disclaimer:</strong> The MESSY Playbook™ is for educational purposes and personal exploration only. It does not constitute therapy, professional counseling, or clinical advice. © 2026 Live Messy Project.
+        </div>
+
+      </div>
+    </section>
+
+
+  <div class="section-top-link"><a href="#hero">↑ Back to top</a></div>
+    <hr class="divider" />
+
+    <!-- ══ Get MESSY! ══ -->
+    <!-- ── MESSY PLAY ── -->
+<section id="messy-play" style="padding:5rem 2rem;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(255,255,255,0.06) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(0,0,0,0.1) 0%,transparent 50%);pointer-events:none;"></div>
+  <div style="max-width:860px;margin:0 auto;position:relative;z-index:1;">
+    <div style="text-align:center;margin-bottom:3.5rem;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;padding:5px 14px;border-radius:100px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.25rem;"><span style="width:7px;height:7px;border-radius:50%;background:#27ae60;display:inline-block;"></span>New from the Live Messy Project</div>
+      <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;color:#fff;line-height:1.1;margin:0 0 1rem;">Messy Play™</h2>
+      <p style="font-size:clamp(1rem,2.5vw,1.2rem);color:rgba(255,255,255,0.75);max-width:520px;margin:0 auto 0.75rem;line-height:1.6;">Research that lives in the body, not just the brain.</p>
+      <p style="font-size:15px;color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto;line-height:1.75;">Each card takes one finding from a real research paper and turns it into a 15-minute experience — something you can feel, not just read. Alone or with people you know. Free to start.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:3rem;">
+      <div style="background:rgba(155,89,182,0.25);border:1px solid rgba(155,89,182,0.45);border-radius:10px;padding:1rem;"><span style="background:#9b59b6;color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:0.5rem;">M · Monitor</span><p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 0.25rem;">Just notice.</p><p style="font-size:11px;color:rgba(255,255,255,0.55);margin:0;line-height:1.4;">Count your urges to fix without acting</p></div>
+      <div style="background:rgba(230,126,34,0.25);border:1px solid rgba(230,126,34,0.45);border-radius:10px;padding:1rem;"><span style="background:#e67e22;color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:0.5rem;">E · Execute</span><p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 0.25rem;">Don't fix it.</p><p style="font-size:11px;color:rgba(255,255,255,0.55);margin:0;line-height:1.4;">Stay in the problem before reaching for a solution</p></div>
+      <div style="background:rgba(52,152,219,0.25);border:1px solid rgba(52,152,219,0.45);border-radius:10px;padding:1rem;"><span style="background:#3498db;color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:0.5rem;">S · Support</span><p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 0.25rem;">Design your floor.</p><p style="font-size:11px;color:rgba(255,255,255,0.55);margin:0;line-height:1.4;">Strip support down to the minimum that works</p></div>
+      <div style="background:rgba(241,196,15,0.15);border:1px solid rgba(241,196,15,0.35);border-radius:10px;padding:1rem;"><span style="background:#f1c40f;color:#2c3e50;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:0.5rem;">S · Surrender</span><p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 0.25rem;">Name what moved.</p><p style="font-size:11px;color:rgba(255,255,255,0.55);margin:0;line-height:1.4;">Track direction — no judgment allowed</p></div>
+      <div style="background:rgba(39,174,96,0.25);border:1px solid rgba(39,174,96,0.45);border-radius:10px;padding:1rem;"><span style="background:#27ae60;color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:0.5rem;">Y · Yield</span><p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 0.25rem;">Harvest the mess.</p><p style="font-size:11px;color:rgba(255,255,255,0.55);margin:0;line-height:1.4;">Extract what only the mess could teach you</p></div>
+    </div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;">
+      <a href="play.html" style="display:inline-block;background:#fff;color:#2c3e50;text-decoration:none;font-size:14px;font-weight:700;padding:0.875rem 2rem;border-radius:100px;">Start Set 01 — Free →</a>
+      <a href="play.html#cards" style="display:inline-block;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.9);text-decoration:none;font-size:14px;font-weight:500;padding:0.875rem 2rem;border-radius:100px;">Explore Messy Play →</a>
+    </div>
+    <div style="display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;">
+      <span style="font-size:12px;color:rgba(255,255,255,0.45);">Set 01 · Five cards · Free</span>
+      <span style="font-size:12px;color:rgba(255,255,255,0.45);">~15 min solo · longer in a group</span>
+      <span style="font-size:12px;color:rgba(255,255,255,0.45);">Based on Salmon &amp; Steinberg (2007)</span>
+      <span style="font-size:12px;color:rgba(255,255,255,0.45);">Set 02 in development</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── MESSY PLAYS ── -->
+<section id="messy-plays" style="padding:5rem 2rem;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(255,255,255,0.06) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(0,0,0,0.1) 0%,transparent 50%);pointer-events:none;"></div>
+  <div style="max-width:860px;margin:0 auto;position:relative;z-index:1;">
+    <div style="text-align:center;margin-bottom:3.5rem;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;padding:5px 14px;border-radius:100px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.25rem;"><span style="width:7px;height:7px;border-radius:50%;background:#27ae60;display:inline-block;"></span>New from the Live Messy Project</div>
+      <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;color:#fff;line-height:1.1;margin:0 0 0.5rem;">Messy Plays™</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.65);margin:0 auto 0.75rem;font-style:italic;">Staying in the Mess · Play 01</p>
+      <p style="font-size:clamp(1rem,2.5vw,1.2rem);color:rgba(255,255,255,0.75);max-width:520px;margin:0 auto 0.75rem;line-height:1.6;">Research that lives in the body, not just the brain.</p>
+      <p style="font-size:15px;color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto;line-height:1.75;">Each play takes one finding from a real research paper and turns it into a 15-minute experience — something you can feel, not just read. Alone or with people you know. Free to start.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:3rem;">
+      <div style="background:rgba(155,89,182,0.25);border:1px solid rgba(155,89,182,0.45);border-radius:10px;padding:1rem;"><span style="background:#9b59b6;color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:0.5rem;">M · Monitor</span><p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 0.25rem;">Just notice.</p><p style="font-size:11px;color:rgba(255,255,255,0.55);margin:0;line-height:1.4;">Count your urges to fix without acting</p></div>
+      <div style="background:rgba(230,126,34,0.25);border:1px solid rgba(230,126,34,0.45);border-radius:10px;padding:1rem;"><span style="background:#e67e22;color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:0.5rem;">E · Execute</span><p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 0.25rem;">Don't fix it.</p><p style="font-size:11px;color:rgba(255,255,255,0.55);margin:0;line-height:1.4;">Stay in the problem before reaching for a solution</p></div>
+      <div style="background:rgba(52,152,219,0.25);border:1px solid rgba(52,152,219,0.45);border-radius:10px;padding:1rem;"><span style="background:#3498db;color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:0.5rem;">S · Support</span><p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 0.25rem;">Design your floor.</p><p style="font-size:11px;color:rgba(255,255,255,0.55);margin:0;line-height:1.4;">Strip support down to the minimum that works</p></div>
+      <div style="background:rgba(241,196,15,0.15);border:1px solid rgba(241,196,15,0.35);border-radius:10px;padding:1rem;"><span style="background:#f1c40f;color:#2c3e50;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:0.5rem;">S · Surrender</span><p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 0.25rem;">Name what moved.</p><p style="font-size:11px;color:rgba(255,255,255,0.55);margin:0;line-height:1.4;">Track direction — no judgment allowed</p></div>
+      <div style="background:rgba(39,174,96,0.25);border:1px solid rgba(39,174,96,0.45);border-radius:10px;padding:1rem;"><span style="background:#27ae60;color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:0.5rem;">Y · Yield</span><p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 0.25rem;">Harvest the mess.</p><p style="font-size:11px;color:rgba(255,255,255,0.55);margin:0;line-height:1.4;">Extract what only the mess could teach you</p></div>
+    </div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;">
+      <a href="play.html" style="display:inline-block;background:#fff;color:#2c3e50;text-decoration:none;font-size:14px;font-weight:700;padding:0.875rem 2rem;border-radius:100px;">Play Now — Free →</a>
+      <a href="play.html#cards" style="display:inline-block;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.9);text-decoration:none;font-size:14px;font-weight:500;padding:0.875rem 2rem;border-radius:100px;">Explore Messy Plays →</a>
+    </div>
+    <div style="display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;">
+      <span style="font-size:12px;color:rgba(255,255,255,0.45);">Play 01 · Staying in the Mess · Free</span>
+      <span style="font-size:12px;color:rgba(255,255,255,0.45);">~15 min solo · longer in a group</span>
+      <span style="font-size:12px;color:rgba(255,255,255,0.45);">Based on Salmon &amp; Steinberg (2007)</span>
+      <span style="font-size:12px;color:rgba(255,255,255,0.45);">Play 02 in development</span>
+    </div>
+  </div>
+</section>
+
+<section id="get" aria-labelledby="get-heading">
+      <div class="wrap">
+
+        <div class="get-intro">
+          <span class="eyebrow">Get MESSY!</span>
+          <h2 id="get-heading">Pay what's right<br>for <em>where you are.</em></h2>
+          <p>Pay What You Want. Every document included — ready to use immediately. Whether you're here for yourself or bringing MESSY to your clients, there's a package for you.</p>
+        </div>
+
+        <div class="get-grid">
+
+          <div class="get-card">
+            <div class="get-card-badge"><span style="width:8px;height:8px;background:var(--m);border-radius:50%;flex-shrink:0;display:inline-block;" aria-hidden="true"></span>For Yourself</div>
+            <div class="get-card-name">Self-Study Program</div>
+            <div class="get-card-sub">6 weeks · Self-directed · No facilitator</div>
+            <div class="get-card-price">
+              <p class="price-min">Minimum $5 · Suggested</p>
+              <p class="price-suggested">$9 <span>/ pay what you want</span></p>
+            </div>
+            <p class="get-card-desc">The complete self-study package. Self-Study Guide, Program Workbook, Activity Cards, Reflection Tools, and Framework Overview. Everything you need to work through all five practices independently.</p>
+            <a href="https://livemessy.gumroad.com/l/messy-self-study" class="get-card-btn" target="_blank" rel="noopener noreferrer">Get Self-Study Program →</a>
+          </div>
+
+          <div class="get-card">
+            <div class="get-card-badge"><span style="width:8px;height:8px;background:var(--s);border-radius:50%;flex-shrink:0;display:inline-block;" aria-hidden="true"></span>For Coaches &amp; Facilitators</div>
+            <div class="get-card-name">Facilitator License</div>
+            <div class="get-card-sub">Taster + 6-Session Program · For coaches</div>
+            <div class="get-card-price">
+              <p class="price-min">Minimum $9 · Suggested</p>
+              <p class="price-suggested">$19 <span>/ pay what you want</span></p>
+            </div>
+            <p class="get-card-desc">Everything in the Self-Study package, plus the Facilitator's Master Guide, Taster Handout, and Coach Leave-Behind. The complete delivery system for coaches running the Taster or 6-Session Program with clients.</p>
+            <a href="https://livemessy.gumroad.com/l/messy-facilitator-license" class="get-card-btn" target="_blank" rel="noopener noreferrer">Get Facilitator License →</a>
+          </div>
+
+          <div class="get-card">
+            <div class="get-card-badge"><span style="width:8px;height:8px;background:var(--y);border-radius:50%;flex-shrink:0;display:inline-block;" aria-hidden="true"></span>Everything, One Download</div>
+            <div class="get-card-name">Complete Bundle</div>
+            <div class="get-card-sub">All programs · All documents · One transaction</div>
+            <div class="get-card-price">
+              <p class="price-min">Minimum $12 · Suggested</p>
+              <p class="price-suggested">$27 <span>/ pay what you want</span></p>
+            </div>
+            <p class="get-card-desc">All three programs, all thirteen documents, unlimited use. Delivery materials, participant resources, practice tools, and the Brand Reference Sheet. The full system in one download.</p>
+            <a href="https://livemessy.gumroad.com/l/messy-complete-bundle" class="get-card-btn" target="_blank" rel="noopener noreferrer">Get the Complete Bundle →</a>
+          </div>
+
+        </div>
+
+        <p class="get-pwyw-note">
+          These are Pay What You Want with a minimum floor. The suggested price is pre-filled — pay more if you want to support the project, pay the minimum if that's what's right for you right now. If you genuinely can't afford it and want to use this with clients, <a href="#contact">get in touch</a>.
+        </p>
+
+      </div>
+    </section>
+
+
+  <div class="section-top-link"><a href="#hero">↑ Back to top</a></div>
+    <hr class="divider" />
+
+    <!-- ══ CONTACT ══ -->
+    <section id="contact" aria-labelledby="contact-heading" style="padding:clamp(4rem,8vw,7rem) 0;">
+      <div class="wrap">
+        <div class="contact-grid">
+
+          <div class="contact-left">
+            <p class="eyebrow" style="margin-bottom:1rem;display:block;">Get in Touch</p>
+            <h2 id="contact-heading">Have a question<br>about <em>MESSY?</em></h2>
+            <p>Whether you're curious about the framework, want to explore how it applies to your situation, or just want to say hello — send a message. No optimization required.</p>
+            <p>Coaches and facilitators interested in the trial program are also welcome to reach out here.</p>
+            <div class="contact-promise">
+              <span class="contact-promise-icon" aria-hidden="true">🔒</span>
+              <span>Your message comes directly to us. Your email address stays private and will never be shared or used for anything you haven't agreed to.</span>
+            </div>
+          </div>
+
+          <div class="contact-form-wrap">
+            <h3>Send a message</h3>
+            <!--
+              SETUP: Replace YOUR_FORM_ID with your Formspree endpoint ID
+              1. Go to https://formspree.io and sign up (free)
+              2. Create a new form, copy your endpoint URL
+              3. Replace YOUR_FORM_ID below
+              Example: https://formspree.io/f/xyzabcde
+            -->
+            <form id="contact-form" action="https://formspree.io/f/mgoppzeb" method="POST" novalidate aria-label="Contact form">
+              <div class="form-group">
+                <label for="contact-name">Your name</label>
+                <input type="text" id="contact-name" name="name" placeholder="What should we call you?" required autocomplete="name" aria-required="true" />
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Your email</label>
+                <input type="email" id="contact-email" name="email" placeholder="So we can write back" required autocomplete="email" aria-required="true" />
+              </div>
+              <div class="form-group">
+                <label for="contact-message">Your message</label>
+                <textarea id="contact-message" name="message" placeholder="What's on your mind? No polish required." required aria-required="true"></textarea>
+              </div>
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true" />
+              <button type="submit" class="contact-submit">Send Message →</button>
+              <div id="contact-status" class="contact-status" role="alert" aria-live="polite"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BOOK COMING SOON BANNER -->
+  <section aria-label="The forthcoming book" style="background:var(--dark);padding:2.5rem var(--pad);border-top:1px solid rgba(255,255,255,0.07);">
+    <div style="max-width:var(--max);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
+      <div>
+        <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--m);margin-bottom:0.4rem;">Coming Soon</p>
+        <p style="font-family:var(--font-display);font-size:clamp(1.1rem,2.5vw,1.4rem);font-weight:700;color:white;line-height:1.2;margin-bottom:0.35rem;">The MESSY Playbook — The Book</p>
+        <p style="font-size:0.85rem;font-style:italic;color:var(--on-dark-sub);line-height:1.5;">This page exists before the book does — which feels right for a framework built around working with reality.</p>
+      </div>
+      <a href="book.html" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.75rem;border:1.5px solid rgba(255,255,255,0.2);border-radius:2rem;font-size:0.85rem;font-weight:600;color:white;white-space:nowrap;transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.5)';this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.background='transparent'">See the page →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer aria-label="Site footer">
+    <div class="footer-logo">The MESSY Playbook<span aria-hidden="true">™</span></div>
+    <p class="footer-tagline">Growth happens <em>in</em> the mess, not after you clean it up.</p>
+    <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0;font-size:13px;">
+      <a href="#why" style="color:var(--muted);text-decoration:none;">Why MESSY?</a>
+      <a href="#what" style="color:var(--muted);text-decoration:none;">The Playbook</a>
+      <a href="#tiers" style="color:var(--muted);text-decoration:none;">How It Works</a>
+      <a href="thinking.html" style="color:var(--muted);text-decoration:none;">The Thinking</a>
+      <a href="play.html" style="color:var(--muted);text-decoration:none;">Messy Plays</a>
+      <a href="book.html" style="color:var(--muted);text-decoration:none;">The Book <span style="font-size:10px;background:rgba(155,89,182,0.12);border:1px solid rgba(155,89,182,0.25);color:var(--m);padding:1px 6px;border-radius:100px;letter-spacing:0.05em;vertical-align:middle;margin-left:3px;">forthcoming</span></a>
+      <a href="https://livemessy.gumroad.com" style="color:var(--muted);text-decoration:none;">Gumroad</a>
+    </div>
+    <p class="footer-copy">© 2026 Live Messy Project. All rights reserved.<br>The MESSY Playbook™ and Messy Plays™ are projects of the Live Messy Project.<br>For educational purposes and personal exploration only. Not therapy or professional counseling.</p>
+  </footer>
+
+  <script>
+    // ── Mobile navigation ───────────────────────────────────────
+    const menuBtn    = document.querySelector('.nav-menu-btn');
+    const closeBtn   = document.querySelector('.mobile-nav-close');
+    const mobileNav  = document.getElementById('mobile-nav');
+    let   lastFocus  = null;
+
+    function openMobileNav() {
+      lastFocus = document.activeElement;
+      mobileNav.classList.add('open');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+
+    if (menuBtn) menuBtn.addEventListener('click', openMobileNav);
+    if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
+
+    // Close on backdrop click
+    if (mobileNav) mobileNav.addEventListener('click', function(e) {
+      if (e.target === mobileNav) closeMobileNav();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeMobileNav();
+    });
+
+    // Trap focus within open drawer
+    if (mobileNav) mobileNav.addEventListener('keydown', function(e) {
+      if (!mobileNav.classList.contains('open') || e.key !== 'Tab') return;
+      const focusable = mobileNav.querySelectorAll('button, a');
+      const first = focusable[0];
+      const last  = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    });
+    const contactForm   = document.getElementById('contact-form');
+    const contactStatus = document.getElementById('contact-status');
+
+    if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.contact-submit');
+      btn.disabled    = true;
+      btn.textContent = 'Sending…';
+      try {
+        const res = await fetch(this.action, {
+          method:  'POST',
+          body:    new FormData(this),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          contactStatus.className   = 'contact-status success';
+          contactStatus.textContent = '✓ Message sent. We\'ll get back to you soon.';
+          this.reset();
+          btn.textContent = 'Message Sent ✓';
+          setTimeout(() => {
+            btn.disabled    = false;
+            btn.textContent = 'Send Message →';
+            contactStatus.className   = 'contact-status';
+            contactStatus.textContent = '';
+          }, 5000);
+        } else {
+          throw new Error('Server error');
+        }
+      } catch(err) {
+        contactStatus.className   = 'contact-status error';
+        contactStatus.textContent = 'Something went wrong. Please try again.';
+        btn.disabled    = false;
+        btn.textContent = 'Send Message →';
+      }
+    });
+    }
+
+    // ── Smooth scroll ───────────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const id = this.getAttribute('href').replace('#', '');
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        try {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch(err) {
+          target.scrollIntoView();
+        }
+      });
+    });
+
+    // ── Scroll-triggered fade-in ────────────────────────────────
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(el => {
+          if (el.isIntersecting) {
+            el.target.style.opacity = '1';
+            el.target.style.transform = 'translateY(0)';
+            obs.unobserve(el.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      document.querySelectorAll('.f-card, .practice-card, .origin-card, .faq-item, .tier-card, .get-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(16px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        obs.observe(el);
+      });
+    }
+
+        // ── Section-by-section floating nav ────────────────────────
+    var floatTop    = document.getElementById('floatTop');
+    var floatBottom = document.getElementById('floatBottom');
+
+    var sectionIds = ['hero','why','what','tiers','inside','faq','messy-play','messy-plays','get','contact'];
+    var sectionNav = sectionIds.map(function(id) {
+      return document.getElementById(id);
+    }).filter(function(el) { return el !== null; });
+
+    function navigatePrev() {
+      for (var i = sectionNav.length - 1; i >= 0; i--) {
+        if (sectionNav[i].getBoundingClientRect().top < -10) {
+          sectionNav[i].scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+      }
+    }
+
+    function navigateNext() {
+      for (var i = 0; i < sectionNav.length; i++) {
+        if (sectionNav[i].getBoundingClientRect().top > 10) {
+          sectionNav[i].scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+      }
+    }
+
+    function updateFloatBtns() {
+      if (!sectionNav.length) return;
+      var first = sectionNav[0].getBoundingClientRect().top;
+      var last  = sectionNav[sectionNav.length - 1].getBoundingClientRect().top;
+      floatTop.classList.toggle('visible', first < -50);
+      floatBottom.classList.toggle('visible', last > 50);
+    }
+
+    if (floatTop)    floatTop.addEventListener('click', navigatePrev);
+    if (floatBottom) floatBottom.addEventListener('click', navigateNext);
+    window.addEventListener('scroll', updateFloatBtns, { passive: true });
+    window.addEventListener('load', updateFloatBtns);
+    setTimeout(updateFloatBtns, 500);
+  </script>
+</body>
+</html>
