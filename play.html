@@ -1671,7 +1671,7 @@
 
     function navigateNext() {
       for (var i = 0; i < sectionNav.length; i++) {
-        if (sectionNav[i].getBoundingClientRect().top > 100) {
+        if (sectionNav[i].getBoundingClientRect().top > 150) {
           sectionNav[i].scrollIntoView({ behavior: 'smooth' });
           return;
         }
