@@ -1390,52 +1390,39 @@
       });
     }
 
-    // ── Section-by-section floating nav ────────────────────────
-    const floatTop    = document.getElementById('floatTop');
-    const floatBottom = document.getElementById('floatBottom');
+        // ── Section-by-section floating nav ────────────────────────
+    var floatTop    = document.getElementById('floatTop');
+    var floatBottom = document.getElementById('floatBottom');
 
-    const sectionNav = [
-      'hero', 'why', 'what', 'tiers', 'inside',
-      'faq', 'messy-play', 'messy-plays', 'get', 'contact'
-    ].map(function(id) { return document.getElementById(id); }).filter(Boolean);
-
-    function getNavHeight() {
-      var nav = document.querySelector('nav[aria-label="Main navigation"]');
-      return nav ? nav.offsetHeight : 0;
-    }
-
-    function scrollToSection(el) {
-      var top = el.getBoundingClientRect().top + window.pageYOffset - getNavHeight();
-      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-    }
+    var sectionIds = ['hero','why','what','tiers','inside','faq','messy-play','messy-plays','get','contact'];
+    var sectionNav = sectionIds.map(function(id) {
+      return document.getElementById(id);
+    }).filter(function(el) { return el !== null; });
 
     function navigatePrev() {
-      var scrollTop = window.pageYOffset;
-      var target = null;
       for (var i = sectionNav.length - 1; i >= 0; i--) {
-        var elTop = sectionNav[i].getBoundingClientRect().top + window.pageYOffset;
-        if (elTop < scrollTop - 10) { target = sectionNav[i]; break; }
+        if (sectionNav[i].getBoundingClientRect().top < -10) {
+          sectionNav[i].scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
       }
-      if (target) scrollToSection(target);
     }
 
     function navigateNext() {
-      var scrollTop = window.pageYOffset;
-      var target = null;
       for (var i = 0; i < sectionNav.length; i++) {
-        var elTop = sectionNav[i].getBoundingClientRect().top + window.pageYOffset;
-        if (elTop > scrollTop + 10) { target = sectionNav[i]; break; }
+        if (sectionNav[i].getBoundingClientRect().top > 10) {
+          sectionNav[i].scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
       }
-      if (target) scrollToSection(target);
     }
 
     function updateFloatBtns() {
-      var scrollTop  = window.pageYOffset;
-      var maxScroll  = document.documentElement.scrollHeight - window.innerHeight;
-      var firstTop   = sectionNav[0] ? sectionNav[0].getBoundingClientRect().top + window.pageYOffset : 0;
-      var lastTop    = sectionNav[sectionNav.length - 1] ? sectionNav[sectionNav.length - 1].getBoundingClientRect().top + window.pageYOffset : maxScroll;
-      floatTop.classList.toggle('visible', scrollTop > firstTop + 50);
-      floatBottom.classList.toggle('visible', scrollTop < lastTop - 50);
+      if (!sectionNav.length) return;
+      var first = sectionNav[0].getBoundingClientRect().top;
+      var last  = sectionNav[sectionNav.length - 1].getBoundingClientRect().top;
+      floatTop.classList.toggle('visible', first < -50);
+      floatBottom.classList.toggle('visible', last > 50);
     }
 
     if (floatTop)    floatTop.addEventListener('click', navigatePrev);
