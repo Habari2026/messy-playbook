@@ -1292,11 +1292,11 @@
       if (lastFocus) lastFocus.focus();
     }
 
-    menuBtn.addEventListener('click', openMobileNav);
-    closeBtn.addEventListener('click', closeMobileNav);
+    if (menuBtn) menuBtn.addEventListener('click', openMobileNav);
+    if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
 
     // Close on backdrop click
-    mobileNav.addEventListener('click', function(e) {
+    if (mobileNav) mobileNav.addEventListener('click', function(e) {
       if (e.target === mobileNav) closeMobileNav();
     });
 
@@ -1306,7 +1306,7 @@
     });
 
     // Trap focus within open drawer
-    mobileNav.addEventListener('keydown', function(e) {
+    if (mobileNav) mobileNav.addEventListener('keydown', function(e) {
       if (!mobileNav.classList.contains('open') || e.key !== 'Tab') return;
       const focusable = mobileNav.querySelectorAll('button, a');
       const first = focusable[0];
@@ -1320,6 +1320,7 @@
     const contactForm   = document.getElementById('contact-form');
     const contactStatus = document.getElementById('contact-status');
 
+    if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = this.querySelector('.contact-submit');
@@ -1352,6 +1353,7 @@
         btn.textContent = 'Send Message →';
       }
     });
+    }
 
     // ── Smooth scroll ───────────────────────────────────────────
     document.querySelectorAll('a[href^="#"]').forEach(link => {

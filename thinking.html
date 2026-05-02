@@ -835,10 +835,10 @@
       if (lastFocus) lastFocus.focus();
     }
 
-    menuBtn.addEventListener('click', openMobileNav);
-    closeBtn.addEventListener('click', closeMobileNav);
+    if (menuBtn) menuBtn.addEventListener('click', openMobileNav);
+    if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
 
-    mobileNav.addEventListener('click', function(e) {
+    if (mobileNav) mobileNav.addEventListener('click', function(e) {
       if (e.target === mobileNav) closeMobileNav();
     });
 
@@ -846,7 +846,7 @@
       if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeMobileNav();
     });
 
-    mobileNav.addEventListener('keydown', function(e) {
+    if (mobileNav) mobileNav.addEventListener('keydown', function(e) {
       if (!mobileNav.classList.contains('open') || e.key !== 'Tab') return;
       const focusable = mobileNav.querySelectorAll('button, a');
       const first = focusable[0];
