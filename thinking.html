@@ -442,8 +442,8 @@
 
   <!-- FLOATING NAV -->
   <div class="float-nav" aria-label="Page navigation">
-    <button class="float-btn" id="floatTop" aria-label="Previous section" onclick="(function(){var ids=['origin','research','reading'];for(var i=ids.length-1;i>=0;i-){var el=document.getElementById(ids[i]);if(el&&el.getBoundingClientRect().top<-10){el.scrollIntoView({behavior:'smooth'});return;}}})()">↑</button>
-    <button class="float-btn visible" id="floatBottom" aria-label="Next section" onclick="(function(){var ids=['origin','research','reading'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.getBoundingClientRect().top>10){el.scrollIntoView({behavior:'smooth'});return;}}})()">↓</button>
+    <button class="float-btn" id="floatTop" aria-label="Previous section" onclick="(function(){var ids=['origin', 'research', 'reading'];var st=window.pageYOffset||document.documentElement.scrollTop;for(var i=ids.length-1;i>=0;i--){var el=document.getElementById(ids[i]);if(el&&el.offsetTop<st-50){el.scrollIntoView({behavior:'smooth'});return;}}})()">↑</button>
+    <button class="float-btn visible" id="floatBottom" aria-label="Next section" onclick="(function(){var ids=['origin', 'research', 'reading'];var st=window.pageYOffset||document.documentElement.scrollTop;for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.offsetTop>st+50){el.scrollIntoView({behavior:'smooth'});return;}}})()">↓</button>
   </div>
 
   <a href="#main-content" class="skip-nav">Skip to main content</a>
