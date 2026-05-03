@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The MESSY Playbook™ — The MESSY Reality Check</title>
+<style>
+  /* ── BRAND TOKENS (Brand Reference Sheet v1.0) ── */
+  :root {
+    --m-color:   #9b59b6;
+    --e-color:   #e67e22;
+    --s1-color:  #3498db;
+    --s2-color:  #f1c40f;
+    --y-color:   #27ae60;
+    --base-color:#2c3e50;
+
+    --m-grad:  linear-gradient(135deg, #9b59b6, #8e44ad);
+    --e-grad:  linear-gradient(135deg, #e67e22, #d35400);
+    --s1-grad: linear-gradient(135deg, #3498db, #2980b9);
+    --s2-grad: linear-gradient(135deg, #f1c40f, #f39c12);
+    --y-grad:  linear-gradient(135deg, #27ae60, #229954);
+
+    --brand-grad: linear-gradient(135deg, #667eea, #764ba2);
+    --blue-accent: linear-gradient(135deg, #74b9ff, #0984e3);
+
+    --m-tint:   #f5eef8;
+    --e-tint:   #fef3e8;
+    --s1-tint:  #e8f4fd;
+    --s2-tint:  #fff3cd;
+    --y-tint:   #e8f5e8;
+    --surface:  #f8f9fa;
+    --divider:  #ecf0f1;
+
+    --text-primary: #2c3e50;
+    --text-body:    #34495e;
+    --text-muted:   #7f8c8d;
+    --text-s2:      #856404;
+
+    --radius-card: 10px;
+    --radius-sm:   5px;
+    --border-w:    3px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--surface);
+    color: var(--text-primary);
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 40px 32px 56px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--brand-grad);
+    border-radius: var(--radius-card);
+    padding: 30px 36px;
+    color: #fff;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::after {
+    content: 'MESSY';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 108px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,0.07);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    font-family: Arial, sans-serif;
+  }
+
+  .eyebrow {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 8px;
+  }
+
+  .headline {
+    font-size: 26pt;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  sup.tm { font-size: 0.55em; vertical-align: super; font-weight: 400; }
+
+  .subhead {
+    font-size: 10pt;
+    color: rgba(255,255,255,0.85);
+    max-width: 580px;
+    line-height: 1.55;
+    font-weight: 400;
+  }
+
+  /* ── INTRO NOTE ── */
+  .intro-note {
+    background: var(--blue-accent);
+    border-radius: var(--radius-card);
+    padding: 13px 20px;
+    color: #fff;
+    font-size: 9.5pt;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  /* ── COLUMN HEADERS ── */
+  .col-headers {
+    display: grid;
+    grid-template-columns: 158px 1fr 1fr 182px;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .ch {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+  }
+
+  .ch.spacer       { background: transparent; }
+  .ch.pain-h       { background: var(--text-primary); color: #fff; }
+  .ch.outcome-h    { background: var(--brand-grad); color: #fff; }
+  .ch.impact-h     { background: var(--base-color); color: #fff; }
+
+  /* ── ROW ── */
+  .row {
+    display: grid;
+    grid-template-columns: 158px 1fr 1fr 182px;
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: stretch;
+  }
+
+  /* ── CATEGORY BADGE ── */
+  .cat {
+    border-radius: var(--radius-card);
+    padding: 14px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cat-m  { background: var(--m-grad);  color: #fff; }
+  .cat-e  { background: var(--e-grad);  color: #fff; }
+  .cat-s1 { background: var(--s1-grad); color: #fff; }
+  .cat-s2 { background: var(--s2-grad); color: var(--text-primary); }
+  .cat-y  { background: var(--y-grad);  color: #fff; }
+
+  .cat-letter {
+    font-size: 24pt;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .cat-s2 .cat-letter { color: var(--text-s2); }
+
+  .cat-name { font-size: 13pt; font-weight: 700; line-height: 1.2; }
+  .cat-sub  { font-size: 10pt; font-weight: 400; margin-top: 6px; opacity: 0.85; font-style: italic; }
+  .cat-s2 .cat-sub { color: var(--text-primary); }
+
+  .s-count {
+    display: inline-block;
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-top: 5px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    width: fit-content;
+  }
+
+  .cat-s1 .s-count { background: rgba(255,255,255,0.2); color: #fff; }
+  .cat-s2 .s-count { background: rgba(44,62,80,0.12); color: var(--text-s2); }
+
+  /* ── CELLS ── */
+  .cell {
+    border-radius: var(--radius-card);
+    padding: 12px 14px;
+    font-size: 9.5pt;
+    line-height: 1.55;
+    color: var(--text-body);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cell.pain    { background: #fff;           border-left: var(--border-w) solid; }
+  .cell.outcome { border-left: var(--border-w) solid; }
+  .cell.impact  { background: var(--surface); border-left: var(--border-w) solid var(--base-color);
+                  border-right: var(--border-w) solid var(--base-color);
+                  font-weight: 500; color: var(--text-primary); font-size: 9pt; }
+
+  /* Per-row tints and border colors */
+  .row-m  .cell.pain    { border-color: var(--m-color);  }
+  .row-e  .cell.pain    { border-color: var(--e-color);  }
+  .row-s1 .cell.pain    { border-color: var(--s1-color); }
+  .row-s2 .cell.pain    { border-color: var(--s2-color); }
+  .row-y  .cell.pain    { border-color: var(--y-color);  }
+
+  .row-m  .cell.outcome { background: var(--m-tint);  border-color: var(--m-color);  }
+  .row-e  .cell.outcome { background: var(--e-tint);  border-color: var(--e-color);  }
+  .row-s1 .cell.outcome { background: var(--s1-tint); border-color: var(--s1-color); }
+  .row-s2 .cell.outcome { background: var(--s2-tint); border-color: var(--s2-color); }
+  .row-y  .cell.outcome { background: var(--y-tint);  border-color: var(--y-color);  }
+
+  /* Lists */
+  .cell ul { list-style: none; padding: 0; margin: 0; }
+
+  .cell ul li {
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 5px;
+    color: var(--text-body);
+  }
+
+  .cell ul li:last-child { margin-bottom: 0; }
+
+  .cell.pain ul li::before    { content: '✕'; position: absolute; left: 0; font-size: 8pt; top: 1px; }
+  .cell.outcome ul li::before { content: '→'; position: absolute; left: 0; font-size: 9pt; top: 0px; }
+  .cell.impact ul li::before  { content: '◆'; position: absolute; left: 1px; font-size: 6pt; top: 3px; color: var(--base-color); }
+
+  .row-m  .cell.pain ul li::before    { color: var(--m-color);  }
+  .row-e  .cell.pain ul li::before    { color: var(--e-color);  }
+  .row-s1 .cell.pain ul li::before    { color: var(--s1-color); }
+  .row-s2 .cell.pain ul li::before    { color: var(--text-s2);  }
+  .row-y  .cell.pain ul li::before    { color: var(--y-color);  }
+
+  .row-m  .cell.outcome ul li::before { color: var(--m-color);  }
+  .row-e  .cell.outcome ul li::before { color: var(--e-color);  }
+  .row-s1 .cell.outcome ul li::before { color: var(--s1-color); }
+  .row-s2 .cell.outcome ul li::before { color: var(--text-s2);  }
+  .row-y  .cell.outcome ul li::before { color: var(--y-color);  }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 26px;
+    padding-top: 16px;
+    border-top: 2px solid var(--divider);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .footer-brand     { font-size: 16pt; font-weight: 700; color: var(--text-primary); }
+  .footer-tagline   { font-size: 8pt; color: var(--text-muted); font-style: italic; margin-top: 3px; }
+  .footer-right     { text-align: right; }
+  .footer-right p   { font-size: 7.5pt; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+  .footer-url       { font-size: 13pt; font-weight: 700; color: #667eea; }
+  .footer-copy      { font-size: 7pt; color: var(--text-muted); margin-top: 4px; }
+
+  /* ── CONVERSION CLOSE ── */
+  .cta-block {
+    margin-top: 20px;
+    background: var(--brand-grad);
+    border-radius: var(--radius-card);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .cta-text {
+    color: #fff;
+    font-size: 10pt;
+    line-height: 1.55;
+    max-width: 640px;
+  }
+
+  .cta-text strong { font-size: 11pt; display: block; margin-bottom: 4px; }
+
+  .cta-pill {
+    background: rgba(255,255,255,0.18);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 6px;
+    padding: 8px 18px;
+    color: #fff;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { padding: 20px 24px 36px; }
+    .no-print { display: none !important; }
+  }
+</style>
+<script>
+  function downloadPDF() {
+    window.print();
+  }
+  // Auto-trigger print dialog when opened via Download PDF button
+  window.addEventListener('load', function() {
+    if (window.location.search.includes('print=1')) {
+      setTimeout(function() { window.print(); }, 800);
+    }
+  });
+</script>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="eyebrow">The MESSY Reality Check &nbsp;·&nbsp; A Self-Honest Look</div>
+    <div class="headline">The MESSY Reality Check<sup class="tm">™</sup></div>
+    <p class="subhead">A framework for people tired of being optimized. If any of these patterns sound familiar, The MESSY Playbook<sup class="tm">™</sup> was built for exactly this moment.</p>
+  </div>
+
+  <!-- INTRO NOTE -->
+  <div class="intro-note">
+    Not another productivity system. Five honest practices for people tired of being optimized — and tired of blaming themselves for it.
+  </div>
+
+  <!-- MESSY ARC GRAPHIC -->
+  <div style="background:#fff;border-radius:10px;padding:18px 24px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;">
+
+    <!-- M -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#9b59b6,#8e44ad);display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:20pt;font-weight:900;color:#fff;">M</div>
+      <div style="font-family:Arial,sans-serif;font-size:7.5pt;font-weight:700;color:#2c3e50;text-align:center;line-height:1.2;">Monitor</div>
+    </div>
+
+    <div style="font-size:16pt;color:#7f8c8d;margin:0 6px;padding-bottom:16px;">→</div>
+
+    <!-- E -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#e67e22,#d35400);display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:20pt;font-weight:900;color:#fff;">E</div>
+      <div style="font-family:Arial,sans-serif;font-size:7.5pt;font-weight:700;color:#2c3e50;text-align:center;line-height:1.2;">Execute</div>
+    </div>
+
+    <div style="font-size:16pt;color:#7f8c8d;margin:0 6px;padding-bottom:16px;">→</div>
+
+    <!-- S1 -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#3498db,#2980b9);display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:20pt;font-weight:900;color:#fff;">S</div>
+      <div style="font-family:Arial,sans-serif;font-size:7.5pt;font-weight:700;color:#2c3e50;text-align:center;line-height:1.2;">Support</div>
+    </div>
+
+    <div style="font-size:16pt;color:#7f8c8d;margin:0 6px;padding-bottom:16px;">→</div>
+
+    <!-- S2 -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#f1c40f,#f39c12);display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:20pt;font-weight:900;color:#856404;">S</div>
+      <div style="font-family:Arial,sans-serif;font-size:7.5pt;font-weight:700;color:#2c3e50;text-align:center;line-height:1.2;">Surrender</div>
+    </div>
+
+    <div style="font-size:16pt;color:#7f8c8d;margin:0 6px;padding-bottom:16px;">→</div>
+
+    <!-- Y -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#229954);display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:20pt;font-weight:900;color:#fff;">Y</div>
+      <div style="font-family:Arial,sans-serif;font-size:7.5pt;font-weight:700;color:#2c3e50;text-align:center;line-height:1.2;">Yield</div>
+    </div>
+
+    <div style="font-size:16pt;color:#7f8c8d;margin:0 6px;padding-bottom:16px;">↺</div>
+
+  </div>
+
+  <!-- COLUMN HEADERS -->
+  <div class="col-headers">
+    <div class="ch spacer">&nbsp;</div>
+    <div class="ch pain-h">✕ &nbsp;Without It — The Patterns</div>
+    <div class="ch outcome-h">→ &nbsp;With MESSY — The Shift</div>
+    <div class="ch impact-h">◆ &nbsp;What Actually Changes</div>
+  </div>
+
+  <!-- M — MONITOR -->
+  <div class="row row-m">
+    <div class="cat cat-m">
+      <div class="cat-letter">M</div>
+      <div class="cat-name">Monitor</div>
+      <div class="cat-sub">Cultivate Self-Awareness</div>
+    </div>
+    <div class="cell pain">
+      <ul>
+        <li>Tracking habits, streaks &amp; metrics obsessively — without really understanding yourself</li>
+        <li>Performing self-awareness rather than practicing it</li>
+        <li>Measuring everything; feeling nothing; changing nothing</li>
+        <li>Blind spots disguised as busyness — no space to notice what's real</li>
+      </ul>
+    </div>
+    <div class="cell outcome">
+      <ul>
+        <li>Seeing what's actually going on — not what you wish was going on</li>
+        <li>Noticing what's true before rushing to fix it</li>
+        <li>Paying attention — not to track progress, but to actually see yourself</li>
+        <li>Seeing yourself clearly — so your next move is based on what's real</li>
+      </ul>
+    </div>
+    <div class="cell impact">
+      <ul>
+        <li>You catch yourself before a small pattern becomes a story you believe about yourself</li>
+        <li>The gap between who you are and who you think you are starts to close</li>
+        <li>Better decisions follow — not because you tried harder, but because you finally saw clearly</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row row-e">
+    <div class="cat cat-e">
+      <div class="cat-letter">E</div>
+      <div class="cat-name">Execute</div>
+      <div class="cat-sub">Take Aligned Action</div>
+    </div>
+    <div class="cell pain">
+      <ul>
+        <li>Paralyzed by perfectionism — waiting to feel "ready" before acting</li>
+        <li>Starting over repeatedly instead of continuing imperfectly</li>
+        <li>Confusing planning and research with forward motion</li>
+        <li>Fear of doing it wrong keeps you from doing it at all</li>
+      </ul>
+    </div>
+    <div class="cell outcome">
+      <ul>
+        <li>Moving forward on purpose — even when it's not perfect</li>
+        <li>Making real progress instead of just looking like you are</li>
+        <li>Knowing when you're genuinely resting — and when you're just hiding</li>
+        <li>Moving forward because it's honest — not because it's polished</li>
+      </ul>
+    </div>
+    <div class="cell impact">
+      <ul>
+        <li>The voice that says "not yet" gets a lot quieter</li>
+        <li>Your relationship with "done" changes — it becomes enough</li>
+        <li>Completion replaces the cycle of restarts</li>
+      </ul>
+    </div>
+  </div>
+  <!-- S1 — SUPPORT -->
+  <div class="row row-s1">
+    <div class="cat cat-s1">
+      <div class="cat-letter">S</div>
+      <div class="cat-name">Support</div>
+      <div class="cat-sub">Design Supportive Habits</div>
+      <div class="s-count" style="display:none"></div>
+    </div>
+    <div class="cell pain">
+      <ul>
+        <li>Going it alone — treating self-sufficiency as a virtue even when it's stalling you</li>
+        <li>Relying on apps and systems instead of actual people</li>
+        <li>Refusing help as a badge of strength; isolation disguised as independence</li>
+        <li>Designing support for your best day — then feeling like a failure on regular ones</li>
+      </ul>
+    </div>
+    <div class="cell outcome">
+      <ul>
+        <li>Figuring out the support you actually need — not the support you think you should need</li>
+        <li>Building around real people — not just apps and systems</li>
+        <li>Asking for help and actually meaning it — without downplaying what you need</li>
+        <li>Connecting to community instead of collecting another tool</li>
+      </ul>
+    </div>
+    <div class="cell impact">
+      <ul>
+        <li>The work you couldn't finish alone — gets finished</li>
+        <li>You stop being the ceiling of your own progress</li>
+        <li>People who actually know what you're building show up when it matters</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- S2 — SURRENDER -->
+  <div class="row row-s2">
+    <div class="cat cat-s2">
+      <div class="cat-letter">S</div>
+      <div class="cat-name">Surrender</div>
+      <div class="cat-sub">Embrace Imperfection</div>
+      <div class="s-count" style="display:none"></div>
+    </div>
+    <div class="cell pain">
+      <ul>
+        <li>Exhausting yourself trying to control outcomes that were never yours to control</li>
+        <li>Only sharing the polished version — performing control instead of actually having it</li>
+        <li>Doubling down when it's not working — because stopping feels like failure</li>
+        <li>Conflating giving up with letting go</li>
+      </ul>
+    </div>
+    <div class="cell outcome">
+      <ul>
+        <li>Letting go on purpose — not because you gave up</li>
+        <li>Getting clear on what's actually yours to change — and what isn't</li>
+        <li>Putting your energy where it can actually make a difference</li>
+        <li>Letting go as a choice, not a last resort</li>
+      </ul>
+    </div>
+    <div class="cell impact">
+      <ul>
+        <li>You get hours back — not by doing less, but by fighting less</li>
+        <li>The exhaustion of forcing outcomes lifts; what remains is what's actually yours</li>
+        <li>You become someone who adapts — not because you gave up, but because you got honest</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Y — YIELD -->
+  <div class="row row-y">
+    <div class="cat cat-y">
+      <div class="cat-letter">Y</div>
+      <div class="cat-name">Yield</div>
+      <div class="cat-sub">Reflect and Grow</div>
+    </div>
+    <div class="cell pain">
+      <ul>
+        <li>Moving from experience to experience without asking what any of it actually taught you</li>
+        <li>Treating reflection as a luxury — something you'll get to when things slow down</li>
+        <li>Looking at what happened but missing what it said about you</li>
+        <li>Writing down the lessons — but not living differently because of them</li>
+      </ul>
+    </div>
+    <div class="cell outcome">
+      <ul>
+        <li>Asking "What is this actually teaching me?" — not just noting what happened</li>
+        <li>Taking what you learned in one area and letting it change the others</li>
+        <li>Reflecting in ways that feel human — not just making bullet points about it</li>
+        <li>What you learn here feeds right back into paying closer attention next time</li>
+      </ul>
+    </div>
+    <div class="cell impact">
+      <ul>
+        <li>Experience stops being something that happened — it becomes something that shaped you</li>
+        <li>What you learn in one part of your life starts showing up everywhere</li>
+        <li>The more you practice, the more you notice — and the more you notice, the better it gets</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CONVERSION CLOSE -->
+  <div class="cta-block">
+    <div class="cta-text">
+      <strong>Ready to stop recognizing yourself in this list?</strong>
+      The Self-Study Program walks you through all five MESSY practices at your own pace — no facilitator, no cohort, no schedule. Just you, being honest. Pay what's right for where you are.
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;white-space:nowrap;">
+      <a href="https://livemessy.gumroad.com/l/messy-self-study" target="_blank" style="display:inline-block;background:#fff;color:#764ba2;font-size:11pt;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:11px 28px;border-radius:6px;text-decoration:none;border:none;">Get MESSY!</a>
+      <span style="font-size:7.5pt;color:rgba(255,255,255,0.7);letter-spacing:0.02em;">livemessy.gumroad.com/l/messy-self-study</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="footer-brand">The MESSY Playbook<sup class="tm">™</sup></div>
+      <div class="footer-tagline">Self-Honesty for People Tired of Being Optimized &nbsp;·&nbsp; A Live Messy Project</div>
+    </div>
+    <div class="footer-right">
+      <p>Explore &amp; download at</p>
+      <div class="footer-url">messy-playbook.vercel.app</div>
+      <div class="footer-copy">© 2025 Live Messy Project · All rights reserved</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
