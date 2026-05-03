@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 160" width="820" height="160">
+
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="grad-m" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6"/>
+      <stop offset="100%" style="stop-color:#8e44ad"/>
+    </linearGradient>
+    <linearGradient id="grad-e" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e67e22"/>
+      <stop offset="100%" style="stop-color:#d35400"/>
+    </linearGradient>
+    <linearGradient id="grad-s1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db"/>
+      <stop offset="100%" style="stop-color:#2980b9"/>
+    </linearGradient>
+    <linearGradient id="grad-s2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f1c40f"/>
+      <stop offset="100%" style="stop-color:#f39c12"/>
+    </linearGradient>
+    <linearGradient id="grad-y" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60"/>
+      <stop offset="100%" style="stop-color:#229954"/>
+    </linearGradient>
+    <filter id="bold-stroke">
+      <feMorphology operator="dilate" radius="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background (transparent) -->
+
+  <!-- ── M circle ── -->
+  <circle cx="60" cy="70" r="50" fill="url(#grad-m)"/>
+  <text x="60" y="84" font-family="Arial, sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle">M</text>
+  <text x="60" y="142" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Monitor</text>
+
+  <!-- Arrow M→E -->
+  <text x="138" y="78" font-family="Arial, sans-serif" font-size="28" font-weight="900" fill="#2c3e50" text-anchor="middle" filter="url(#bold-stroke)">→</text>
+
+  <!-- ── E circle ── -->
+  <circle cx="210" cy="70" r="50" fill="url(#grad-e)"/>
+  <text x="210" y="84" font-family="Arial, sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle">E</text>
+  <text x="210" y="142" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Execute</text>
+
+  <!-- Arrow E→S1 -->
+  <text x="288" y="78" font-family="Arial, sans-serif" font-size="28" font-weight="900" fill="#2c3e50" text-anchor="middle" filter="url(#bold-stroke)">→</text>
+
+  <!-- ── S1 circle ── -->
+  <circle cx="360" cy="70" r="50" fill="url(#grad-s1)"/>
+  <text x="360" y="84" font-family="Arial, sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle">S</text>
+  <text x="360" y="142" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Support</text>
+
+  <!-- Arrow S1→S2 -->
+  <text x="438" y="78" font-family="Arial, sans-serif" font-size="28" font-weight="900" fill="#2c3e50" text-anchor="middle" filter="url(#bold-stroke)">→</text>
+
+  <!-- ── S2 circle ── -->
+  <circle cx="510" cy="70" r="50" fill="url(#grad-s2)"/>
+  <text x="510" y="84" font-family="Arial, sans-serif" font-size="44" font-weight="900" fill="#856404" text-anchor="middle">S</text>
+  <text x="510" y="142" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Surrender</text>
+
+  <!-- Arrow S2→Y -->
+  <text x="588" y="78" font-family="Arial, sans-serif" font-size="28" font-weight="900" fill="#2c3e50" text-anchor="middle" filter="url(#bold-stroke)">→</text>
+
+  <!-- ── Y circle ── -->
+  <circle cx="660" cy="70" r="50" fill="url(#grad-y)"/>
+  <text x="660" y="84" font-family="Arial, sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle">Y</text>
+  <text x="660" y="142" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Yield</text>
+
+  <!-- Loop icon (translated to position after Y) -->
+  <g transform="translate(730, 48) scale(0.35)" filter="url(#bold-stroke)">
+    <path d="m64.5 10c-0.92578-0.011719-1.8516-0.003906-2.7812 0.03125-4.9375 0.19141-9.8711 1.0938-14.656 2.6875-0.011719 0.003906-0.023438-0.003906-0.03125 0-12.32 4.0078-22.844 12.512-29.438 23.625-0.007812 0.011719-0.023438 0.019531-0.03125 0.03125-4.9531 8.3438-7.5547 17.965-7.5625 27.625h-10l14 24 14-24h-10c0.015625-8.2422 2.2305-16.48 6.4375-23.562 5.6016-9.4531 14.645-16.734 25.094-20.125h0.03125v-0.03125c16.223-5.4062 34.816-0.96484 47.031 11.156l5.625-5.6875c-10.113-10.039-23.812-15.57-37.719-15.75zm49.5 30-14 24h10c-0.03125 8.2109-2.2461 16.414-6.4375 23.469-5.6016 9.4531-14.645 16.734-25.094 20.125h-0.03125c-16.332 5.4141-34.895 0.98047-47-11.125l-5.6562 5.6562c14.285 14.285 35.895 19.434 55.156 13.062 0.003906-0.007812 0.023438 0.003906 0.03125 0 12.332-4.0156 22.875-12.523 29.469-23.656 4.9453-8.3242 7.543-17.895 7.5625-27.531h10z" fill="#2c3e50"/>
+  </g>
+
+</svg>
