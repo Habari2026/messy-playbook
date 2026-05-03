@@ -263,9 +263,6 @@
     details.faq-item:nth-child(6) summary, details.faq-item:nth-child(6)[open] .faq-body { border-left-color: var(--dark); }
     details.faq-item:nth-child(7) summary, details.faq-item:nth-child(7)[open] .faq-body { border-left-color: var(--grad-start); }
     details.faq-item:nth-child(8) summary, details.faq-item:nth-child(8)[open] .faq-body { border-left-color: var(--e); }
-    details.faq-item:nth-child(9) summary, details.faq-item:nth-child(9)[open] .faq-body { border-left-color: var(--y); }
-    details.faq-item:nth-child(10) summary, details.faq-item:nth-child(10)[open] .faq-body { border-left-color: var(--s); }
-    details.faq-item:nth-child(11) summary, details.faq-item:nth-child(11)[open] .faq-body { border-left-color: var(--m); }
     details.faq-item:nth-child(1) .faq-num { background: var(--m); }
     details.faq-item:nth-child(2) .faq-num { background: var(--e); }
     details.faq-item:nth-child(3) .faq-num { background: var(--s); }
@@ -274,9 +271,6 @@
     details.faq-item:nth-child(6) .faq-num { background: var(--dark); }
     details.faq-item:nth-child(7) .faq-num { background: var(--grad-start); }
     details.faq-item:nth-child(8) .faq-num { background: var(--e); }
-    details.faq-item:nth-child(9) .faq-num { background: var(--y); }
-    details.faq-item:nth-child(10) .faq-num { background: var(--s); }
-    details.faq-item:nth-child(11) .faq-num { background: var(--m); }
 
     /* ── Get MESSY! ────────────────────────────────────── */
     #get { padding: clamp(4rem,8vw,7rem) 0; background: var(--dark); }
@@ -371,27 +365,15 @@
       width: min(320px, 85vw);
       height: 100%;
       background: var(--cream);
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      gap: 0.25rem;
+      overflow-y: auto;
       box-shadow: -8px 0 32px rgba(0,0,0,0.15);
     }
-    .mobile-nav-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--rule);
-      flex-shrink: 0;
-    }
-    .mobile-nav-header-logo {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--dark);
-    }
-    .mobile-nav-header-logo span { color: var(--e); }
     .mobile-nav-close {
+      align-self: flex-end;
       background: none;
       border: 1.5px solid var(--rule);
       border-radius: 8px;
@@ -405,17 +387,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: border-color 0.2s, background 0.2s;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
     }
-    .mobile-nav-close:hover { border-color: var(--dark); background: white; }
-    .mobile-nav-links {
-      flex: 1;
-      overflow-y: auto;
-      padding: 0.75rem 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
+    .mobile-nav-close:hover { border-color: var(--dark); }
     .mobile-nav-panel a {
       display: block;
       padding: 0.9rem 1rem;
@@ -425,7 +400,6 @@
       border-radius: 8px;
       border: 1px solid transparent;
       transition: background 0.15s, color 0.15s;
-      text-decoration: none;
     }
     .mobile-nav-panel a:hover { background: white; color: var(--dark); border-color: var(--rule); }
     .mobile-nav-panel .mobile-nav-cta {
@@ -437,7 +411,7 @@
       border-radius: 2rem;
       border-color: transparent;
     }
-    .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; }
+    .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); }
     @media (max-width: 900px) {
       .tiers-grid, .get-grid { grid-template-columns: 1fr; }
       .inside-grid { grid-template-columns: 1fr; }
@@ -484,10 +458,10 @@
 </head>
 <body>
 
-    <!-- FLOATING NAV -->
+  <!-- FLOATING NAV -->
   <div class="float-nav" aria-label="Page navigation">
-    <button class="float-btn" id="floatTop" aria-label="Previous section">&#8593;</button>
-    <button class="float-btn visible" id="floatBottom" aria-label="Next section">&#8595;</button>
+    <button class="float-btn" id="floatTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <button class="float-btn" id="floatBottom" aria-label="Jump to bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">↓</button>
   </div>
 
   <a href="#main-content" class="skip-nav">Skip to main content</a>
@@ -519,19 +493,14 @@
   <!-- MOBILE NAV DRAWER -->
   <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <div class="mobile-nav-panel">
-      <div class="mobile-nav-header">
-        <span class="mobile-nav-header-logo">The MESSY Playbook<span>™</span></span>
-        <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
-      </div>
-      <div class="mobile-nav-links">
-        <a href="#why"          onclick="closeMobileNav()">Why MESSY?</a>
-        <a href="#what"         onclick="closeMobileNav()">The Playbook</a>
-        <a href="#tiers"        onclick="closeMobileNav()">How It Works</a>
-        <a href="#faq"          onclick="closeMobileNav()">FAQ</a>
-        <a href="play.html"     onclick="closeMobileNav()">Messy Plays</a>
-        <a href="thinking.html" onclick="closeMobileNav()">The Thinking</a>
-        <a href="#get"          onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
-      </div>
+      <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
+      <a href="#why"   onclick="closeMobileNav()">Why MESSY?</a>
+      <a href="#what"  onclick="closeMobileNav()">The Playbook</a>
+      <a href="#tiers" onclick="closeMobileNav()">How It Works</a>
+      <a href="#faq"   onclick="closeMobileNav()">FAQ</a>
+      <a href="play.html" onclick="closeMobileNav()">Messy Plays</a>
+      <a href="thinking.html" onclick="closeMobileNav()">The Thinking</a>
+      <a href="#get"   onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
     </div>
   </div>
 
@@ -613,6 +582,43 @@
               <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.9rem;">If you recognized yourself above...</p>
               <p style="font-family:var(--font-display);font-size:1rem;font-style:italic;color:var(--dark);line-height:1.65;">You're not broken. You're not lazy. You're not "bad at follow-through." You're a complex human being asked to perform like a simple machine. And there's another way.</p>
             </div>
+
+            <!-- PAIN POINTS CARD START -->
+            <div style="background:white;border:1px solid var(--rule);border-radius:12px;padding:1.5rem;margin-top:1rem;">
+              <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">See it mapped out</p>
+              <p style="font-family:var(--font-display);font-size:0.95rem;font-style:italic;color:var(--dark);line-height:1.6;margin-bottom:1rem;">The MESSY Playbook™ — Pain Point Reference: a one-page look at what each dimension addresses, the shift it creates, and what actually changes.</p>
+
+              <!-- Thumbnail preview -->
+              <div style="position:relative;border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-bottom:1rem;height:220px;">
+                <iframe
+                  src="pain-points.html"
+                  title="The MESSY Playbook™ Pain Point Reference preview"
+                  scrolling="no"
+                  style="width:100%;height:1200px;border:none;transform:scale(0.18);transform-origin:top left;pointer-events:none;"
+                ></iframe>
+                <!-- Clickable overlay -->
+                <a href="pain-points.html" target="_blank" aria-label="Preview the Pain Point Reference in full"
+                  style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(30,42,53,0.45);text-decoration:none;border-radius:8px;transition:background 0.2s;"
+                  onmouseover="this.style.background='rgba(30,42,53,0.6)'"
+                  onmouseout="this.style.background='rgba(30,42,53,0.45)'">
+                  <span style="background:white;color:#2c3e50;font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:8px 18px;border-radius:20px;">Click to Preview</span>
+                </a>
+              </div>
+
+              <!-- Action buttons -->
+              <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                <a href="pain-points.html" target="_blank"
+                  style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:9px 20px;border-radius:6px;text-decoration:none;">
+                  ↗ &nbsp;Preview Full Page
+                </a>
+                <a href="pain-points.html" target="_blank" onclick="setTimeout(()=>{},100)"
+                  style="display:inline-flex;align-items:center;gap:6px;background:white;color:#2c3e50;border:2px solid #2c3e50;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:9px 20px;border-radius:6px;text-decoration:none;">
+                  ↓ &nbsp;Download PDF
+                </a>
+              </div>
+              <p style="font-size:0.72rem;color:var(--muted);margin-top:0.6rem;font-style:italic;">To download: click Download PDF, then File → Print → Save as PDF in your browser.</p>
+            </div>
+            <!-- PAIN POINTS CARD END -->
 
           </div>
         </div>
@@ -1022,41 +1028,6 @@
             </div>
           </details>
 
-          <details class="faq-item" role="listitem">
-            <summary><span class="faq-num" aria-hidden="true">9</span>What are Messy Plays?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
-            <div class="faq-body">
-              <p>Messy Plays are short, research-grounded experiential cards — each one takes a single finding from a real academic paper and turns it into something you can actually feel, not just read about. Alone or with people you know. About 15 minutes. No facilitator needed.</p>
-              <p>The idea is simple: insight lands differently when you've experienced it first. Each Play gives you the experience before the explanation. Play 01 — <em>Staying in the Mess</em> — is based on Salmon & Steinberg (2007) and focuses on the MONITOR practice. It's free.</p>
-              <div class="faq-highlight">
-                <strong>Where to find them</strong>
-                Messy Plays are available at <a href="play.html" style="color:var(--grad-start);text-decoration:underline;text-underline-offset:3px;">messy-playbook.vercel.app/play</a> — free to start, with more plays in development. They work alongside the Playbook or completely on their own.
-              </div>
-            </div>
-          </details>
-
-          <details class="faq-item" role="listitem">
-            <summary><span class="faq-num" aria-hidden="true">10</span>Is there research behind this? Where does MESSY come from?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
-            <div class="faq-body">
-              <p>Yes — and the intellectual lineage is documented. MESSY draws on peer-reviewed research, international industry standards, and complexity science. It's not a collection of good ideas. It's a framework derived from a specific body of thought.</p>
-              <div class="faq-highlight">
-                <strong>The short version</strong>
-                The framework originates in Manufacturing Execution Systems (MES) — industrial software designed to work with real, messy production conditions rather than ideal ones. The complexity science of Dave Snowden (Cynefin framework, HBR 2007) provides the theoretical bridge. Peer-reviewed sociology (Nehring & Röcke, 2023) frames the critique of self-optimization culture. And empirical research on self-improvement failure rates (Norcross & Vangarelli, 1988) grounds the problem MESSY is designed to address.
-              </div>
-              <p>The full evidence base — with citations, DOIs, and an annotated reading list — lives on <a href="thinking.html" style="color:var(--grad-start);text-decoration:underline;text-underline-offset:3px;">The Thinking Behind MESSY</a> page.</p>
-            </div>
-          </details>
-
-          <details class="faq-item" role="listitem">
-            <summary><span class="faq-num" aria-hidden="true">11</span>Is there a book?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
-            <div class="faq-body">
-              <p>Yes — it's coming. The MESSY Playbook book is in development, expanding the framework into a full-length work that goes deeper into the origin story, the research, and what it actually looks and feels like to live inside each of the five practices.</p>
-              <div class="faq-highlight">
-                <strong>Why the page exists before the book does</strong>
-                That feels right for a framework built around working with reality rather than performing readiness. The placeholder is honest: something is coming, and you can find it at <a href="book.html" style="color:var(--grad-start);text-decoration:underline;text-underline-offset:3px;">the book page</a> when it arrives.
-              </div>
-            </div>
-          </details>
-
         </div>
 
         <div class="faq-disclaimer">
@@ -1292,11 +1263,11 @@
       if (lastFocus) lastFocus.focus();
     }
 
-    if (menuBtn) menuBtn.addEventListener('click', openMobileNav);
-    if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
+    menuBtn.addEventListener('click', openMobileNav);
+    closeBtn.addEventListener('click', closeMobileNav);
 
     // Close on backdrop click
-    if (mobileNav) mobileNav.addEventListener('click', function(e) {
+    mobileNav.addEventListener('click', function(e) {
       if (e.target === mobileNav) closeMobileNav();
     });
 
@@ -1306,7 +1277,7 @@
     });
 
     // Trap focus within open drawer
-    if (mobileNav) mobileNav.addEventListener('keydown', function(e) {
+    mobileNav.addEventListener('keydown', function(e) {
       if (!mobileNav.classList.contains('open') || e.key !== 'Tab') return;
       const focusable = mobileNav.querySelectorAll('button, a');
       const first = focusable[0];
@@ -1320,7 +1291,6 @@
     const contactForm   = document.getElementById('contact-form');
     const contactStatus = document.getElementById('contact-status');
 
-    if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = this.querySelector('.contact-submit');
@@ -1353,7 +1323,6 @@
         btn.textContent = 'Send Message →';
       }
     });
-    }
 
     // ── Smooth scroll ───────────────────────────────────────────
     document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -1392,37 +1361,19 @@
       });
     }
 
-            // ── Float nav ──────────────────────────────────────────────
-    var btnUp   = document.getElementById('floatTop');
-    var btnDown = document.getElementById('floatBottom');
-    var navIds  = ['hero','why','what','tiers','inside','faq','messy-play','messy-plays','get','contact'];
+    // ── Floating nav buttons ────────────────────────────────────
+    const floatTop    = document.getElementById('floatTop');
+    const floatBottom = document.getElementById('floatBottom');
 
-    function goUp() {
-      for (var i = navIds.length - 1; i >= 0; i--) {
-        var el = document.getElementById(navIds[i]);
-        if (el && el.getBoundingClientRect().top < -50) { el.scrollIntoView({behavior:'smooth'}); return; }
-      }
+    function updateFloatBtns() {
+      const scrollY    = window.scrollY;
+      const maxScroll  = document.documentElement.scrollHeight - window.innerHeight;
+      floatTop.classList.toggle('visible', scrollY > 400);
+      floatBottom.classList.toggle('visible', scrollY < maxScroll - 200);
     }
 
-    function goDown() {
-      for (var i = 0; i < navIds.length; i++) {
-        var el = document.getElementById(navIds[i]);
-        if (el && el.getBoundingClientRect().top > 100) { el.scrollIntoView({behavior:'smooth'}); return; }
-      }
-    }
-
-    function updateBtns() {
-      var first = document.getElementById(navIds[0]);
-      var last  = document.getElementById(navIds[navIds.length-1]);
-      if (btnUp)   btnUp.classList.toggle('visible',   first ? first.getBoundingClientRect().top < -50 : false);
-      if (btnDown) btnDown.classList.toggle('visible', last  ? last.getBoundingClientRect().bottom > window.innerHeight + 50 : false);
-    }
-
-    if (btnUp)   btnUp.addEventListener('click',   goUp);
-    if (btnDown) btnDown.addEventListener('click', goDown);
-    window.addEventListener('scroll', updateBtns, {passive:true});
-    window.addEventListener('load',   updateBtns);
-    setTimeout(updateBtns, 500);
+    window.addEventListener('scroll', updateFloatBtns, { passive: true });
+    updateFloatBtns();
   </script>
 </body>
 </html>
