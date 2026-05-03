@@ -312,33 +312,36 @@
   }
 
   /* ── PRINT / PDF ── */
-  @page { margin: 0.45in 0.5in; size: letter portrait; }
+  @page { margin: 0.55in 0.6in; size: letter portrait; }
 
   @media print {
     body { background: white; font-size: 8pt; }
     .page { padding: 0 !important; max-width: 100%; }
     .no-print { display: none !important; }
-    .header { padding: 12px 18px !important; margin-bottom: 8px !important; }
-    .header::after { font-size: 72px !important; }
-    .headline { font-size: 16pt !important; }
-    .subhead { font-size: 7.5pt !important; }
-    .eyebrow { font-size: 6pt !important; }
-    .intro-note { padding: 7px 12px !important; margin-bottom: 8px !important; font-size: 8pt !important; }
-    .arc-graphic { margin-bottom: 10px !important; padding: 12px 16px !important; }
-    .col-headers { gap: 4px !important; margin-bottom: 4px !important; }
-    .ch { font-size: 6.5pt !important; padding: 5px 8px !important; }
-    .col-headers, .row { grid-template-columns: 90px 1fr 1fr 182px !important; gap: 5px !important; }
-    .row { margin-bottom: 6px !important; page-break-inside: avoid !important; break-inside: avoid !important; border: 2px solid #b0b8c1 !important; border-radius: 10px !important; padding: 3px !important; }
-    .cat { padding: 9px 8px !important; }
+    .header { padding: 11px 16px !important; margin-bottom: 8px !important; }
+    .header::after { font-size: 68px !important; }
+    .headline { font-size: 15pt !important; }
+    .subhead { font-size: 7pt !important; }
+    .eyebrow { font-size: 5.5pt !important; margin-bottom: 3px !important; }
+    .intro-note { padding: 6px 12px !important; margin-bottom: 8px !important; font-size: 7.5pt !important; }
+    .arc-graphic { margin-bottom: 8px !important; padding: 10px 14px !important; }
+    .col-headers { gap: 4px !important; margin-bottom: 5px !important; grid-template-columns: 72px 1fr 1fr 160px !important; }
+    .ch { font-size: 6pt !important; padding: 5px 8px !important; }
+    .row { margin-bottom: 8px !important; page-break-inside: avoid !important; break-inside: avoid !important; border: 2px solid #b0b8c1 !important; border-radius: 10px !important; padding: 3px !important; grid-template-columns: 72px 1fr 1fr 160px !important; gap: 4px !important; }
+    .cat { padding: 12px 8px !important; flex-direction: column !important; }
     .cat-letter { font-size: 14pt !important; }
     .cat-name { font-size: 8pt !important; }
-    .cell { padding: 8px 10px !important; font-size: 8pt !important; line-height: 1.45 !important; }
+    .cell { padding: 12px 12px !important; font-size: 8pt !important; line-height: 1.5 !important; border-top: none !important; }
     .cell.impact { font-size: 7.5pt !important; }
-    .cell ul li { margin-bottom: 2px !important; }
-    .cta-block { padding: 10px 14px !important; margin-top: 10px !important; page-break-inside: avoid !important; }
-    .cta-text { font-size: 8pt !important; }
-    .cta-text strong { font-size: 9pt !important; }
-    .footer { margin-top: 10px !important; padding-top: 7px !important; }
+    .cell ul li { margin-bottom: 4px !important; padding-left: 12px !important; }
+    .cell.pain::before, .cell.outcome::before, .cell.impact::before { display: none !important; }
+    .cta-block { padding: 10px 14px !important; margin-top: 8px !important; page-break-inside: avoid !important; break-inside: avoid !important; display: block !important; }
+    .cta-text { font-size: 8pt !important; line-height: 1.4 !important; display: block !important; margin-bottom: 8px !important; color: #ffffff !important; font-weight: 600 !important; }
+    .cta-text strong { font-size: 9pt !important; display: block !important; margin-bottom: 3px !important; }
+    .cta-block > div:last-child { display: flex !important; flex-direction: row !important; align-items: center !important; gap: 12px !important; }
+    .daily-practice-header { padding-bottom: 14px !important; }
+    .daily-practice-grid { display: grid !important; grid-template-columns: 1fr 1fr 1fr !important; }
+    .footer { margin-top: 10px !important; padding: 8px 0.6in 6px !important; border-top: 2px solid #ecf0f1 !important; }
     .footer-brand { font-size: 10pt !important; }
     .footer-tagline, .footer-copy { font-size: 6pt !important; }
     .footer-url { font-size: 8pt !important; }
@@ -721,10 +724,10 @@
         <div style="font-size:6.5pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#ffffff;margin-bottom:5px;">Weekly · 15–20 Min</div>
         <div style="font-size:9.5pt;font-weight:700;color:#fff;margin-bottom:8px;">Weekly Review</div>
         <div style="display:flex;flex-direction:column;gap:10px;">
-          <div style="font-size:8pt;color:#ffffff;font-weight:700;line-height:1.45;padding-left:12px;position:relative;text-shadow:0 1px 2px rgba(0,0,0,0.35);"><span style="position:absolute;left:0;color:#ffffff;">◆</span>How are different areas of my life affecting each other?</div>
-          <div style="font-size:8pt;color:#ffffff;font-weight:700;line-height:1.45;padding-left:12px;position:relative;text-shadow:0 1px 2px rgba(0,0,0,0.35);"><span style="position:absolute;left:0;color:#ffffff;">◆</span>Where am I trying to be perfect instead of real?</div>
-          <div style="font-size:8pt;color:#ffffff;font-weight:700;line-height:1.45;padding-left:12px;position:relative;text-shadow:0 1px 2px rgba(0,0,0,0.35);"><span style="position:absolute;left:0;color:#ffffff;">◆</span>What insights from one area can help in another?</div>
-          <div style="font-size:8pt;color:#ffffff;font-weight:700;line-height:1.45;padding-left:12px;position:relative;text-shadow:0 1px 2px rgba(0,0,0,0.35);"><span style="position:absolute;left:0;color:#ffffff;">◆</span>Are my support systems serving my whole self?</div>
+          <div style="font-size:8pt;color:#ffffff;font-weight:700;line-height:1.45;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:#ffffff;">◆</span>How are different areas of my life affecting each other?</div>
+          <div style="font-size:8pt;color:#ffffff;font-weight:700;line-height:1.45;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:#ffffff;">◆</span>Where am I trying to be perfect instead of real?</div>
+          <div style="font-size:8pt;color:#ffffff;font-weight:700;line-height:1.45;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:#ffffff;">◆</span>What insights from one area can help in another?</div>
+          <div style="font-size:8pt;color:#ffffff;font-weight:700;line-height:1.45;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:#ffffff;">◆</span>Are my support systems serving my whole self?</div>
         </div>
       </div>
 
