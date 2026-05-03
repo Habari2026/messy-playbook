@@ -263,6 +263,9 @@
     details.faq-item:nth-child(6) summary, details.faq-item:nth-child(6)[open] .faq-body { border-left-color: var(--dark); }
     details.faq-item:nth-child(7) summary, details.faq-item:nth-child(7)[open] .faq-body { border-left-color: var(--grad-start); }
     details.faq-item:nth-child(8) summary, details.faq-item:nth-child(8)[open] .faq-body { border-left-color: var(--e); }
+    details.faq-item:nth-child(9) summary, details.faq-item:nth-child(9)[open] .faq-body { border-left-color: var(--m); }
+    details.faq-item:nth-child(10) summary, details.faq-item:nth-child(10)[open] .faq-body { border-left-color: var(--s); }
+    details.faq-item:nth-child(11) summary, details.faq-item:nth-child(11)[open] .faq-body { border-left-color: var(--y); }
     details.faq-item:nth-child(1) .faq-num { background: var(--m); }
     details.faq-item:nth-child(2) .faq-num { background: var(--e); }
     details.faq-item:nth-child(3) .faq-num { background: var(--s); }
@@ -271,6 +274,9 @@
     details.faq-item:nth-child(6) .faq-num { background: var(--dark); }
     details.faq-item:nth-child(7) .faq-num { background: var(--grad-start); }
     details.faq-item:nth-child(8) .faq-num { background: var(--e); }
+    details.faq-item:nth-child(9) .faq-num { background: var(--m); }
+    details.faq-item:nth-child(10) .faq-num { background: var(--s); }
+    details.faq-item:nth-child(11) .faq-num { background: var(--y); }
 
     /* ── Get MESSY! ────────────────────────────────────── */
     #get { padding: clamp(4rem,8vw,7rem) 0; background: var(--dark); }
@@ -479,6 +485,7 @@
         <li><a href="#faq">FAQ</a></li>
         <li><a href="play.html">Messy Plays</a></li>
         <li><a href="thinking.html">The Thinking</a></li>
+        <li><a href="book.html">The Book <span style="font-size:10px;background:rgba(155,89,182,0.12);border:1px solid rgba(155,89,182,0.25);color:var(--m);padding:1px 6px;border-radius:100px;letter-spacing:0.05em;vertical-align:middle;margin-left:2px;">forthcoming</span></a></li>
       </ul>
       <a href="#get" class="nav-cta">Get MESSY!</a>
       <button
@@ -500,6 +507,7 @@
       <a href="#faq"   onclick="closeMobileNav()">FAQ</a>
       <a href="play.html" onclick="closeMobileNav()">Messy Plays</a>
       <a href="thinking.html" onclick="closeMobileNav()">The Thinking</a>
+      <a href="book.html" onclick="closeMobileNav()">The Book <span style="font-size:10px;background:rgba(155,89,182,0.12);border:1px solid rgba(155,89,182,0.25);color:var(--m);padding:1px 6px;border-radius:100px;letter-spacing:0.05em;vertical-align:middle;margin-left:2px;">forthcoming</span></a>
       <a href="#get"   onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
     </div>
   </div>
@@ -1021,6 +1029,47 @@
                 <strong>Why free?</strong>
                 The framework is built around anti-optimization. Charging a premium for it would feel philosophically inconsistent. The goal is for it to reach the people it's for — not to extract maximum revenue from each transaction.
               </div>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">9</span>What are Messy Plays™?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>Messy Plays™ are a series of research-backed experiential cards — each one takes a single finding from a real research paper and turns it into a 15-minute experience you can actually feel, not just read about. Alone or with people you know.</p>
+              <div class="faq-highlight">
+                <strong>Play 01: Staying in the Mess</strong>
+                The first card explores what the research says about sitting with uncertainty — and gives you a structured way to practice it. It's free to start, and it works on its own even if you've never touched the rest of the framework.
+              </div>
+              <p>Messy Plays are designed to be standalone but are most powerful when used alongside the Self-Study Program. Each play is rooted in peer-reviewed research and built for people who learn by doing, not just reading. <a href="play.html">Explore Messy Plays →</a></p>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">10</span>Is there research behind this?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>Yes — MESSY is grounded in four research pillars, not pop psychology or productivity trends.</p>
+              <div class="faq-highlight">
+                <strong>The four pillars</strong>
+                <ul>
+                  <li><strong>Manufacturing Execution Systems (MES)</strong> — the operational science behind Monitor, Execute, Support, Surrender, and Yield. The framework borrows its structure from how complex adaptive systems actually work.</li>
+                  <li><strong>Snowden &amp; Boone / Cynefin</strong> — complexity theory applied to human experience. Most personal development treats people like complicated machines. MESSY treats them like complex adaptive systems — which is what they are.</li>
+                  <li><strong>Nehring &amp; Röcke</strong> — research on emotional complexity and the value of sitting with mixed, contradictory feelings rather than resolving them prematurely.</li>
+                  <li><strong>Norcross et al.</strong> — meta-research on what actually makes behavior change work over time. Spoiler: it's not willpower or accountability — it's self-compassion and relational support.</li>
+                </ul>
+              </div>
+              <p>The full reading list and research context is on <a href="thinking.html">The Thinking page →</a></p>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">11</span>Is there a book?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>Not yet — but it's coming. The MESSY Playbook started as a framework, grew into a program, and is now being developed into a full manuscript. The placeholder page exists because the thinking is already here; the book is just the long form of it.</p>
+              <div class="faq-highlight">
+                <strong>Why publish the framework before the book?</strong>
+                Because the people who need it need it now — not after a two-year publishing cycle. The Self-Study Program, Messy Plays, and the site are the living version. The book will be the permanent one.
+              </div>
+              <p>If you want to know when it's ready, the best way is to stay connected through the Live Messy Project. <a href="book.html">See the book page →</a></p>
             </div>
           </details>
 
