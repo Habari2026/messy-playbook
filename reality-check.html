@@ -126,7 +126,7 @@
   /* ── COLUMN HEADERS ── */
   .col-headers {
     display: grid;
-    grid-template-columns: 158px 1fr 1fr 182px;
+    grid-template-columns: 90px 1fr 1fr 182px;
     gap: 8px;
     margin-bottom: 6px;
   }
@@ -149,7 +149,7 @@
   /* ── ROW ── */
   .row {
     display: grid;
-    grid-template-columns: 158px 1fr 1fr 182px;
+    grid-template-columns: 90px 1fr 1fr 182px;
     gap: 8px;
     margin-bottom: 8px;
     align-items: stretch;
@@ -158,7 +158,7 @@
   /* ── CATEGORY BADGE ── */
   .cat {
     border-radius: var(--radius-card);
-    padding: 14px 14px;
+    padding: 12px 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -171,7 +171,7 @@
   .cat-y  { background: var(--y-grad);  color: #fff; }
 
   .cat-letter {
-    font-size: 24pt;
+    font-size: 20pt;
     font-weight: 900;
     line-height: 1;
     margin-bottom: 2px;
@@ -179,9 +179,9 @@
 
   .cat-s2 .cat-letter { color: var(--text-s2); }
 
-  .cat-name { font-size: 13pt; font-weight: 700; line-height: 1.2; }
-  .cat-sub  { font-size: 10pt; font-weight: 400; margin-top: 6px; opacity: 0.85; font-style: italic; }
-  .cat-s2 .cat-sub { color: var(--text-primary); }
+  .cat-name { font-size: 10pt; font-weight: 700; line-height: 1.2; }
+  .cat-sub  { display: none; }
+  .cat-s2 .cat-sub { display: none; }
 
   .s-count {
     display: inline-block;
@@ -289,7 +289,8 @@
   }
 
   .cta-text {
-    color: #fff;
+    color: #ffffff;
+    font-weight: 600;
     font-size: 10pt;
     line-height: 1.55;
     max-width: 640px;
@@ -310,10 +311,129 @@
     white-space: nowrap;
   }
 
+  /* ── PRINT / PDF ── */
+  @page { margin: 0.45in 0.5in; size: letter portrait; }
+
   @media print {
-    body { background: white; }
-    .page { padding: 20px 24px 36px; }
+    body { background: white; font-size: 8pt; }
+    .page { padding: 0 !important; max-width: 100%; }
     .no-print { display: none !important; }
+    .header { padding: 12px 18px !important; margin-bottom: 8px !important; }
+    .header::after { font-size: 72px !important; }
+    .headline { font-size: 16pt !important; }
+    .subhead { font-size: 7.5pt !important; }
+    .eyebrow { font-size: 6pt !important; }
+    .intro-note { padding: 7px 12px !important; margin-bottom: 8px !important; font-size: 8pt !important; }
+    .arc-graphic { margin-bottom: 10px !important; padding: 12px 16px !important; }
+    .col-headers { gap: 4px !important; margin-bottom: 4px !important; }
+    .ch { font-size: 6.5pt !important; padding: 5px 8px !important; }
+    .col-headers, .row { grid-template-columns: 90px 1fr 1fr 182px !important; gap: 5px !important; }
+    .row { margin-bottom: 6px !important; page-break-inside: avoid !important; break-inside: avoid !important; border: 2px solid #b0b8c1 !important; border-radius: 10px !important; padding: 3px !important; }
+    .cat { padding: 9px 8px !important; }
+    .cat-letter { font-size: 14pt !important; }
+    .cat-name { font-size: 8pt !important; }
+    .cell { padding: 8px 10px !important; font-size: 8pt !important; line-height: 1.45 !important; }
+    .cell.impact { font-size: 7.5pt !important; }
+    .cell ul li { margin-bottom: 2px !important; }
+    .cta-block { padding: 10px 14px !important; margin-top: 10px !important; page-break-inside: avoid !important; }
+    .cta-text { font-size: 8pt !important; }
+    .cta-text strong { font-size: 9pt !important; }
+    .footer { margin-top: 10px !important; padding-top: 7px !important; }
+    .footer-brand { font-size: 10pt !important; }
+    .footer-tagline, .footer-copy { font-size: 6pt !important; }
+    .footer-url { font-size: 8pt !important; }
+  }
+
+  /* ── TABLET (768px – 1023px) ── */
+  @media (max-width: 1023px) {
+    .page { padding: 24px 20px 40px; }
+    .col-headers { grid-template-columns: 80px 1fr 1fr 160px; }
+    .row { grid-template-columns: 80px 1fr 1fr 160px; }
+    .header::after { font-size: 80px; }
+  }
+
+  /* ── MOBILE (≤767px) ── */
+  @media (max-width: 767px) {
+    body { font-size: 14px; overflow-x: hidden; }
+
+    .page { padding: 16px 14px 32px; }
+
+    /* Header */
+    .header { padding: 20px 18px; margin-bottom: 12px; }
+    .header::after { font-size: 60px; right: 8px; }
+    .headline { font-size: 20pt; }
+    .subhead { font-size: 9pt; max-width: 100%; }
+    .eyebrow { font-size: 7pt; letter-spacing: 0.12em; }
+
+    /* Intro note */
+    .intro-note { font-size: 9pt; padding: 10px 14px; margin-bottom: 14px; }
+
+    /* Arc graphic — scale down circles for small screens */
+    .arc-graphic { padding: 14px 10px; overflow-x: auto; }
+    .arc-graphic > div { gap: 0; }
+    .arc-graphic span[style*="width:48px"] {
+      width: 38px !important; height: 38px !important;
+      line-height: 38px !important; font-size: 14pt !important;
+    }
+    .arc-graphic span[style*="font-size:14pt"] { font-size: 11pt !important; margin: 0 4px !important; padding-top: 10px !important; }
+    .arc-graphic span[style*="font-size:7pt"] { font-size: 6pt !important; }
+    .arc-graphic svg { width: 18px !important; height: 18px !important; }
+
+    /* Column headers — hide on mobile, labels shown inline */
+    .col-headers { display: none; }
+
+    /* Rows — stack vertically */
+    .row {
+      grid-template-columns: 1fr !important;
+      gap: 0 !important;
+      border: 2px solid #b0b8c1;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    /* Category badge full width on mobile */
+    .cat {
+      border-radius: 0 !important;
+      padding: 12px 16px !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 10px !important;
+    }
+    .cat-letter { font-size: 22pt !important; margin-bottom: 0 !important; }
+    .cat-name { font-size: 12pt !important; }
+
+    /* Add column labels before each cell on mobile */
+    .cell { border-radius: 0 !important; border-left: none !important; border-right: none !important; border-top: 1px solid var(--divider) !important; padding: 12px 14px !important; font-size: 9.5pt !important; }
+    .cell.impact { border-right: none !important; }
+    .cell.pain::before { content: '✕  WITHOUT IT — THE PATTERNS'; display: block; font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+    .cell.outcome::before { content: '→  WITH MESSY — THE SHIFT'; display: block; font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+    .cell.impact::before { content: '◆  WHAT ACTUALLY CHANGES'; display: block; font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+
+    /* CTA */
+    .cta-block { padding: 16px; flex-direction: column; align-items: flex-start; }
+    .cta-text { font-size: 10pt; max-width: 100%; }
+    .cta-block > div:last-child { white-space: normal !important; width: 100%; align-items: flex-start; }
+    .cta-block a { font-size: 10pt !important; padding: 12px 24px !important; width: 100%; text-align: center; box-sizing: border-box; }
+
+    /* Daily Practice — stack on mobile */
+    .daily-practice-grid { grid-template-columns: 1fr !important; }
+
+    /* Footer */
+    .footer { flex-direction: column; align-items: flex-start; }
+    .footer-right { text-align: left; }
+    .footer-brand { font-size: 13pt; }
+  }
+
+  /* ── SMALL PHONE (≤390px) ── */
+  @media (max-width: 390px) {
+    .page { padding: 12px 10px 24px; }
+    .headline { font-size: 17pt; }
+    .arc-graphic span[style*="width:48px"] {
+      width: 32px !important; height: 32px !important;
+      line-height: 32px !important; font-size: 12pt !important;
+    }
+    .arc-graphic span[style*="font-size:14pt"] { font-size: 9pt !important; margin: 0 3px !important; }
   }
 </style>
 <script>
@@ -344,51 +464,50 @@
   </div>
 
   <!-- MESSY ARC GRAPHIC -->
-  <div style="background:#fff;border-radius:10px;padding:18px 24px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;">
+  <div class="arc-graphic" style="background:#fff;border-radius:10px;padding:18px 24px;margin-bottom:20px;text-align:center;">
+    <div style="display:inline-flex;flex-wrap:nowrap;align-items:flex-start;justify-content:center;gap:0;">
 
-    <!-- M -->
-    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#9b59b6,#8e44ad);display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:20pt;font-weight:900;color:#fff;">M</div>
-      <div style="font-family:Arial,sans-serif;font-size:7.5pt;font-weight:700;color:#2c3e50;text-align:center;line-height:1.2;">Monitor</div>
+      <div style="display:inline-flex;flex-direction:column;align-items:center;gap:7px;">
+        <span style="display:inline-block;width:48px;height:48px;line-height:48px;border-radius:50%;background:linear-gradient(135deg,#9b59b6,#8e44ad);color:#fff;font-family:Arial,sans-serif;font-size:18pt;font-weight:900;text-align:center;">M</span>
+        <span style="font-family:Arial,sans-serif;font-size:7pt;font-weight:700;color:#2c3e50;white-space:nowrap;">Monitor</span>
+      </div>
+
+      <span style="display:inline-block;margin:0 6px;padding-top:14px;color:#2c3e50;font-size:14pt;font-weight:900;text-shadow:0 0 0.8px #2c3e50;">→</span>
+
+      <div style="display:inline-flex;flex-direction:column;align-items:center;gap:7px;">
+        <span style="display:inline-block;width:48px;height:48px;line-height:48px;border-radius:50%;background:linear-gradient(135deg,#e67e22,#d35400);color:#fff;font-family:Arial,sans-serif;font-size:18pt;font-weight:900;text-align:center;">E</span>
+        <span style="font-family:Arial,sans-serif;font-size:7pt;font-weight:700;color:#2c3e50;white-space:nowrap;">Execute</span>
+      </div>
+
+      <span style="display:inline-block;margin:0 6px;padding-top:14px;color:#2c3e50;font-size:14pt;font-weight:900;text-shadow:0 0 0.8px #2c3e50;">→</span>
+
+      <div style="display:inline-flex;flex-direction:column;align-items:center;gap:7px;">
+        <span style="display:inline-block;width:48px;height:48px;line-height:48px;border-radius:50%;background:linear-gradient(135deg,#3498db,#2980b9);color:#fff;font-family:Arial,sans-serif;font-size:18pt;font-weight:900;text-align:center;">S</span>
+        <span style="font-family:Arial,sans-serif;font-size:7pt;font-weight:700;color:#2c3e50;white-space:nowrap;">Support</span>
+      </div>
+
+      <span style="display:inline-block;margin:0 6px;padding-top:14px;color:#2c3e50;font-size:14pt;font-weight:900;text-shadow:0 0 0.8px #2c3e50;">→</span>
+
+      <div style="display:inline-flex;flex-direction:column;align-items:center;gap:7px;">
+        <span style="display:inline-block;width:48px;height:48px;line-height:48px;border-radius:50%;background:linear-gradient(135deg,#f1c40f,#f39c12);color:#856404;font-family:Arial,sans-serif;font-size:18pt;font-weight:900;text-align:center;">S</span>
+        <span style="font-family:Arial,sans-serif;font-size:7pt;font-weight:700;color:#2c3e50;white-space:nowrap;">Surrender</span>
+      </div>
+
+      <span style="display:inline-block;margin:0 6px;padding-top:14px;color:#2c3e50;font-size:14pt;font-weight:900;text-shadow:0 0 0.8px #2c3e50;">→</span>
+
+      <div style="display:inline-flex;flex-direction:column;align-items:center;gap:7px;">
+        <span style="display:inline-block;width:48px;height:48px;line-height:48px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#229954);color:#fff;font-family:Arial,sans-serif;font-size:18pt;font-weight:900;text-align:center;">Y</span>
+        <span style="font-family:Arial,sans-serif;font-size:7pt;font-weight:700;color:#2c3e50;white-space:nowrap;">Yield</span>
+      </div>
+
+      <span style="display:inline-block;margin-left:8px;padding-top:13px;">
+        <svg width="22" height="22" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;filter:drop-shadow(0 0 0.8px #2c3e50);"><path d="m64.5 10c-0.92578-0.011719-1.8516-0.003906-2.7812 0.03125-4.9375 0.19141-9.8711 1.0938-14.656 2.6875-0.011719 0.003906-0.023438-0.003906-0.03125 0-12.32 4.0078-22.844 12.512-29.438 23.625-0.007812 0.011719-0.023438 0.019531-0.03125 0.03125-4.9531 8.3438-7.5547 17.965-7.5625 27.625h-10l14 24 14-24h-10c0.015625-8.2422 2.2305-16.48 6.4375-23.562 5.6016-9.4531 14.645-16.734 25.094-20.125h0.03125v-0.03125c16.223-5.4062 34.816-0.96484 47.031 11.156l5.625-5.6875c-10.113-10.039-23.812-15.57-37.719-15.75zm49.5 30-14 24h10c-0.03125 8.2109-2.2461 16.414-6.4375 23.469-5.6016 9.4531-14.645 16.734-25.094 20.125h-0.03125c-16.332 5.4141-34.895 0.98047-47-11.125l-5.6562 5.6562c14.285 14.285 35.895 19.434 55.156 13.062 0.003906-0.007812 0.023438 0.003906 0.03125 0 12.332-4.0156 22.875-12.523 29.469-23.656 4.9453-8.3242 7.543-17.895 7.5625-27.531h10z" fill="#2c3e50"/></svg>
+      </span>
+
     </div>
-
-    <div style="font-size:16pt;color:#7f8c8d;margin:0 6px;padding-bottom:16px;">→</div>
-
-    <!-- E -->
-    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#e67e22,#d35400);display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:20pt;font-weight:900;color:#fff;">E</div>
-      <div style="font-family:Arial,sans-serif;font-size:7.5pt;font-weight:700;color:#2c3e50;text-align:center;line-height:1.2;">Execute</div>
-    </div>
-
-    <div style="font-size:16pt;color:#7f8c8d;margin:0 6px;padding-bottom:16px;">→</div>
-
-    <!-- S1 -->
-    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#3498db,#2980b9);display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:20pt;font-weight:900;color:#fff;">S</div>
-      <div style="font-family:Arial,sans-serif;font-size:7.5pt;font-weight:700;color:#2c3e50;text-align:center;line-height:1.2;">Support</div>
-    </div>
-
-    <div style="font-size:16pt;color:#7f8c8d;margin:0 6px;padding-bottom:16px;">→</div>
-
-    <!-- S2 -->
-    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#f1c40f,#f39c12);display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:20pt;font-weight:900;color:#856404;">S</div>
-      <div style="font-family:Arial,sans-serif;font-size:7.5pt;font-weight:700;color:#2c3e50;text-align:center;line-height:1.2;">Surrender</div>
-    </div>
-
-    <div style="font-size:16pt;color:#7f8c8d;margin:0 6px;padding-bottom:16px;">→</div>
-
-    <!-- Y -->
-    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#229954);display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:20pt;font-weight:900;color:#fff;">Y</div>
-      <div style="font-family:Arial,sans-serif;font-size:7.5pt;font-weight:700;color:#2c3e50;text-align:center;line-height:1.2;">Yield</div>
-    </div>
-
-    <div style="font-size:16pt;color:#7f8c8d;margin:0 6px;padding-bottom:16px;">↺</div>
-
   </div>
 
-  <!-- COLUMN HEADERS -->
+    <!-- COLUMN HEADERS -->
   <div class="col-headers">
     <div class="ch spacer">&nbsp;</div>
     <div class="ch pain-h">✕ &nbsp;Without It — The Patterns</div>
@@ -561,9 +680,54 @@
       <strong>Ready to stop recognizing yourself in this list?</strong>
       The Self-Study Program walks you through all five MESSY practices at your own pace — no facilitator, no cohort, no schedule. Just you, being honest. Pay what's right for where you are.
     </div>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;white-space:nowrap;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;">
       <a href="https://livemessy.gumroad.com/l/messy-self-study" target="_blank" style="display:inline-block;background:#fff;color:#764ba2;font-size:11pt;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:11px 28px;border-radius:6px;text-decoration:none;border:none;">Get MESSY!</a>
-      <span style="font-size:7.5pt;color:rgba(255,255,255,0.7);letter-spacing:0.02em;">livemessy.gumroad.com/l/messy-self-study</span>
+      <span style="font-size:7.5pt;color:#ffffff;font-weight:600;letter-spacing:0.02em;">livemessy.gumroad.com/l/messy-self-study</span>
+    </div>
+  </div>
+
+  <!-- DAILY PRACTICE -->
+  <div style="margin-top:20px;border-radius:10px;overflow:hidden;">
+    <div class="daily-practice-header" style="background:var(--base-color);padding:12px 20px;text-align:center;">
+      <div style="font-size:7pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#ffffff;margin-bottom:3px;">The Daily Practice</div>
+      <div style="font-size:12pt;font-weight:700;color:#fff;">What MESSY Looks Like Tomorrow Morning</div>
+      <div style="font-size:8pt;color:#ffffff;font-weight:600;margin-top:3px;font-style:italic;">Three honest check-ins. No tracking. No performance. Just you, paying attention.</div>
+    </div>
+    <div class="daily-practice-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;">
+
+      <!-- Morning Check-In -->
+      <div style="background:var(--m-grad);padding:16px 14px;">
+        <div style="font-size:6.5pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#ffffff;margin-bottom:5px;">Daily · 3–5 Min · Morning</div>
+        <div style="font-size:9.5pt;font-weight:700;color:#fff;margin-bottom:8px;">Morning Check-In</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:8pt;color:#ffffff;font-weight:600;line-height:1.45;"><span style="display:inline-block;width:16px;height:16px;border-radius:50%;background:var(--m-color);color:#fff;font-size:7pt;font-weight:900;text-align:center;line-height:14px;margin-right:5px;vertical-align:middle;border:1.5px solid rgba(255,255,255,0.8);">M</span><strong style="color:#fff;">Monitor</strong><br><span style="padding-left:21px;display:block;">What's my energy and what's really going on today?</span></div>
+          <div style="font-size:8pt;color:#ffffff;font-weight:600;line-height:1.45;"><span style="display:inline-block;width:16px;height:16px;border-radius:50%;background:var(--e-color);color:#fff;font-size:7pt;font-weight:900;text-align:center;line-height:14px;margin-right:5px;vertical-align:middle;border:1.5px solid rgba(255,255,255,0.8);">E</span><strong style="color:#fff;">Execute</strong><br><span style="padding-left:21px;display:block;">What one thing matters most today?</span></div>
+          <div style="font-size:8pt;color:#ffffff;font-weight:600;line-height:1.45;"><span style="display:inline-block;width:16px;height:16px;border-radius:50%;background:var(--s1-color);color:#fff;font-size:7pt;font-weight:900;text-align:center;line-height:14px;margin-right:5px;vertical-align:middle;border:1.5px solid rgba(255,255,255,0.8);">S</span><strong style="color:#fff;">Support</strong><br><span style="padding-left:21px;display:block;">What do I need to show up well today?</span></div>
+        </div>
+      </div>
+
+      <!-- Evening Reflection -->
+      <div style="background:var(--base-color);padding:16px 14px;">
+        <div style="font-size:6.5pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#ffffff;margin-bottom:5px;">Daily · End of Day · Evening</div>
+        <div style="font-size:9.5pt;font-weight:700;color:#fff;margin-bottom:8px;">Evening Reflection</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:8pt;color:#ffffff;font-weight:600;line-height:1.45;"><span style="display:inline-block;width:16px;height:16px;border-radius:50%;background:var(--s2-color);color:#856404;font-size:7pt;font-weight:900;text-align:center;line-height:14px;margin-right:5px;vertical-align:middle;border:1.5px solid rgba(255,255,255,0.8);">S</span><strong style="color:#fff;">Surrender</strong><br><span style="padding-left:21px;display:block;">What am I trying to control that I can let go of?</span></div>
+          <div style="font-size:8pt;color:#ffffff;font-weight:600;line-height:1.45;"><span style="display:inline-block;width:16px;height:16px;border-radius:50%;background:var(--y-color);color:#fff;font-size:7pt;font-weight:900;text-align:center;line-height:14px;margin-right:5px;vertical-align:middle;border:1.5px solid rgba(255,255,255,0.8);">Y</span><strong style="color:#fff;">Yield</strong><br><span style="padding-left:21px;display:block;">What did today teach me about being human?</span></div>
+        </div>
+      </div>
+
+      <!-- Weekly Review -->
+      <div style="background:linear-gradient(135deg,#4a5fe8,#5a3080);padding:16px 14px;">
+        <div style="font-size:6.5pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#ffffff;margin-bottom:5px;">Weekly · 15–20 Min</div>
+        <div style="font-size:9.5pt;font-weight:700;color:#fff;margin-bottom:8px;">Weekly Review</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:8pt;color:#ffffff;font-weight:700;line-height:1.45;padding-left:12px;position:relative;text-shadow:0 1px 2px rgba(0,0,0,0.35);"><span style="position:absolute;left:0;color:#ffffff;">◆</span>How are different areas of my life affecting each other?</div>
+          <div style="font-size:8pt;color:#ffffff;font-weight:700;line-height:1.45;padding-left:12px;position:relative;text-shadow:0 1px 2px rgba(0,0,0,0.35);"><span style="position:absolute;left:0;color:#ffffff;">◆</span>Where am I trying to be perfect instead of real?</div>
+          <div style="font-size:8pt;color:#ffffff;font-weight:700;line-height:1.45;padding-left:12px;position:relative;text-shadow:0 1px 2px rgba(0,0,0,0.35);"><span style="position:absolute;left:0;color:#ffffff;">◆</span>What insights from one area can help in another?</div>
+          <div style="font-size:8pt;color:#ffffff;font-weight:700;line-height:1.45;padding-left:12px;position:relative;text-shadow:0 1px 2px rgba(0,0,0,0.35);"><span style="position:absolute;left:0;color:#ffffff;">◆</span>Are my support systems serving my whole self?</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -576,7 +740,7 @@
     <div class="footer-right">
       <p>Explore &amp; download at</p>
       <div class="footer-url">messy-playbook.vercel.app</div>
-      <div class="footer-copy">© 2025 Live Messy Project · All rights reserved</div>
+      <div class="footer-copy">© 2026 Live Messy Project · All rights reserved</div>
     </div>
   </div>
 
