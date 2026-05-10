@@ -81,7 +81,7 @@
     /* ── HERO ── */
     .hero {
       background: var(--grad-brand);
-      padding: 8rem 2rem 5rem;
+      padding: 5.5rem 1.5rem 4.5rem;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -95,38 +95,30 @@
       pointer-events: none;
     }
     .hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
-    .hero-eyebrow {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.55);
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
-    }
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(3.5rem, 10vw, 6.5rem);
-      font-weight: 800;
+      font-size: 3.75rem;
+      font-weight: 700;
       color: #fff;
-      line-height: 1;
-      
-      margin-bottom: 0.25rem;
+      line-height: 1.08;
+      margin-bottom: 0.75rem;
     }
     .hero-title-tm {
-      font-size: 0.3em;
+      font-size: 0.52em;
       vertical-align: super;
       font-weight: 700;
-      opacity: 0.7;
     }
     .hero-tagline {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: rgba(255,255,255,0.75);
-      margin: 1rem 0 0.75rem;
+      font-size: 1.35rem;
+      font-style: italic;
+      font-weight: 700;
+      color: rgba(255,255,255,0.95);
+      margin: 0 0 0.75rem;
       line-height: 1.5;
     }
     .hero-body {
       font-size: 15px;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.78);
       max-width: 440px;
       margin: 0 auto 1.75rem;
       line-height: 1.7;
@@ -574,6 +566,12 @@
 </head>
 <body>
 
+<!-- FLOATING NAV -->
+<div class="float-nav" aria-label="Page navigation">
+  <button class="float-btn" id="floatTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <button class="float-btn" id="floatBottom" aria-label="Jump to bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">↓</button>
+</div>
+
 <!-- ── NAVIGATION ── -->
 <nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
@@ -626,7 +624,6 @@
 <!-- ── HERO ── -->
 <section class="hero" id="hero">
   <div class="hero-inner">
-    <p class="hero-eyebrow">From the Live Messy Project</p>
     <h1 class="hero-title">Messy Plays<span class="hero-title-tm">™</span></h1>
     <p class="hero-tagline">Staying in the Mess · Set 01</p>
     <p class="hero-body">Each play takes one finding from a real research paper and turns it into something you can actually feel — alone or with people you know.</p>
@@ -1651,43 +1648,19 @@
     heroObserver.observe(hero);
   }
 
-                  // ── Section-by-section floating nav ────────────────────────
+                  // ── Floating nav — mirrors index.html ────────────────────────
     var floatTop    = document.getElementById('floatTop');
     var floatBottom = document.getElementById('floatBottom');
 
-    var sectionIds = ['hero','what','why','set01','alignment','cards','closing','attribution'];
-    var sectionNav = sectionIds.map(function(id) {
-      return document.getElementById(id);
-    }).filter(function(el) { return el !== null; });
-
-    function navigatePrev() {
-      for (var i = sectionNav.length - 1; i >= 0; i--) {
-        if (sectionNav[i].getBoundingClientRect().top < -50) {
-          sectionNav[i].scrollIntoView({ behavior: 'smooth' });
-          return;
-        }
-      }
-    }
-
-    function navigateNext() {
-      for (var i = 0; i < sectionNav.length; i++) {
-        if (sectionNav[i].getBoundingClientRect().top > 150) {
-          sectionNav[i].scrollIntoView({ behavior: 'smooth' });
-          return;
-        }
-      }
-    }
-
     function updateFloatBtns() {
-      if (!sectionNav.length) return;
-      var first = sectionNav[0].getBoundingClientRect().top;
-      var last  = sectionNav[sectionNav.length - 1].getBoundingClientRect().bottom;
-      floatTop.classList.toggle('visible', first < -50);
-      floatBottom.classList.toggle('visible', last > window.innerHeight + 50);
+      var scrollY   = window.scrollY;
+      var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (floatTop)    floatTop.classList.toggle('visible', scrollY > 400);
+      if (floatBottom) floatBottom.classList.toggle('visible', scrollY < maxScroll - 200);
     }
 
-    if (floatTop)    floatTop.addEventListener('click', navigatePrev);
-    if (floatBottom) floatBottom.addEventListener('click', navigateNext);
+    if (floatTop)    floatTop.addEventListener('click', function() { window.scrollTo({top: 0, behavior: 'smooth'}); });
+    if (floatBottom) floatBottom.addEventListener('click', function() { window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); });
     window.addEventListener('scroll', updateFloatBtns, { passive: true });
     window.addEventListener('load', updateFloatBtns);
     setTimeout(updateFloatBtns, 500);

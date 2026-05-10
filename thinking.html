@@ -858,43 +858,19 @@
       }
     });
 
-                // ── Section-by-section floating nav ────────────────────────
+                // ── Floating nav — mirrors index.html ────────────────────────
     var floatTop    = document.getElementById('floatTop');
     var floatBottom = document.getElementById('floatBottom');
 
-    var sectionIds = ['origin','research','reading'];
-    var sectionNav = sectionIds.map(function(id) {
-      return document.getElementById(id);
-    }).filter(function(el) { return el !== null; });
-
-    function navigatePrev() {
-      for (var i = sectionNav.length - 1; i >= 0; i--) {
-        if (sectionNav[i].getBoundingClientRect().top < -50) {
-          sectionNav[i].scrollIntoView({ behavior: 'smooth' });
-          return;
-        }
-      }
-    }
-
-    function navigateNext() {
-      for (var i = 0; i < sectionNav.length; i++) {
-        if (sectionNav[i].getBoundingClientRect().top > 100) {
-          sectionNav[i].scrollIntoView({ behavior: 'smooth' });
-          return;
-        }
-      }
-    }
-
     function updateFloatBtns() {
-      if (!sectionNav.length) return;
-      var first = sectionNav[0].getBoundingClientRect().top;
-      var last  = sectionNav[sectionNav.length - 1].getBoundingClientRect().bottom;
-      floatTop.classList.toggle('visible', first < -50);
-      floatBottom.classList.toggle('visible', last > window.innerHeight + 50);
+      var scrollY   = window.scrollY;
+      var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (floatTop)    floatTop.classList.toggle('visible', scrollY > 400);
+      if (floatBottom) floatBottom.classList.toggle('visible', scrollY < maxScroll - 200);
     }
 
-    if (floatTop)    floatTop.addEventListener('click', navigatePrev);
-    if (floatBottom) floatBottom.addEventListener('click', navigateNext);
+    if (floatTop)    floatTop.addEventListener('click', function() { window.scrollTo({top: 0, behavior: 'smooth'}); });
+    if (floatBottom) floatBottom.addEventListener('click', function() { window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); });
     window.addEventListener('scroll', updateFloatBtns, { passive: true });
     window.addEventListener('load', updateFloatBtns);
     setTimeout(updateFloatBtns, 500);
