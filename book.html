@@ -495,6 +495,8 @@
       text-transform: uppercase;
       color: rgba(255,255,255,0.8);
       margin-bottom: 0.75rem;
+      padding-left: clamp(1.5rem, 5vw, 4rem);
+      padding-right: clamp(1.5rem, 5vw, 4rem);
       display: block;
     }
 
@@ -504,6 +506,8 @@
       color: #ffffff;
       line-height: 1.25;
       margin-bottom: 0.75rem;
+      padding-left: clamp(1.5rem, 5vw, 4rem);
+      padding-right: clamp(1.5rem, 5vw, 4rem);
     }
 
     .book-tagline {
@@ -511,12 +515,14 @@
       color: rgba(255,255,255,0.92);
       font-style: italic;
       margin-bottom: 2rem;
+      padding-left: clamp(1.5rem, 5vw, 4rem);
+      padding-right: clamp(1.5rem, 5vw, 4rem);
     }
 
     .book-divider {
       border: none;
       border-top: 1px solid rgba(255,255,255,0.2);
-      margin-bottom: 2rem;
+      margin: 0 clamp(1.5rem, 5vw, 4rem) 2rem;
     }
 
     .book-manifesto {
@@ -669,7 +675,7 @@
     .fc-py { background: rgba(39,174,96,0.28);   border: 2px solid rgba(39,174,96,0.75);   color: #80e0a7; }
 
     /* ─── THREE CARDS ─── */
-    .cards-row {
+    .cards-row { padding: 0 clamp(1.5rem, 5vw, 4rem);
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 1rem;
@@ -730,7 +736,7 @@
       .book-headline { font-size: 22px; }
       .cover-book { transform: scale(0.72); transform-origin: top center; margin-bottom: -100px; }
       .cover-wrap { margin-bottom: 1rem; }
-      .cards-row { grid-template-columns: 1fr; }
+      .cards-row { padding: 0 clamp(1.5rem, 5vw, 4rem); grid-template-columns: 1fr; }
       .framework-grid { transform: scale(0.82); transform-origin: top center; margin-bottom: -60px; }
     }
 
@@ -1158,10 +1164,6 @@
       });
     })();
   
-    var mobileNav = document.getElementById('mobile-nav');
-    var menuBtn   = document.querySelector('.nav-menu-btn, .nav-toggle');
-    var closeBtn  = mobileNav ? mobileNav.querySelector('.mobile-nav-close') : null;
-    var lastFocus;
     function openMobileNav() {
       lastFocus = document.activeElement;
       if (mobileNav) mobileNav.classList.add('open');

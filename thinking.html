@@ -994,10 +994,6 @@
       });
     })();
   
-    var mobileNav = document.getElementById('mobile-nav');
-    var menuBtn   = document.querySelector('.nav-menu-btn, .nav-toggle');
-    var closeBtn  = mobileNav ? mobileNav.querySelector('.mobile-nav-close') : null;
-    var lastFocus;
     function openMobileNav() {
       lastFocus = document.activeElement;
       if (mobileNav) mobileNav.classList.add('open');

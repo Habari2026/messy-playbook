@@ -204,6 +204,8 @@ Full citations and reading list at [messy-playbook.vercel.app/thinking.html](htt
 | 2026 May | Dropdown UX + book.html fix — blank nav resolved (white text on white bg from .nav-links a !important cascade), active-state underline scoped to direct nav items, × close button repositioned absolutely (eliminates whitespace above first dropdown item), all CSS var scoping verified across 9 pages |
 | 2026 May | Mobile nav consistency pass — Micro Messes drop-down nav rebuilt as right-sliding panel matching DM Sans pages; play.html drawer Explore section completed; float buttons hidden when drawer open (body.nav-open); book.html hamburger visible on dark bg; JS syntax error fixed (stray closing braces in all 5 Micro Messes files) |
 | 2026 May | Mobile nav final — homepage menu replicated exactly across all 9 pages; single source of truth established; JS brace errors resolved; 13-point verification check passes across all pages |
+| 2026 May | Fix desktop dropdown JS conflict — const/var re-declaration in thinking.html and book.html killed entire script block; duplicate var declarations removed; main landmark added to 4 Micro Messes set pages; 49-point full audit passes |
+| 2026 May | book.html layout fix — forthcoming label, headline, tagline, cards-row, and divider all had zero horizontal padding; fixed with clamp(1.5rem, 5vw, 4rem) matching site-wide padding system |
 
 ---
 
