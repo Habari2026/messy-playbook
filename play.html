@@ -53,7 +53,7 @@
     .nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: #1e2a35; text-decoration: none; }
     .nav-logo span { color: #e67e22; }
     .nav-links { display: flex; gap: 1rem; list-style: none; align-items: center; }
-    .nav-links a { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em; color: #3d5060; transition: color 0.2s; padding: 0.25rem 0; text-decoration: none; }
+    .nav-links a { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.02em; color: #3d5060; transition: color 0.2s; padding: 0.25rem 0; text-decoration: none; }
     .nav-links a:hover { color: #1e2a35; }
     .nav-links a.active { color: #1e2a35; font-weight: 600; border-bottom: 2px solid #9b59b6; padding-bottom: 0.15rem; }
     .nav-cta-btn { padding: 0.75rem 2.5rem; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff !important; border-radius: 2rem; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.02em; min-height: 44px; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s; text-decoration: none; }
@@ -562,6 +562,20 @@
       .float-nav { bottom: 1.25rem; right: 1.25rem; }
     }
 
+    /* ── EXPLORE DROPDOWN ── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 4px; cursor: pointer; padding: 0.25rem 0; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); background: var(--cream); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.1); min-width: 230px; padding: 0.35rem 0 0.5rem; z-index: 200; }
+    .nav-dropdown.open .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 0.75rem 1.1rem; font-size: 0.85rem; font-weight: 600; color: var(--mid); text-decoration: none; transition: background 0.12s, color 0.12s; white-space: nowrap; }
+    .dropdown-menu a:hover { background: rgba(0,0,0,0.04); color: var(--dark); }
+    .dropdown-menu a.active { color: var(--grad-start); font-weight: 700; }
+    .dd-divider { height: 1px; background: var(--rule); margin: 0.4rem 0; }
+    .dropdown-menu .soon { font-size: 0.72rem; color: var(--muted); margin-left: 6px; font-style: italic; font-weight: 400; }
+    .dropdown-close { display: flex; align-items: center; justify-content: flex-end; padding: 0.2rem 0.6rem 0; }
+    .dropdown-close button { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--muted); min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: color 0.15s, background 0.15s; }
+    .dropdown-close button:hover { color: var(--dark); background: rgba(0,0,0,0.04); }
+    .mobile-explore-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0.9rem 1rem 0.2rem; display: block; }
   </style>
 </head>
 <body>
@@ -583,8 +597,18 @@
       <li><a href="index.html#what">The Playbook</a></li>
       <li><a href="index.html#tiers">How It Works</a></li>
       <li><a href="index.html#faq">FAQ</a></li>
-      <li><a href="play.html" class="active">Messy Plays</a></li>
-      <li><a href="thinking.html">The Thinking</a></li>
+          <li class="nav-dropdown">
+            <a href="javascript:void(0)" tabindex="0">Explore ▾</a>
+            <div class="dropdown-menu">
+              <div class="dropdown-close"><button onclick="this.closest('.nav-dropdown').classList.remove('open')" aria-label="Close menu">×</button></div>
+            <a href="play.html" class="active" aria-current="page">Messy Plays™</a>
+            <a href="thinking.html">The Thinking</a>
+              <div class="dd-divider"></div>
+              <a href="micro-messes.html">Micro Messes™</a>
+              <a href="javascript:void(0)">Insight Series <span class="soon">coming soon</span></a>
+            <a href="book.html">The Book</a>
+            </div>
+          </li>
     </ul>
     <a href="index.html#get" class="nav-cta-btn">Get MESSY!</a>
     <button class="nav-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-play">☰</button>
@@ -1373,19 +1397,22 @@
 </section>
 
 <!-- ── FOOTER ── -->
-<footer class="footer">
-  <p class="footer-logo">The MESSY Playbook™</p>
-  <div class="footer-links">
-    <a href="https://messy-playbook.vercel.app/" class="footer-link">The Playbook</a>
-    <a href="https://messy-playbook.vercel.app/thinking.html" class="footer-link">The Thinking</a>
-    <a href="https://messy-playbook.vercel.app/play.html" class="footer-link">Messy Plays</a>
-    <a href="https://livemessy.gumroad.com" class="footer-link">Gumroad</a>
-    <a href="https://messy-playbook.vercel.app/#contact" class="footer-link">Contact</a>
-  </div>
-  <p class="footer-copy">© 2026 Live Messy Project. All rights reserved. Messy Plays™ is part of The MESSY Playbook™ ecosystem.<br>
-  <em>Staying in the Mess</em> · Play 01 · Based on Salmon, R., &amp; Steinberg, D. M. (2007). <em>Social Work with Groups, 30</em>(4), 79–94.<br>
-  For educational purposes and personal exploration only. Not therapy or professional counseling.</p>
-</footer>
+<footer aria-label="Site footer">
+    <div class="footer-logo">The MESSY Playbook<span aria-hidden="true">™</span></div>
+    <p class="footer-tagline">Growth happens <em>in</em> the mess, not after you clean it up.</p>
+    <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0;font-size:13px;">
+      <a href="index.html#why"   style="color:var(--muted);text-decoration:none;">Why MESSY?</a>
+      <a href="index.html#what"  style="color:var(--muted);text-decoration:none;">The Playbook</a>
+      <a href="index.html#tiers" style="color:var(--muted);text-decoration:none;">How It Works</a>
+      <a href="play.html"      style="color:var(--muted);text-decoration:none;">Messy Plays</a>
+      <a href="thinking.html"  style="color:var(--muted);text-decoration:none;">The Thinking</a>
+      <a href="micro-messes.html" style="color:var(--muted);text-decoration:none;">Micro Messes™</a>
+      <a href="book.html"      style="color:var(--muted);text-decoration:none;">The Book</a>
+      <a href="https://livemessy.gumroad.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:none;">Gumroad</a>
+    </div>
+    <p class="footer-copy">© 2026 Live Messy Project. All rights reserved.<br>
+    For educational purposes and personal exploration only. Not therapy or professional counseling.</p>
+  </footer>
 
 <!-- ══════════════════════════════════════════ -->
 <!-- CARD JAVASCRIPT — NAMESPACED BY CARD ID   -->
@@ -1735,6 +1762,29 @@
   }
 
 })();
-</script>
+
+    // Explore dropdown — click to open, × or outside-click to close
+    (function() {
+      var drops = document.querySelectorAll('.nav-dropdown');
+      drops.forEach(function(dd) {
+        var trigger = dd.querySelector(':scope > a');
+        if (!trigger) return;
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          var isOpen = dd.classList.contains('open');
+          drops.forEach(function(d) { d.classList.remove('open'); });
+          if (!isOpen) dd.classList.add('open');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-dropdown')) {
+          drops.forEach(function(d) { d.classList.remove('open'); });
+        }
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') drops.forEach(function(d) { d.classList.remove('open'); });
+      });
+    })();
+  </script>
 </body>
 </html>

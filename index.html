@@ -75,21 +75,24 @@
     .nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--dark); }
     .nav-logo span { color: var(--e); }
     .nav-links { display: flex; gap: 1rem; list-style: none; align-items: center; }
-    .nav-links a { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em; color: var(--mid); transition: color 0.2s; padding: 0.25rem 0; }
+    .nav-links a { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.02em; color: var(--mid); transition: color 0.2s; padding: 0.25rem 0; }
     .nav-links a:hover { color: var(--dark); }
     .nav-cta { padding: 0.75rem 2.5rem; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: #ffffff !important; border-radius: 2rem; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.02em; min-height: 44px; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s; }
     .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(102,126,234,0.4); }
 
     /* ── EXPLORE DROPDOWN ───────────────────────────────────── */
     .nav-dropdown { position: relative; }
-    .nav-dropdown > a { display: flex; align-items: center; gap: 4px; cursor: pointer; }
-    .dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); background: var(--cream); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.1); min-width: 220px; padding: 0.5rem 0; z-index: 200; }
-    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { display: block; }
-    .dropdown-menu a { display: block; padding: 0.55rem 1.1rem; font-size: 0.85rem; font-weight: 500; color: var(--mid); text-decoration: none; transition: background 0.12s, color 0.12s; white-space: nowrap; letter-spacing: 0.02em; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 4px; cursor: pointer; padding: 0.25rem 0; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); background: var(--cream); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.1); min-width: 230px; padding: 0.35rem 0 0.5rem; z-index: 200; }
+    .nav-dropdown.open .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 0.75rem 1.1rem; font-size: 0.85rem; font-weight: 600; color: var(--mid); text-decoration: none; transition: background 0.12s, color 0.12s; white-space: nowrap; letter-spacing: 0.02em; }
     .dropdown-menu a:hover { background: rgba(0,0,0,0.04); color: var(--dark); }
     .dropdown-menu a.active { color: var(--grad-start); font-weight: 700; }
     .dd-divider { height: 1px; background: var(--rule); margin: 0.4rem 0; }
-    .dropdown-menu .soon { font-size: 0.72rem; color: var(--muted); margin-left: 6px; font-style: italic; }
+    .dropdown-menu .soon { font-size: 0.72rem; color: var(--muted); margin-left: 6px; font-style: italic; font-weight: 400; }
+    .dropdown-close { display: flex; align-items: center; justify-content: flex-end; padding: 0.2rem 0.6rem 0; }
+    .dropdown-close button { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--muted); min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: color 0.15s, background 0.15s; }
+    .dropdown-close button:hover { color: var(--dark); background: rgba(0,0,0,0.04); }
     .mobile-explore-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0.9rem 1rem 0.2rem; display: block; }
 
     /* ── HERO ───────────────────────────────────────────────── */
@@ -126,8 +129,8 @@
     .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--muted), transparent); animation: scrollLine 2s ease-in-out infinite; }
 
     /* ── HERO LOGO ── */
-    .hero-logo { position: absolute; top: 5.5rem; right: var(--pad); width: 80px; height: 80px; animation: fadeIn 0.9s 0.2s ease both; z-index: 1; }
-    @media (max-width: 768px) { .hero-logo { width: 56px; height: 56px; top: 5rem; } }
+    .hero-logo { position: absolute; top: 5.5rem; left: var(--pad); width: 120px; height: 120px; animation: fadeIn 0.9s 0.2s ease both; z-index: 1; }
+    @media (max-width: 768px) { .hero-logo { width: 80px; height: 80px; top: 5rem; } }
     @keyframes scrollLine { 0%{opacity:0;transform:scaleY(0);transform-origin:top} 50%{opacity:1;transform:scaleY(1);transform-origin:top} 100%{opacity:0;transform:scaleY(1);transform-origin:bottom} }
     @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
     @keyframes fadeIn { from{opacity:0} to{opacity:1} }
@@ -502,6 +505,7 @@
         <li class="nav-dropdown">
           <a href="javascript:void(0)" tabindex="0">Explore ▾</a>
           <div class="dropdown-menu">
+            <div class="dropdown-close"><button onclick="this.closest('.nav-dropdown').classList.remove('open')" aria-label="Close menu">×</button></div>
             <a href="play.html">Messy Plays™</a>
             <a href="thinking.html">The Thinking</a>
             <div class="dd-divider"></div>
@@ -1303,15 +1307,17 @@
     <div class="footer-logo">The MESSY Playbook<span aria-hidden="true">™</span></div>
     <p class="footer-tagline">Growth happens <em>in</em> the mess, not after you clean it up.</p>
     <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0;font-size:13px;">
-      <a href="#why" style="color:var(--muted);text-decoration:none;">Why MESSY?</a>
-      <a href="#what" style="color:var(--muted);text-decoration:none;">The Playbook</a>
+      <a href="#why"   style="color:var(--muted);text-decoration:none;">Why MESSY?</a>
+      <a href="#what"  style="color:var(--muted);text-decoration:none;">The Playbook</a>
       <a href="#tiers" style="color:var(--muted);text-decoration:none;">How It Works</a>
-      <a href="thinking.html" style="color:var(--muted);text-decoration:none;">The Thinking</a>
-      <a href="play.html" style="color:var(--muted);text-decoration:none;">Messy Plays</a>
-      <a href="book.html" style="color:var(--muted);text-decoration:none;">The Book <span style="font-size:10px;background:rgba(155,89,182,0.12);border:1px solid rgba(155,89,182,0.25);color:var(--m);padding:1px 6px;border-radius:100px;letter-spacing:0.05em;vertical-align:middle;margin-left:3px;">forthcoming</span></a>
-      <a href="https://livemessy.gumroad.com" style="color:var(--muted);text-decoration:none;">Gumroad</a>
+      <a href="play.html"      style="color:var(--muted);text-decoration:none;">Messy Plays</a>
+      <a href="thinking.html"  style="color:var(--muted);text-decoration:none;">The Thinking</a>
+      <a href="micro-messes.html" style="color:var(--muted);text-decoration:none;">Micro Messes™</a>
+      <a href="book.html"      style="color:var(--muted);text-decoration:none;">The Book</a>
+      <a href="https://livemessy.gumroad.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:none;">Gumroad</a>
     </div>
-    <p class="footer-copy">© 2026 Live Messy Project. All rights reserved.<br>The MESSY Playbook™ and Messy Plays™ are projects of the Live Messy Project.<br>For educational purposes and personal exploration only. Not therapy or professional counseling.</p>
+    <p class="footer-copy">© 2026 Live Messy Project. All rights reserved.<br>
+    For educational purposes and personal exploration only. Not therapy or professional counseling.</p>
   </footer>
 
   <script>
@@ -1447,6 +1453,29 @@
 
     window.addEventListener('scroll', updateFloatBtns, { passive: true });
     updateFloatBtns();
+  
+    // Explore dropdown — click to open, × or outside-click to close
+    (function() {
+      var drops = document.querySelectorAll('.nav-dropdown');
+      drops.forEach(function(dd) {
+        var trigger = dd.querySelector(':scope > a');
+        if (!trigger) return;
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          var isOpen = dd.classList.contains('open');
+          drops.forEach(function(d) { d.classList.remove('open'); });
+          if (!isOpen) dd.classList.add('open');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-dropdown')) {
+          drops.forEach(function(d) { d.classList.remove('open'); });
+        }
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') drops.forEach(function(d) { d.classList.remove('open'); });
+      });
+    })();
   </script>
 </body>
 </html>

@@ -30,6 +30,7 @@ The MESSY Playbook™ is an anti-optimization personal development framework bui
 | `reality-check.html` | The MESSY Reality Check™ | Web-optimized pain point reference — all 5 dimensions |
 | `messy-reality-check.pdf` | PDF Download | Pre-built print-ready PDF (generated from `reality-check-print.html`) |
 | `messy-arc-graphic.svg` | Arc Graphic | Standalone SVG of the MESSY framework arc — used as thumbnail |
+| `messy-playbook-logo-vector.svg` | Brand Logo | Five-circle M·E·S·S·Y logo — transparent background, displayed in hero upper-left on homepage |
 
 ---
 
@@ -116,6 +117,20 @@ Implementation: CSS (`.float-nav` / `.float-btn` / `.float-btn.visible`), HTML (
 
 ---
 
+## Navigation — Explore Dropdown
+
+All pages share an identical **Explore ▾** dropdown in the nav containing: Messy Plays™ · The Thinking · [divider] · Micro Messes™ · Insight Series (coming soon) · The Book.
+
+**Behavior:** Click to open, click outside or press Escape to close, × button inside the menu to dismiss. Not hover-based — eliminates the gap sensitivity issue on all browsers and works correctly on touch devices.
+
+**Active state:** The current page is highlighted inside the dropdown with `class="active"` on the relevant link.
+
+**Mobile:** The desktop nav hides at the appropriate breakpoint and the hamburger drawer replaces it, listing all Explore items directly under an "Explore" section label.
+
+**To add a new Explore item:** Add `<a href="newpage.html">New Page</a>` inside every `.dropdown-menu` div across all 9 HTML files, and add the corresponding link to each mobile nav drawer.
+
+---
+
 ## Research Foundations
 
 The framework is grounded in four research pillars:
@@ -148,6 +163,7 @@ Full citations and reading list at [messy-playbook.vercel.app/thinking.html](htt
 | 2026 May | Reality Check asset, Messy Plays™ launch, direct PDF download |
 | 2026 May | Micro Messes™ full build — concept page, sets grid, Sets 00/01/02, PDF-per-card, inter-set nav |
 | 2026 May | Scroll nav consistency pass — play.html, book.html, thinking.html updated to mirror homepage |
+| 2026 May | Consistency + mobile pass — Explore dropdown on all pages, standardized footers, logo added to homepage hero, all touch targets 44px, click-based dropdown with × close button |
 
 ---
 
