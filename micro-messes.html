@@ -47,11 +47,8 @@
         .dd-divider { height: 1px; background: #ecf0f1; margin: 0.4rem 0; }
         .nav-cta { background: linear-gradient(135deg, #667eea, #764ba2) !important; color: #fff !important; padding: 0.45rem 1.1rem !important; border-radius: 20px !important; font-weight: 700 !important; }
         .nav-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 1.4rem; color: #2c3e50; padding: 0.4rem; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; }
-        .mobile-nav { display: none; flex-direction: column; background: #fff; border-bottom: 1px solid #ecf0f1; padding: 1rem 1.5rem 1.25rem; }
-        .mobile-nav.open { display: flex; }
-        .mobile-nav a { padding: 0.6rem 0; color: #34495e; text-decoration: none; font-size: 0.95rem; border-bottom: 1px solid #f8f9fa; }
-        .mobile-nav a:last-child { border-bottom: none; }
-        .mobile-section-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: #7f8c8d; padding-top: 0.9rem; padding-bottom: 0.1rem; }
+        
+        
         @media (max-width: 820px) { .nav-links { display: none; } .nav-toggle { display: block; } }
 
         /* HERO */
@@ -140,7 +137,71 @@
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
-    </style>
+  
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 99;
+      background: rgba(30,42,53,0.55);
+      backdrop-filter: blur(4px);
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav-panel {
+      position: absolute;
+      top: 0; right: 0;
+      width: min(320px, 85vw);
+      height: 100%;
+      background: var(--cream);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      overflow-y: auto;
+      box-shadow: -8px 0 32px rgba(0,0,0,0.15);
+    }
+    .mobile-nav-close {
+      align-self: flex-end;
+      background: none;
+      border: 1.5px solid var(--rule);
+      border-radius: 8px;
+      padding: 0.4rem 0.65rem;
+      cursor: pointer;
+      color: var(--dark);
+      font-size: 1.1rem;
+      line-height: 1;
+      min-height: 44px;
+      min-width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .mobile-nav-close:hover { border-color: var(--dark); }
+    .mobile-nav-panel a {
+      display: block;
+      padding: 0.9rem 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--mid);
+      border-radius: 8px;
+      border: 1px solid transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+    .mobile-nav-panel a:hover { background: white; color: var(--dark); border-color: var(--rule); }
+    .mobile-nav-panel .mobile-nav-cta {
+      margin-top: 0.75rem;
+      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      color: white !important;
+      font-weight: 700;
+      text-align: center;
+      border-radius: 2rem;
+      border-color: transparent;
+    }
+    .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); }
+    body.nav-open .float-nav { display: none; }
+  </style>
 </head>
 <body>
 
@@ -174,22 +235,25 @@
             </li>
         </ul>
         <a href="index.html#get" class="nav-cta">Get MESSY!</a>
-        <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">☰</button>
+        <button class="nav-toggle" aria-label="Toggle menu" onclick="openMobileNav()">☰</button>
     </div>
-    <div class="mobile-nav">
-        <a href="index.html#why">Why MESSY?</a>
-        <a href="index.html#what">The Playbook</a>
-        <a href="index.html#tiers">How It Works</a>
-        <a href="index.html#faq">FAQ</a>
-        <div class="mobile-section-label">Explore</div>
-        <a href="play.html">Messy Plays™</a>
-        <a href="thinking.html">The Thinking</a>
-        <a href="micro-messes.html" style="font-weight:700;color:#667eea;">Micro Messes™</a>
-        <a href="javascript:void(0)">Insight Series <span style="font-size:0.8em;font-style:italic;color:#7f8c8d;">(coming soon)</span></a>
-        <a href="book.html">The Book</a>
-        <a href="index.html#get" style="font-weight:700;color:#764ba2;margin-top:0.5rem;border-bottom:none;">Get MESSY! →</a>
+    <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <div class="mobile-nav-panel">
+      <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
+      <a href="index.html#why"   onclick="closeMobileNav()">Why MESSY?</a>
+      <a href="index.html#what"  onclick="closeMobileNav()">The Playbook</a>
+      <a href="index.html#tiers" onclick="closeMobileNav()">How It Works</a>
+      <a href="index.html#faq"   onclick="closeMobileNav()">FAQ</a>
+      <span class="mobile-explore-label">Explore</span>
+      <a href="play.html"           onclick="closeMobileNav()">Messy Plays™</a>
+      <a href="thinking.html"       onclick="closeMobileNav()">The Thinking</a>
+      <a href="micro-messes.html"   onclick="closeMobileNav()" style="font-weight:700;color:var(--grad-end,#764ba2);">Micro Messes™</a>
+      <a href="javascript:void(0)">Insight Series <span style="font-size:0.78em;font-style:italic;color:var(--muted,#56707f);">(coming soon)</span></a>
+      <a href="book.html"           onclick="closeMobileNav()">The Book</a>
+      <a href="index.html#get" onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
     </div>
-</nav>
+  </div>
+
 
 <main id="main-content">
 
@@ -389,7 +453,32 @@
         if (e.key === 'Escape') drops.forEach(function(d) { d.classList.remove('open'); });
       });
     })();
-</script>
+
+        var mobileNav = document.getElementById('mobile-nav');
+    var menuBtn   = document.querySelector('.nav-menu-btn, .nav-toggle');
+    var closeBtn  = mobileNav ? mobileNav.querySelector('.mobile-nav-close') : null;
+    var lastFocus;
+    function openMobileNav() {
+      lastFocus = document.activeElement;
+      if (mobileNav) mobileNav.classList.add('open');
+      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('nav-open');
+      if (closeBtn) closeBtn.focus();
+    }
+    function closeMobileNav() {
+      if (mobileNav) mobileNav.classList.remove('open');
+      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      document.body.classList.remove('nav-open');
+      if (lastFocus) lastFocus.focus();
+    }
+    if (menuBtn) menuBtn.addEventListener('click', openMobileNav);
+    if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
+    if (mobileNav) mobileNav.addEventListener('click', function(e) {
+      if (e.target === mobileNav) closeMobileNav();
+    });
+  </script>
 
 </body>
 </html>

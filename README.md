@@ -126,6 +126,9 @@ All 9 pages share the same nav structure and behavior. Key implementation detail
 - **CSS variables:** DM Sans pages (index, play, book, thinking) use `var(--cream)`, `var(--dark)`, `var(--mid)` etc. Micro Messes pages use hex colors. If adding dropdown CSS to any page, use that page's own color system — never mix
 - **Class name:** Get MESSY! button always uses class `nav-cta` — never `nav-cta-btn`
 - **First content section padding:** Must exceed nav height (~62px). DM Sans heroes use `clamp(5.5rem,...)`. Micro Messes heroes/page-headers use `5rem` minimum padding-top
+- **Mobile drawer:** All 9 pages use a right-sliding panel (`translateX(100%)` → `translateX(0)`) with a dark overlay. Tapping the overlay or the ✕ button closes it. Float nav buttons hide automatically when the drawer is open (`body.nav-open .float-nav { display: none }`). Never use a drop-down pattern — it creates inconsistency across pages
+- **JS brace discipline:** When modifying script blocks via regex, always verify brace balance after. Each script block must have equal `{` and `}` counts or the entire block fails silently
+- **Single source of truth:** The mobile nav on `index.html` is the canonical version. To update the mobile menu on all pages, update `index.html` first, then replicate the drawer HTML, CSS, and JS to the other 8 pages using the replication script at `/tmp/replicate_nav_final.py`. Never edit individual pages independently
 
 ---
 
@@ -199,6 +202,8 @@ Full citations and reading list at [messy-playbook.vercel.app/thinking.html](htt
 | 2026 May | Consistency + mobile pass — Explore dropdown on all pages, standardized footers, logo added to homepage hero, all touch targets 44px, click-based dropdown with × close button |
 | 2026 May | Nav final fix — play.html dropdown CSS vars corrected, Get MESSY! moved outside hidden ul on Micro Messes pages, sticky→fixed nav on all 5 Micro Messes pages, nav-cta class standardized, play.html skip-nav + main landmark added, thinking.html float button aria-labels corrected, prefers-reduced-motion added to Micro Messes pages |
 | 2026 May | Dropdown UX + book.html fix — blank nav resolved (white text on white bg from .nav-links a !important cascade), active-state underline scoped to direct nav items, × close button repositioned absolutely (eliminates whitespace above first dropdown item), all CSS var scoping verified across 9 pages |
+| 2026 May | Mobile nav consistency pass — Micro Messes drop-down nav rebuilt as right-sliding panel matching DM Sans pages; play.html drawer Explore section completed; float buttons hidden when drawer open (body.nav-open); book.html hamburger visible on dark bg; JS syntax error fixed (stray closing braces in all 5 Micro Messes files) |
+| 2026 May | Mobile nav final — homepage menu replicated exactly across all 9 pages; single source of truth established; JS brace errors resolved; 13-point verification check passes across all pages |
 
 ---
 

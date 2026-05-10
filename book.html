@@ -344,6 +344,8 @@
       border-radius: 8px;
       padding: 0.45rem 0.6rem;
       cursor: pointer;
+      min-height: 44px;
+      min-width: 44px;
       color: var(--dark);
       font-size: 1.1rem;
       line-height: 1;
@@ -356,82 +358,19 @@
     .nav-menu-btn:hover { border-color: var(--dark); background: var(--cream); }
     .nav-menu-btn[aria-expanded="true"] { border-color: var(--dark); }
 
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 99;
-      background: rgba(30,42,53,0.55);
-      backdrop-filter: blur(4px);
-    }
-    .mobile-nav.open { display: block; }
-    .mobile-nav-panel {
-      position: absolute;
-      top: 0; right: 0;
-      width: min(320px, 85vw);
-      height: 100%;
-      background: var(--cream);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: -8px 0 32px rgba(0,0,0,0.15);
-    }
-    .mobile-nav-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--rule);
-      flex-shrink: 0;
-    }
-    .mobile-nav-header-logo { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--dark); }
+    
+    
+    
+    
+    
     .mobile-nav-header-logo span { color: var(--e); }
-    .mobile-nav-close {
-      background: none;
-      border: 1.5px solid var(--rule);
-      border-radius: 8px;
-      padding: 0.4rem 0.65rem;
-      cursor: pointer;
-      color: var(--dark);
-      font-size: 1.1rem;
-      line-height: 1;
-      min-height: 44px;
-      min-width: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .mobile-nav-close:hover { border-color: var(--dark); background: white; }
-    .mobile-nav-links {
-      flex: 1;
-      overflow-y: auto;
-      padding: 0.75rem 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-    .mobile-nav-panel a {
-      display: block;
-      padding: 0.9rem 1rem;
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--mid);
-      border-radius: 8px;
-      border: 1px solid transparent;
-      transition: background 0.15s, color 0.15s;
-    }
-    .mobile-nav-panel a:hover { background: white; color: var(--dark); border-color: var(--rule); }
-    .mobile-nav-panel .mobile-nav-cta {
-      margin-top: 0.75rem;
-      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
-      color: white !important;
-      font-weight: 700;
-      text-align: center;
-      border-radius: 2rem;
-      border-color: transparent;
-    }
-    .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; }
+    
+    
+    
+    
+    
+    .mobile-nav-panel 
+    .mobile-nav-panel 
     @media (max-width: 900px) {
       .tiers-grid, .get-grid { grid-template-columns: 1fr; }
       .inside-grid { grid-template-columns: 1fr; }
@@ -814,7 +753,74 @@
     .dropdown-close { position: absolute; top: 5px; right: 5px; }
     .dropdown-close button { background: none; border: none; cursor: pointer; font-size: 0.9rem; line-height: 1; color: var(--muted); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: color 0.15s, background 0.15s; padding: 0; }
     .dropdown-close button:hover { color: var(--dark); background: rgba(0,0,0,0.04); }
-    .mobile-explore-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0.9rem 1rem 0.2rem; display: block; }
+    
+
+    /* Hide float nav when mobile drawer open */
+    
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 99;
+      background: rgba(30,42,53,0.55);
+      backdrop-filter: blur(4px);
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav-panel {
+      position: absolute;
+      top: 0; right: 0;
+      width: min(320px, 85vw);
+      height: 100%;
+      background: var(--cream);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      overflow-y: auto;
+      box-shadow: -8px 0 32px rgba(0,0,0,0.15);
+    }
+    .mobile-nav-close {
+      align-self: flex-end;
+      background: none;
+      border: 1.5px solid var(--rule);
+      border-radius: 8px;
+      padding: 0.4rem 0.65rem;
+      cursor: pointer;
+      color: var(--dark);
+      font-size: 1.1rem;
+      line-height: 1;
+      min-height: 44px;
+      min-width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .mobile-nav-close:hover { border-color: var(--dark); }
+    .mobile-nav-panel a {
+      display: block;
+      padding: 0.9rem 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--mid);
+      border-radius: 8px;
+      border: 1px solid transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+    .mobile-nav-panel a:hover { background: white; color: var(--dark); border-color: var(--rule); }
+    .mobile-nav-panel .mobile-nav-cta {
+      margin-top: 0.75rem;
+      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      color: white !important;
+      font-weight: 700;
+      text-align: center;
+      border-radius: 2rem;
+      border-color: transparent;
+    }
+    .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); }
+    body.nav-open .float-nav { display: none; }
   </style>
 </head>
 <body>
@@ -864,23 +870,18 @@
   <!-- MOBILE NAV DRAWER -->
   <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <div class="mobile-nav-panel">
-      <div class="mobile-nav-header">
-        <span class="mobile-nav-header-logo">The MESSY Playbook<span>™</span></span>
-        <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
-      </div>
-      <div class="mobile-nav-links">
-        <a href="index.html#why"   onclick="closeMobileNav()">Why MESSY?</a>
-        <a href="index.html#what"  onclick="closeMobileNav()">The Playbook</a>
-        <a href="index.html#tiers" onclick="closeMobileNav()">How It Works</a>
-        <a href="index.html#faq"   onclick="closeMobileNav()">FAQ</a>
+      <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
+      <a href="index.html#why"   onclick="closeMobileNav()">Why MESSY?</a>
+      <a href="index.html#what"  onclick="closeMobileNav()">The Playbook</a>
+      <a href="index.html#tiers" onclick="closeMobileNav()">How It Works</a>
+      <a href="index.html#faq"   onclick="closeMobileNav()">FAQ</a>
       <span class="mobile-explore-label">Explore</span>
-      <a href="play.html" onclick="closeMobileNav()">Messy Plays™</a>
-      <a href="thinking.html" onclick="closeMobileNav()">The Thinking</a>
-      <a href="micro-messes.html" onclick="closeMobileNav()">Micro Messes™</a>
-      <a href="javascript:void(0)">Insight Series <span style="font-size:0.78em;font-style:italic;color:var(--muted);">(coming soon)</span></a>
-      <a href="book.html" onclick="closeMobileNav()" style="font-weight:700;color:var(--grad-end);">The Book</a>
-        <a href="index.html#get"   onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
-      </div>
+      <a href="play.html"           onclick="closeMobileNav()">Messy Plays™</a>
+      <a href="thinking.html"       onclick="closeMobileNav()">The Thinking</a>
+      <a href="micro-messes.html"   onclick="closeMobileNav()">Micro Messes™</a>
+      <a href="javascript:void(0)">Insight Series <span style="font-size:0.78em;font-style:italic;color:var(--muted,#56707f);">(coming soon)</span></a>
+      <a href="book.html"           onclick="closeMobileNav()" style="font-weight:700;color:var(--grad-end,#764ba2);">The Book</a>
+      <a href="index.html#get" onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
     </div>
   </div>
 <main id="main-content">
@@ -1097,21 +1098,6 @@
     const mobileNav  = document.getElementById('mobile-nav');
     let   lastFocus  = null;
 
-    function openMobileNav() {
-      lastFocus = document.activeElement;
-      mobileNav.classList.add('open');
-      menuBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      closeBtn.focus();
-    }
-
-    function closeMobileNav() {
-      mobileNav.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      if (lastFocus) lastFocus.focus();
-    }
-
     if (menuBtn) menuBtn.addEventListener('click', openMobileNav);
     if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
     if (mobileNav) mobileNav.addEventListener('click', function(e) {
@@ -1171,6 +1157,31 @@
         if (e.key === 'Escape') drops.forEach(function(d) { d.classList.remove('open'); });
       });
     })();
+  
+    var mobileNav = document.getElementById('mobile-nav');
+    var menuBtn   = document.querySelector('.nav-menu-btn, .nav-toggle');
+    var closeBtn  = mobileNav ? mobileNav.querySelector('.mobile-nav-close') : null;
+    var lastFocus;
+    function openMobileNav() {
+      lastFocus = document.activeElement;
+      if (mobileNav) mobileNav.classList.add('open');
+      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('nav-open');
+      if (closeBtn) closeBtn.focus();
+    }
+    function closeMobileNav() {
+      if (mobileNav) mobileNav.classList.remove('open');
+      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      document.body.classList.remove('nav-open');
+      if (lastFocus) lastFocus.focus();
+    }
+    if (menuBtn) menuBtn.addEventListener('click', openMobileNav);
+    if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
+    if (mobileNav) mobileNav.addEventListener('click', function(e) {
+      if (e.target === mobileNav) closeMobileNav();
+    });
   </script>
 </body>
 </html>

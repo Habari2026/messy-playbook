@@ -479,6 +479,9 @@
       transition: color 0.2s;
     }
     .section-top-link a:hover { color: var(--grad-end); }
+
+    /* Hide float nav when mobile drawer open */
+    body.nav-open .float-nav { display: none; }
   </style>
 </head>
 <body>
@@ -1332,6 +1335,7 @@
       mobileNav.classList.add('open');
       menuBtn.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      document.body.classList.add('nav-open');
       closeBtn.focus();
     }
 
@@ -1339,6 +1343,7 @@
       mobileNav.classList.remove('open');
       menuBtn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      document.body.classList.remove('nav-open');
       if (lastFocus) lastFocus.focus();
     }
 
