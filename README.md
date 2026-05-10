@@ -143,6 +143,27 @@ All pages share an identical **Explore ▾** dropdown in the nav containing: Mes
 
 ---
 
+
+## Load Performance
+
+All 9 pages are optimised for fast loading with no build tools or frameworks.
+
+| File | Raw KB | Gzip ~KB | Load requests | Render-blocking |
+|------|--------|----------|---------------|-----------------|
+| index.html | 115 | 25 | 3 | 0 |
+| play.html | 108 | 24 | 3 | 0 |
+| book.html | 66 | 15 | 3 | 0 |
+| thinking.html | 56 | 12 | 3 | 0 |
+| micro-messes.html | 26 | 6 | 3 | 0 |
+| micro-messes-sets.html | 23 | 5 | 3 | 0 |
+| micro-messes-set-00/01/02.html | 36–37 | 8 | 3 | 0 |
+
+The 3 load requests on every page are: preconnect to `fonts.googleapis.com`, preconnect to `fonts.gstatic.com`, and the Google Fonts stylesheet. No JavaScript libraries, no tracking scripts, no external frameworks.
+
+Google Fonts uses `display=swap` so text renders instantly in the fallback font — no invisible text on slow connections. Vercel serves everything from a CDN edge node, so expected TTFB is 50–200ms on a standard connection.
+
+---
+
 ## Research Foundations
 
 The framework is grounded in four research pillars:
@@ -177,6 +198,7 @@ Full citations and reading list at [messy-playbook.vercel.app/thinking.html](htt
 | 2026 May | Scroll nav consistency pass — play.html, book.html, thinking.html updated to mirror homepage |
 | 2026 May | Consistency + mobile pass — Explore dropdown on all pages, standardized footers, logo added to homepage hero, all touch targets 44px, click-based dropdown with × close button |
 | 2026 May | Nav final fix — play.html dropdown CSS vars corrected, Get MESSY! moved outside hidden ul on Micro Messes pages, sticky→fixed nav on all 5 Micro Messes pages, nav-cta class standardized, play.html skip-nav + main landmark added, thinking.html float button aria-labels corrected, prefers-reduced-motion added to Micro Messes pages |
+| 2026 May | Dropdown UX + book.html fix — blank nav resolved (white text on white bg from .nav-links a !important cascade), active-state underline scoped to direct nav items, × close button repositioned absolutely (eliminates whitespace above first dropdown item), all CSS var scoping verified across 9 pages |
 
 ---
 

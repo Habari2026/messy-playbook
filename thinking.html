@@ -439,15 +439,15 @@
     /* ── EXPLORE DROPDOWN ── */
     .nav-dropdown { position: relative; }
     .nav-dropdown > a { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; padding: 0.25rem 0; outline: none; }
-    .dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); background: var(--cream); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.1); min-width: 230px; padding: 0.35rem 0 0.5rem; z-index: 200; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); background: var(--cream); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.1); min-width: 230px; padding: 1.75rem 0 0.5rem; z-index: 200; }
     .nav-dropdown.open .dropdown-menu { display: block; }
     .dropdown-menu a { display: block; padding: 0.75rem 1.1rem; font-size: 0.85rem; font-weight: 600; color: var(--mid); text-decoration: none; transition: background 0.12s, color 0.12s; white-space: nowrap; }
     .dropdown-menu a:hover { background: rgba(0,0,0,0.04); color: var(--dark); }
     .dropdown-menu a.active { color: var(--grad-start); font-weight: 700; }
     .dd-divider { height: 1px; background: var(--rule); margin: 0.4rem 0; }
     .dropdown-menu .soon { font-size: 0.72rem; color: var(--muted); margin-left: 6px; font-style: italic; font-weight: 400; }
-    .dropdown-close { display: flex; align-items: center; justify-content: flex-end; padding: 0.2rem 0.6rem 0; }
-    .dropdown-close button { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--muted); min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: color 0.15s, background 0.15s; }
+    .dropdown-close { position: absolute; top: 5px; right: 5px; }
+    .dropdown-close button { background: none; border: none; cursor: pointer; font-size: 0.9rem; line-height: 1; color: var(--muted); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: color 0.15s, background 0.15s; padding: 0; }
     .dropdown-close button:hover { color: var(--dark); background: rgba(0,0,0,0.04); }
     .mobile-explore-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0.9rem 1rem 0.2rem; display: block; }
   </style>
