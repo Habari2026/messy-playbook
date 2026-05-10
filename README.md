@@ -22,9 +22,45 @@ The MESSY Playbook™ is an anti-optimization personal development framework bui
 | `play.html` | Messy Plays™ | Experiential research card series — Play 01: Staying in the Mess |
 | `thinking.html` | The Thinking | Research foundations, reading list, citations |
 | `book.html` | The Book | Forthcoming book placeholder |
+| `micro-messes.html` | Micro Messes™ | Concept landing page — what Micro Messes are, WHY/HOW/WHAT, ecosystem progression, CTA to sets |
+| `micro-messes-sets.html` | Micro Mess Sets | Grid index of all available sets — Brady Bunch tile layout, scales indefinitely |
+| `micro-messes-set-00.html` | Set 00: First Encounters | Five universal anchor encounters, one per MESSY dimension |
+| `micro-messes-set-01.html` | Set 01: Containing Multitudes | Five encounters inspired by Jennifer Rosner, Massachusetts Review, 2006 |
+| `micro-messes-set-02.html` | Set 02: Beyond Problem Solving | Five encounters inspired by Russell L. Ackoff, JORS, 1979 |
 | `reality-check.html` | The MESSY Reality Check™ | Web-optimized pain point reference — all 5 dimensions |
 | `messy-reality-check.pdf` | PDF Download | Pre-built print-ready PDF (generated from `reality-check-print.html`) |
 | `messy-arc-graphic.svg` | Arc Graphic | Standalone SVG of the MESSY framework arc — used as thumbnail |
+
+---
+
+## Micro Messes™ Architecture
+
+Micro Messes is a three-layer content system:
+
+**Layer 1 — `micro-messes.html`**  
+Concept landing page. Sells the format. No cards. CTA points to the sets index.
+
+**Layer 2 — `micro-messes-sets.html`**  
+Grid index of all sets. Each tile shows set number, name, one-sentence description, color-coded gradient, and dimension dots. Launches with three tiles. Scales by adding new `<a class="set-tile">` blocks.
+
+**Layer 3 — individual set pages**  
+Each set page has five cards (one per MESSY dimension) plus a set introduction. Each card has a **Save as PDF** button using a browser-native popup print window — no external dependencies.
+
+### Set color identity
+| Set | Name | Badge gradient |
+|-----|------|---------------|
+| Set 00 | First Encounters | `#667eea → #764ba2` (brand purple) |
+| Set 01 | Containing Multitudes | `#e67e22 → #c0392b` (amber-red) |
+| Set 02 | Beyond Problem Solving | `#1a5276 → #117a65` (navy-teal) |
+
+### Adding a new set
+1. Copy `micro-messes-set-02.html` and rename to `micro-messes-set-03.html`
+2. Update: page title, meta description, OG tags, set number badge, h1, header-sub, source attribution (if research-anchored), all five card blocks, and the set-nav prev/next links
+3. Add a new tile to `micro-messes-sets.html` with a distinct gradient
+4. Update Set 02's "Next set →" nav link to point to Set 03
+
+### Naming convention
+Sets are numbered sequentially (Set 00, 01, 02…). The set name carries the theme. No sub-numbering until the library is large enough to warrant filtering on the grid page.
 
 ---
 
@@ -33,7 +69,7 @@ The MESSY Playbook™ is an anti-optimization personal development framework bui
 1. Make changes to the relevant file(s) locally or in Claude
 2. Go to [github.com/Habari2026/messy-playbook](https://github.com/Habari2026/messy-playbook)
 3. Click **Add file → Upload files → choose your files**
-4. Select the updated file(s) — never drag-and-drop files over ~100KB (GitHub truncates them)
+4. Select the updated file(s) — **never drag-and-drop files over ~100KB** (GitHub truncates them)
 5. Add a short commit message and click **Commit changes** directly to main
 6. Vercel auto-deploys within ~60 seconds
 
@@ -42,8 +78,8 @@ The MESSY Playbook™ is an anti-optimization personal development framework bui
 ## Tech Stack
 
 - **HTML / CSS / JavaScript** — no framework, no build step
-- **Google Fonts** — Playfair Display + DM Sans
-- **Gumroad** — Pay What You Want downloads (Self-Study Program, Taster)
+- **Google Fonts** — Playfair Display + DM Sans (all pages include `preconnect` hints for performance)
+- **Gumroad** — Pay What You Want downloads
 - **Formspree** — Contact form handling
 - **WeasyPrint** — PDF generation from `reality-check-print.html`
 - **GitHub** — Version control and file hosting
@@ -64,6 +100,20 @@ HTML(filename='reality-check-print.html').write_pdf('messy-reality-check.pdf')
 
 See `reality-check-postmortem.md` for full build instructions and lessons learned.
 
+### Micro Messes card PDFs
+Card PDFs on set pages use a different approach — browser-native popup print window triggered by JavaScript. No WeasyPrint, no external dependency. User clicks **Save as PDF**, a styled popup opens with brand header and card content, and the browser's native print-to-PDF dialog fires. This is intentional: zero friction, works on any device.
+
+---
+
+## Navigation — Floating Scroll Buttons
+
+All pages include floating ↑/↓ scroll buttons (bottom-right, gradient purple circles). Behavior is consistent across the site:
+
+- **↑** scrolls to absolute top — appears after 400px of scroll
+- **↓** scrolls to absolute bottom — appears until within 200px of the bottom
+
+Implementation: CSS (`.float-nav` / `.float-btn` / `.float-btn.visible`), HTML (`<div class="float-nav">`), JS (`updateFloatBtns()` on scroll + load).
+
 ---
 
 ## Research Foundations
@@ -83,8 +133,9 @@ Full citations and reading list at [messy-playbook.vercel.app/thinking.html](htt
 
 | Product | Link |
 |---------|------|
-| MESSY Taster | [livemessy.gumroad.com/l/messy-taster](https://livemessy.gumroad.com/l/messy-taster) |
 | Self-Study Program | [livemessy.gumroad.com/l/messy-self-study](https://livemessy.gumroad.com/l/messy-self-study) |
+| Facilitator License | [livemessy.gumroad.com/l/messy-facilitator-license](https://livemessy.gumroad.com/l/messy-facilitator-license) |
+| Complete Bundle | [livemessy.gumroad.com/l/messy-complete-bundle](https://livemessy.gumroad.com/l/messy-complete-bundle) |
 
 ---
 
@@ -94,7 +145,9 @@ Full citations and reading list at [messy-playbook.vercel.app/thinking.html](htt
 |------|-----------|
 | 2026 Q1 | Initial site launch |
 | 2026 April | Site update: nav, thinking page, scroll fix, audit |
-| 2026 May | Reality Check asset, Daily Practice, Messy Plays™ launch, direct PDF download |
+| 2026 May | Reality Check asset, Messy Plays™ launch, direct PDF download |
+| 2026 May | Micro Messes™ full build — concept page, sets grid, Sets 00/01/02, PDF-per-card, inter-set nav |
+| 2026 May | Scroll nav consistency pass — play.html, book.html, thinking.html updated to mirror homepage |
 
 ---
 
