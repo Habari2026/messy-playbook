@@ -56,8 +56,8 @@
     .nav-links a { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.02em; color: #3d5060; transition: color 0.2s; padding: 0.25rem 0; text-decoration: none; }
     .nav-links a:hover { color: #1e2a35; }
     .nav-links a.active { color: #1e2a35; font-weight: 600; border-bottom: 2px solid #9b59b6; padding-bottom: 0.15rem; }
-    .nav-cta-btn { padding: 0.75rem 2.5rem; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff !important; border-radius: 2rem; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.02em; min-height: 44px; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s; text-decoration: none; }
-    .nav-cta-btn:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(102,126,234,0.4); }
+    .nav-cta { padding: 0.75rem 2.5rem; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff !important; border-radius: 2rem; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.02em; min-height: 44px; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s; text-decoration: none; }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(102,126,234,0.4); }
     .nav-menu-btn { display: none; background: none; border: 1.5px solid #ddd8cc; border-radius: 8px; padding: 0.45rem 0.6rem; cursor: pointer; color: #1e2a35; font-size: 1.1rem; line-height: 1; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; transition: border-color 0.2s; }
     .nav-menu-btn:hover { border-color: #1e2a35; }
     .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: rgba(30,42,53,0.55); backdrop-filter: blur(4px); }
@@ -74,7 +74,7 @@
     .mobile-nav-panel .mobile-nav-cta { margin-top: 0.75rem; background: linear-gradient(135deg,#667eea,#764ba2); color: white !important; font-weight: 700; text-align: center; border-radius: 2rem; border-color: transparent; }
 
     @media (max-width: 768px) {
-      .nav-links, .nav-cta-btn { display: none; }
+      .nav-links, .nav-cta { display: none; }
       .nav-menu-btn { display: inline-flex; }
     }
 
@@ -564,18 +564,22 @@
 
     /* ── EXPLORE DROPDOWN ── */
     .nav-dropdown { position: relative; }
-    .nav-dropdown > a { display: flex; align-items: center; gap: 4px; cursor: pointer; padding: 0.25rem 0; }
-    .dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); background: var(--cream); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.1); min-width: 230px; padding: 0.35rem 0 0.5rem; z-index: 200; }
+    .nav-dropdown > a { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; padding: 0.25rem 0; outline: none; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); background: #ffffff; border: 1px solid var(--c-border); border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.1); min-width: 230px; padding: 0.35rem 0 0.5rem; z-index: 200; }
     .nav-dropdown.open .dropdown-menu { display: block; }
-    .dropdown-menu a { display: block; padding: 0.75rem 1.1rem; font-size: 0.85rem; font-weight: 600; color: var(--mid); text-decoration: none; transition: background 0.12s, color 0.12s; white-space: nowrap; }
-    .dropdown-menu a:hover { background: rgba(0,0,0,0.04); color: var(--dark); }
-    .dropdown-menu a.active { color: var(--grad-start); font-weight: 700; }
-    .dd-divider { height: 1px; background: var(--rule); margin: 0.4rem 0; }
-    .dropdown-menu .soon { font-size: 0.72rem; color: var(--muted); margin-left: 6px; font-style: italic; font-weight: 400; }
+    .dropdown-menu a { display: block; padding: 0.75rem 1.1rem; font-size: 0.85rem; font-weight: 600; color: var(--c-body); text-decoration: none; transition: background 0.12s, color 0.12s; white-space: nowrap; }
+    .dropdown-menu a:hover { background: rgba(0,0,0,0.04); color: var(--c-dark); }
+    .dropdown-menu a.active { color: #667eea; font-weight: 700; }
+    .dd-divider { height: 1px; background: var(--c-border); margin: 0.4rem 0; }
+    .dropdown-menu .soon { font-size: 0.72rem; color: var(--c-muted); margin-left: 6px; font-style: italic; font-weight: 400; }
     .dropdown-close { display: flex; align-items: center; justify-content: flex-end; padding: 0.2rem 0.6rem 0; }
-    .dropdown-close button { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--muted); min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: color 0.15s, background 0.15s; }
-    .dropdown-close button:hover { color: var(--dark); background: rgba(0,0,0,0.04); }
-    .mobile-explore-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0.9rem 1rem 0.2rem; display: block; }
+    .dropdown-close button { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--c-muted); min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: color 0.15s, background 0.15s; }
+    .dropdown-close button:hover { color: var(--c-dark); background: rgba(0,0,0,0.04); }
+    .mobile-explore-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-muted); padding: 0.9rem 1rem 0.2rem; display: block; }
+
+    /* ── Skip nav ── */
+    .skip-nav { position: absolute; top: -100%; left: 1rem; z-index: 9999; padding: 0.75rem 1.5rem; background: #1e2a35; color: #faf8f3; font-weight: 600; font-size: 0.9rem; border-radius: 0 0 8px 8px; transition: top 0.2s; text-decoration: none; }
+    .skip-nav:focus { top: 0; outline: 3px solid #667eea; outline-offset: 2px; }
   </style>
 </head>
 <body>
@@ -585,6 +589,8 @@
   <button class="float-btn" id="floatTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
   <button class="float-btn" id="floatBottom" aria-label="Jump to bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">↓</button>
 </div>
+
+  <a href="#main-content" class="skip-nav">Skip to main content</a>
 
 <!-- ── NAVIGATION ── -->
 <nav class="site-nav" aria-label="Main navigation">
@@ -610,7 +616,7 @@
             </div>
           </li>
     </ul>
-    <a href="index.html#get" class="nav-cta-btn">Get MESSY!</a>
+    <a href="index.html#get" class="nav-cta">Get MESSY!</a>
     <button class="nav-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-play">☰</button>
   </div>
 </nav>
@@ -644,6 +650,8 @@
   <a href="#attribution">Research</a>
   <a href="#cards" class="page-nav-cta">Get MESSY! →</a>
 </nav>
+
+<main id="main-content">
 
 <!-- ── HERO ── -->
 <section class="hero" id="hero">
@@ -1397,6 +1405,8 @@
 </section>
 
 <!-- ── FOOTER ── -->
+</main>
+
 <footer aria-label="Site footer">
     <div class="footer-logo">The MESSY Playbook<span aria-hidden="true">™</span></div>
     <p class="footer-tagline">Growth happens <em>in</em> the mess, not after you clean it up.</p>

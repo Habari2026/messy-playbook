@@ -82,7 +82,7 @@
 
     /* ── EXPLORE DROPDOWN ───────────────────────────────────── */
     .nav-dropdown { position: relative; }
-    .nav-dropdown > a { display: flex; align-items: center; gap: 4px; cursor: pointer; padding: 0.25rem 0; }
+    .nav-dropdown > a { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; padding: 0.25rem 0; outline: none; }
     .dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); background: var(--cream); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.1); min-width: 230px; padding: 0.35rem 0 0.5rem; z-index: 200; }
     .nav-dropdown.open .dropdown-menu { display: block; }
     .dropdown-menu a { display: block; padding: 0.75rem 1.1rem; font-size: 0.85rem; font-weight: 600; color: var(--mid); text-decoration: none; transition: background 0.12s, color 0.12s; white-space: nowrap; letter-spacing: 0.02em; }
@@ -129,8 +129,8 @@
     .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--muted), transparent); animation: scrollLine 2s ease-in-out infinite; }
 
     /* ── HERO LOGO ── */
-    .hero-logo { position: absolute; top: 5.5rem; left: var(--pad); width: 120px; height: 120px; animation: fadeIn 0.9s 0.2s ease both; z-index: 1; }
-    @media (max-width: 768px) { .hero-logo { width: 80px; height: 80px; top: 5rem; } }
+    .hero-logo { position: absolute; top: 5.5rem; left: var(--pad); width: 160px; height: 160px; animation: fadeIn 0.9s 0.2s ease both; z-index: 1; }
+    @media (max-width: 768px) { .hero-logo { width: 100px; height: 100px; top: 5rem; } }
     @keyframes scrollLine { 0%{opacity:0;transform:scaleY(0);transform-origin:top} 50%{opacity:1;transform:scaleY(1);transform-origin:top} 100%{opacity:0;transform:scaleY(1);transform-origin:bottom} }
     @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
     @keyframes fadeIn { from{opacity:0} to{opacity:1} }

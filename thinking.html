@@ -438,7 +438,7 @@
     .float-btn:hover { box-shadow: 0 6px 20px rgba(102,126,234,0.55); transform: translateY(-2px); }
     /* ── EXPLORE DROPDOWN ── */
     .nav-dropdown { position: relative; }
-    .nav-dropdown > a { display: flex; align-items: center; gap: 4px; cursor: pointer; padding: 0.25rem 0; }
+    .nav-dropdown > a { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; padding: 0.25rem 0; outline: none; }
     .dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); background: var(--cream); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.1); min-width: 230px; padding: 0.35rem 0 0.5rem; z-index: 200; }
     .nav-dropdown.open .dropdown-menu { display: block; }
     .dropdown-menu a { display: block; padding: 0.75rem 1.1rem; font-size: 0.85rem; font-weight: 600; color: var(--mid); text-decoration: none; transition: background 0.12s, color 0.12s; white-space: nowrap; }
@@ -456,8 +456,8 @@
 
   <!-- FLOATING NAV -->
   <div class="float-nav" aria-label="Page navigation">
-    <button class="float-btn" id="floatTop" aria-label="Previous section">↑</button>
-    <button class="float-btn visible" id="floatBottom" aria-label="Next section">↓</button>
+    <button class="float-btn" id="floatTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <button class="float-btn" id="floatBottom" aria-label="Jump to bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">↓</button>
   </div>
 
   <a href="#main-content" class="skip-nav">Skip to main content</a>

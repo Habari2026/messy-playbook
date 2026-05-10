@@ -117,6 +117,18 @@ Implementation: CSS (`.float-nav` / `.float-btn` / `.float-btn.visible`), HTML (
 
 ---
 
+## Navigation — Architecture Notes
+
+All 9 pages share the same nav structure and behavior. Key implementation details for future reference:
+
+- **Position:** `position: fixed` on all pages — nav stays visible while scrolling
+- **Get MESSY! button:** Placed *outside* the `<ul class="nav-links">` on all pages. The `<ul>` gets `display: none` on mobile; the CTA must live outside it to remain visible
+- **CSS variables:** DM Sans pages (index, play, book, thinking) use `var(--cream)`, `var(--dark)`, `var(--mid)` etc. Micro Messes pages use hex colors. If adding dropdown CSS to any page, use that page's own color system — never mix
+- **Class name:** Get MESSY! button always uses class `nav-cta` — never `nav-cta-btn`
+- **First content section padding:** Must exceed nav height (~62px). DM Sans heroes use `clamp(5.5rem,...)`. Micro Messes heroes/page-headers use `5rem` minimum padding-top
+
+---
+
 ## Navigation — Explore Dropdown
 
 All pages share an identical **Explore ▾** dropdown in the nav containing: Messy Plays™ · The Thinking · [divider] · Micro Messes™ · Insight Series (coming soon) · The Book.
@@ -164,6 +176,7 @@ Full citations and reading list at [messy-playbook.vercel.app/thinking.html](htt
 | 2026 May | Micro Messes™ full build — concept page, sets grid, Sets 00/01/02, PDF-per-card, inter-set nav |
 | 2026 May | Scroll nav consistency pass — play.html, book.html, thinking.html updated to mirror homepage |
 | 2026 May | Consistency + mobile pass — Explore dropdown on all pages, standardized footers, logo added to homepage hero, all touch targets 44px, click-based dropdown with × close button |
+| 2026 May | Nav final fix — play.html dropdown CSS vars corrected, Get MESSY! moved outside hidden ul on Micro Messes pages, sticky→fixed nav on all 5 Micro Messes pages, nav-cta class standardized, play.html skip-nav + main landmark added, thinking.html float button aria-labels corrected, prefers-reduced-motion added to Micro Messes pages |
 
 ---
 
