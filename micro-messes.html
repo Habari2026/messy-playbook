@@ -147,6 +147,7 @@
       backdrop-filter: blur(4px);
     }
     .mobile-nav.open { display: block; }
+    .mobile-nav.open .mobile-nav-panel { transform: translateX(0); }
     .mobile-nav-panel {
       position: absolute;
       top: 0; right: 0;
@@ -159,6 +160,8 @@
       gap: 0.25rem;
       overflow-y: auto;
       box-shadow: -8px 0 32px rgba(0,0,0,0.15);
+      transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
     }
     .mobile-nav-close {
       align-self: flex-end;
