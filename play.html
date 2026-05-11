@@ -1717,7 +1717,12 @@
 </script>
 
 <script>
-(function() {
+var menuBtn   = document.querySelector('.nav-menu-btn');
+  var closeBtn  = document.querySelector('.mobile-nav-close');
+  var mobileNav = document.getElementById('mobile-nav');
+  var lastFocus = null;
+
+  (function() {
 
   var pageNav = document.getElementById('page-nav');
   var hero = document.getElementById('hero');
@@ -1787,37 +1792,7 @@
     });
   }
 
-  // ── Site nav (mobile drawer) ──────────────────────────────
-  var menuBtn   = document.querySelector('.nav-menu-btn');
-  var closeBtn  = document.querySelector('.mobile-nav-close');
-  var mobileNav = document.getElementById('mobile-nav');
-  var lastFocus = null;
-  if (menuBtn) menuBtn.addEventListener('click', openMobileNav);
-  if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
-  if (mobileNav) {
-    if (mobileNav) mobileNav.addEventListener('click', function(e) {
-      if (e.target === mobileNav) closeMobileNav();
-    });
-  }
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) closeMobileNav();
-  });
-
-  // Focus trap
-  if (mobileNav) {
-    if (mobileNav) mobileNav.addEventListener('keydown', function(e) {
-      if (!mobileNav.classList.contains('open') || e.key !== 'Tab') return;
-      const focusable = mobileNav.querySelectorAll('button, a');
-      const first = focusable[0];
-      const last  = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault(); last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault(); first.focus();
-      }
-    });
-  }
+  // ── Site nav handled below ──
 
 })();
 
