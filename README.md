@@ -30,7 +30,8 @@ The MESSY Playbook™ is an anti-optimization personal development framework bui
 | `reality-check.html` | The MESSY Reality Check™ | Web-optimized pain point reference — all 5 dimensions |
 | `messy-reality-check.pdf` | PDF Download | Pre-built print-ready PDF (generated from `reality-check-print.html`) |
 | `messy-arc-graphic.svg` | Arc Graphic | Standalone SVG of the MESSY framework arc — used as thumbnail |
-| `messy-playbook-logo-vector.svg` | Brand Logo | Five-circle M·E·S·S·Y logo — transparent background, displayed in hero upper-left on homepage |
+| `messy-playbook-logo-vector.svg` | Brand Logo (with text) | Five-circle M·E·S·S·Y logo with "The MESSY Playbook" text — retained as alternate variant |
+| `messy-playbook-logo-no-text.svg` | Brand Logo (circles only) | Five-circle M·E·S·S·Y logo — no text, transparent background, currently in use on homepage hero |
 
 ---
 
@@ -206,6 +207,9 @@ Full citations and reading list at [messy-playbook.vercel.app/thinking.html](htt
 | 2026 May | Mobile nav final — homepage menu replicated exactly across all 9 pages; single source of truth established; JS brace errors resolved; 13-point verification check passes across all pages |
 | 2026 May | Fix desktop dropdown JS conflict — const/var re-declaration in thinking.html and book.html killed entire script block; duplicate var declarations removed; main landmark added to 4 Micro Messes set pages; 49-point full audit passes |
 | 2026 May | book.html layout fix — forthcoming label, headline, tagline, cards-row, and divider all had zero horizontal padding; fixed with clamp(1.5rem, 5vw, 4rem) matching site-wide padding system |
+| 2026 May | Mobile nav CSS consistency — rebuilt from index.html as single source of truth; EXPLORE label uppercase/styled, ✕ close button visible, no underlines on panel links, panel background solid white; fixed across all 8 non-index pages |
+| 2026 May | Mobile nav bug fixes — play.html variable scope bug (openMobileNav could not see mobileNav); play.html and all Micro Messes pages had undefined CSS vars causing transparent panels; orphaned CSS selector blocking @media breakpoint on play.html and thinking.html |
+| 2026 May | Logo update — no-text variant created (messy-playbook-logo-no-text.svg); homepage switched to circles-only logo; text variant (messy-playbook-logo-vector.svg) retained in repo |
 
 ---
 
