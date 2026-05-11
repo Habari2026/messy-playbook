@@ -448,9 +448,21 @@
     .dropdown-close button:hover { color: var(--dark); background: rgba(0,0,0,0.04); }
     
 
-    /* Hide float nav when mobile drawer open */
+    
     
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
     .mobile-nav {
       display: none;
       position: fixed;
@@ -460,7 +472,6 @@
       backdrop-filter: blur(4px);
     }
     .mobile-nav.open { display: block; }
-    .mobile-nav.open .mobile-nav-panel { transform: translateX(0); }
     .mobile-nav-panel {
       position: absolute;
       top: 0; right: 0;
@@ -473,8 +484,6 @@
       gap: 0.25rem;
       overflow-y: auto;
       box-shadow: -8px 0 32px rgba(0,0,0,0.15);
-      transform: translateX(100%);
-      transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
     }
     .mobile-nav-close {
       align-self: flex-end;
@@ -516,8 +525,13 @@
       border-color: transparent;
     }
     .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); }
-    body.nav-open .float-nav { display: none; }
-  </style>
+    .mobile-explore-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0.9rem 1rem 0.2rem; display: block; }
+        body.nav-open .float-nav { display: none; }
+    
+    /* Mobile nav panel — no underlines, consistent with homepage */
+    .mobile-nav-panel a { text-decoration: none !important; }
+    .mobile-nav-close { text-decoration: none !important; }
+</style>
 </head>
 <body>
 
