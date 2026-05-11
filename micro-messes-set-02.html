@@ -567,7 +567,7 @@
     })();
 
         var mobileNav = document.getElementById('mobile-nav');
-    var menuBtn   = document.querySelector('.nav-menu-btn, .nav-toggle');
+    var menuBtn   = document.querySelector('.nav-toggle, .nav-menu-btn');
     var closeBtn  = mobileNav ? mobileNav.querySelector('.mobile-nav-close') : null;
     var lastFocus;
     function openMobileNav() {
@@ -590,6 +590,7 @@
     if (mobileNav) mobileNav.addEventListener('click', function(e) {
       if (e.target === mobileNav) closeMobileNav();
     });
+  
   </script>
 
 </body>
