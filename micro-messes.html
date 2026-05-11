@@ -134,6 +134,13 @@
         .float-btn:hover { box-shadow: 0 6px 20px rgba(102,126,234,0.55); transform: translateY(-2px); }
 
         /* Respect reduced motion preference */
+
+        @media (max-width: 480px) {
+            .hero-messy { gap: 0.2rem; }
+            .messy-circle { width: 46px; height: 46px; font-size: 1.1rem; }
+            .messy-arrow { font-size: 1rem; margin-bottom: 1.2rem; }
+            .messy-label { font-size: 0.62rem; }
+        }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
