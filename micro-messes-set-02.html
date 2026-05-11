@@ -167,7 +167,7 @@
       top: 0; right: 0;
       width: min(320px, 85vw);
       height: 100%;
-      background: var(--cream);
+      background: #ffffff;
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
@@ -180,11 +180,11 @@
     .mobile-nav-close {
       align-self: flex-end;
       background: none;
-      border: 1.5px solid var(--rule);
+      border: 1.5px solid #ddd8cc;
       border-radius: 8px;
       padding: 0.4rem 0.65rem;
       cursor: pointer;
-      color: var(--dark);
+      color: #1e2a35;
       font-size: 1.1rem;
       line-height: 1;
       min-height: 44px;
@@ -195,28 +195,28 @@
       margin-bottom: 1rem;
       transition: border-color 0.2s;
     }
-    .mobile-nav-close:hover { border-color: var(--dark); }
+    .mobile-nav-close:hover { border-color: #1e2a35; }
     .mobile-nav-panel a {
       display: block;
       padding: 0.9rem 1rem;
       font-size: 1rem;
       font-weight: 500;
-      color: var(--mid);
+      color: #3d5060;
       border-radius: 8px;
       border: 1px solid transparent;
       transition: background 0.15s, color 0.15s;
     }
-    .mobile-nav-panel a:hover { background: white; color: var(--dark); border-color: var(--rule); }
+    .mobile-nav-panel a:hover { background: white; color: #1e2a35; border-color: #ddd8cc; }
     .mobile-nav-panel .mobile-nav-cta {
       margin-top: 0.75rem;
-      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      background: linear-gradient(135deg, #667eea, #764ba2);
       color: white !important;
       font-weight: 700;
       text-align: center;
       border-radius: 2rem;
       border-color: transparent;
     }
-    .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); }
+    .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, #667eea, #764ba2); }
     body.nav-open .float-nav { display: none; }
   </style>
 </head>
