@@ -602,7 +602,7 @@
 
         <!-- ── Orienting copy ── -->
         <div style="max-width:640px;margin-bottom:2rem;">
-          <p style="font-family:var(--font-display);font-size:clamp(1rem,2vw,1.15rem);font-style:italic;color:var(--dark);line-height:1.75;">The MESSY Playbook™ is an anti-optimization framework built around five dimensions of honest self-knowledge: Monitor, Execute, Support, Surrender, and Yield. It's not self-improvement. It's self-honesty for people tired of being optimized.</p>
+          <p style="font-family:var(--font-display);font-size:clamp(1rem,2vw,1.15rem);font-style:italic;color:var(--dark);line-height:1.75;">Most personal development systems treat you like a problem to be solved. The MESSY Playbook™ takes a different position: you're not broken, you're complex. It's an anti-optimization framework built around five dimensions of self-honest practice — Monitor, Execute, Support, Surrender, and Yield — designed to help you work with your complexity instead of against it. No morning routines. No optimization scripts. Just honest tools for real life.</p>
         </div>
 
         <!-- ── Desktop: full infographic ── -->
@@ -612,35 +612,38 @@
                style="width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.08);" />
         </div>
 
-        <!-- ── Mobile: teaser card ── -->
+        <!-- ── Mobile: teaser card with lightbox ── -->
         <div class="why-infographic-mobile" style="margin-bottom:2.5rem;">
           <div style="background:white;border:1px solid var(--rule);border-radius:12px;overflow:hidden;">
-            <a href="messy-why-infographic.jpg" target="_blank" aria-label="Preview the MESSY Playbook infographic"
-              style="display:block;text-decoration:none;transition:box-shadow 0.2s;"
-              onmouseover="this.style.boxShadow='0 4px 16px rgba(102,126,234,0.18)'"
-              onmouseout="this.style.boxShadow='none'">
+            <button onclick="document.getElementById('infographic-lightbox').style.display='flex'"
+              aria-label="Preview the MESSY Playbook infographic"
+              style="display:block;width:100%;padding:0;border:none;background:none;cursor:pointer;text-align:left;">
               <img src="messy-why-infographic.jpg"
                    alt="The MESSY Playbook infographic — Stop Optimizing. Start Understanding."
                    style="width:100%;height:auto;display:block;" />
               <div style="background:linear-gradient(135deg,var(--grad-start),var(--grad-end));padding:0.6rem 1rem;text-align:center;">
                 <span style="color:white;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">The MESSY Playbook™ &nbsp;·&nbsp; Tap to View Full Size</span>
               </div>
-            </a>
+            </button>
             <div style="padding:1.25rem 1rem;">
               <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">What you're looking at</p>
-              <p style="font-size:0.88rem;color:var(--mid);line-height:1.7;margin-bottom:1rem;">Five dimensions. The card-based plays. The full picture of what The MESSY Playbook is and how it works — in one graphic.</p>
-              <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-                <a href="messy-why-infographic.jpg" target="_blank"
-                  style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--grad-start),var(--grad-end));color:white;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:9px 20px;border-radius:6px;text-decoration:none;">
-                  ↗ &nbsp;View Full Size
-                </a>
-                <a href="messy-why-infographic.jpg" download="messy-playbook-overview.jpg"
-                  style="display:inline-flex;align-items:center;gap:6px;background:white;color:var(--dark);border:2px solid var(--dark);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:9px 20px;border-radius:6px;text-decoration:none;">
-                  ↓ &nbsp;Download
-                </a>
-              </div>
+              <p style="font-size:0.88rem;color:var(--mid);line-height:1.7;margin-bottom:0.75rem;">Five dimensions. The card-based plays. The full picture of what The MESSY Playbook is and how it works — in one graphic.</p>
+              <p style="font-size:0.8rem;color:var(--muted);line-height:1.6;font-style:italic;">Tap the image to view full size. Press and hold to save it to your phone.</p>
             </div>
           </div>
+        </div>
+
+        <!-- ── Lightbox overlay ── -->
+        <div id="infographic-lightbox"
+          style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;align-items:center;justify-content:center;padding:1rem;"
+          onclick="this.style.display='none'">
+          <button onclick="document.getElementById('infographic-lightbox').style.display='none'"
+            aria-label="Close"
+            style="position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,0.15);border:none;color:white;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;">✕</button>
+          <img src="messy-why-infographic.jpg"
+               alt="The MESSY Playbook — Stop Optimizing. Start Understanding."
+               style="max-width:100%;max-height:90vh;height:auto;display:block;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.5);"
+               onclick="event.stopPropagation()" />
         </div>
 
         <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start;margin-bottom:3rem;">
