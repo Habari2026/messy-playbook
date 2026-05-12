@@ -285,6 +285,7 @@
     details.faq-item:nth-child(9) summary, details.faq-item:nth-child(9)[open] .faq-body { border-left-color: var(--m); }
     details.faq-item:nth-child(10) summary, details.faq-item:nth-child(10)[open] .faq-body { border-left-color: var(--s); }
     details.faq-item:nth-child(11) summary, details.faq-item:nth-child(11)[open] .faq-body { border-left-color: var(--y); }
+    details.faq-item:nth-child(12) summary, details.faq-item:nth-child(12)[open] .faq-body { border-left-color: var(--grad-end); }
     details.faq-item:nth-child(1) .faq-num { background: var(--m); }
     details.faq-item:nth-child(2) .faq-num { background: var(--e); }
     details.faq-item:nth-child(3) .faq-num { background: var(--s); }
@@ -296,6 +297,7 @@
     details.faq-item:nth-child(9) .faq-num { background: var(--m); }
     details.faq-item:nth-child(10) .faq-num { background: var(--s); }
     details.faq-item:nth-child(11) .faq-num { background: var(--y); }
+    details.faq-item:nth-child(12) .faq-num { background: var(--grad-end); }
 
     /* ── Get MESSY! ────────────────────────────────────── */
     #get { padding: clamp(4rem,8vw,7rem) 0; background: var(--dark); }
@@ -1068,19 +1070,31 @@
           </details>
 
           <details class="faq-item" role="listitem">
-            <summary><span class="faq-num" aria-hidden="true">9</span>What are Messy Plays™?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <summary><span class="faq-num" aria-hidden="true">9</span>What are Micro Messes™?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
             <div class="faq-body">
-              <p>Messy Plays™ are a series of research-backed experiential cards — each one takes a single finding from a real research paper and turns it into a 15-minute experience you can actually feel, not just read about. Alone or with people you know.</p>
+              <p><strong>Micro Messes™</strong> are small, deliberate encounters with a single MESSY dimension — each one under 15 minutes, with no required outcome and no score to keep.</p>
+              <p>Most people don't lose self-awareness all at once. They lose it gradually: one skipped reflection, one busy week, one program that ended and never got replaced. Micro Messes are designed for exactly that gap. You don't need to have finished anything to start, and you don't need to be in the middle of the program to use them.</p>
               <div class="faq-highlight">
-                <strong>Play 01: Staying in the Mess</strong>
-                The first card explores what the research says about sitting with uncertainty — and gives you a structured way to practice it. It's free to start, and it works on its own even if you've never touched the rest of the framework.
+                They're organized into sets — each set is a collection of five encounters, one per MESSY dimension. <strong>Free. No gate.</strong> Just pick the dimension that's calling today.
               </div>
-              <p>Messy Plays are designed to be standalone but are most powerful when used alongside the Self-Study Program. Each play is rooted in peer-reviewed research and built for people who learn by doing, not just reading. <a href="play.html">Explore Messy Plays →</a></p>
+              <p><a href="micro-messes.html" style="font-weight:700;">Explore Micro Messes →</a></p>
             </div>
           </details>
 
           <details class="faq-item" role="listitem">
-            <summary><span class="faq-num" aria-hidden="true">10</span>Is there research behind this?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <summary><span class="faq-num" aria-hidden="true">10</span>What are Messy Plays™?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p><strong>Messy Plays™</strong> are a series of research-backed experiential cards — each one takes a single finding from a real research paper and turns it into a 15-minute experience you can actually feel, not just read about. Alone or with people you know.</p>
+              <div class="faq-highlight">
+                <strong>Play 01: Staying in the Mess</strong>
+                The first card explores what the research says about sitting with uncertainty — and gives you a structured way to practice it. It's free to start, and it works on its own even if you've never touched the rest of the framework.
+              </div>
+              <p>Messy Plays are designed to be standalone but are most powerful when used alongside the Self-Study Program. Each play is rooted in peer-reviewed research and built for people who learn by doing, not just reading. <a href="play.html" style="font-weight:700;">Explore Messy Plays →</a></p>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">11</span>Is there research behind this?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
             <div class="faq-body">
               <p>Yes — MESSY is grounded in four research pillars, not pop psychology or productivity trends.</p>
               <div class="faq-highlight">
@@ -1097,7 +1111,7 @@
           </details>
 
           <details class="faq-item" role="listitem">
-            <summary><span class="faq-num" aria-hidden="true">11</span>Is there a book?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <summary><span class="faq-num" aria-hidden="true">12</span>Is there a book?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
             <div class="faq-body">
               <p>Not yet — but it's coming. The MESSY Playbook started as a framework, grew into a program, and is now being developed into a full manuscript. The placeholder page exists because the thinking is already here; the book is just the long form of it.</p>
               <div class="faq-highlight">
@@ -1126,9 +1140,11 @@
       <div class="wrap">
 
         <div class="slabel" aria-hidden="true">
-          <span class="slabel-word" style="color:var(--grad-start);">Micro Messes™</span>
+          <span class="slabel-word" style="color:var(--grad-start);font-size:0.80rem;">Micro Messes™</span>
           <span class="slabel-line" style="background:var(--rule);"></span>
-          <span class="slabel-desc" style="color:var(--muted);">Small encounters. Honest seeing.</span>
+          <span style="font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--y);background:rgba(39,174,96,0.1);border-radius:2rem;padding:0.2rem 0.7rem;white-space:nowrap;flex-shrink:0;">Free</span>
+          <span class="slabel-line" style="background:var(--rule);"></span>
+          <span class="slabel-desc" style="color:var(--muted);font-size:0.95rem;">Small encounters. Honest seeing.</span>
         </div>
 
         <div style="max-width:640px;margin-bottom:2.5rem;">
@@ -1156,12 +1172,15 @@
           <div style="padding:1.5rem 2rem;">
             <div style="display:flex;gap:1.5rem;align-items:flex-start;">
               <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,var(--grad-start),var(--grad-end));padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:4px;">What</span>
-              <p style="font-size:0.97rem;color:var(--mid);line-height:1.75;margin:0;">Micro Messes are organized into sets, each a collection of five encounters across all five MESSY dimensions. No required outcome, no tracking, no score. Free. Just pick the dimension that's calling today.</p>
+              <p style="font-size:0.97rem;color:var(--mid);line-height:1.75;margin:0;"><strong style="color:var(--dark);">Micro Messes</strong> are organized into sets, each a collection of five encounters across all five MESSY dimensions. No required outcome, no tracking, no score. Free. Just pick the dimension that's calling today.</p>
             </div>
           </div>
         </div>
 
-        <a href="micro-messes.html" class="btn-primary" style="display:inline-block;">Browse Micro Mess Sets →</a>
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+          <a href="micro-messes.html" class="btn-primary" style="display:inline-block;">Browse Micro Mess Sets →</a>
+          <span style="font-size:0.8rem;font-weight:600;color:var(--y);background:rgba(39,174,96,0.1);border-radius:2rem;padding:0.3rem 0.9rem;white-space:nowrap;">Free. No gate.</span>
+        </div>
 
       </div>
     </section>
@@ -1173,9 +1192,11 @@
       <div class="wrap">
 
         <div class="slabel" aria-hidden="true">
-          <span class="slabel-word" style="color:var(--m);">Messy Plays™</span>
+          <span class="slabel-word" style="color:var(--m);font-size:0.80rem;">Messy Plays™</span>
           <span class="slabel-line" style="background:var(--rule);"></span>
-          <span class="slabel-desc" style="color:var(--muted);">Experiential research cards</span>
+          <span style="font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--y);background:rgba(39,174,96,0.1);border-radius:2rem;padding:0.2rem 0.7rem;white-space:nowrap;flex-shrink:0;">Free</span>
+          <span class="slabel-line" style="background:var(--rule);"></span>
+          <span class="slabel-desc" style="color:var(--muted);font-size:0.95rem;">Experiential research cards</span>
         </div>
 
         <div style="max-width:640px;margin-bottom:2.5rem;">
@@ -1203,12 +1224,15 @@
           <div style="padding:1.5rem 2rem;">
             <div style="display:flex;gap:1.5rem;align-items:flex-start;">
               <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,var(--grad-start),var(--grad-end));padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:4px;">What</span>
-              <p style="font-size:0.97rem;color:var(--mid);line-height:1.75;margin:0;">A growing series of plays, each grounded in a different research paper. Set 01, <em>Staying in the Mess</em>, is available now and free to start. About 15 minutes solo, longer with a group. No facilitator needed.</p>
+              <p style="font-size:0.97rem;color:var(--mid);line-height:1.75;margin:0;">A growing series of <strong style="color:var(--dark);">Messy Plays</strong>, each grounded in a different research paper. Set 01, <em>Staying in the Mess</em>, is available now and free to start. About 15 minutes solo, longer with a group. No facilitator needed.</p>
             </div>
           </div>
         </div>
 
-        <a href="play.html" class="btn-primary" style="display:inline-block;">Start Set 01 — Free →</a>
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+          <a href="play.html" class="btn-primary" style="display:inline-block;">Start Set 01 →</a>
+          <span style="font-size:0.8rem;font-weight:600;color:var(--y);background:rgba(39,174,96,0.1);border-radius:2rem;padding:0.3rem 0.9rem;white-space:nowrap;">Free. No gate.</span>
+        </div>
 
       </div>
     </section>
@@ -1339,7 +1363,7 @@
   <footer aria-label="Site footer">
     <div class="footer-logo">The MESSY Playbook<span aria-hidden="true">™</span></div>
     <p class="footer-tagline">Growth happens <em>in</em> the mess, not after you clean it up.</p>
-    <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0;font-size:13px;">
+    <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0;font-size:13px;font-weight:700;">
       <a href="#why"   style="color:var(--muted);text-decoration:none;">Why MESSY?</a>
       <a href="#what"  style="color:var(--muted);text-decoration:none;">The Playbook</a>
       <a href="#tiers" style="color:var(--muted);text-decoration:none;">How It Works</a>
