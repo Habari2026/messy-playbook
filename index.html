@@ -327,8 +327,8 @@
     .get-card-btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.8rem 1.5rem; border-radius: 2rem; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s, transform 0.15s; min-height: 44px; text-align: center; }
     .get-card:nth-child(1) .get-card-btn { background: var(--m); color: white; }
     .get-card-btn:hover { opacity: 0.88; transform: translateY(-1px); }
-    .get-pwyw-note { text-align: center; font-size: 0.85rem; color: var(--on-dark-sub); line-height: 1.65; max-width: 540px; margin-inline: auto; }
-    .get-pwyw-note a { color: var(--on-dark); text-decoration: underline; }
+    .get-pwyw-note { text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.65; max-width: 540px; margin-inline: auto; margin-top: 2rem; }
+    .get-pwyw-note a { color: white; text-decoration: underline; }
 
     /* ── CONTACT ────────────────────────────────────────────── */
     #contact { padding: clamp(4rem,8vw,7rem) 0; }
@@ -443,6 +443,7 @@
     .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); }
     @media (max-width: 900px) {
       .tiers-grid, .get-grid { grid-template-columns: 1fr; }
+      .get-two-col { grid-template-columns: 1fr !important; }
       .inside-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
@@ -1246,7 +1247,7 @@
           <p>Pay What You Want. Every document included — ready to use immediately.</p>
         </div>
 
-        <div style="max-width:420px;">
+        <div class="get-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:0;">
 
           <div class="get-card">
             <div class="get-card-badge"><span style="width:8px;height:8px;background:var(--m);border-radius:50%;flex-shrink:0;display:inline-block;" aria-hidden="true"></span>For Yourself</div>
@@ -1260,10 +1261,19 @@
             <a href="https://livemessy.gumroad.com/l/messy-self-study" class="get-card-btn" target="_blank" rel="noopener noreferrer">Get Self-Study Program →</a>
           </div>
 
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:2rem;display:flex;flex-direction:column;">
+            <p style="font-size:0.7rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--grad-start);margin-bottom:1rem;">Built on Real Research</p>
+            <p style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:white;margin-bottom:1.25rem;line-height:1.25;">Why it works.</p>
+            <p style="font-size:0.87rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:0.9rem;"><strong style="color:white;">The MESSY Playbook™</strong> didn't come from a productivity blog or a coaching certification. It came from four research pillars that most personal development frameworks ignore entirely.</p>
+            <p style="font-size:0.87rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:0.9rem;">Complexity theory. Emotional science. The actual mechanics of behavior change. And the operational logic of systems designed to work with messy, real-world conditions — not ideal ones.</p>
+            <p style="font-size:0.87rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:1.5rem;flex:1;">If you want to understand why <strong style="color:white;">MESSY</strong> works before you commit to it, The Thinking is where that answer lives.</p>
+            <a href="thinking.html" style="display:inline-flex;align-items:center;justify-content:center;padding:0.8rem 1.5rem;border-radius:2rem;font-size:0.85rem;font-weight:700;background:linear-gradient(135deg,var(--grad-start),var(--grad-end));color:white;text-decoration:none;min-height:44px;text-align:center;transition:opacity 0.2s,transform 0.15s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">Explore The Thinking →</a>
+          </div>
+
         </div>
 
         <p class="get-pwyw-note">
-          These are Pay What You Want with a minimum floor. The suggested price is pre-filled — pay more if you want to support the project, pay the minimum if that's what's right for you right now. If you genuinely can't afford it, <a href="#contact">get in touch</a>.
+          The Self-Study Program is Pay What You Want with a minimum floor. The suggested price is pre-filled — pay more if you want to support the project, pay the minimum if that's what's right for you right now. If you genuinely can't afford it, <a href="#contact">get in touch</a>.
         </p>
 
       </div>
