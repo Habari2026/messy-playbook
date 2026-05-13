@@ -197,7 +197,7 @@
     .practice-note { margin-top: 1.5rem; padding: 1.3rem 1.6rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; display: flex; align-items: flex-start; gap: 1.2rem; font-size: 0.88rem; color: var(--on-dark); line-height: 1.65; }
     .practice-note .badge { flex-shrink:0; font-family: var(--font-display); font-size:0.95rem; font-style:italic; color:white; font-weight:700; white-space:nowrap; }
 
-    /* ── THREE TIERS ────────────────────────────────────────── */
+    /* ── TIERS ────────────────────────────────────────── */
     #tiers { padding: clamp(4rem,8vw,7rem) 0; }
     .tiers-intro { max-width: 620px; margin-bottom: 3rem; }
     .tiers-intro h2 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--dark); margin-bottom: 0.8rem; }
@@ -317,8 +317,6 @@
     .get-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.22); }
     .get-card-badge { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
     .get-card:nth-child(1) .get-card-badge { color: var(--m); }
-    .get-card:nth-child(2) .get-card-badge { color: var(--s); }
-    .get-card:nth-child(3) .get-card-badge { color: var(--y); }
     .get-card-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 0.25rem; }
     .get-card-sub { font-size: 0.78rem; color: var(--on-dark-sub); letter-spacing: 0.05em; margin-bottom: 1.2rem; }
     .get-card-price { margin-bottom: 1rem; }
@@ -328,8 +326,6 @@
     .get-card-desc { font-size: 0.87rem; color: var(--on-dark); line-height: 1.65; margin-bottom: 1.5rem; flex: 1; }
     .get-card-btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.8rem 1.5rem; border-radius: 2rem; font-size: 0.85rem; font-weight: 700; transition: opacity 0.2s, transform 0.15s; min-height: 44px; text-align: center; }
     .get-card:nth-child(1) .get-card-btn { background: var(--m); color: white; }
-    .get-card:nth-child(2) .get-card-btn { background: var(--s); color: white; }
-    .get-card:nth-child(3) .get-card-btn { background: linear-gradient(135deg,var(--grad-start),var(--grad-end)); color: white; }
     .get-card-btn:hover { opacity: 0.88; transform: translateY(-1px); }
     .get-pwyw-note { text-align: center; font-size: 0.85rem; color: var(--on-dark-sub); line-height: 1.65; max-width: 540px; margin-inline: auto; }
     .get-pwyw-note a { color: var(--on-dark); text-decoration: underline; }
@@ -866,39 +862,24 @@
 
     <hr class="divider" style="border-color:rgba(255,255,255,0.07);" />
 
-    <!-- ══ THREE TIERS ══ -->
+    <!-- ══ TIERS ══ -->
     <section id="tiers" aria-labelledby="tiers-heading" style="padding:clamp(4rem,8vw,7rem) 0;">
       <div class="wrap">
 
         <div class="slabel" aria-hidden="true">
           <span class="slabel-word" style="color:var(--s);">How It Works</span>
           <span class="slabel-line" style="background:var(--rule);"></span>
-          <span class="slabel-desc" style="color:var(--muted);">Three Ways In</span>
+          <span class="slabel-desc" style="color:var(--muted);">One Way In</span>
         </div>
 
         <div class="tiers-intro">
-          <h2 id="tiers-heading">Start where you are.<br>Go as deep as you want.</h2>
-          <p>Three ways to experience MESSY — each one a complete experience on its own. They build on each other naturally, but there's no wrong place to begin.</p>
+          <h2 id="tiers-heading">Start where you are.<br>Go at your own pace.</h2>
+          <p>One program. Self-directed. No facilitator needed. Work through all five MESSY practices on your own schedule — one element per week, or however the pace fits your life.</p>
         </div>
 
-        <div class="tiers-grid">
-
-          <div class="tier-card taster">
-            <div class="tier-badge"><span class="tier-dot" aria-hidden="true"></span>Tier 1 · Start Here</div>
-            <div class="tier-name">MESSY Taster</div>
-            <div class="tier-duration">75 minutes · Standalone · Facilitated</div>
-            <p class="tier-desc">A single-session introduction built entirely around MONITOR — the first and most foundational MESSY practice. You'll experience the Reality vs. Should Gap exercise, write a Mess Permission Slip, and practice sharing something unresolved without receiving advice.</p>
-            <ul class="tier-includes">
-              <li>Framework overview (all five elements)</li>
-              <li>MONITOR experiential deep-dive</li>
-              <li>Partner sharing (no advice-giving)</li>
-              <li>Mess Permission Slip take-home artifact</li>
-            </ul>
-            <a href="#get" class="tier-cta">Get the Taster →</a>
-          </div>
-
+        <div style="max-width:420px;">
           <div class="tier-card self-study">
-            <div class="tier-badge"><span class="tier-dot" aria-hidden="true"></span>Tier 2 · Go at Your Own Pace</div>
+            <div class="tier-badge"><span class="tier-dot" aria-hidden="true"></span>Self-Directed · No Facilitator Needed</div>
             <div class="tier-name">Self-Study Program</div>
             <div class="tier-duration">6 weeks · Self-directed · No facilitator needed</div>
             <p class="tier-desc">A structured independent journey through all five MESSY practices. One element per week, at your own pace. No tracking, no grades, no performance. The Self-Study Guide even tells you what to do when MESSY starts feeling like work.</p>
@@ -910,24 +891,7 @@
             </ul>
             <a href="#get" class="tier-cta">Get the Self-Study Program →</a>
           </div>
-
-          <div class="tier-card facilitated">
-            <div class="tier-badge"><span class="tier-dot" aria-hidden="true"></span>Tier 3 · The Full Experience</div>
-            <div class="tier-name">6-Session Facilitated Program</div>
-            <div class="tier-duration">6 × 1 hour · Weekly · Cohort-based</div>
-            <p class="tier-desc">The full program with a facilitator and cohort. Each weekly session covers one practice, with real-world homework between sessions and partner activities that require human witness — especially in SURRENDER and YIELD. Closes with a Living MESSY integration session.</p>
-            <ul class="tier-includes">
-              <li>Sessions 1–5: one element per week</li>
-              <li>Partner activities and group sharing</li>
-              <li>Weekly homework with real-life application</li>
-              <li>Session 6: Living MESSY integration</li>
-            </ul>
-            <a href="#get" class="tier-cta">Get the Full Program →</a>
-          </div>
-
         </div>
-
-        <p class="tiers-note"><strong>Not sure where to start?</strong> The Taster is designed for exactly that. It's a complete experience on its own — and if it resonates, both other paths are there when you're ready.</p>
 
       </div>
     </section>
@@ -947,19 +911,11 @@
         </div>
 
         <div class="inside-intro">
-          <h2 id="inside-heading">A complete ecosystem<br>of resources.</h2>
-          <p>Every document in the system is designed to work alone and together. There's nothing missing — each tier has everything it needs from day one.</p>
+          <h2 id="inside-heading">Everything you need.<br>Nothing you don't.</h2>
+          <p>Every document in the Self-Study Program is designed to work alone and together. There's nothing missing — you have everything you need from day one.</p>
         </div>
 
         <div class="inside-grid">
-          <div>
-            <p class="inside-col-label">Facilitation Materials</p>
-            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Facilitator's Master Guide</strong>Complete session agendas, facilitation scripts, group size guidance, and troubleshooting for the Taster and full program.</div></div>
-            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>MESSY Taster Handout</strong>Participant handout for the 75-minute standalone session. Works on its own.</div></div>
-            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>6-Session Program Workbook</strong>In-session activities and weekly homework for all five elements plus Living MESSY.</div></div>
-            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Framework Overview</strong>One-page quick reference with Reality Check prompts for all five practices.</div></div>
-            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Reflection Tools</strong>Weekly prompts, 30-day follow-up questions, and ongoing practice tools.</div></div>
-          </div>
           <div>
             <p class="inside-col-label">Participant &amp; Practice Resources</p>
             <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Self-Study Guide</strong>How to use the resources independently, a 6-week structure, and what to do when MESSY starts feeling like work.</div></div>
@@ -1056,21 +1012,14 @@
           </details>
 
           <details class="faq-item" role="listitem">
-            <summary><span class="faq-num" aria-hidden="true">5</span>What's the difference between the three ways in?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <summary><span class="faq-num" aria-hidden="true">5</span>How does the Self-Study Program work?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
             <div class="faq-body">
-              <p>All three use the same framework. The difference is depth, structure, and whether you need other people in the room.</p>
+              <p>The Self-Study Program is a structured independent journey through all five MESSY practices. One element per week, at your own pace.</p>
               <div class="faq-highlight">
-                <strong>Tier 1 · Start Here — MESSY Taster</strong>
-                75 minutes, facilitated, covers MONITOR only. The goal is to give you a real taste of one practice — not an overview of all five. Standalone value, no commitment to continue.
-              </div>
-              <div class="faq-highlight" style="margin-top:0.5rem;">
-                <strong>Tier 2 · Go at Your Own Pace — Self-Study Program</strong>
+                <strong>Self-Directed · No Facilitator Needed — Self-Study Program</strong>
                 6 weeks, self-directed, works through all five elements using the workbook, activity cards, and reflection tools. No facilitator needed. Some partner-dependent exercises have solo adaptations built in.
               </div>
-              <div class="faq-highlight" style="margin-top:0.5rem;">
-                <strong>Tier 3 · The Full Experience — 6-Session Facilitated Program</strong>
-                6 weekly hours with a cohort. Each session covers one element with partner activities, homework, and a closing integration session. The SURRENDER element in particular requires human witness — this is the tier where that work fully lands.
-              </div>
+              <p>The Self-Study Guide even includes a dedicated section called "When MESSY Starts Feeling Like Work" — for when the framework itself starts feeling like another obligation.</p>
             </div>
           </details>
 
@@ -1294,10 +1243,10 @@
         <div class="get-intro">
           <span class="eyebrow">Get MESSY!</span>
           <h2 id="get-heading">Pay what's right<br>for <em>where you are.</em></h2>
-          <p>Pay What You Want. Every document included — ready to use immediately. Whether you're here for yourself or bringing MESSY to your clients, there's a package for you.</p>
+          <p>Pay What You Want. Every document included — ready to use immediately.</p>
         </div>
 
-        <div class="get-grid">
+        <div style="max-width:420px;">
 
           <div class="get-card">
             <div class="get-card-badge"><span style="width:8px;height:8px;background:var(--m);border-radius:50%;flex-shrink:0;display:inline-block;" aria-hidden="true"></span>For Yourself</div>
@@ -1311,34 +1260,10 @@
             <a href="https://livemessy.gumroad.com/l/messy-self-study" class="get-card-btn" target="_blank" rel="noopener noreferrer">Get Self-Study Program →</a>
           </div>
 
-          <div class="get-card">
-            <div class="get-card-badge"><span style="width:8px;height:8px;background:var(--s);border-radius:50%;flex-shrink:0;display:inline-block;" aria-hidden="true"></span>For Coaches &amp; Facilitators</div>
-            <div class="get-card-name">Facilitator License</div>
-            <div class="get-card-sub">Taster + 6-Session Program · For coaches</div>
-            <div class="get-card-price">
-              <p class="price-min">Minimum $9 · Suggested</p>
-              <p class="price-suggested">$19 <span>/ pay what you want</span></p>
-            </div>
-            <p class="get-card-desc">Everything in the Self-Study package, plus the Facilitator's Master Guide, Taster Handout, and Coach Leave-Behind. The complete delivery system for coaches running the Taster or 6-Session Program with clients.</p>
-            <a href="https://livemessy.gumroad.com/l/messy-facilitator-license" class="get-card-btn" target="_blank" rel="noopener noreferrer">Get Facilitator License →</a>
-          </div>
-
-          <div class="get-card">
-            <div class="get-card-badge"><span style="width:8px;height:8px;background:var(--y);border-radius:50%;flex-shrink:0;display:inline-block;" aria-hidden="true"></span>Everything, One Download</div>
-            <div class="get-card-name">Complete Bundle</div>
-            <div class="get-card-sub">All programs · All documents · One transaction</div>
-            <div class="get-card-price">
-              <p class="price-min">Minimum $12 · Suggested</p>
-              <p class="price-suggested">$27 <span>/ pay what you want</span></p>
-            </div>
-            <p class="get-card-desc">All three programs, all thirteen documents, unlimited use. Delivery materials, participant resources, practice tools, and the Brand Reference Sheet. The full system in one download.</p>
-            <a href="https://livemessy.gumroad.com/l/messy-complete-bundle" class="get-card-btn" target="_blank" rel="noopener noreferrer">Get the Complete Bundle →</a>
-          </div>
-
         </div>
 
         <p class="get-pwyw-note">
-          These are Pay What You Want with a minimum floor. The suggested price is pre-filled — pay more if you want to support the project, pay the minimum if that's what's right for you right now. If you genuinely can't afford it and want to use this with clients, <a href="#contact">get in touch</a>.
+          These are Pay What You Want with a minimum floor. The suggested price is pre-filled — pay more if you want to support the project, pay the minimum if that's what's right for you right now. If you genuinely can't afford it, <a href="#contact">get in touch</a>.
         </p>
 
       </div>
@@ -1357,7 +1282,6 @@
             <p class="eyebrow" style="margin-bottom:1rem;display:block;">Get in Touch</p>
             <h2 id="contact-heading">Have a question<br>about <em>MESSY?</em></h2>
             <p>Whether you're curious about the framework, want to explore how it applies to your situation, or just want to say hello — send a message. No optimization required.</p>
-            <p>Coaches and facilitators interested in the trial program are also welcome to reach out here.</p>
             <div class="contact-promise">
               <span class="contact-promise-icon" aria-hidden="true">🔒</span>
               <span>Your message comes directly to us. Your email address stays private and will never be shared or used for anything you haven't agreed to.</span>
