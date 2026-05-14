@@ -386,6 +386,55 @@
     }
     .reading-link:hover { color: var(--m); }
 
+    /* ── RECOMMENDED BOOKS ──────────────────────────────────── */
+    .books-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 720px) {
+      .books-grid { grid-template-columns: 1fr; }
+    }
+    .book-card {
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      padding: 2rem;
+      background: var(--cream);
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .book-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(30,42,53,0.08); }
+    .book-cover {
+      flex-shrink: 0;
+      width: 84px;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 3px 5px 14px rgba(30,42,53,0.18);
+      background: var(--rule);
+    }
+    .book-cover img { width: 100%; display: block; }
+    .book-info { flex: 1; min-width: 0; }
+    .book-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+    .book-author { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.6rem; }
+    .book-desc { font-size: 0.88rem; color: var(--mid); line-height: 1.65; margin-bottom: 0.75rem; }
+    .book-link {
+      font-size: 0.8rem; color: var(--grad-start);
+      text-decoration: underline; text-underline-offset: 3px;
+      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 0.25rem;
+    }
+    .book-link:hover { color: var(--m); }
+
     /* ── LOOP FOOTER CTA ────────────────────────────────────── */
     .thinking-cta {
       text-align: center;
@@ -883,7 +932,147 @@
             </div>
           </div>
 
+          <div class="reading-item">
+            <div class="reading-badge b-comp" aria-label="Literary Theory">LT</div>
+            <div>
+              <p class="reading-title">What a Mess</p>
+              <p class="reading-author">Katrin Pahl · MLN, Vol. 130, No. 3 · The Johns Hopkins University Press · 2015</p>
+              <p class="reading-desc">A literary and philosophical argument that mess is neither complex nor simple — it runs diagonally to both. Through a close reading of Heinrich von Kleist's plays, Pahl makes the case that messy thought is a distinct mode of rationality, one that relaxes the imperative to produce clean and clear distinctions. This is not a failure of thinking. It is a different kind of thinking, with its own logic, its own affective life, and its own productive capacity. One of the most rigorous scholarly arguments for mess as epistemology — the study of how we know things — rather than as a deficit to be corrected.</p>
+              <span class="reading-why">Why it matters for MESSY</span>
+              <br>
+              <a href="https://www.jstor.org/stable/24463846" class="reading-link" target="_blank" rel="noopener noreferrer">Read on JSTOR ↗</a>
+            </div>
+          </div>
+
+          <div class="reading-item">
+            <div class="reading-badge b-soc" aria-label="Aesthetics">AE</div>
+            <div>
+              <p class="reading-title">Everyday Surface Aesthetic Qualities: "Neat," "Messy," "Clean," "Dirty"</p>
+              <p class="reading-author">Thomas Leddy · The Journal of Aesthetics and Art Criticism, Vol. 53, No. 3 · 1995</p>
+              <p class="reading-desc">A philosophy paper making a surprisingly radical argument: that "messy," "neat," "clean," and "dirty" are genuine aesthetic qualities — an entire neglected class of them — equal in importance to the expressive properties that dominate academic aesthetics. Leddy argues that messiness is not inherently negative. It is a perceptual quality that can be valued, appreciated, and even preferred, depending on context and the sensibility of the person encountering it. He also makes the case that these surface aesthetic qualities are foundational — learned before more complex concepts like "elegant" or "harmonious," and the basis from which those concepts develop. A philosophical rehabilitation of mess as a legitimate category of experience rather than a failure of order.</p>
+              <span class="reading-why">Why it matters for MESSY</span>
+              <br>
+              <a href="https://www.jstor.org/stable/431351" class="reading-link" target="_blank" rel="noopener noreferrer">Read on JSTOR ↗</a>
+            </div>
+          </div>
+
+          <div class="reading-item">
+            <div class="reading-badge b-comp" aria-label="Wicked Problems">WK</div>
+            <div>
+              <p class="reading-title">Dilemmas in a General Theory of Planning</p>
+              <p class="reading-author">Horst W.J. Rittel &amp; Melvin M. Webber · Policy Sciences, Vol. 4 · 1973</p>
+              <p class="reading-desc">The paper that coined the term "wicked problems" — and one of the most consequential ideas in the social sciences of the twentieth century. Rittel and Webber distinguished "tame" problems (definable, solvable, testable) from "wicked" ones that resist formulation, shift as you approach them, and are never truly solved — only "re-solved over and over again." Their ten properties of wicked problems remain the most precise description available of why personal change, organizational transformation, and meaningful human challenges cannot be optimized into compliance. MESSY is built on the premise that the self is a wicked problem. Which means the only honest approach is resolution, not solution.</p>
+              <span class="reading-why">Why it matters for MESSY</span>
+              <br>
+              <a href="https://doi.org/10.1007/BF01405730" class="reading-link" target="_blank" rel="noopener noreferrer">Read via DOI ↗</a>
+            </div>
+          </div>
+
+          <div class="reading-item">
+            <div class="reading-badge b-mes" aria-label="Mess Mapping">MM</div>
+            <div>
+              <p class="reading-title">New Tools for Resolving Wicked Problems: Mess Mapping and Resolution Mapping Processes</p>
+              <p class="reading-author">Robert E. Horn &amp; Robert P. Weber · MacroVU / Strategy Kinetics · 2007</p>
+              <p class="reading-desc">A practical extension of the Rittel/Webber wicked problems tradition into visual analytics and structured group work. Horn and Weber argue that wicked problems require a different kind of engagement: not optimizing toward a solution but developing shared understanding of an interconnected mess — and then working backward from desired outcomes through "simulated hindsight." The distinction they draw between "solving" and "re-solving" is central to how MESSY frames the Y (Yield) practice: you do not finish working on yourself. You re-engage the problem. The paper also offers a useful vocabulary for the kinds of resistance, interconnection, and value conflict that show up in any serious personal development effort.</p>
+              <span class="reading-why">Why it matters for MESSY</span>
+              <br>
+              <a href="https://www.strategykinetics.com/2007/09/wicked-problems.html" class="reading-link" target="_blank" rel="noopener noreferrer">Read online ↗</a>
+            </div>
+          </div>
+
+          <div class="reading-item">
+            <div class="reading-badge b-soc" aria-label="Philosophy of Science">PS</div>
+            <div>
+              <p class="reading-title">Mess in Science and Wicked Problems</p>
+              <p class="reading-author">Jutta Schickore · Perspectives on Science, Vol. 28, No. 4 · MIT Press · 2020</p>
+              <p class="reading-desc">A careful philosophical audit of what "messy science" actually means — and which uses of the word add genuine insight versus which are rhetorical noise. Schickore argues that most popular and academic invocations of "messiness" either restate what we already knew (science is not as tidy as textbooks suggest) or serve rhetorical purposes (undermining scientific authority, celebrating the maverick). The real analytical value, she argues, lies in the concept of wicked problems — which gives precise vocabulary for the kinds of complexity that genuinely resist taming. A useful corrective for anyone who wants to use "mess" rigorously rather than casually, and a valuable bridge between the 1970s planning literature and contemporary science studies.</p>
+              <span class="reading-why">Why it matters for MESSY</span>
+              <br>
+              <a href="https://doi.org/10.1162/posc_a_00348" class="reading-link" target="_blank" rel="noopener noreferrer">Read via DOI ↗</a>
+            </div>
+          </div>
+
+          <div class="reading-item">
+            <div class="reading-badge b-mes2" aria-label="Organizational Learning">OL</div>
+            <div>
+              <p class="reading-title">Organizational Learning, Knowledge Creation, Problem Formulation and Innovation in Messy Problems</p>
+              <p class="reading-author">Marjorie A. Lyles · European Management Journal, Vol. 32 · 2014</p>
+              <p class="reading-desc">An organizational learning editorial that surfaces what happens when institutions — and people — try to formulate problems that are too complex, shifting, and value-laden to frame cleanly. Lyles draws on the concept of the Type Three Error: solving the wrong problem precisely. The instinct to simplify before solving is itself a source of failure, not a precaution against it. Most self-improvement approaches are Type Three Errors — elegant solutions applied to problems that were never quite the real problem. Lyles also traces how prior experience and memory shape what solutions even seem available — which maps directly onto how past narratives constrain present choices. A management-science lens on something MESSY addresses from the inside.</p>
+              <span class="reading-why">Why it matters for MESSY</span>
+              <br>
+              <a href="https://doi.org/10.1016/j.emj.2013.05.003" class="reading-link" target="_blank" rel="noopener noreferrer">Read via DOI ↗</a>
+            </div>
+          </div>
+
+          <div class="reading-item">
+            <div class="reading-badge b-comp" aria-label="Disorganization Theory">DT</div>
+            <div>
+              <p class="reading-title">Disorganization Theory and Disorganizational Behavior: Towards an Etiology of Messes</p>
+              <p class="reading-author">Eric Abrahamson · Research in Organizational Behavior, Vol. 24 · Columbia Business School · 2002</p>
+              <p class="reading-desc">A systematic attempt to build a theory of organizational mess from the ground up — not as failure but as a phenomenon with its own logic, causes, and functions. Abrahamson proposes "disorganization theory" as a complement to organization theory, arguing that messes are not simply the absence of order but have an etiology: identifiable origins, structures, and even benefits. The paper makes the case that some degree of disorganization is not just inevitable but functional — and that the drive to eliminate it entirely produces its own costs. One of the few management scholars to take mess seriously as a subject rather than a problem to be solved, Abrahamson is also the co-author of A Perfect Mess (included in Recommended Books below), which brings many of these ideas to a general audience.</p>
+              <span class="reading-why">Why it matters for MESSY</span>
+              <br>
+              <a href="https://business.columbia.edu/faculty/research/disorganization-theory-and-disorganizational-behavior-towards-etiology-messes" class="reading-link" target="_blank" rel="noopener noreferrer">View at Columbia Business School ↗</a>
+            </div>
+          </div>
+
+          <div class="reading-item">
+            <div class="reading-badge b-comp" aria-label="Messy Coherence">MC</div>
+            <div>
+              <p class="reading-title">Creating Messy Coherence</p>
+              <p class="reading-author">Sonja Blignaut · Medium · January 2021</p>
+              <p class="reading-desc">A practitioner's essay from one of the leading voices in applied complexity thinking. Blignaut introduces the concept of "coherent heterogeneity" — drawn from Dave Snowden's Cynefin work — as a core property of resilient complex systems. The argument cuts directly against decades of management orthodoxy: efficiency, alignment, and homogeneity are not virtues in complex systems. They are liabilities. What complex systems actually require is what Blignaut calls "requisite inefficiency" — a degree of mess that is not incidental but functional. The essay also makes a quiet but important distinction between frameworks (permanent, form-giving structures) and scaffolds (temporary structures that support emergence and then get out of the way). A rich, wide-ranging piece that rewards slow reading.</p>
+              <span class="reading-why">Why it matters for MESSY</span>
+              <br>
+              <a href="https://sonjablignaut.medium.com/creating-messy-coherence-c0ae404e2627" class="reading-link" target="_blank" rel="noopener noreferrer">Read on Medium ↗</a>
+            </div>
+          </div>
+
         </div><!-- /reading-list -->
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ── SECTION 4: RECOMMENDED BOOKS ── -->
+    <section class="section section-alt" id="books">
+      <div class="wrap">
+        <div class="section-label">
+          <div class="section-label-line" aria-hidden="true"></div>
+          <span class="section-label-text">Recommended Books</span>
+        </div>
+        <h2 class="section-heading">Read these. <em>Seriously.</em></h2>
+        <p style="color: var(--mid); max-width: 620px; margin-top: 0.5rem;">
+          Two books that argue for mess before MESSY existed. Neither is a self-help book. Both make the case more rigorously than most.
+        </p>
+
+        <div class="books-grid">
+
+          <div class="book-card">
+            <div class="book-cover">
+              <img src="https://covers.openlibrary.org/b/isbn/1594634796-L.jpg" alt="Cover of Messy by Tim Harford" loading="lazy" onerror="this.parentElement.style.display='none'" />
+            </div>
+            <div class="book-info">
+              <p class="book-title">Messy: The Power of Disorder to Transform Our Lives</p>
+              <p class="book-author">Tim Harford · Riverhead Books · 2016</p>
+              <p class="book-desc">The closest thing on the market to a mainstream, evidence-based case for everything MESSY is built on. Economist and journalist Tim Harford spent years investigating what actually happens when people and organizations resist the pull toward order. He found that the evidence strongly favors mess. Creativity, resilience, improvisation, and the hidden fragility built into over-organized systems are all here. Broad, accessible, and well-researched. If someone asks where MESSY comes from, this is the book on the same shelf.</p>
+              <a href="https://www.amazon.com/Messy-Power-Disorder-Transform-Lives/dp/1594634793" class="book-link" target="_blank" rel="noopener noreferrer">View on Amazon ↗</a>
+            </div>
+          </div>
+
+          <div class="book-card">
+            <div class="book-cover">
+              <img src="https://covers.openlibrary.org/b/isbn/0316013994-L.jpg" alt="Cover of A Perfect Mess by Eric Abrahamson and David H. Freedman" loading="lazy" onerror="this.parentElement.style.display='none'" />
+            </div>
+            <div class="book-info">
+              <p class="book-title">A Perfect Mess: The Hidden Benefits of Disorder</p>
+              <p class="book-author">Eric Abrahamson &amp; David H. Freedman · Little, Brown · 2006</p>
+              <p class="book-desc">An earlier and more systems-focused case for disorder, rooted in organizational science. Columbia Business School professor Eric Abrahamson and journalist David Freedman argue that moderately messy systems are more efficient, more resilient, and more adaptive than neat ones, at every scale from your desk to your company strategy. Published in 2006 and still sharp. A useful companion for anyone thinking about the structural reasons that mess works rather than just the psychological ones.</p>
+              <a href="https://www.amazon.com/Perfect-Mess-Disorder-How-Cluttered-Fly/dp/0316013994" class="book-link" target="_blank" rel="noopener noreferrer">View on Amazon ↗</a>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -915,6 +1104,7 @@
     </div>
     <p class="footer-copy">© 2026 Live Messy Project. All rights reserved.<br>
     For educational purposes and personal exploration only. Not therapy or professional counseling.</p>
+    <p class="footer-copy" style="margin-top:0.5rem;">The MESSY Playbook™ framework is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">CC BY-NC 4.0</a>. Free to use and share with attribution. Not for commercial use without permission.</p>
   </footer>
 
   <script>
