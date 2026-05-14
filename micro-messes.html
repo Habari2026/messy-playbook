@@ -93,6 +93,15 @@
         .not-pill { font-size: 0.83rem; color: #34495e; padding: 0.3rem 0.8rem; background: #fff; border: 1px solid #ecf0f1; border-radius: 20px; }
         .not-pill::before { content: '✕ '; color: #e74c3c; font-size: 0.72em; }
 
+
+        /* INFOGRAPHIC */
+        .infographic-section { padding: 3.5rem 1.5rem; background: #f8f9fa; text-align: center; }
+        .infographic-inner { max-width: 900px; margin: 0 auto; }
+        .infographic-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7f8c8d; margin-bottom: 1.25rem; display: block; }
+        .infographic-img { width: 100%; max-width: 900px; height: auto; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.10); display: block; margin: 0 auto; }
+        .infographic-download { display: inline-flex; align-items: center; gap: 6px; margin-top: 1.25rem; font-size: 0.82rem; font-weight: 700; color: #667eea; text-decoration: none; border: 1.5px solid #667eea; border-radius: 20px; padding: 0.5rem 1.25rem; transition: background 0.15s, color 0.15s; }
+        .infographic-download:hover { background: #667eea; color: #fff; }
+
         /* ECOSYSTEM */
         .ecosystem { padding: 4.5rem 1.5rem; background: #fff; }
         .ecosystem-inner { max-width: 880px; margin: 0 auto; }
@@ -373,12 +382,31 @@
     </div>
 </section>
 
+
+<!-- INFOGRAPHIC -->
+<section class="infographic-section">
+    <div class="infographic-inner">
+        <span class="infographic-label">Tools for Real Life. Not Ideal Life.</span>
+        <img
+            src="micro-messes-infographic.jpg"
+            alt="Micro Messes™ — Five dimensions, one micro at a time. Small on purpose. Big on clarity."
+            class="infographic-img"
+            loading="lazy"
+            width="1344"
+            height="896"
+        >
+        <a href="micro-messes-infographic.jpg" download class="infographic-download">
+            ↓ Download infographic
+        </a>
+    </div>
+</section>
+
 <!-- ECOSYSTEM PROGRESSION -->
 <section class="ecosystem">
     <div class="ecosystem-inner">
         <p class="section-label">Where it fits</p>
         <h2>The entry point. The daily practice. Both.</h2>
-        <p class="ecosystem-sub">Micro Messes work at two moments: before you're ready for the full framework, and long after the self-study ends.</p>
+        <p class="ecosystem-sub">Micro Messes work at two moments: before you're ready for the full framework, and long after the program ends.</p>
         <div class="progression">
             <div class="prog-step active">
                 <p class="prog-title">Micro Messes<sup style="font-size:0.6em;vertical-align:super;">™</sup></p>
@@ -389,8 +417,16 @@
                 <p class="prog-sub">Research-anchored</p>
             </div>
             <div class="prog-step">
+                <p class="prog-title">Taster</p>
+                <p class="prog-sub">75 min · facilitated</p>
+            </div>
+            <div class="prog-step">
                 <p class="prog-title">Self-Study</p>
                 <p class="prog-sub">6 weeks · self-directed</p>
+            </div>
+            <div class="prog-step">
+                <p class="prog-title">Facilitated</p>
+                <p class="prog-sub">6 sessions · cohort</p>
             </div>
         </div>
     </div>
