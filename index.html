@@ -303,8 +303,6 @@
     details.faq-item:nth-child(8) summary, details.faq-item:nth-child(8)[open] .faq-body { border-left-color: var(--e); }
     details.faq-item:nth-child(9) summary, details.faq-item:nth-child(9)[open] .faq-body { border-left-color: var(--m); }
     details.faq-item:nth-child(10) summary, details.faq-item:nth-child(10)[open] .faq-body { border-left-color: var(--s); }
-    details.faq-item:nth-child(11) summary, details.faq-item:nth-child(11)[open] .faq-body { border-left-color: var(--y); }
-    details.faq-item:nth-child(12) summary, details.faq-item:nth-child(12)[open] .faq-body { border-left-color: var(--grad-end); }
     details.faq-item:nth-child(1) .faq-num { background: var(--m); }
     details.faq-item:nth-child(2) .faq-num { background: var(--e); }
     details.faq-item:nth-child(3) .faq-num { background: var(--s); }
@@ -315,12 +313,16 @@
     details.faq-item:nth-child(8) .faq-num { background: var(--e); }
     details.faq-item:nth-child(9) .faq-num { background: var(--m); }
     details.faq-item:nth-child(10) .faq-num { background: var(--s); }
-    details.faq-item:nth-child(11) .faq-num { background: var(--y); }
+    details.faq-item:nth-child(11) summary, details.faq-item:nth-child(11)[open] .faq-body { border-left-color: var(--grad-start); }
+    details.faq-item:nth-child(11) .faq-num { background: var(--grad-start); }
+    details.faq-item:nth-child(12) summary, details.faq-item:nth-child(12)[open] .faq-body { border-left-color: var(--grad-end); }
     details.faq-item:nth-child(12) .faq-num { background: var(--grad-end); }
     details.faq-item:nth-child(13) summary, details.faq-item:nth-child(13)[open] .faq-body { border-left-color: var(--grad-start); }
     details.faq-item:nth-child(13) .faq-num { background: var(--grad-start); }
     details.faq-item:nth-child(14) summary, details.faq-item:nth-child(14)[open] .faq-body { border-left-color: var(--e); }
     details.faq-item:nth-child(14) .faq-num { background: var(--e); }
+    details.faq-item:nth-child(15) summary, details.faq-item:nth-child(15)[open] .faq-body { border-left-color: var(--m); }
+    details.faq-item:nth-child(15) .faq-num { background: var(--m); }
 
     /* ── Get MESSY! ────────────────────────────────────── */
     #get { padding: clamp(4rem,8vw,7rem) 0; background: var(--dark); }
@@ -1131,7 +1133,18 @@
           </details>
 
           <details class="faq-item" role="listitem">
-            <summary><span class="faq-num" aria-hidden="true">11</span>Is there research behind this?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <summary><span class="faq-num" aria-hidden="true">11</span>What's the difference between Micro Messes™ and Messy Plays™?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>Micro Messes are short, solo encounters — under 15 minutes, one MESSY dimension at a time, no required outcome. You pick a card, do the thing, and move on. They're designed to be repeatable and context-free.</p>
+              <p>Messy Plays go deeper. Each one takes a single research finding and turns it into a structured 15-minute experience. They work on your own or with friends, family, or work colleagues — no facilitator needed, because the structure guides you.</p>
+              <div class="faq-highlight">
+                The short version: Micro Messes are the daily practice. Messy Plays are the deeper dives. One is a card you pull; the other is a session you sit with.
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">12</span>Is there research behind this?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
             <div class="faq-body">
               <p>Yes — MESSY is grounded in four research pillars, not pop psychology or productivity trends.</p>
               <div class="faq-highlight">
@@ -1148,7 +1161,7 @@
           </details>
 
           <details class="faq-item" role="listitem">
-            <summary><span class="faq-num" aria-hidden="true">12</span>Is there a book?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <summary><span class="faq-num" aria-hidden="true">13</span>Is there a book?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
             <div class="faq-body">
               <p>Not yet — but it's coming. The MESSY Playbook started as a framework, grew into a program, and is now being developed into a full manuscript. The placeholder page exists because the thinking is already here; the book is just the long form of it.</p>
               <div class="faq-highlight">
@@ -1160,7 +1173,7 @@
           </details>
 
           <details class="faq-item" role="listitem">
-            <summary><span class="faq-num" aria-hidden="true">13</span>What do you mean by "open-source personal development"?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <summary><span class="faq-num" aria-hidden="true">14</span>What do you mean by "open-source personal development"?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
             <div class="faq-body">
               <p>The MESSY Playbook is built on the same philosophy that makes open-source software work: knowledge compounds when it's shared freely, not locked behind licenses and paywalls.</p>
               <p>In software, open-source means the code is available to inspect, use, and build on. Here, it means the framework is openly documented, the research foundation is cited and accessible, and the tools are available to anyone willing to engage with them honestly. No certification required to use it. No licensing fee to share it with others. No gatekeeping who gets to be a practitioner.</p>
@@ -1173,7 +1186,7 @@
           </details>
 
           <details class="faq-item" role="listitem">
-            <summary><span class="faq-num" aria-hidden="true">14</span>Where do I start if I'm completely new to MESSY?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <summary><span class="faq-num" aria-hidden="true">15</span>Where do I start if I'm completely new to MESSY?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
             <div class="faq-body">
               <p>It depends on how you like to learn. There are four entry points and none of them is wrong — but they suit different people.</p>
               <div class="faq-highlight">
