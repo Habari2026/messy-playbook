@@ -232,6 +232,19 @@
     .tier-cta:hover { opacity: 0.88; transform: translateY(-1px); }
     .tiers-note { background: white; border: 1px solid var(--rule); border-left: 3px solid var(--grad-start); border-radius: 0 10px 10px 0; padding: 1.2rem 1.6rem; font-size: 0.9rem; color: var(--mid); line-height: 1.65; }
     .tiers-note strong { color: var(--dark); }
+    .tiers-two-col { display: grid; grid-template-columns: 420px 1fr; gap: 3rem; align-items: start; }
+    .tiers-pricing-callout { padding: 2rem 0; }
+    .tiers-pricing-callout .pricing-eyebrow { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 1.5rem; }
+    .tiers-pricing-callout .price-block { margin-bottom: 1.4rem; }
+    .tiers-pricing-callout .price-label { font-size: 0.75rem; font-weight: 600; color: var(--muted); margin-bottom: 0.15rem; }
+    .tiers-pricing-callout .price-amount { font-family: var(--font-display); font-weight: 900; color: var(--dark); line-height: 1; }
+    .tiers-pricing-callout .price-amount.large { font-size: 3.5rem; }
+    .tiers-pricing-callout .price-amount.small { font-size: 2rem; color: var(--mid); }
+    .tiers-pricing-callout .price-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+    .tiers-pricing-callout .price-divider { border: none; border-top: 1px solid var(--rule); margin: 1.4rem 0; }
+    .tiers-pricing-callout .price-copy { font-size: 0.88rem; color: var(--mid); line-height: 1.7; }
+    .tiers-pricing-callout .price-cta { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.25rem; font-size: 0.82rem; font-weight: 700; color: var(--s); letter-spacing: 0.03em; transition: color 0.2s; }
+    .tiers-pricing-callout .price-cta:hover { color: var(--dark); }
 
     /* ── INSIDE ─────────────────────────────────────────────── */
     #inside { padding: clamp(4rem,8vw,7rem) 0; background: var(--dark); }
@@ -304,6 +317,10 @@
     details.faq-item:nth-child(10) .faq-num { background: var(--s); }
     details.faq-item:nth-child(11) .faq-num { background: var(--y); }
     details.faq-item:nth-child(12) .faq-num { background: var(--grad-end); }
+    details.faq-item:nth-child(13) summary, details.faq-item:nth-child(13)[open] .faq-body { border-left-color: var(--grad-start); }
+    details.faq-item:nth-child(13) .faq-num { background: var(--grad-start); }
+    details.faq-item:nth-child(14) summary, details.faq-item:nth-child(14)[open] .faq-body { border-left-color: var(--e); }
+    details.faq-item:nth-child(14) .faq-num { background: var(--e); }
 
     /* ── Get MESSY! ────────────────────────────────────── */
     #get { padding: clamp(4rem,8vw,7rem) 0; background: var(--dark); }
@@ -445,6 +462,8 @@
       .tiers-grid, .get-grid { grid-template-columns: 1fr; }
       .get-two-col { grid-template-columns: 1fr !important; }
       .inside-grid { grid-template-columns: 1fr; }
+      .tiers-two-col { grid-template-columns: 1fr; gap: 2rem; }
+      .tiers-pricing-callout { padding: 0; border-top: 1px solid var(--rule); padding-top: 2rem; }
     }
     @media (max-width: 768px) {
       .two-col { grid-template-columns: 1fr !important; }
@@ -878,7 +897,7 @@
           <p>One program. Self-directed. No facilitator needed. Work through all five MESSY practices on your own schedule — one element per week, or however the pace fits your life.</p>
         </div>
 
-        <div style="max-width:420px;">
+        <div class="tiers-two-col">
           <div class="tier-card self-study">
             <div class="tier-badge"><span class="tier-dot" aria-hidden="true"></span>Self-Directed · No Facilitator Needed</div>
             <div class="tier-name">Self-Study Program</div>
@@ -891,6 +910,22 @@
               <li>Weekly + 30-day Reflection Tools</li>
             </ul>
             <a href="#get" class="tier-cta">Get the Self-Study Program →</a>
+          </div>
+
+          <div class="tiers-pricing-callout" aria-label="Pricing">
+            <span class="pricing-eyebrow">Pricing</span>
+            <div class="price-block">
+              <div class="price-label">Suggested price</div>
+              <div class="price-amount large">$9</div>
+              <div class="price-sub">pay what you want</div>
+            </div>
+            <hr class="price-divider" aria-hidden="true" />
+            <div class="price-block">
+              <div class="price-label">Minimum</div>
+              <div class="price-amount small">$5</div>
+            </div>
+            <p class="price-copy">Every document is included at any price. Pay more if you want to support the work. Pay the minimum if that's what makes sense right now.</p>
+            <a href="#get" class="price-cta">Get it now →</a>
           </div>
         </div>
 
@@ -928,10 +963,10 @@
         </div>
 
         <div class="inside-free-note">
-          <div class="free-badge" aria-hidden="true">Free.</div>
+          <div class="free-badge" aria-hidden="true">$9</div>
           <div class="free-text">
-            <h3>Everything above is free to use with your clients.</h3>
-            <p>No licensing fees. No ongoing costs. No application required. The only ask is that you keep the attribution — The MESSY Playbook™, Live Messy Project — intact in the materials. Or use the Pay What You Want option to support the project.</p>
+            <h3>Pay what's right for where you are.</h3>
+            <p>The Self-Study Program is Pay What You Want with a $5 minimum and $9 suggested price. Every document above is included and ready to use from day one. Pay the suggested price if you want to support the work. Pay the minimum if that's what makes sense right now. If you genuinely can't afford it, <a href="#contact" style="color:var(--e);font-weight:600;">get in touch</a>.</p>
           </div>
         </div>
 
@@ -1059,14 +1094,15 @@
           </details>
 
           <details class="faq-item" role="listitem">
-            <summary><span class="faq-num" aria-hidden="true">8</span>Is it really free?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <summary><span class="faq-num" aria-hidden="true">8</span>Is any of this free?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
             <div class="faq-body">
-              <p>Yes. The MESSY Playbook is free to use — for yourself or with your clients. The complete system is available as a Pay What You Want download, with a suggested price that reflects the development time involved and a minimum that's low enough to not be a real barrier.</p>
-              <p>The only ask is attribution: keep "The MESSY Playbook™, Live Messy Project" intact in the materials wherever they appear. That's it. No licensing agreements, no ongoing costs, no certification required.</p>
+              <p><strong>Micro Messes™ and Messy Plays™ are completely free.</strong> No gate, no email required, no account. Just go use them.</p>
+              <p>The Self-Study Program is Pay What You Want with a $5 minimum and $9 suggested price. Every document is included at the minimum. The suggested price reflects the development time involved — pay more if you want to support the project, pay the minimum if that's what makes sense right now.</p>
               <div class="faq-highlight">
-                <strong>Why free?</strong>
-                The framework is built around anti-optimization. Charging a premium for it would feel philosophically inconsistent. The goal is for it to reach the people it's for — not to extract maximum revenue from each transaction.
+                <strong>Why PWYW?</strong>
+                The framework is built around anti-optimization. Charging a premium for it would feel philosophically inconsistent. The goal is for it to reach the people it's for — not to extract maximum value from each transaction. The minimum exists so the project can keep going.
               </div>
+              <p>If you genuinely can't afford the minimum, <a href="#contact" style="font-weight:700;">get in touch</a>. That's what the contact form is there for.</p>
             </div>
           </details>
 
@@ -1120,6 +1156,43 @@
                 Because the people who need it need it now — not after a two-year publishing cycle. The Self-Study Program, Messy Plays, and the site are the living version. The book will be the permanent one.
               </div>
               <p>If you want to know when it's ready, the best way is to stay connected through the Live Messy Project. <a href="book.html">See the book page →</a></p>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">13</span>What do you mean by "open-source personal development"?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>The MESSY Playbook is built on the same philosophy that makes open-source software work: knowledge compounds when it's shared freely, not locked behind licenses and paywalls.</p>
+              <p>In software, open-source means the code is available to inspect, use, and build on. Here, it means the framework is openly documented, the research foundation is cited and accessible, and the tools are available to anyone willing to engage with them honestly. No certification required to use it. No licensing fee to share it with others. No gatekeeping who gets to be a practitioner.</p>
+              <div class="faq-highlight">
+                <strong>Why it matters</strong>
+                Most personal development frameworks are proprietary by design. The framework is the product, so protecting it means protecting revenue. MESSY takes the opposite position: the framework reaches more people — and becomes more useful — the more openly it circulates. That's not a business compromise. It's a philosophical commitment.
+              </div>
+              <p>The contribution model is still being developed. The long-term vision is a community where coaches, facilitators, and practitioners can add new Micro Messes, new Messy Plays, and new tools — extending the framework the way open-source communities extend software. If that's something you want to be part of, <a href="#contact" style="font-weight:700;">get in touch</a>.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">14</span>Where do I start if I'm completely new to MESSY?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>It depends on how you like to learn. There are four entry points and none of them is wrong — but they suit different people.</p>
+              <div class="faq-highlight">
+                <strong>Start here if you want to understand it first</strong>
+                Go to <a href="thinking.html" style="font-weight:700;">The Thinking</a>. It covers the research foundation, the origin story, and why MESSY works the way it does. Good for people who need to understand something before they can use it.
+              </div>
+              <div class="faq-highlight" style="margin-top:0.75rem;">
+                <strong>Start here if you want to feel it first</strong>
+                Pick up a <a href="micro-messes.html" style="font-weight:700;">Micro Mess</a>. Under 15 minutes, no program context required, completely free. Just choose the MESSY dimension that feels most alive right now and go.
+              </div>
+              <div class="faq-highlight" style="margin-top:0.75rem;">
+                <strong>Start here if you want to do the work</strong>
+                Get the <a href="#get" style="font-weight:700;">Self-Study Program</a>. Six weeks, self-directed, everything included. This is the full experience — structured enough to guide you, loose enough to fit your actual life.
+              </div>
+              <div class="faq-highlight" style="margin-top:0.75rem;">
+                <strong>Start here if you're not sure yet</strong>
+                Read <a href="play.html" style="font-weight:700;">Messy Play 01</a>. It's free, it takes 15 minutes, and it gives you a real felt sense of what MESSY asks of you before you commit to anything else.
+              </div>
+              <p style="margin-top:1rem;">There's no wrong door. The framework is designed to be entered from anywhere.</p>
             </div>
           </details>
 
@@ -1358,8 +1431,8 @@
       <a href="book.html"         style="color:var(--muted);text-decoration:none;">The Book</a>
       <a href="https://livemessy.gumroad.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:none;">Gumroad</a>
     </div>
-    <p class="footer-copy">© 2026 Live Messy Project. All rights reserved.<br>
-    For educational purposes and personal exploration only. Not therapy or professional counseling.</p>
+    <p class="footer-copy">© 2026 Live Messy Project. The MESSY Playbook™ framework is created by The Live Messy Project and licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">CC BY-NC 4.0</a> — free to use and share with attribution, not for commercial use without permission.</p>
+    <p class="footer-copy" style="margin-top:0.5rem;">For educational purposes and personal exploration only. Not therapy or professional counseling.</p>
   </footer>
 
   <script>
