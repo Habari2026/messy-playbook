@@ -229,6 +229,17 @@
     /* Mobile nav panel — no underlines, consistent with homepage */
     .mobile-nav-panel a { text-decoration: none !important; }
     .mobile-nav-close { text-decoration: none !important; }
+
+        /* SET PAGE HEADER */
+        .set-page-header { background: #fff; border-bottom: 1px solid #ecf0f1; padding: 5rem 1.5rem 2.5rem; }
+        .set-page-header-inner { max-width: 760px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
+        .set-page-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #fff; border-radius: 20px; padding: 4px 13px; margin-bottom: 1rem; }
+        .set-page-title { font-family: 'Playfair Display', Georgia, serif; font-size: 2.2rem; font-weight: 700; color: #2c3e50; margin-bottom: 0.5rem; line-height: 1.15; }
+        .set-page-desc { font-size: 0.95rem; color: #34495e; line-height: 1.75; max-width: 600px; margin-bottom: 0.9rem; }
+        .set-page-desc-last { margin-bottom: 1.25rem; }
+        .set-page-attribution { font-size: 0.78rem; font-style: italic; color: #95a5a6; }
+        .set-page-attribution a { color: #95a5a6; text-decoration: none; border-bottom: 1px solid #ddd; }
+        .set-page-attribution a:hover { color: #667eea; border-bottom-color: #667eea; }
 </style>
 </head>
 <body>
@@ -267,6 +278,8 @@
         <a href="index.html#get" class="nav-cta">Get MESSY!</a>
         <button class="nav-toggle" aria-label="Toggle menu" onclick="openMobileNav()">☰</button>
     </div>
+</nav>
+
     <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <div class="mobile-nav-panel">
       <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
@@ -283,7 +296,6 @@
       <a href="index.html#get" onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
     </div>
   </div>
-</nav>
 
 <main id="main-content">
 
@@ -292,8 +304,10 @@
     <div class="set-page-header-inner">
         <div class="set-page-badge" style="background: linear-gradient(135deg, #667eea, #764ba2);">Set 00</div>
         <h1 class="set-page-title">First Encounters</h1>
-        <p class="set-page-desc">Five universal anchor encounters. One for each MESSY dimension. No prior context required — just a few minutes of honest attention.</p>
-        <div class="set-page-source">📖 Original encounters from the Live Messy Project</div>
+        <p class="set-page-desc">Most frameworks ask you to start with theory. This one starts with you — right now, exactly as you are, without any prior context or preparation required.</p>
+        <p class="set-page-desc">Each of these five encounters takes one MESSY dimension and gives it a single honest question to sit with. You don't need to know the framework. You don't need to have read anything. You just need a few minutes and a willingness to look.</p>
+        <p class="set-page-desc set-page-desc-last">First Encounters is where most people begin. It's also where a lot of people return.</p>
+        <p class="set-page-attribution">Original encounters from the Live Messy Project</p>
     </div>
 </header>
 
