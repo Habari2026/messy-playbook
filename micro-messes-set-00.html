@@ -529,7 +529,12 @@
         // Detect iOS — window.open is blocked on iPhone/iPad
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         if (isIOS) {
-            alert('To save this card on iPhone:\n\n1. Tap the Share button in Safari\n2. Choose \'Print\'\n3. Pinch out on the preview to open as PDF\n4. Tap the Share button to save');
+            const btn = event && event.target ? event.target.closest('.btn-pdf') : null;
+            const msg = document.createElement('div');
+            msg.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#2c3e50;color:#fff;padding:1rem 1.25rem;border-radius:10px;font-size:0.82rem;line-height:1.6;max-width:300px;z-index:9999;text-align:left;box-shadow:0 4px 20px rgba(0,0,0,0.3);';
+            msg.innerHTML = '<strong>To save on iPhone:</strong><br>1. Tap the Share button in Safari<br>2. Choose &ldquo;Print&rdquo;<br>3. Pinch out on the preview<br>4. Tap Share to save as PDF';
+            document.body.appendChild(msg);
+            setTimeout(function(){ msg.remove(); }, 6000);
             return;
         }
 
