@@ -509,6 +509,13 @@
     function printCard(cardId, cardTitle, setLabel) {
         const cardEl = document.getElementById(cardId);
         if (!cardEl) return;
+        // Detect iOS — window.open is blocked on iPhone/iPad
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+            alert('To save this card on iPhone:\n\n1. Tap the Share button in Safari\n2. Choose \'Print\'\n3. Pinch out on the preview to open as PDF\n4. Tap the Share button to save');
+            return;
+        }
+
         const win = window.open('', '_blank', 'width=820,height=700');
         if (!win) { alert('Please allow pop-ups for this site, then try again.'); return; }
         const cardHTML = cardEl.outerHTML;
