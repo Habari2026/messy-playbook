@@ -22,7 +22,6 @@
     </linearGradient>
   </defs>
 
-  <!-- background removed for transparent display on hero -->
 
   <!-- M — upper left, tilted left. cx=32, cy=55, r=24 -->
   <g transform="rotate(-9, 46, 76)">
