@@ -544,6 +544,7 @@
   .card-s1 { border-color: #3498db; } .badge-s1 { background: #3498db; color: #fff; } .sn-s1 { color: #3498db; } .notice-s1 { background: #e8f4fd; border-color: #3498db; color: #2c3e50; } .out-s1 { color: #3498db; }
   .card-s2 { border-color: #d4ac0d; } .badge-s2 { background: #f1c40f; color: #856404; } .sn-s2 { color: #d4ac0d; } .notice-s2 { background: #fff3cd; border-color: #d4ac0d; color: #856404; } .out-s2 { color: #856404; }
   .card-y { border-color: #27ae60; } .badge-y { background: #27ae60; color: #fff; } .sn-y { color: #27ae60; } .notice-y { background: #e8f5e8; border-color: #27ae60; color: #2c3e50; } .out-y { color: #27ae60; }
+  .writing-area { margin-top: 1.5rem; padding-top: 0.5rem; border-top: 1px solid #ecf0f1; }  .writing-line { border-bottom: 1px solid #dde1e7; height: 2rem; margin-bottom: 0.1rem; }
   .print-foot { margin-top: 1.5rem; font-size: 0.72rem; color: #bdc3c7; text-align: center; letter-spacing: 0.03em; }
 </style>
 </head>
@@ -557,6 +558,13 @@
     </div>
   </div>
   ${cardHTML}
+
+  <div class="writing-area">
+    <div class="writing-line"></div>
+    <div class="writing-line"></div>
+    <div class="writing-line"></div>
+    <div class="writing-line"></div>
+  </div>
   <p class="print-foot">messy-playbook.vercel.app \u00b7 Free for personal use \u00b7 No outcome required.</p>
 </body>
 </html>`);
