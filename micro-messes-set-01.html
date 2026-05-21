@@ -268,8 +268,88 @@
             opacity: 1;
             transform: translateX(-50%) translateY(0);
         }
-        .download-toast-icon {
-            margin-right: 6px;
+        .download-toast-icon { margin-right: 6px; }
+
+        /* ── IOS SAVE OVERLAY ── */
+        .ios-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 10000;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .ios-overlay.overlay-visible {
+            display: flex;
+        }
+        .ios-overlay-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.75rem 1.5rem 1.5rem;
+            max-width: 360px;
+            width: 100%;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .ios-overlay-title {
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1.1rem;
+        }
+        .ios-overlay-steps {
+            list-style: none;
+            margin: 0 0 1.4rem;
+            padding: 0;
+            text-align: left;
+        }
+        .ios-overlay-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            color: #34495e;
+            padding: 0.55rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            line-height: 1.5;
+        }
+        .ios-overlay-steps li:last-child { border-bottom: none; }
+        .ios-step-n {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .ios-overlay-dismiss {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 0.7rem 1.5rem;
+            font-family: Arial, sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+        }
+        .ios-share-icon {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            margin: 0 2px;
         }
 </style>
 </head>
@@ -599,20 +679,21 @@
     if (mobileNav) mobileNav.addEventListener('click', function(e) {
       if (e.target === mobileNav) closeMobileNav();
     });
-    // ── PDF DOWNLOAD + TOAST ──
+    // ── PDF DOWNLOAD + TOAST + IOS OVERLAY ──
     (function() {
+        var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        // Toast
         var toast = document.createElement('div');
         toast.className = 'download-toast';
         toast.setAttribute('role', 'status');
         toast.setAttribute('aria-live', 'polite');
         document.body.appendChild(toast);
-
         var toastTimer;
 
         function showToast() {
-            var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-            var msg = isIOS ? 'Saved to your Files app' : 'Saved to your Downloads folder';
-            toast.innerHTML = '<span class="download-toast-icon">&#x2713;&#xfe0e;</span>' + msg;
+            var msg = isIOS ? 'PDF opened — tap Share to save' : '✓︎ Saved to your Downloads folder';
+            toast.innerHTML = msg;
             clearTimeout(toastTimer);
             toast.classList.add('toast-visible');
             toastTimer = setTimeout(function() {
@@ -620,25 +701,54 @@
             }, 3200);
         }
 
-        window.savePDF = function(url, filename) {
-            fetch(url)
-                .then(function(r) { return r.blob(); })
-                .then(function(blob) {
-                    var a = document.createElement('a');
-                    var objUrl = URL.createObjectURL(blob);
-                    a.href = objUrl;
-                    a.download = filename;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    setTimeout(function() { URL.revokeObjectURL(objUrl); }, 1000);
-                    showToast();
-                })
-                .catch(function() {
-                    // Fallback: open in new tab if fetch fails
-                    window.open(url, '_blank');
-                    showToast();
-                });
+        // iOS overlay
+        var overlay = document.createElement('div');
+        overlay.className = 'ios-overlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        overlay.setAttribute('aria-label', 'How to save this card on iPhone');
+        overlay.innerHTML = '<div class="ios-overlay-box">' +
+            '<p class="ios-overlay-title">Saving this card on iPhone</p>' +
+            '<ol class="ios-overlay-steps">' +
+            '<li><span class="ios-step-n">1</span><span>The PDF is now open in a new tab.</span></li>' +
+            '<li><span class="ios-step-n">2</span><span>Tap the <svg class="ios-share-icon" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v12M8 6l4-4 4 4"/><path d="M20 14v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6"/></svg> Share button in Safari's toolbar.</span></li>' +
+            '<li><span class="ios-step-n">3</span><span>Tap <strong>Save to Files</strong> to keep it.</span></li>' +
+            '</ol>' +
+            '<button class="ios-overlay-dismiss" onclick="document.querySelector('.ios-overlay').classList.remove('overlay-visible')">Got it</button>' +
+            '</div>';
+        document.body.appendChild(overlay);
+
+        // Close overlay on backdrop tap
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) overlay.classList.remove('overlay-visible');
+        });
+
+        window.savePDF = function(url) {
+            if (isIOS) {
+                window.open(url, '_blank');
+                setTimeout(function() {
+                    overlay.classList.add('overlay-visible');
+                }, 400);
+            } else {
+                fetch(url)
+                    .then(function(r) { return r.blob(); })
+                    .then(function(blob) {
+                        var filename = url.split('/').pop();
+                        var a = document.createElement('a');
+                        var objUrl = URL.createObjectURL(blob);
+                        a.href = objUrl;
+                        a.download = filename;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        setTimeout(function() { URL.revokeObjectURL(objUrl); }, 1000);
+                        showToast();
+                    })
+                    .catch(function() {
+                        window.open(url, '_blank');
+                        showToast();
+                    });
+            }
         };
     })();
 </script>
