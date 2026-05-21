@@ -243,6 +243,34 @@
         .set-page-attribution { font-size: 0.78rem; font-style: italic; color: #95a5a6; }
         .set-page-attribution a { color: #95a5a6; text-decoration: none; border-bottom: 1px solid #ddd; }
         .set-page-attribution a:hover { color: #667eea; border-bottom-color: #667eea; }
+
+        /* ── DOWNLOAD TOAST ── */
+        .download-toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(12px);
+            background: #2c3e50;
+            color: #fff;
+            padding: 0.75rem 1.25rem;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            line-height: 1.5;
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.22s ease, transform 0.22s ease;
+        }
+        .download-toast.toast-visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .download-toast-icon {
+            margin-right: 6px;
+        }
 </style>
 </head>
 <body>
@@ -349,10 +377,10 @@
                 <p class="no-outcome out-m">No outcome required.</p>
             </div>
             <div class="card-actions">
-                <button class="btn-pdf" onclick="printCard('card-03-m', 'what the soil already knows', 'Set 03 — What Comes Up')" aria-label="Save what the soil already knows as PDF">
+                <a href="card-pdfs/micro-messes-set-03-m.pdf" download class="btn-pdf" aria-label="Download what the soil already knows as PDF" onclick="showDownloadToast()">
                     <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 10v2a1 1 0 001 1h8a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     Save as PDF
-                </button>
+                </a>
             </div>
         </div>
 
@@ -375,10 +403,10 @@
                 <p class="no-outcome out-e">No outcome required.</p>
             </div>
             <div class="card-actions">
-                <button class="btn-pdf" onclick="printCard('card-03-e', 'throw it', 'Set 03 — What Comes Up')" aria-label="Save throw it as PDF">
+                <a href="card-pdfs/micro-messes-set-03-e.pdf" download class="btn-pdf" aria-label="Download throw it as PDF" onclick="showDownloadToast()">
                     <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 10v2a1 1 0 001 1h8a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     Save as PDF
-                </button>
+                </a>
             </div>
         </div>
 
@@ -401,10 +429,10 @@
                 <p class="no-outcome out-s1">No outcome required.</p>
             </div>
             <div class="card-actions">
-                <button class="btn-pdf" onclick="printCard('card-03-s1', 'soil, sun, water', 'Set 03 — What Comes Up')" aria-label="Save soil, sun, water as PDF">
+                <a href="card-pdfs/micro-messes-set-03-s1.pdf" download class="btn-pdf" aria-label="Download soil, sun, water as PDF" onclick="showDownloadToast()">
                     <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 10v2a1 1 0 001 1h8a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     Save as PDF
-                </button>
+                </a>
             </div>
         </div>
 
@@ -427,10 +455,10 @@
                 <p class="no-outcome out-s2">No outcome required.</p>
             </div>
             <div class="card-actions">
-                <button class="btn-pdf" onclick="printCard('card-03-s2', 'you don\\'t get to choose what comes up', 'Set 03 — What Comes Up')" aria-label="Save you don't get to choose what comes up as PDF">
+                <a href="card-pdfs/micro-messes-set-03-s2.pdf" download class="btn-pdf" aria-label="Download you don't get to choose what comes up as PDF" onclick="showDownloadToast()">
                     <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 10v2a1 1 0 001 1h8a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     Save as PDF
-                </button>
+                </a>
             </div>
         </div>
 
@@ -453,10 +481,10 @@
                 <p class="no-outcome out-y">No outcome required.</p>
             </div>
             <div class="card-actions">
-                <button class="btn-pdf" onclick="printCard('card-03-y', 'the volunteer', 'Set 03 — What Comes Up')" aria-label="Save the volunteer as PDF">
+                <a href="card-pdfs/micro-messes-set-03-y.pdf" download class="btn-pdf" aria-label="Download the volunteer as PDF" onclick="showDownloadToast()">
                     <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 10v2a1 1 0 001 1h8a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     Save as PDF
-                </button>
+                </a>
             </div>
         </div>
 
@@ -513,83 +541,6 @@
         nav.classList.toggle('scrolled', window.scrollY > 10);
     }, { passive: true });
 
-    function printCard(cardId, cardTitle, setLabel) {
-        const cardEl = document.getElementById(cardId);
-        if (!cardEl) return;
-        // Detect iOS — window.open is blocked on iPhone/iPad
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        if (isIOS) {
-            const btn = event && event.target ? event.target.closest('.btn-pdf') : null;
-            const msg = document.createElement('div');
-            msg.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#2c3e50;color:#fff;padding:1rem 1.25rem;border-radius:10px;font-size:0.82rem;line-height:1.6;max-width:300px;z-index:9999;text-align:left;box-shadow:0 4px 20px rgba(0,0,0,0.3);';
-            msg.innerHTML = '<strong>To save on iPhone:</strong><br>1. Tap the Share button in Safari<br>2. Choose &ldquo;Print&rdquo;<br>3. Pinch out on the preview<br>4. Tap Share to save as PDF';
-            document.body.appendChild(msg);
-            setTimeout(function(){ msg.remove(); }, 6000);
-            return;
-        }
-
-        const win = window.open('', '_blank', 'width=820,height=700');
-        if (!win) { alert('Please allow pop-ups for this site, then try again.'); return; }
-        const cardHTML = cardEl.outerHTML;
-        win.document.write(`<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Micro Mess \u2014 ${cardTitle}</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-<style>
-  @media print { * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; } @page { margin: 1.4cm 1.6cm; size: A4; } body { padding: 0 !important; } }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: Arial, sans-serif; color: #2c3e50; background: #fff; padding: 2.5cm 2cm; line-height: 1.6; }
-  .print-brand { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; padding: 1rem 1.35rem; margin-bottom: 1.75rem; display: flex; justify-content: space-between; align-items: center; }
-  .print-brand-logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; font-weight: 700; color: #fff; }
-  .print-brand-set { font-size: 0.78rem; color: rgba(255,255,255,0.82); letter-spacing: 0.01em; }    .print-brand-left { display: flex; align-items: center; }   .print-brand-logo-box { background: #ffffff; border-radius: 12px; padding: 7px; display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; }
-  .mess-card { border-radius: 14px; padding: 2rem 2rem 1.75rem; border: 2px solid; }
-  .card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 0.7rem; flex-wrap: wrap; }
-  .dim-badge { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
-  .card-name { font-size: 1.3rem; font-weight: 700; color: #2c3e50; }
-  .card-encounter { font-size: 0.95rem; font-style: italic; color: #7f8c8d; margin-bottom: 1rem; line-height: 1.65; }
-  .card-time { display: inline-block; font-size: 0.75rem; font-weight: 700; color: #7f8c8d; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; padding: 4px 12px; background: #f8f9fa; border-radius: 20px; border: 1px solid #ecf0f1; }
-  .steps-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #7f8c8d; margin-bottom: 0.6rem; }
-  .steps-list { list-style: none; margin-bottom: 1.25rem; }
-  .steps-list li { display: flex; gap: 10px; font-size: 0.975rem; color: #34495e; padding: 7px 0; line-height: 1.7; border-bottom: 1px solid #f8f9fa; }
-  .steps-list li:last-child { border-bottom: none; }
-  .step-n { font-weight: 700; font-size: 0.8rem; min-width: 18px; padding-top: 3px; flex-shrink: 0; }
-  .card-notice { font-size: 0.9rem; padding: 0.8rem 1.1rem; border-radius: 8px; margin-bottom: 1.1rem; border-left: 3px solid; line-height: 1.6; }
-  .card-notice strong { font-weight: 700; }
-  .no-outcome { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.65; }
-  .card-m { border-color: #9b59b6; } .badge-m { background: #9b59b6; color: #fff; } .sn-m { color: #9b59b6; } .notice-m { background: #f5eef8; border-color: #9b59b6; color: #2c3e50; } .out-m { color: #9b59b6; }
-  .card-e { border-color: #e67e22; } .badge-e { background: #e67e22; color: #fff; } .sn-e { color: #e67e22; } .notice-e { background: #fef5ec; border-color: #e67e22; color: #2c3e50; } .out-e { color: #e67e22; }
-  .card-s1 { border-color: #3498db; } .badge-s1 { background: #3498db; color: #fff; } .sn-s1 { color: #3498db; } .notice-s1 { background: #e8f4fd; border-color: #3498db; color: #2c3e50; } .out-s1 { color: #3498db; }
-  .card-s2 { border-color: #d4ac0d; } .badge-s2 { background: #f1c40f; color: #856404; } .sn-s2 { color: #d4ac0d; } .notice-s2 { background: #fff3cd; border-color: #d4ac0d; color: #856404; } .out-s2 { color: #856404; }
-  .card-y { border-color: #27ae60; } .badge-y { background: #27ae60; color: #fff; } .sn-y { color: #27ae60; } .notice-y { background: #e8f5e8; border-color: #27ae60; color: #2c3e50; } .out-y { color: #27ae60; }
-  .writing-area { margin-top: 1.5rem; padding-top: 0.5rem; border-top: 1px solid #ecf0f1; }  .writing-line { border-bottom: 1px solid #dde1e7; height: 2rem; margin-bottom: 0.1rem; }
-  .print-foot { margin-top: 1.5rem; font-size: 0.72rem; color: #bdc3c7; text-align: center; letter-spacing: 0.03em; }
-</style>
-</head>
-<body>
-
-  <div class="print-brand">
-    <div class="print-brand-left"><div class="print-brand-logo-box">${'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="50" height="50">   <defs>     <linearGradient id="gm" x1="0%" y1="0%" x2="100%" y2="100%">       <stop offset="0%" style="stop-color:#9b59b6"/>       <stop offset="100%" style="stop-color:#8e44ad"/>     </linearGradient>     <linearGradient id="ge" x1="0%" y1="0%" x2="100%" y2="100%">       <stop offset="0%" style="stop-color:#e67e22"/>       <stop offset="100%" style="stop-color:#d35400"/>     </linearGradient>     <linearGradient id="gs1" x1="0%" y1="0%" x2="100%" y2="100%">       <stop offset="0%" style="stop-color:#3498db"/>       <stop offset="100%" style="stop-color:#2980b9"/>     </linearGradient>     <linearGradient id="gs2" x1="0%" y1="0%" x2="100%" y2="100%">       <stop offset="0%" style="stop-color:#f1c40f"/>       <stop offset="100%" style="stop-color:#f39c12"/>     </linearGradient>     <linearGradient id="gy" x1="0%" y1="0%" x2="100%" y2="100%">       <stop offset="0%" style="stop-color:#27ae60"/>       <stop offset="100%" style="stop-color:#229954"/>     </linearGradient>   </defs>     <!-- M — upper left, tilted left. cx=32, cy=55, r=24 -->   <g transform="rotate(-9, 46, 76)">     <circle cx="46" cy="76" r="24" fill="url(#gm)"/>     <text x="46" y="85" font-family="Arial, sans-serif" font-size="22" font-weight="900" fill="white" text-anchor="middle">M</text>   </g>    <!-- E — center left, drops down. cx=78, cy=108, r=22 -->   <g transform="rotate(6, 90, 108)">     <circle cx="90" cy="108" r="22" fill="url(#ge)"/>     <text x="90" y="116" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="white" text-anchor="middle">E</text>   </g>    <!-- S (Support/blue) — upper right. cx=150, cy=42, r=26 -->   <g transform="rotate(-7, 130, 62)">     <circle cx="130" cy="62" r="26" fill="url(#gs1)"/>     <text x="130" y="72" font-family="Arial, sans-serif" font-size="24" font-weight="900" fill="white" text-anchor="middle">S</text>   </g>    <!-- S (Surrender/yellow) — right middle. cx=164, cy=108, r=23 -->   <g transform="rotate(8, 152, 116)">     <circle cx="152" cy="116" r="23" fill="url(#gs2)"/>     <text x="152" y="125" font-family="Arial, sans-serif" font-size="21" font-weight="900" fill="#856404" text-anchor="middle">S</text>   </g>    <!-- Y — bottom center-right. cx=128, cy=160, r=21 -->   <g transform="rotate(-5, 128, 160)">     <circle cx="128" cy="160" r="21" fill="url(#gy)"/>     <text x="128" y="168" font-family="Arial, sans-serif" font-size="19" font-weight="900" fill="white" text-anchor="middle">Y</text>   </g>    <!-- Wordmark — clear below all circles --> </svg>'}</div></div>
-    <div class="print-brand-right">
-      <span class="print-brand-logo">The MESSY Playbook\u2122</span>
-      <span class="print-brand-set">Micro Messes\u2122 \u00b7 ${setLabel}</span>
-    </div>
-  </div>
-  ${cardHTML}
-
-  <div class="writing-area">
-    <div class="writing-line"></div>
-    <div class="writing-line"></div>
-    <div class="writing-line"></div>
-    <div class="writing-line"></div>
-  </div>
-  <p class="print-foot">messy-playbook.vercel.app \u00b7 Free for personal use \u00b7 No outcome required.</p>
-</body>
-</html>`);
-        win.document.close();
-        setTimeout(() => { win.focus(); win.print(); }, 750);
-    }
     // Floating nav buttons
     const floatTop    = document.getElementById('floatTop');
     const floatBottom = document.getElementById('floatBottom');
@@ -650,7 +601,41 @@
       if (e.target === mobileNav) closeMobileNav();
     });
   
-  </script>
+  
+    // ── DOWNLOAD TOAST ──
+    (function() {
+        var toast = document.createElement('div');
+        toast.className = 'download-toast';
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
+        document.body.appendChild(toast);
+
+        var toastTimer;
+
+        window.showDownloadToast = function() {
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            var isIOS    = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+            var icon = '&#x2713;&#xfe0e;'; // ✓ (text variant, no emoji rendering)
+            var msg;
+            if (isIOS) {
+                msg = 'Saved to your Files app';
+            } else if (isMobile) {
+                msg = 'Saved to your Downloads folder';
+            } else {
+                msg = 'Saved to your Downloads folder';
+            }
+
+            toast.innerHTML = '<span class="download-toast-icon">' + icon + '</span>' + msg;
+
+            clearTimeout(toastTimer);
+            toast.classList.add('toast-visible');
+            toastTimer = setTimeout(function() {
+                toast.classList.remove('toast-visible');
+            }, 3200);
+        };
+    })();
+</script>
 
 </body>
 </html>
