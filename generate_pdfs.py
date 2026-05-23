@@ -438,7 +438,7 @@ CARDS = [
    "15 minutes",
    [
      "Choose a space you know well. Spend five minutes moving through it normally, noticing what you notice.",
-     "Now ask: what in this space has been noticing you — or adapting to you, or waiting for you to leave? Look for evidence: worn paths, marks, traces, behaviors that happen when you're absent or present.",
+     "Now ask: what in this space has been noticing you — or adapting to you, or waiting for you to leave? Look for evidence: worn patches, marks, things that have shifted, behaviors that change when you're around or away.",
      "Write one sentence from the point of view of something that shares this space with you.",
    ],
    "the difference between observing a situation and being observed within one.",
@@ -450,7 +450,7 @@ CARDS = [
    "An encounter with a situation you can't stay outside of.",
    "15 minutes",
    [
-     "Go somewhere something is happening without you — plants growing, water moving, people passing, a room filling up. Don't bring a task. Don't decide in advance what role you'll play.",
+     "Go somewhere something is already happening without you — a conversation in progress, people working together, a room filling up, something being made or cooked or built. Don't bring a task. Don't decide in advance what role you'll play.",
      "At some point, let yourself be pulled in. Follow whatever catches your attention, even if it seems beside the point. Don't redirect toward something more useful.",
      "After you leave, notice what from this encounter keeps surfacing in your thinking. Don't chase it — just notice when it returns.",
    ],
@@ -460,14 +460,14 @@ CARDS = [
   ("set-06-s1",
    "card-s1", "badge-s1", "sn-s1", "notice-s1", "out-s1",
    "S · Support", "you are already an ecosystem",
-   "An encounter with the ninety percent of you that isn't you.",
+   "An encounter with everything that's shaping your thinking right now.",
    "10 minutes",
    [
-     "Sit with this for two minutes: the microorganisms living in and on your body currently outnumber your human cells roughly ten to one. You are not a solo entity moving through an environment. You are a mess hall — an ecosystem of lives, constantly living and dying together.",
-     "Think of a situation you're currently navigating — something you'd describe as \"what I need to figure out.\" List everything non-human that is actually part of this situation, even if it doesn't count as a variable in your normal framing.",
-     "Ask: whose interests does my version of this situation assume? Who or what gets left out when I call this my problem?",
+     "Before you do anything else, take stock of your current conditions: How much sleep did you get? When did you last eat? What's the mood in the room — at home or at work? What happened in the last two hours? Write it down quickly, just facts.",
+     "Now think of something you're currently stuck on. Look at your conditions list. How many of those things are actively shaping how you're thinking about it right now?",
+     "Ask: if the conditions were different — better sleep, different space, different time of day — would this problem look the same? What part of this is really you deciding, and what part is the conditions you happen to be inside?",
    ],
-   "how much of what you call your thinking is happening through and with others.",
+   "how much of what feels like a personal conclusion is actually a snapshot of a moment.",
    "Set 06 — Never a Solo Act"),
 
   ("set-06-s2",
@@ -477,7 +477,7 @@ CARDS = [
    "10 minutes",
    [
      "Write down a question you've been carrying — something you're trying to work out or understand, in work or life.",
-     "Ask: who does this question center? Whose point of view does it assume is the right one to take? Write two versions of the question that shift the center to someone or something else in the situation.",
+     "Look at your question. Who are you picturing when you imagine solving it? Is that person — or that angle — actually the right place to start? Write two versions of the question that put someone or something else at the center.",
      "Sit with the rewritten questions. Don't answer them. Notice whether they open the situation differently.",
    ],
    "how the shape of a question determines what kinds of answers are even possible.",
@@ -490,7 +490,7 @@ CARDS = [
    "15 minutes",
    [
      "Make something with whatever is immediately available — arrange objects, make marks, move things around. Start before you decide what you're making.",
-     "At some point you will feel the pull to make it legible — to yourself or to someone imagined. When you feel that pull, do something that makes the thing harder to explain, not easier.",
+     "At some point you will feel the urge to make it make sense — to yourself or to someone you're imagining showing it to. When you feel that urge, do something that makes the thing harder to explain, not easier.",
      "When time is up, don't document it. Let it be a process that existed and is now complete.",
    ],
    "the difference between making something and making something for something.",
