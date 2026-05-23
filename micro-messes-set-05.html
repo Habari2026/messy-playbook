@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set 05: Something Finite — Micro Messes™ — The MESSY Playbook</title>
+    <meta name="description" content="Five encounters with the generative power of limits. Inspired by Igor Stravinsky, Poetics of Music in the Form of Six Lessons, 1942.">
+    <meta property="og:type"        content="website">
+    <meta property="og:title"       content="Set 05: Something Finite — Micro Messes™">
+    <meta property="og:description" content="Five encounters with the generative power of limits. The tighter the frame, the greater the freedom inside it.">
+    <meta property="og:site_name"   content="The MESSY Playbook™">
+    <meta name="twitter:card"       content="summary">
+    <meta name="twitter:title"      content="Set 05: Something Finite — Micro Messes™">
+    <meta name="twitter:description" content="Five encounters with the generative power of limits. Inspired by Igor Stravinsky, 1942.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: Arial, sans-serif; color: #2c3e50; background: #f8f9fa; line-height: 1.6; }
+        sup.tm { font-size: 0.58em; vertical-align: super; }
+        .skip-nav { position: absolute; top: -100%; left: 1rem; z-index: 9999; padding: 0.6rem 1.25rem; background: #2c3e50; color: #fff; font-weight: 700; font-size: 0.85rem; border-radius: 0 0 8px 8px; transition: top 0.2s; text-decoration: none; }
+        .skip-nav:focus { top: 0; outline: 3px solid #667eea; outline-offset: 2px; }
+
+        /* ── NAV ── */
+        .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #fff; border-bottom: 1px solid #ecf0f1; box-shadow: 0 2px 10px rgba(0,0,0,0.06); transition: box-shadow 0.2s; }
+        .site-nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.11); }
+        .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; height: 62px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-size: 0.95rem; font-weight: 700; color: #2c3e50; text-decoration: none; white-space: nowrap; }
+        .nav-links { display: flex; align-items: center; gap: 0.1rem; list-style: none; }
+        .nav-links > li > a { font-size: 0.875rem; font-weight: 600; color: #34495e; text-decoration: none; padding: 0.45rem 0.7rem; border-radius: 4px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+        .nav-links > li > a:hover { background: #f8f9fa; color: #2c3e50; }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown > a { display: inline-flex; align-items: center; gap: 4px; outline: none; }
+        
+        .dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; background: #fff; border: 1px solid #ecf0f1; border-radius: 10px; box-shadow: 0 8px 28px rgba(0,0,0,0.1); min-width: 230px; padding: 1.75rem 0 0.5rem; z-index: 200; }
+        .dropdown-close { position: absolute; top: 5px; right: 5px; }
+        .dropdown-close button { background: none; border: none; cursor: pointer; font-size: 0.9rem; line-height: 1; color: #7f8c8d; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: color 0.15s; padding: 0; }
+        .dropdown-close button:hover { color: #2c3e50; }
+        .nav-dropdown.open .dropdown-menu { display: block; }
+        .dropdown-menu a { display: block; padding: 0.75rem 1.1rem; font-size: 0.875rem; color: #34495e; text-decoration: none; transition: background 0.12s; }
+        .dropdown-menu a:hover { background: #f8f9fa; }
+        .dropdown-menu a.active { color: #667eea; font-weight: 700; }
+        .dropdown-menu .soon { display: inline-block; font-size: 0.72rem; color: #7f8c8d; margin-left: 7px; font-style: italic; }
+        .dd-divider { height: 1px; background: #ecf0f1; margin: 0.4rem 0; }
+        .nav-cta { background: linear-gradient(135deg, #667eea, #764ba2) !important; color: #fff !important; padding: 0.45rem 1.1rem !important; border-radius: 20px !important; font-weight: 700 !important; }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 1.4rem; color: #2c3e50; padding: 0.4rem; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; }
+        
+        
+        @media (max-width: 820px) { .nav-links { display: none; } .nav-toggle { display: block; } }
+
+        /* ── PAGE HEADER ── */
+        .page-header { background: #fff; border-bottom: 1px solid #ecf0f1; padding: 3rem 1.5rem 2.75rem; }
+        .page-header-inner { max-width: 760px; margin: 0 auto; }
+        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: #7f8c8d; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .breadcrumb a { color: #667eea; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb-sep { color: #bdc3c7; }
+
+        /* ── SET PAGE HEADER ── */
+        .set-page-header { background: #fff; border-bottom: 1px solid #ecf0f1; padding: 5rem 1.5rem 2.5rem; }
+        .set-page-header-inner { max-width: 760px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
+        .set-page-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #fff; border-radius: 20px; padding: 4px 13px; margin-bottom: 1rem; }
+        .set-page-title { font-family: 'Playfair Display', Georgia, serif; font-size: 2.2rem; font-weight: 700; color: #2c3e50; margin-bottom: 0.5rem; line-height: 1.15; }
+        .set-page-desc { font-size: 0.95rem; color: #34495e; line-height: 1.75; max-width: 600px; margin-bottom: 0.9rem; }
+        .set-page-desc-last { margin-bottom: 1.25rem; }
+        .set-page-attribution { font-size: 0.78rem; font-style: italic; color: #95a5a6; }
+        .set-page-attribution a { color: #95a5a6; text-decoration: none; border-bottom: 1px solid #ddd; }
+        .set-page-attribution a:hover { color: #667eea; border-bottom-color: #667eea; }
+
+        /* ── PDF HINT (mobile only) ── */
+        .pdf-hint {
+            display: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.72rem;
+            color: #7f8c8d;
+            margin-top: 0.4rem;
+            line-height: 1.5;
+        }
+        @media (max-width: 820px) {
+            .pdf-hint { display: block; }
+        }
+
+        /* ── CARDS SECTION ── */
+        .cards-section { padding: 3rem 1.5rem 1rem; }
+        .cards-inner { max-width: 760px; margin: 0 auto; }
+
+        /* ── CARD WRAPPER ── */
+        .card-wrapper { margin-bottom: 1.75rem; }
+        .card-wrapper:last-child { margin-bottom: 0; }
+
+        /* ── MESS CARD ── */
+        .mess-card { background: #fff; border-radius: 14px; padding: 1.75rem 1.75rem 1.5rem; border: 2px solid; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 0.65rem; flex-wrap: wrap; }
+        .dim-badge { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; padding: 4px 11px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+        .card-name { font-size: 1.2rem; font-weight: 700; color: #2c3e50; }
+        .card-encounter { font-size: 0.9rem; font-style: italic; color: #7f8c8d; margin-bottom: 0.9rem; line-height: 1.6; }
+        .card-time { display: inline-block; font-size: 0.72rem; font-weight: 700; color: #7f8c8d; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.1rem; padding: 3px 10px; background: #f8f9fa; border-radius: 20px; border: 1px solid #ecf0f1; }
+        .steps-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #7f8c8d; margin-bottom: 0.55rem; }
+        .steps-list { list-style: none; margin-bottom: 1.1rem; }
+        .steps-list li { display: flex; gap: 10px; font-size: 0.925rem; color: #34495e; padding: 6px 0; line-height: 1.65; border-bottom: 1px solid #f8f9fa; }
+        .steps-list li:last-child { border-bottom: none; }
+        .step-n { font-weight: 700; font-size: 0.78rem; min-width: 18px; padding-top: 3px; flex-shrink: 0; }
+        .card-notice { font-size: 0.875rem; padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 3px solid; line-height: 1.6; }
+        .card-notice strong { font-weight: 700; }
+        .no-outcome { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.65; }
+
+        /* ── DIMENSION COLOR CLASSES ── */
+        .card-m   { border-color: #9b59b6; }  .badge-m  { background: #9b59b6; color: #fff; }  .sn-m  { color: #9b59b6; }  .notice-m  { background: #f5eef8; border-color: #9b59b6; color: #2c3e50; }  .out-m  { color: #9b59b6; }
+        .card-e   { border-color: #e67e22; }  .badge-e  { background: #e67e22; color: #fff; }  .sn-e  { color: #e67e22; }  .notice-e  { background: #fef5ec; border-color: #e67e22; color: #2c3e50; }  .out-e  { color: #e67e22; }
+        .card-s1  { border-color: #3498db; }  .badge-s1 { background: #3498db; color: #fff; }  .sn-s1 { color: #3498db; }  .notice-s1 { background: #e8f4fd; border-color: #3498db; color: #2c3e50; }  .out-s1 { color: #3498db; }
+        .card-s2  { border-color: #d4ac0d; }  .badge-s2 { background: #f1c40f; color: #856404; } .sn-s2 { color: #d4ac0d; }  .notice-s2 { background: #fff3cd; border-color: #d4ac0d; color: #856404; } .out-s2 { color: #856404; }
+        .card-y   { border-color: #27ae60; }  .badge-y  { background: #27ae60; color: #fff; }  .sn-y  { color: #27ae60; }  .notice-y  { background: #e8f5e8; border-color: #27ae60; color: #2c3e50; }  .out-y  { color: #27ae60; }
+
+        /* ── CARD ACTIONS ── */
+        .card-actions { display: flex; justify-content: flex-end; padding: 0.6rem 0.25rem 0; }
+        .btn-pdf { display: inline-flex; align-items: center; gap: 6px; font-family: Arial, sans-serif; font-size: 0.75rem; font-weight: 700; color: #7f8c8d; background: none; border: 1px solid #ecf0f1; border-radius: 20px; padding: 0 13px; min-height: 44px; cursor: pointer; transition: color 0.15s, border-color 0.15s, background 0.15s; letter-spacing: 0.03em; }
+        .btn-pdf:hover { color: #2c3e50; border-color: #bdc3c7; background: #fff; }
+        .btn-pdf svg { flex-shrink: 0; }
+
+        /* ── SET NAV ── */
+        .set-nav { background: #fff; border-top: 1px solid #ecf0f1; padding: 2rem 1.5rem; margin-top: 3rem; }
+        .set-nav-inner { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; }
+        .set-nav-prev { text-align: left; }
+        .set-nav-center { text-align: center; }
+        .set-nav-next { text-align: right; }
+        .set-nav-link { text-decoration: none; display: inline-flex; flex-direction: column; gap: 2px; }
+        .set-nav-link:hover .set-nav-label { color: #2c3e50; }
+        .set-nav-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7f8c8d; transition: color 0.15s; }
+        .set-nav-name { font-size: 0.92rem; font-weight: 700; color: #667eea; line-height: 1.3; }
+        .set-nav-ghost { opacity: 0.3; pointer-events: none; display: inline-flex; flex-direction: column; gap: 2px; }
+        .set-nav-all { font-size: 0.8rem; font-weight: 700; color: #7f8c8d; text-decoration: none; padding: 6px 14px; border: 1px solid #ecf0f1; border-radius: 20px; transition: color 0.15s, border-color 0.15s; white-space: nowrap; }
+        .set-nav-all:hover { color: #2c3e50; border-color: #bdc3c7; }
+        @media (max-width: 540px) {
+            .set-nav-inner { grid-template-columns: 1fr; gap: 1.25rem; }
+            .set-nav-prev, .set-nav-center, .set-nav-next { text-align: center; }
+            .set-nav-prev { order: 2; }
+            .set-nav-center { order: 1; }
+            .set-nav-next { order: 3; }
+        }
+
+        /* ── FOOTER ── */
+        footer { background: #2c3e50; color: rgba(255,255,255,0.65); padding: 2.75rem 1.5rem; text-align: center; }
+        .footer-logo { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 1.1rem; }
+        .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.1rem; margin-bottom: 1.5rem; }
+        .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.83rem; padding: 0.25rem 0.8rem; }
+        .footer-links a:hover { color: #fff; }
+        .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.38); line-height: 1.85; }
+
+        /* ── PRINT FALLBACK ── */
+        @media print {
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            .site-nav, .page-header, .set-nav, footer, .card-actions { display: none !important; }
+            body { background: #fff; }
+            .cards-section { padding: 1rem; }
+            .mess-card { break-inside: avoid; page-break-inside: avoid; box-shadow: none; }
+        }
+
+        /* FLOATING NAV */
+        .float-nav { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; display: flex; flex-direction: column; gap: 0.5rem; }
+        .float-btn { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 4px 14px rgba(102,126,234,0.4); opacity: 0; transform: translateY(8px); transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s; pointer-events: none; }
+        .float-btn.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        .float-btn:hover { box-shadow: 0 6px 20px rgba(102,126,234,0.55); transform: translateY(-2px); }
+
+        /* Respect reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        .mobile-nav {
+          display: none;
+          position: fixed;
+          top: 0; left: 0; right: 0; bottom: 0;
+          z-index: 99;
+          background: rgba(30,42,53,0.55);
+          backdrop-filter: blur(4px);
+        }
+        .mobile-nav.open { display: block; }
+        .mobile-nav-panel {
+          position: absolute;
+          top: 0; right: 0;
+          width: min(320px, 85vw);
+          height: 100%;
+          background: #ffffff;
+          padding: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+          overflow-y: auto;
+          box-shadow: -8px 0 32px rgba(0,0,0,0.15);
+        }
+        .mobile-nav-close {
+          align-self: flex-end;
+          background: none;
+          border: 1.5px solid #ddd8cc;
+          border-radius: 8px;
+          padding: 0.4rem 0.65rem;
+          cursor: pointer;
+          color: #1e2a35;
+          font-size: 1.1rem;
+          line-height: 1;
+          min-height: 44px;
+          min-width: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1rem;
+          transition: border-color 0.2s;
+        }
+        .mobile-nav-close:hover { border-color: #1e2a35; }
+        .mobile-nav-panel a {
+          display: block;
+          padding: 0.9rem 1rem;
+          font-size: 1rem;
+          font-weight: 500;
+          color: #3d5060;
+          border-radius: 8px;
+          border: 1px solid transparent;
+          transition: background 0.15s, color 0.15s;
+        }
+        .mobile-nav-panel a:hover { background: white; color: #1e2a35; border-color: #ddd8cc; }
+        .mobile-nav-panel .mobile-nav-cta {
+          margin-top: 0.75rem;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          color: white !important;
+          font-weight: 700;
+          text-align: center;
+          border-radius: 2rem;
+          border-color: transparent;
+        }
+        .mobile-nav-panel .mobile-nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, #667eea, #764ba2); }
+        .mobile-explore-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #56707f; padding: 0.9rem 1rem 0.2rem; display: block; }
+        body.nav-open .float-nav { display: none; }
+
+        /* Mobile nav panel — no underlines */
+        .mobile-nav-panel a { text-decoration: none !important; }
+        .mobile-nav-close { text-decoration: none !important; }
+
+        /* ── BREADCRUMB BAR ── */
+        .breadcrumb-bar { background: #fff; border-bottom: 1px solid #ecf0f1; padding: 0.75rem 1.5rem; padding-top: calc(62px + 0.75rem); }
+        .breadcrumb-nav { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: #7f8c8d; flex-wrap: wrap; }
+        .breadcrumb-nav a { color: #667eea; text-decoration: none; }
+        .breadcrumb-nav a:hover { text-decoration: underline; }
+        .breadcrumb-sep { color: #bdc3c7; }
+        .breadcrumb-current { color: #7f8c8d; }
+    </style>
+</head>
+<body>
+
+<!-- FLOATING NAV -->
+<div class="float-nav" aria-label="Page navigation">
+    <button class="float-btn" id="floatTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <button class="float-btn" id="floatBottom" aria-label="Jump to bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">↓</button>
+</div>
+
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<!-- NAV -->
+<nav class="site-nav" id="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">The MESSY Playbook<sup class="tm">™</sup></a>
+        <ul class="nav-links">
+            <li><a href="index.html#why">Why MESSY?</a></li>
+            <li><a href="index.html#what">The Playbook</a></li>
+            <li><a href="index.html#tiers">How It Works</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li class="nav-dropdown">
+                <a href="javascript:void(0)" tabindex="0">Explore ▾</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-close"><button onclick="this.closest('.nav-dropdown').classList.remove('open')" aria-label="Close menu">×</button></div>
+                    <a href="play.html">Messy Plays<sup class="tm">™</sup></a>
+                    <a href="thinking.html">The Thinking</a>
+                    <div class="dd-divider"></div>
+                    <a href="micro-messes.html">Micro Messes<sup class="tm">™</sup></a>
+                    <a href="javascript:void(0)">Insight Series <span class="soon">coming soon</span></a>
+                    <a href="book.html">The Book</a>
+                </div>
+            </li>
+        </ul>
+        <a href="index.html#get" class="nav-cta">Get MESSY!</a>
+        <button class="nav-toggle" aria-label="Toggle menu" onclick="openMobileNav()">☰</button>
+    </div>
+</nav>
+
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <div class="mobile-nav-panel">
+      <button class="mobile-nav-close" aria-label="Close navigation menu">✕</button>
+      <a href="index.html#why"   onclick="closeMobileNav()">Why MESSY?</a>
+      <a href="index.html#what"  onclick="closeMobileNav()">The Playbook</a>
+      <a href="index.html#tiers" onclick="closeMobileNav()">How It Works</a>
+      <a href="index.html#faq"   onclick="closeMobileNav()">FAQ</a>
+      <span class="mobile-explore-label">Explore</span>
+      <a href="play.html"           onclick="closeMobileNav()">Messy Plays™</a>
+      <a href="thinking.html"       onclick="closeMobileNav()">The Thinking</a>
+      <a href="micro-messes.html"   onclick="closeMobileNav()" style="font-weight:700;color:#764ba2;">Micro Messes™</a>
+      <a href="javascript:void(0)">Insight Series <span style="font-size:0.78em;font-style:italic;color:#56707f;">(coming soon)</span></a>
+      <a href="book.html"           onclick="closeMobileNav()">The Book</a>
+      <a href="index.html#get" onclick="closeMobileNav()" class="mobile-nav-cta">Get MESSY!</a>
+    </div>
+</div>
+
+<main id="main-content">
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="micro-messes.html">Micro Messes™</a>
+        <span class="breadcrumb-sep" aria-hidden="true">›</span>
+        <a href="micro-messes-sets.html">All Sets</a>
+        <span class="breadcrumb-sep" aria-hidden="true">›</span>
+        <span class="breadcrumb-current">Something Finite</span>
+    </nav>
+</div>
+
+<!-- PAGE HEADER -->
+<header class="set-page-header">
+    <div class="set-page-header-inner">
+        <div class="set-page-badge" style="background: linear-gradient(135deg, #5c1a3a, #1a0d2e);">Set 05</div>
+        <h1 class="set-page-title">Something Finite</h1>
+        <p class="set-page-desc">Most people treat limits as the problem. Not enough time, not enough resources, not the right conditions — so the work waits. But Igor Stravinsky argued the opposite: that limits are what make real work possible. The tighter the frame, he insisted, the greater the freedom inside it.</p>
+        <p class="set-page-desc">These five cards ask you to work with what you actually have. Not to pretend the constraints aren't there, but to treat them as the material itself. Each card takes 10 to 15 minutes and asks you to look closely at one limit in your work or thinking right now.</p>
+        <p class="set-page-desc set-page-desc-last">What often comes clear is that the waiting isn't about conditions. It's about the discomfort of starting. A finite frame removes the excuse — and sometimes that's exactly what's needed.</p>
+        <p class="set-page-attribution">Inspired by Igor Stravinsky, <em>Poetics of Music in the Form of Six Lessons</em>, 1942 &mdash; drawing on David Epstein, &ldquo;The Power of Limits,&rdquo; The New York Times, May 17, 2026</p>
+    </div>
+</header>
+
+<!-- CARDS -->
+<section class="cards-section" aria-label="Micro Mess cards">
+    <div class="cards-inner">
+
+        <!-- CARD M · Monitor -->
+        <div class="card-wrapper">
+            <div class="mess-card card-m" id="card-05-m" aria-label="what's actually in the way — M · Monitor dimension">
+                <div class="card-top">
+                    <span class="dim-badge badge-m">M · Monitor</span>
+                    <span class="card-name">what's actually in the way</span>
+                </div>
+                <p class="card-encounter">An encounter with the difference between real obstacles and invented ones.</p>
+                <span class="card-time">⏱ 10 minutes</span>
+                <p class="steps-label">The Mess</p>
+                <ol class="steps-list">
+                    <li><span class="step-n sn-m">1.</span><span>Write down what you're stuck on. Then list every reason you can't move forward yet.</span></li>
+                    <li><span class="step-n sn-m">2.</span><span>Go through the list. For each reason, ask: is this real, or is it a condition I made up? Mark each one honestly.</span></li>
+                    <li><span class="step-n sn-m">3.</span><span>Pick the one real constraint. Set the rest aside for now.</span></li>
+                </ol>
+                <div class="card-notice notice-m"><strong>Notice:</strong> which reasons feel the most solid — and why.</div>
+                <p class="no-outcome out-m">No outcome required.</p>
+            </div>
+            <div class="card-actions">
+                <a href="card-pdfs/micro-messes-set-05-m.pdf" download class="btn-pdf" aria-label="Download what's actually in the way as PDF">
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 10v2a1 1 0 001 1h8a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Save as PDF
+                </a>
+                <p class="pdf-hint">iPhone or iPad? Tap &#xB7;&#xB7;&#xB7; then Share &#x2192; Save to Files.</p>
+            </div>
+        </div>
+
+        <!-- CARD E · Execute -->
+        <div class="card-wrapper">
+            <div class="mess-card card-e" id="card-05-e" aria-label="work the small space — E · Execute dimension">
+                <div class="card-top">
+                    <span class="dim-badge badge-e">E · Execute</span>
+                    <span class="card-name">work the small space</span>
+                </div>
+                <p class="card-encounter">An encounter with what becomes possible when you limit your options on purpose.</p>
+                <span class="card-time">⏱ 10 minutes</span>
+                <p class="steps-label">The Mess</p>
+                <ol class="steps-list">
+                    <li><span class="step-n sn-e">1.</span><span>Choose something you're working on. Give yourself one rule: use only what you already have. No new research, no new tools, no waiting for better conditions.</span></li>
+                    <li><span class="step-n sn-e">2.</span><span>Set a timer for 10 minutes. Work only inside that rule.</span></li>
+                    <li><span class="step-n sn-e">3.</span><span>When the timer stops, write down one thing that happened that wouldn't have happened without the limit.</span></li>
+                </ol>
+                <div class="card-notice notice-e"><strong>Notice:</strong> whether the limit felt like a wall or like a frame.</div>
+                <p class="no-outcome out-e">No outcome required.</p>
+            </div>
+            <div class="card-actions">
+                <a href="card-pdfs/micro-messes-set-05-e.pdf" download class="btn-pdf" aria-label="Download work the small space as PDF">
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 10v2a1 1 0 001 1h8a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Save as PDF
+                </a>
+                <p class="pdf-hint">iPhone or iPad? Tap &#xB7;&#xB7;&#xB7; then Share &#x2192; Save to Files.</p>
+            </div>
+        </div>
+
+        <!-- CARD S1 · Support -->
+        <div class="card-wrapper">
+            <div class="mess-card card-s1" id="card-05-s1" aria-label="borrow the frame — S · Support dimension">
+                <div class="card-top">
+                    <span class="dim-badge badge-s1">S · Support</span>
+                    <span class="card-name">borrow the frame</span>
+                </div>
+                <p class="card-encounter">An encounter with structure that already exists and how it might hold your work.</p>
+                <span class="card-time">⏱ 15 minutes</span>
+                <p class="steps-label">The Mess</p>
+                <ol class="steps-list">
+                    <li><span class="step-n sn-s1">1.</span><span>Think of a format or routine from a completely different part of your life — a recipe, a sports drill, a meeting format, a daily habit. Write it out as simple steps.</span></li>
+                    <li><span class="step-n sn-s1">2.</span><span>Take something you're currently working on. Try fitting it into that borrowed structure, step by step.</span></li>
+                    <li><span class="step-n sn-s1">3.</span><span>Write down what fits, what doesn't, and what surprised you.</span></li>
+                </ol>
+                <div class="card-notice notice-s1"><strong>Notice:</strong> what the borrowed structure makes easier.</div>
+                <p class="no-outcome out-s1">No outcome required.</p>
+            </div>
+            <div class="card-actions">
+                <a href="card-pdfs/micro-messes-set-05-s1.pdf" download class="btn-pdf" aria-label="Download borrow the frame as PDF">
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 10v2a1 1 0 001 1h8a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Save as PDF
+                </a>
+                <p class="pdf-hint">iPhone or iPad? Tap &#xB7;&#xB7;&#xB7; then Share &#x2192; Save to Files.</p>
+            </div>
+        </div>
+
+        <!-- CARD S2 · Surrender -->
+        <div class="card-wrapper">
+            <div class="mess-card card-s2" id="card-05-s2" aria-label="let the limit lead — S · Surrender dimension">
+                <div class="card-top">
+                    <span class="dim-badge badge-s2">S · Surrender</span>
+                    <span class="card-name">let the limit lead</span>
+                </div>
+                <p class="card-encounter">An encounter with the idea that more freedom doesn't always mean better results.</p>
+                <span class="card-time">⏱ 10 minutes</span>
+                <p class="steps-label">The Mess</p>
+                <ol class="steps-list">
+                    <li><span class="step-n sn-s2">1.</span><span>Think of something you've been putting off because conditions aren't right yet — not enough time, resources, or information. Write it down.</span></li>
+                    <li><span class="step-n sn-s2">2.</span><span>Assume those conditions will never improve. Write one sentence about what you could do right now, with exactly what you have.</span></li>
+                    <li><span class="step-n sn-s2">3.</span><span>Read that sentence back. Notice how it feels different from waiting.</span></li>
+                </ol>
+                <div class="card-notice notice-s2"><strong>Notice:</strong> what you would start if you stopped waiting for better conditions.</div>
+                <p class="no-outcome out-s2">No outcome required.</p>
+            </div>
+            <div class="card-actions">
+                <a href="card-pdfs/micro-messes-set-05-s2.pdf" download class="btn-pdf" aria-label="Download let the limit lead as PDF">
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 10v2a1 1 0 001 1h8a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Save as PDF
+                </a>
+                <p class="pdf-hint">iPhone or iPad? Tap &#xB7;&#xB7;&#xB7; then Share &#x2192; Save to Files.</p>
+            </div>
+        </div>
+
+        <!-- CARD Y · Yield -->
+        <div class="card-wrapper">
+            <div class="mess-card card-y" id="card-05-y" aria-label="the shape it wants — Y · Yield dimension">
+                <div class="card-top">
+                    <span class="dim-badge badge-y">Y · Yield</span>
+                    <span class="card-name">the shape it wants</span>
+                </div>
+                <p class="card-encounter">An encounter with what your work is already telling you about how it wants to go.</p>
+                <span class="card-time">⏱ 10 minutes</span>
+                <p class="steps-label">The Mess</p>
+                <ol class="steps-list">
+                    <li><span class="step-n sn-y">1.</span><span>Pick something you're working on. Write down the constraints that are fixed and can't change.</span></li>
+                    <li><span class="step-n sn-y">2.</span><span>Instead of working against those fixed points, treat them as the shape of the work. Write down what they make possible rather than what they block.</span></li>
+                    <li><span class="step-n sn-y">3.</span><span>Notice if the work looks different from this angle.</span></li>
+                </ol>
+                <div class="card-notice notice-y"><strong>Notice:</strong> what the constraint has been protecting all along.</div>
+                <p class="no-outcome out-y">No outcome required.</p>
+            </div>
+            <div class="card-actions">
+                <a href="card-pdfs/micro-messes-set-05-y.pdf" download class="btn-pdf" aria-label="Download the shape it wants as PDF">
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 10v2a1 1 0 001 1h8a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Save as PDF
+                </a>
+                <p class="pdf-hint">iPhone or iPad? Tap &#xB7;&#xB7;&#xB7; then Share &#x2192; Save to Files.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- SET NAV -->
+<nav class="set-nav" aria-label="Set navigation">
+    <div class="set-nav-inner">
+        <div class="set-nav-prev">
+            <a href="micro-messes-set-04.html" class="set-nav-link" aria-label="Previous set: Good Enough">
+                <span class="set-nav-label">← Previous set</span>
+                <span class="set-nav-name">Set 04 — Good Enough</span>
+            </a>
+        </div>
+        <div class="set-nav-center">
+            <a href="micro-messes-sets.html" class="set-nav-all">All Sets</a>
+        </div>
+        <!-- Next — disabled: no Set 06 yet -->
+        <div class="set-nav-next">
+            <span class="set-nav-ghost" aria-hidden="true">
+                <span class="set-nav-label">Next set →</span>
+                <span class="set-nav-name">&nbsp;</span>
+            </span>
+        </div>
+    </div>
+</nav>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p class="footer-logo">The MESSY Playbook<sup class="tm">™</sup></p>
+    <div class="footer-links">
+        <a href="index.html#why">Why MESSY?</a>
+        <a href="index.html#what">The Playbook</a>
+        <a href="index.html#tiers">How It Works</a>
+        <a href="thinking.html">The Thinking</a>
+        <a href="play.html">Messy Plays</a>
+        <a href="micro-messes.html">Micro Messes</a>
+        <a href="book.html">The Book</a>
+        <a href="https://livemessy.gumroad.com" target="_blank" rel="noopener noreferrer">Gumroad</a>
+    </div>
+    <p class="footer-copy">
+        © 2026 Live Messy Project. All rights reserved.<br>
+        The MESSY Playbook™ and Micro Messes™ are projects of the Live Messy Project.<br>
+        For educational purposes and personal exploration only. Not therapy or professional counseling.
+    </p>
+</footer>
+
+<script>
+    const nav = document.getElementById('site-nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // Floating nav buttons
+    const floatTop    = document.getElementById('floatTop');
+    const floatBottom = document.getElementById('floatBottom');
+    function updateFloatBtns() {
+        const scrollY   = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        if (floatTop)    floatTop.classList.toggle('visible', scrollY > 400);
+        if (floatBottom) floatBottom.classList.toggle('visible', scrollY < maxScroll - 200);
+    }
+    window.addEventListener('scroll', updateFloatBtns, { passive: true });
+    updateFloatBtns();
+
+    // Explore dropdown — click to open, × or outside-click to close
+    (function() {
+      var drops = document.querySelectorAll('.nav-dropdown');
+      drops.forEach(function(dd) {
+        var trigger = dd.querySelector(':scope > a');
+        if (!trigger) return;
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          var isOpen = dd.classList.contains('open');
+          drops.forEach(function(d) { d.classList.remove('open'); });
+          if (!isOpen) dd.classList.add('open');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-dropdown')) {
+          drops.forEach(function(d) { d.classList.remove('open'); });
+        }
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') drops.forEach(function(d) { d.classList.remove('open'); });
+      });
+    })();
+
+    var mobileNav = document.getElementById('mobile-nav');
+    var menuBtn   = document.querySelector('.nav-toggle, .nav-menu-btn');
+    var closeBtn  = mobileNav ? mobileNav.querySelector('.mobile-nav-close') : null;
+    var lastFocus;
+    function openMobileNav() {
+      lastFocus = document.activeElement;
+      if (mobileNav) mobileNav.classList.add('open');
+      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('nav-open');
+      if (closeBtn) closeBtn.focus();
+    }
+    function closeMobileNav() {
+      if (mobileNav) mobileNav.classList.remove('open');
+      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      document.body.classList.remove('nav-open');
+      if (lastFocus) lastFocus.focus();
+    }
+    if (menuBtn) menuBtn.addEventListener('click', openMobileNav);
+    if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
+    if (mobileNav) mobileNav.addEventListener('click', function(e) {
+      if (e.target === mobileNav) closeMobileNav();
+    });
+</script>
+
+</body>
+</html>
