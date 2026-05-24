@@ -495,6 +495,72 @@ CARDS = [
    ],
    "whether you are above or below where you were.",
    "Set 07 — Same Ground"),
+
+  # ── Set 08 ──
+  ("set-08-m",
+   "card-m", "badge-m", "sn-m", "notice-m", "out-m",
+   "M · Monitor", "without a label",
+   "An encounter with what you feel before you name it.",
+   "10 minutes",
+   [
+     "Think of a moment from the last 24 hours when you felt something but couldn't quite describe it — or when you named it quickly and moved on. Write down what happened.",
+     "Sit with the feeling for two minutes without reaching for a word. Notice whether there's more than one thing happening, or whether the feeling shifted as the moment unfolded.",
+     "Write what you can — not a label, but what it was actually like. Where you felt it. Whether it stayed steady or changed.",
+   ],
+   "whether the feeling became clearer or more complicated when you gave it more room.",
+   "Set 08 — Hard to Name"),
+
+  ("set-08-e",
+   "card-e", "badge-e", "sn-e", "notice-e", "out-e",
+   "E · Execute", "before it settles",
+   "An encounter with acting when you don't yet know how you feel.",
+   "10 minutes",
+   [
+     "Think of something you've been putting off — not because it's too hard, but because you're not sure how you feel about it yet.",
+     "Do one small piece of it. Five minutes of work is enough. While you're moving, notice what the feeling does.",
+     "When you stop, write one sentence — not about how you feel now, but about what the feeling did while you were working. Did it shift? Sharpen? Disappear?",
+   ],
+   "whether moving changed the feeling, or just revealed it more clearly.",
+   "Set 08 — Hard to Name"),
+
+  ("set-08-s1",
+   "card-s1", "badge-s1", "sn-s1", "notice-s1", "out-s1",
+   "S · Support", "let it be mixed",
+   "An encounter with someone else's complicated feeling.",
+   "15 minutes",
+   [
+     "Think of someone carrying something complicated right now — not clearly happy or sad, or changing from one day to the next. Write down the single word you'd normally use to describe what they're going through.",
+     "Now write three to four sentences about what doesn't fit that word. The parts that are harder to see, or that seem to contradict the simple version.",
+     "The next time you're with them, try asking about one of those parts — not to fix it, just to acknowledge it's there.",
+   ],
+   "whether they seem surprised that you noticed the harder-to-name part.",
+   "Set 08 — Hard to Name"),
+
+  ("set-08-s2",
+   "card-s2", "badge-s2", "sn-s2", "notice-s2", "out-s2",
+   "S · Surrender", "not knowing",
+   "An encounter with a feeling you can't identify.",
+   "10 minutes",
+   [
+     "Find a feeling you currently have that you can't name — something present but unclear. If nothing surfaces immediately, sit quietly for two minutes. Something will.",
+     "Stay with it without trying to resolve it. Set a timer for five minutes. When you want to label it, notice the impulse — but don't follow it yet.",
+     "When the timer ends, write one phrase that gets close. Not a single word, but a phrase. \"Something like dread but also curiosity\" counts. Accuracy matters less than honesty.",
+   ],
+   "whether the not-knowing itself has a texture — heavy or light, familiar or strange.",
+   "Set 08 — Hard to Name"),
+
+  ("set-08-y",
+   "card-y", "badge-y", "sn-y", "notice-y", "out-y",
+   "Y · Yield", "what the combination tells you",
+   "An encounter with what two feelings together reveal that neither one alone would.",
+   "15 minutes",
+   [
+     "Think of a time when you felt two things at once — proud and embarrassed, relieved and sad, grateful and resentful. Pick one specific moment.",
+     "Write about each feeling separately: two to three sentences each. What was the proud part actually about? What was the embarrassed part about? Don't try to reconcile them.",
+     "Read both back. Notice whether the combination points to something that a single label would have missed entirely.",
+   ],
+   "what the contradiction was protecting or pointing toward.",
+   "Set 08 — Hard to Name"),
 ]
 
 
