@@ -496,6 +496,72 @@ CARDS = [
    "whether you are above or below where you were.",
    "Set 07 — Same Ground"),
 
+  # ── Set 08 ──
+  ("set-08-m",
+   "card-m", "badge-m", "sn-m", "notice-m", "out-m",
+   "M · Monitor", "without a label",
+   "An encounter with what you feel before you name it.",
+   "10 minutes",
+   [
+     "Think of a moment from the last 24 hours when you felt something but couldn't quite describe it, or when you named it quickly and moved on. Write down what happened.",
+     "Sit with the feeling for two minutes without reaching for a word. Notice whether there's more than one thing happening, or whether the feeling shifted as the moment unfolded.",
+     "Write what you can: not a label, but what it was actually like. Where you felt it. Whether it stayed steady or changed.",
+   ],
+   "whether the feeling became clearer or more complicated when you gave it more room.",
+   "Set 08 — Hard to Name"),
+
+  ("set-08-e",
+   "card-e", "badge-e", "sn-e", "notice-e", "out-e",
+   "E · Execute", "before it settles",
+   "An encounter with acting when you don't yet know how you feel.",
+   "10 minutes",
+   [
+     "Think of something you've been putting off. Not because it's too hard, but because you're not sure how you feel about it yet.",
+     "Do one small piece of it. Five minutes of work is enough. While you're moving, notice what the feeling does.",
+     "When you stop, write one sentence. Not about how you feel now, but about what the feeling did while you were working. Did it shift? Sharpen? Disappear?",
+   ],
+   "whether moving changed the feeling, or just revealed it more clearly.",
+   "Set 08 — Hard to Name"),
+
+  ("set-08-s1",
+   "card-s1", "badge-s1", "sn-s1", "notice-s1", "out-s1",
+   "S · Support", "let it be mixed",
+   "An encounter with someone else's complicated feeling.",
+   "15 minutes",
+   [
+     "Think of someone carrying something complicated right now. Not clearly happy or sad, or changing from one day to the next. Write down the single word you'd normally use to describe what they're going through.",
+     "Now write three to four sentences about what doesn't fit that word. The parts that are harder to see, or that seem to contradict the simple version.",
+     "The next time you're with them, try asking about one of those parts. Not to fix it, just to acknowledge it's there.",
+   ],
+   "whether they seem surprised that you noticed the harder-to-name part.",
+   "Set 08 — Hard to Name"),
+
+  ("set-08-s2",
+   "card-s2", "badge-s2", "sn-s2", "notice-s2", "out-s2",
+   "S · Surrender", "not knowing",
+   "An encounter with a feeling you can't identify.",
+   "10 minutes",
+   [
+     "Find a feeling you currently have that you can't name. Something present but unclear. If nothing surfaces immediately, sit quietly for two minutes. Something will.",
+     "Stay with it without trying to resolve it. Set a timer for five minutes. When you want to label it, notice the impulse. But don't follow it yet.",
+     "When the timer ends, write one phrase that gets close. Not a single word, but a phrase. \"Something like dread but also curiosity\" counts. Accuracy matters less than honesty.",
+   ],
+   "whether the not-knowing itself has a texture. Heavy or light, familiar or strange.",
+   "Set 08 — Hard to Name"),
+
+  ("set-08-y",
+   "card-y", "badge-y", "sn-y", "notice-y", "out-y",
+   "Y · Yield", "what the combination tells you",
+   "An encounter with what two feelings together reveal that neither one alone would.",
+   "15 minutes",
+   [
+     "Think of a time when you felt two things at once: proud and embarrassed, relieved and sad, grateful and resentful. Pick one specific moment.",
+     "Write about each feeling separately: two to three sentences each. What was the proud part actually about? What was the embarrassed part about? Don't try to reconcile them.",
+     "Read both back. Notice whether the combination points to something that a single label would have missed entirely.",
+   ],
+   "what the contradiction was protecting or pointing toward.",
+   "Set 08 — Hard to Name"),
+
   # ── Set 09 ──
   ("set-09-m",
    "card-m", "badge-m", "sn-m", "notice-m", "out-m",
@@ -561,6 +627,72 @@ CARDS = [
    ],
    "whether the hindsight feels like wisdom, or just like knowing how the story ended.",
    "Set 09 — After the Fact"),
+
+  # ── Set 10 ──
+  ("set-10-m",
+   "card-m", "badge-m", "sn-m", "notice-m", "out-m",
+   "M · Monitor", "the old map",
+   "An encounter with the understanding you've been navigating by — and where it has stopped matching the territory.",
+   "10 minutes",
+   [
+     "Think of a situation that keeps feeling confusing or stuck. Write it down in one sentence.",
+     "Ask: what did you used to think about this that no longer quite fits? Write that down — the old explanation, the old story, the old assumption.",
+     "Notice whether you have been trying to force the old understanding back into place, or waiting for a new one to arrive fully formed.",
+   ],
+   "what it feels like to name the gap without immediately trying to fill it.",
+   "Set 10 — The Messy Middle"),
+
+  ("set-10-e",
+   "card-e", "badge-e", "sn-e", "notice-e", "out-e",
+   "E · Execute", "move anyway",
+   "An encounter with one thing you can do from inside the confusion — before it clears.",
+   "10 minutes",
+   [
+     "Name something you have been waiting to act on until you understood it better. Not a practical obstacle — a feeling that you don't yet know what you actually think or want.",
+     "Ask: what would you do next if you accepted that the understanding might only come from moving, not from more thinking?",
+     "Write down one action that feels possible from where you are now — not from where you want to be.",
+   ],
+   "whether waiting for clarity has become its own kind of stalling.",
+   "Set 10 — The Messy Middle"),
+
+  ("set-10-s1",
+   "card-s1", "badge-s1", "sn-s1", "notice-s1", "out-s1",
+   "S · Support", "someone to stay in it with",
+   "An encounter with the difference between someone who helps you tidy the mess up and someone who helps you work through it.",
+   "15 minutes",
+   [
+     "Think of something confusing or unresolved you are currently carrying. Who have you talked to about it?",
+     "For each person, ask honestly: did they help you understand it better, or help you feel better about it? Both matter — but they're different things.",
+     "Think of one person who tends to keep the conversation going rather than closing it down. What would it look like to bring this mess to them?",
+   ],
+   "whether you have been seeking comfort over clarity — and whether that has been a deliberate choice.",
+   "Set 10 — The Messy Middle"),
+
+  ("set-10-s2",
+   "card-s2", "badge-s2", "sn-s2", "notice-s2", "out-s2",
+   "S · Surrender", "put it down for now",
+   "An encounter with an explanation you have been holding on to because the alternative is not knowing.",
+   "10 minutes",
+   [
+     "Name something you have already decided — a reason something happened, a story about why things are the way they are, a conclusion you landed on quickly.",
+     "Ask: what would you have to sit with if you set that explanation down for now? Not permanently — just for today.",
+     "Set it down. Don't replace it with another explanation. Just notice what is actually there without the frame.",
+   ],
+   "whether the explanation has been more about comfort than accuracy.",
+   "Set 10 — The Messy Middle"),
+
+  ("set-10-y",
+   "card-y", "badge-y", "sn-y", "notice-y", "out-y",
+   "Y · Yield", "what staying in it made possible",
+   "An encounter with something that only became visible because you didn't resolve the confusion too soon.",
+   "15 minutes",
+   [
+     "Think of a time you stayed in genuine confusion — about a situation, a relationship, a decision — longer than was comfortable, and came out the other side seeing it differently.",
+     "Write down what staying in that middle actually produced. Not a general lesson — something specific that shifted.",
+     "Ask: what would have been lost if you had resolved it earlier?",
+   ],
+   "whether the confusion and the clarity were part of the same process, not opposites.",
+   "Set 10 — The Messy Middle"),
 ]
 
 
