@@ -693,6 +693,72 @@ CARDS = [
    ],
    "whether the confusion and the clarity were part of the same process, not opposites.",
    "Set 10 — The Messy Middle"),
+
+  # ── Set 11 ──
+  ("set-11-m",
+   "card-m", "badge-m", "sn-m", "notice-m", "out-m",
+   "M · Monitor", "the shape of the problem",
+   "An encounter with the question you haven't asked yet.",
+   "10 minutes",
+   [
+     "Think of something that's been bothering you — at home, at work, or both. Write it down in one sentence, the way you'd normally describe it.",
+     "Read it back and ask: what does this leave out? Where does the problem \"start\" in your version — and is that actually where it starts?",
+     "Write a second sentence describing the same situation, but from a different starting point. Make it as different from your first version as you can.",
+   ],
+   "how the second version changes what feels solvable.",
+   "Set 11 — Outside the Frame"),
+
+  ("set-11-e",
+   "card-e", "badge-e", "sn-e", "notice-e", "out-e",
+   "E · Execute", "move the line",
+   "An encounter with a different starting point.",
+   "10 minutes",
+   [
+     "Take a problem you've been working on without much progress. Write down what you've been trying to fix.",
+     "Ask yourself: what if the problem starts earlier than I think? Or later? Or somewhere I haven't been looking? Pick one and write a new version of the problem from that new starting point.",
+     "Compare the two versions. What becomes possible in the second one that wasn't in the first?",
+   ],
+   "what the second version opens up that the first one didn't.",
+   "Set 11 — Outside the Frame"),
+
+  ("set-11-s1",
+   "card-s1", "badge-s1", "sn-s1", "notice-s1", "out-s1",
+   "S · Support", "someone else's line",
+   "An encounter with a different view of where the problem lives.",
+   "15 minutes",
+   [
+     "Think of a situation where you and someone else are stuck — at home, at work, anywhere. You both care about it, but you're not getting anywhere together.",
+     "Ask them one question: \"Where does this start for you?\" In person, by message, however works. Listen without explaining your own view.",
+     "Notice whether they're describing the same problem or a different one. You don't need to agree. Just take in what they're seeing.",
+   ],
+   "when two people draw a problem differently, they're often not disagreeing about facts — they're starting from different places.",
+   "Set 11 — Outside the Frame"),
+
+  ("set-11-s2",
+   "card-s2", "badge-s2", "sn-s2", "notice-s2", "out-s2",
+   "S · Surrender", "two versions at once",
+   "An encounter with sitting in the gap.",
+   "10 minutes",
+   [
+     "Think of a situation where you and someone else each seem to be describing a different problem — even though you're talking about the same thing. Write down both versions: how you see it, and how they seem to see it.",
+     "Sit with the fact that both might be true — or that neither fully captures what's actually happening. Don't try to merge them or decide who's right.",
+     "Notice what it feels like to hold two definitions of the same situation at once, without resolving them.",
+   ],
+   "the discomfort here is useful. It means you're taking both versions seriously.",
+   "Set 11 — Outside the Frame"),
+
+  ("set-11-y",
+   "card-y", "badge-y", "sn-y", "notice-y", "out-y",
+   "Y · Yield", "what comes into view",
+   "An encounter with a wider picture.",
+   "10 minutes",
+   [
+     "Return to the situation you started with — the way you first described it. Write it down again, in your own words.",
+     "Write what you've noticed since you began this set. Has the shape of the problem shifted? What's come into view that wasn't there before?",
+     "Write one thing you might do differently now that you're working with a wider version of the situation. Keep it small and specific.",
+   ],
+   "the situation didn't change. What changed is the space you're working in.",
+   "Set 11 — Outside the Frame"),
 ]
 
 
