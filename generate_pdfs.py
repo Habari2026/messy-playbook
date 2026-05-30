@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate 25 Micro Messes card PDFs using WeasyPrint."""
+"""Generate 65 Micro Messes card PDFs using WeasyPrint (Sets 00-12)."""
 
 import os
 from weasyprint import HTML, CSS
@@ -430,6 +430,136 @@ CARDS = [
    "whether the energy you free up actually goes where you intended.",
    "Set 04 — Good Enough"),
 
+  ("set-05-m",
+   "card-m", "badge-m", "sn-m", "notice-m", "out-m",
+   "M · Monitor", "what's actually in the way",
+   "An encounter with the difference between real obstacles and invented ones.",
+   "10 minutes",
+   [
+     "Write down what you're stuck on. Then list every reason you can't move forward yet.",
+     "Go through the list. For each reason, ask: is this real, or is it a condition I made up? Mark each one honestly.",
+     "Pick the one real constraint. Set the rest aside for now.",
+   ],
+   "which reasons feel the most solid — and why.",
+   "Set 05 — Something Finite"),
+
+  ("set-05-e",
+   "card-e", "badge-e", "sn-e", "notice-e", "out-e",
+   "E · Execute", "work the small space",
+   "An encounter with what becomes possible when you limit your options on purpose.",
+   "10 minutes",
+   [
+     "Choose something you're working on. Give yourself one rule: use only what you already have. No new research, no new tools, no waiting for better conditions.",
+     "Set a timer for 10 minutes. Work only inside that rule.",
+     "When the timer stops, write down one thing that happened that wouldn't have happened without the limit.",
+   ],
+   "whether the limit felt like a wall or like a frame.",
+   "Set 05 — Something Finite"),
+
+  ("set-05-s1",
+   "card-s1", "badge-s1", "sn-s1", "notice-s1", "out-s1",
+   "S · Support", "borrow the frame",
+   "An encounter with structure that already exists and how it might hold your work.",
+   "15 minutes",
+   [
+     "Think of a format or routine from a completely different part of your life — a recipe, a sports drill, a meeting format, a daily habit. Write it out as simple steps.",
+     "Take something you're currently working on. Try fitting it into that borrowed structure, step by step.",
+     "Write down what fits, what doesn't, and what surprised you.",
+   ],
+   "what the borrowed structure makes easier.",
+   "Set 05 — Something Finite"),
+
+  ("set-05-s2",
+   "card-s2", "badge-s2", "sn-s2", "notice-s2", "out-s2",
+   "S · Surrender", "let the limit lead",
+   "An encounter with the idea that more freedom doesn't always mean better results.",
+   "10 minutes",
+   [
+     "Think of something you've been putting off because conditions aren't right yet — not enough time, resources, or information. Write it down.",
+     "Assume those conditions will never improve. Write one sentence about what you could do right now, with exactly what you have.",
+     "Read that sentence back. Notice how it feels different from waiting.",
+   ],
+   "what you would start if you stopped waiting for better conditions.",
+   "Set 05 — Something Finite"),
+
+  ("set-05-y",
+   "card-y", "badge-y", "sn-y", "notice-y", "out-y",
+   "Y · Yield", "the shape it wants",
+   "An encounter with what your work is already telling you about how it wants to go.",
+   "10 minutes",
+   [
+     "Pick something you're working on. Write down the constraints that are fixed and can't change.",
+     "Instead of working against those fixed points, treat them as the shape of the work. Write down what they make possible rather than what they block.",
+     "Notice if the work looks different from this angle.",
+   ],
+   "what the constraint has been protecting all along.",
+   "Set 05 — Something Finite"),
+
+  ("set-06-m",
+   "card-m", "badge-m", "sn-m", "notice-m", "out-m",
+   "M · Monitor", "you are also being watched",
+   "An encounter with the limits of your own point of view.",
+   "15 minutes",
+   [
+     "Choose a space you know well. Spend five minutes moving through it normally, noticing what you notice.",
+     "Now ask: what in this space has been noticing you — or adapting to you, or waiting for you to leave? Look for evidence: worn patches, marks, things that have shifted, behaviors that change when you're around or away.",
+     "Write one sentence from the point of view of something that shares this space with you.",
+   ],
+   "the difference between observing a situation and being observed within one.",
+   "Set 06 — Never a Solo Act"),
+
+  ("set-06-e",
+   "card-e", "badge-e", "sn-e", "notice-e", "out-e",
+   "E · Execute", "become a participant",
+   "An encounter with a situation you can't stay outside of.",
+   "15 minutes",
+   [
+     "Go somewhere something is already happening without you — a conversation in progress, people working together, a room filling up, something being made or cooked or built. Don't bring a task. Don't decide in advance what role you'll play.",
+     "At some point, let yourself be pulled in. Follow whatever catches your attention, even if it seems beside the point. Don't redirect toward something more useful.",
+     "After you leave, notice what from this encounter keeps surfacing in your thinking. Don't chase it — just notice when it returns.",
+   ],
+   "what keeps coming back after the encounter is officially over.",
+   "Set 06 — Never a Solo Act"),
+
+  ("set-06-s1",
+   "card-s1", "badge-s1", "sn-s1", "notice-s1", "out-s1",
+   "S · Support", "you are already an ecosystem",
+   "An encounter with everything that's shaping your thinking right now.",
+   "10 minutes",
+   [
+     "Before you do anything else, take stock of your current conditions: How much sleep did you get? When did you last eat? What's the mood in the room — at home or at work? What happened in the last two hours? Write it down quickly, just facts.",
+     "Now think of something you're currently stuck on. Look at your conditions list. How many of those things are actively shaping how you're thinking about it right now?",
+     "Ask: if the conditions were different — better sleep, different space, different time of day — would this problem look the same? What part of this is really you deciding, and what part is the conditions you happen to be inside?",
+   ],
+   "how much of what feels like a personal conclusion is actually a snapshot of a moment.",
+   "Set 06 — Never a Solo Act"),
+
+  ("set-06-s2",
+   "card-s2", "badge-s2", "sn-s2", "notice-s2", "out-s2",
+   "S · Surrender", "wrong questions",
+   "An encounter with the possibility that you're asking the wrong thing.",
+   "10 minutes",
+   [
+     "Write down a question you've been carrying — something you're trying to work out or understand, in work or life.",
+     "Look at your question. Who are you picturing when you imagine solving it? Is that person — or that angle — actually the right place to start? Write two versions of the question that put someone or something else at the center.",
+     "Sit with the rewritten questions. Don't answer them. Notice whether they open the situation differently.",
+   ],
+   "how the shape of a question determines what kinds of answers are even possible.",
+   "Set 06 — Never a Solo Act"),
+
+  ("set-06-y",
+   "card-y", "badge-y", "sn-y", "notice-y", "out-y",
+   "Y · Yield", "process that resists analysis",
+   "An encounter with making that doesn't produce anything.",
+   "15 minutes",
+   [
+     "Make something with whatever is immediately available — arrange objects, make marks, move things around. Start before you decide what you're making.",
+     "At some point you will feel the urge to make it make sense — to yourself or to someone you're imagining showing it to. When you feel that urge, do something that makes the thing harder to explain, not easier.",
+     "When time is up, don't document it. Let it be a process that existed and is now complete.",
+   ],
+   "the difference between making something and making something for something.",
+   "Set 06 — Never a Solo Act"),
+
   # ── Set 07 ──
   ("set-07-m",
    "card-m", "badge-m", "sn-m", "notice-m", "out-m",
@@ -759,6 +889,71 @@ CARDS = [
    ],
    "the situation didn't change. What changed is the space you're working in.",
    "Set 11 — Outside the Frame"),
+
+  ("set-12-m",
+   "card-m", "badge-m", "sn-m", "notice-m", "out-m",
+   "M · Monitor", "the score you keep",
+   "An encounter with a number that started running the show.",
+   "10 minutes",
+   [
+     "Name a number you check often, at home or at work. Steps walked, hours billed, likes, weight, money saved, emails cleared. Write it down.",
+     "Underneath that number, what were you actually after? Write the real thing in plain words: feeling healthy, doing good work, staying close to people.",
+     "Be honest about the last week. Did you serve the number, or the thing underneath it? Note one moment where the two pulled apart.",
+   ],
+   "how easy it is to keep score and forget what the score was ever for.",
+   "Set 12 — What Counts"),
+
+  ("set-12-e",
+   "card-e", "badge-e", "sn-e", "notice-e", "out-e",
+   "E · Execute", "the easy win",
+   "An encounter with the shortcut that hits the number but misses the point.",
+   "10 minutes",
+   [
+     "Pick a number you're expected to hit, at home or at work: a count, a quota, a target, a streak.",
+     "Notice a shortcut you've slipped into that moves the number without doing the real thing. Padding a report, busywork that looks productive, hitting the step count by pacing the kitchen.",
+     "Do the honest version once instead, even if it scores worse. Aim at the goal the number was standing in for.",
+   ],
+   "how often the easy way to win the number is the long way from the goal.",
+   "Set 12 — What Counts"),
+
+  ("set-12-s1",
+   "card-s1", "badge-s1", "sn-s1", "notice-s1", "out-s1",
+   "S · Support", "someone else's scoreboard",
+   "An encounter with the target shaping someone else's choices.",
+   "15 minutes",
+   [
+     "Think of someone whose behavior toward you is shaped by a number: a coworker chasing a target, a kid chasing a grade, anyone working to a quota.",
+     "Ask yourself, or ask them directly: what does hitting that number make them do? What does it make them skip?",
+     "Notice where the number and the real goal point in different directions, and whether you've been judging them by the number too.",
+   ],
+   "how a target meant to help can quietly push the real goal aside.",
+   "Set 12 — What Counts"),
+
+  ("set-12-s2",
+   "card-s2", "badge-s2", "sn-s2", "notice-s2", "out-s2",
+   "S · Surrender", "drop the target",
+   "An encounter with a goal you're ready to stop chasing.",
+   "10 minutes",
+   [
+     "Name a number you set as a goal for yourself: a target weight, a savings figure, a follower count, a deadline you keep moving.",
+     "Ask whether chasing it still helps, or whether it's become its own thing, separate from why you set it.",
+     "If it's stopped helping, let it go for now. Keep the direction it pointed you in, but drop the number. Write down the direction with no number attached.",
+   ],
+   "what loosens when the target is no longer the point.",
+   "Set 12 — What Counts"),
+
+  ("set-12-y",
+   "card-y", "badge-y", "sn-y", "notice-y", "out-y",
+   "Y · Yield", "what you can't count",
+   "An encounter with what matters but won't be measured.",
+   "10 minutes",
+   [
+     "Think about a part of your life that matters a lot: a relationship, your health, a piece of work, your home.",
+     "Write down what's good about it right now using no numbers at all. Just describe it, the way you'd tell a friend.",
+     "Sit with the fact that none of that showed up as a number, and it still counts. Maybe it counts most.",
+   ],
+   "how much of what matters never makes it onto a scoreboard.",
+   "Set 12 — What Counts"),
 ]
 
 
