@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate 65 Micro Messes card PDFs using WeasyPrint (Sets 00-12)."""
+"""Generate 25 Micro Messes card PDFs using WeasyPrint."""
 
 import os
 from weasyprint import HTML, CSS
@@ -430,136 +430,6 @@ CARDS = [
    "whether the energy you free up actually goes where you intended.",
    "Set 04 — Good Enough"),
 
-  ("set-05-m",
-   "card-m", "badge-m", "sn-m", "notice-m", "out-m",
-   "M · Monitor", "what's actually in the way",
-   "An encounter with the difference between real obstacles and invented ones.",
-   "10 minutes",
-   [
-     "Write down what you're stuck on. Then list every reason you can't move forward yet.",
-     "Go through the list. For each reason, ask: is this real, or is it a condition I made up? Mark each one honestly.",
-     "Pick the one real constraint. Set the rest aside for now.",
-   ],
-   "which reasons feel the most solid — and why.",
-   "Set 05 — Something Finite"),
-
-  ("set-05-e",
-   "card-e", "badge-e", "sn-e", "notice-e", "out-e",
-   "E · Execute", "work the small space",
-   "An encounter with what becomes possible when you limit your options on purpose.",
-   "10 minutes",
-   [
-     "Choose something you're working on. Give yourself one rule: use only what you already have. No new research, no new tools, no waiting for better conditions.",
-     "Set a timer for 10 minutes. Work only inside that rule.",
-     "When the timer stops, write down one thing that happened that wouldn't have happened without the limit.",
-   ],
-   "whether the limit felt like a wall or like a frame.",
-   "Set 05 — Something Finite"),
-
-  ("set-05-s1",
-   "card-s1", "badge-s1", "sn-s1", "notice-s1", "out-s1",
-   "S · Support", "borrow the frame",
-   "An encounter with structure that already exists and how it might hold your work.",
-   "15 minutes",
-   [
-     "Think of a format or routine from a completely different part of your life — a recipe, a sports drill, a meeting format, a daily habit. Write it out as simple steps.",
-     "Take something you're currently working on. Try fitting it into that borrowed structure, step by step.",
-     "Write down what fits, what doesn't, and what surprised you.",
-   ],
-   "what the borrowed structure makes easier.",
-   "Set 05 — Something Finite"),
-
-  ("set-05-s2",
-   "card-s2", "badge-s2", "sn-s2", "notice-s2", "out-s2",
-   "S · Surrender", "let the limit lead",
-   "An encounter with the idea that more freedom doesn't always mean better results.",
-   "10 minutes",
-   [
-     "Think of something you've been putting off because conditions aren't right yet — not enough time, resources, or information. Write it down.",
-     "Assume those conditions will never improve. Write one sentence about what you could do right now, with exactly what you have.",
-     "Read that sentence back. Notice how it feels different from waiting.",
-   ],
-   "what you would start if you stopped waiting for better conditions.",
-   "Set 05 — Something Finite"),
-
-  ("set-05-y",
-   "card-y", "badge-y", "sn-y", "notice-y", "out-y",
-   "Y · Yield", "the shape it wants",
-   "An encounter with what your work is already telling you about how it wants to go.",
-   "10 minutes",
-   [
-     "Pick something you're working on. Write down the constraints that are fixed and can't change.",
-     "Instead of working against those fixed points, treat them as the shape of the work. Write down what they make possible rather than what they block.",
-     "Notice if the work looks different from this angle.",
-   ],
-   "what the constraint has been protecting all along.",
-   "Set 05 — Something Finite"),
-
-  ("set-06-m",
-   "card-m", "badge-m", "sn-m", "notice-m", "out-m",
-   "M · Monitor", "you are also being watched",
-   "An encounter with the limits of your own point of view.",
-   "15 minutes",
-   [
-     "Choose a space you know well. Spend five minutes moving through it normally, noticing what you notice.",
-     "Now ask: what in this space has been noticing you — or adapting to you, or waiting for you to leave? Look for evidence: worn patches, marks, things that have shifted, behaviors that change when you're around or away.",
-     "Write one sentence from the point of view of something that shares this space with you.",
-   ],
-   "the difference between observing a situation and being observed within one.",
-   "Set 06 — Never a Solo Act"),
-
-  ("set-06-e",
-   "card-e", "badge-e", "sn-e", "notice-e", "out-e",
-   "E · Execute", "become a participant",
-   "An encounter with a situation you can't stay outside of.",
-   "15 minutes",
-   [
-     "Go somewhere something is already happening without you — a conversation in progress, people working together, a room filling up, something being made or cooked or built. Don't bring a task. Don't decide in advance what role you'll play.",
-     "At some point, let yourself be pulled in. Follow whatever catches your attention, even if it seems beside the point. Don't redirect toward something more useful.",
-     "After you leave, notice what from this encounter keeps surfacing in your thinking. Don't chase it — just notice when it returns.",
-   ],
-   "what keeps coming back after the encounter is officially over.",
-   "Set 06 — Never a Solo Act"),
-
-  ("set-06-s1",
-   "card-s1", "badge-s1", "sn-s1", "notice-s1", "out-s1",
-   "S · Support", "you are already an ecosystem",
-   "An encounter with everything that's shaping your thinking right now.",
-   "10 minutes",
-   [
-     "Before you do anything else, take stock of your current conditions: How much sleep did you get? When did you last eat? What's the mood in the room — at home or at work? What happened in the last two hours? Write it down quickly, just facts.",
-     "Now think of something you're currently stuck on. Look at your conditions list. How many of those things are actively shaping how you're thinking about it right now?",
-     "Ask: if the conditions were different — better sleep, different space, different time of day — would this problem look the same? What part of this is really you deciding, and what part is the conditions you happen to be inside?",
-   ],
-   "how much of what feels like a personal conclusion is actually a snapshot of a moment.",
-   "Set 06 — Never a Solo Act"),
-
-  ("set-06-s2",
-   "card-s2", "badge-s2", "sn-s2", "notice-s2", "out-s2",
-   "S · Surrender", "wrong questions",
-   "An encounter with the possibility that you're asking the wrong thing.",
-   "10 minutes",
-   [
-     "Write down a question you've been carrying — something you're trying to work out or understand, in work or life.",
-     "Look at your question. Who are you picturing when you imagine solving it? Is that person — or that angle — actually the right place to start? Write two versions of the question that put someone or something else at the center.",
-     "Sit with the rewritten questions. Don't answer them. Notice whether they open the situation differently.",
-   ],
-   "how the shape of a question determines what kinds of answers are even possible.",
-   "Set 06 — Never a Solo Act"),
-
-  ("set-06-y",
-   "card-y", "badge-y", "sn-y", "notice-y", "out-y",
-   "Y · Yield", "process that resists analysis",
-   "An encounter with making that doesn't produce anything.",
-   "15 minutes",
-   [
-     "Make something with whatever is immediately available — arrange objects, make marks, move things around. Start before you decide what you're making.",
-     "At some point you will feel the urge to make it make sense — to yourself or to someone you're imagining showing it to. When you feel that urge, do something that makes the thing harder to explain, not easier.",
-     "When time is up, don't document it. Let it be a process that existed and is now complete.",
-   ],
-   "the difference between making something and making something for something.",
-   "Set 06 — Never a Solo Act"),
-
   # ── Set 07 ──
   ("set-07-m",
    "card-m", "badge-m", "sn-m", "notice-m", "out-m",
@@ -824,15 +694,14 @@ CARDS = [
    "whether the confusion and the clarity were part of the same process, not opposites.",
    "Set 10 — The Messy Middle"),
 
-  # ── Set 11 ──
   ("set-11-m",
    "card-m", "badge-m", "sn-m", "notice-m", "out-m",
    "M · Monitor", "the shape of the problem",
    "An encounter with the question you haven't asked yet.",
    "10 minutes",
    [
-     "Think of something that's been bothering you — at home, at work, or both. Write it down in one sentence, the way you'd normally describe it.",
-     "Read it back and ask: what does this leave out? Where does the problem \"start\" in your version — and is that actually where it starts?",
+     "Think of something that's been bothering you, at home, at work, or both. Write it down in one sentence, the way you'd normally describe it.",
+     "Read it back and ask: what does this leave out? Where does the problem \"start\" in your version. Is that actually where it starts?",
      "Write a second sentence describing the same situation, but from a different starting point. Make it as different from your first version as you can.",
    ],
    "how the second version changes what feels solvable.",
@@ -857,11 +726,11 @@ CARDS = [
    "An encounter with a different view of where the problem lives.",
    "15 minutes",
    [
-     "Think of a situation where you and someone else are stuck — at home, at work, anywhere. You both care about it, but you're not getting anywhere together.",
+     "Think of a situation where you and someone else are stuck, at home, at work, anywhere. You both care about it, but you're not getting anywhere together.",
      "Ask them one question: \"Where does this start for you?\" In person, by message, however works. Listen without explaining your own view.",
      "Notice whether they're describing the same problem or a different one. You don't need to agree. Just take in what they're seeing.",
    ],
-   "when two people draw a problem differently, they're often not disagreeing about facts — they're starting from different places.",
+   "when two people draw a problem differently, they're often not disagreeing about facts. They're starting from different places.",
    "Set 11 — Outside the Frame"),
 
   ("set-11-s2",
@@ -870,8 +739,8 @@ CARDS = [
    "An encounter with sitting in the gap.",
    "10 minutes",
    [
-     "Think of a situation where you and someone else each seem to be describing a different problem — even though you're talking about the same thing. Write down both versions: how you see it, and how they seem to see it.",
-     "Sit with the fact that both might be true — or that neither fully captures what's actually happening. Don't try to merge them or decide who's right.",
+     "Think of a situation where you and someone else each seem to be describing a different problem, even though you're talking about the same thing. Write down both versions: how you see it, and how they seem to see it.",
+     "Sit with the fact that both might be true, or that neither fully captures what's actually happening. Don't try to merge them or decide who's right.",
      "Notice what it feels like to hold two definitions of the same situation at once, without resolving them.",
    ],
    "the discomfort here is useful. It means you're taking both versions seriously.",
@@ -883,7 +752,7 @@ CARDS = [
    "An encounter with a wider picture.",
    "10 minutes",
    [
-     "Return to the situation you started with — the way you first described it. Write it down again, in your own words.",
+     "Return to the situation you started with, the way you first described it. Write it down again, in your own words.",
      "Write what you've noticed since you began this set. Has the shape of the problem shifted? What's come into view that wasn't there before?",
      "Write one thing you might do differently now that you're working with a wider version of the situation. Keep it small and specific.",
    ],
@@ -954,6 +823,71 @@ CARDS = [
    ],
    "how much of what matters never makes it onto a scoreboard.",
    "Set 12 — What Counts"),
+
+  ("set-13-m",
+   "card-m", "badge-m", "sn-m", "notice-m", "out-m",
+   "M · Monitor", "the running check",
+   "An encounter with the moment you stepped out of something good.",
+   "10 minutes",
+   [
+     "Think of a recent experience that should have felt good — a meal, a conversation, a moment off, a small win. Something where the conditions were right. Write it down in a sentence.",
+     "Try to remember what was actually going through your mind during it. Not what you felt — what you were thinking. Were you rating it? Comparing it to something? Wondering if you were enjoying it enough?",
+     "Write down the thought that was running in the background. You don't have to judge it. Just name it.",
+   ],
+   "whether the background thought showed up before the moment ended or while it was still happening.",
+   "Set 13 — Optimizing Happiness"),
+
+  ("set-13-e",
+   "card-e", "badge-e", "sn-e", "notice-e", "out-e",
+   "E · Execute", "just this",
+   "An encounter with doing one thing without rating it.",
+   "10 minutes",
+   [
+     "Choose something small you enjoy — or used to enjoy — that you can do right now. It doesn't have to be special. Take a short walk, listen to one song, or make something simple to eat.",
+     "While you're doing it, notice the moment you start evaluating — whether it's good enough, whether you're enjoying it enough, whether it's living up to what you wanted. When that thought arrives, don't follow it. Return to the physical experience: what you can see, hear, or feel right now.",
+     "When the time is up, write one sentence about what the experience was actually like — not whether it was good.",
+   ],
+   "how many times the evaluating thought arrived, and how quickly it came.",
+   "Set 13 — Optimizing Happiness"),
+
+  ("set-13-s1",
+   "card-s1", "badge-s1", "sn-s1", "notice-s1", "out-s1",
+   "S · Support", "their version of fine",
+   "An encounter with someone else's good enough.",
+   "15 minutes",
+   [
+     "Think of someone in your life who seems easier on themselves about happiness than you are — someone who can enjoy something without seeming to grade it. It could be anyone: a friend, a family member, a colleague.",
+     "Write down one or two things you've noticed about how they move through good moments. Not what they do to pursue happiness — how they seem to be when it's already there.",
+     "Write down one thing that approach makes possible for them that your approach makes harder for you.",
+   ],
+   "what the gap between their approach and yours reveals about the standard you've been holding yourself to.",
+   "Set 13 — Optimizing Happiness"),
+
+  ("set-13-s2",
+   "card-s2", "badge-s2", "sn-s2", "notice-s2", "out-s2",
+   "S · Surrender", "good enough to leave alone",
+   "An encounter with a moment that doesn't need a verdict.",
+   "10 minutes",
+   [
+     "Think of something coming up in the next day or two that you'd like to enjoy — something low-stakes and genuinely pleasant. Write it down.",
+     "Write down the standard you're already bringing to it. What would make it a good experience? What would make it fall short? Be honest — most of us have a picture in mind before we arrive.",
+     "Now write down what it would mean to show up without that standard. Not with low expectations — with no measurement at all. What would you actually be paying attention to instead?",
+   ],
+   "whether releasing the standard feels like relief or like losing something.",
+   "Set 13 — Optimizing Happiness"),
+
+  ("set-13-y",
+   "card-y", "badge-y", "sn-y", "notice-y", "out-y",
+   "Y · Yield", "what was actually there",
+   "An encounter with an experience you may have partially missed.",
+   "15 minutes",
+   [
+     "Think of a time when something good was happening but part of you was watching and grading instead of being there. Write down what the situation was.",
+     "Set the evaluation aside for a moment. Write down what was actually present in that experience — the specific details of it, the parts that were genuinely good, the things you would have noticed more if you hadn't been assessing.",
+     "Write one sentence about what was there that you didn't quite let yourself have.",
+   ],
+   "whether this feels like loss or like something that's still available to you.",
+   "Set 13 — Optimizing Happiness"),
 ]
 
 
