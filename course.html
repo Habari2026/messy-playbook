@@ -2039,6 +2039,29 @@ html {
 }
 .skip-nav:focus { top: 0; outline: 3px solid #667eea; }
 
+
+/* ── Back to site link (landing screen only) ─────────────────── */
+.landing-back-link {
+  position: absolute;
+  top: 1.25rem; left: 1.5rem;
+  font-size: 0.78rem; font-weight: 600;
+  color: #56707f;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 5px;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+  z-index: 2;
+}
+.landing-back-link:hover { color: #1e2a35; }
+.landing-back-link:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+@media (max-width: 480px) {
+  .landing-back-link { font-size: 0.72rem; top: 1rem; left: 1rem; }
+}
+
 </style>
 </head>
 <body>
@@ -2049,6 +2072,11 @@ html {
 <div class="screen active" id="screen-landing">
   <div class="landing-hero-bg" aria-hidden="true"></div>
   <div class="landing-inner">
+
+    <a href="index.html" class="landing-back-link" aria-label="Back to The MESSY Playbook site">
+      &larr; The MESSY Playbook
+    </a>
+
 
     <div class="landing-tag">
       <span class="landing-tag-dot" aria-hidden="true"></span>
