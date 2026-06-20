@@ -1,0 +1,3478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The MESSY Playbook™ — Self-Paced Course</title>
+  <meta name="theme-color" content="#1e2a35" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   THE MESSY PLAYBOOK™ — SELF-PACED COURSE v2
+   Brand-aligned per Brand Reference Sheet v1.0
+
+   ELEMENT COLORS (exact from brand sheet):
+   Monitor:      #9b59b6  (purple)
+   Execute:      #e67e22  (orange)
+   Support:      #3498db  (blue)
+   Surrender:    #f1c40f  (yellow — dark text only)
+   Yield:        #27ae60  (green)
+   Living MESSY: #2c3e50  (dark navy)
+
+   PRIMARY BRAND GRADIENT: #667eea → #764ba2 @ 135°
+   PRIMARY TEXT: #2c3e50
+   BODY TEXT:    #34495e
+   MUTED TEXT:   #7f8c8d
+
+   Typography: Playfair Display (display/headings) +
+               DM Sans (body) — web-appropriate per site
+============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Element colors — brand exact */
+  --c-monitor:    #9b59b6;
+  --c-execute:    #e67e22;
+  --c-support:    #3498db;
+  --c-surrender:  #f1c40f;
+  --c-yield:      #27ae60;
+  --c-living:     #2c3e50;
+
+  /* Element gradients — brand exact, 135° */
+  --g-monitor:   linear-gradient(135deg, #9b59b6, #8e44ad);
+  --g-execute:   linear-gradient(135deg, #e67e22, #d35400);
+  --g-support:   linear-gradient(135deg, #3498db, #2980b9);
+  --g-surrender: linear-gradient(135deg, #f1c40f, #f39c12);
+  --g-yield:     linear-gradient(135deg, #27ae60, #229954);
+  --g-living:    linear-gradient(135deg, #2c3e50, #34495e);
+
+  /* Brand gradients */
+  --g-brand:     linear-gradient(135deg, #667eea, #764ba2);
+  --g-blue:      linear-gradient(135deg, #74b9ff, #0984e3);
+
+  /* Background tints — brand exact */
+  --tint-surface:   #f8f9fa;
+  --tint-monitor:   #f5eef8;
+  --tint-execute:   #fef0e6;
+  --tint-support:   #e8f4fd;
+  --tint-surrender: #fff3cd;
+  --tint-yield:     #e8f5e8;
+  --tint-living:    #eaecee;
+
+  /* Text — brand exact */
+  --text-primary:   #2c3e50;
+  --text-body:      #34495e;
+  --text-muted:     #7f8c8d;
+  --text-surrender: #856404;
+  --divider:        #ecf0f1;
+
+  /* Off-white / landing */
+  --off-white: #f7f4ef;
+  --warm-white: #faf8f4;
+  --navy: #1a1f3a;
+  --navy-mid: #252b4a;
+
+  /* Neutral UI */
+  --border: rgba(44,62,80,0.1);
+  --border-mid: rgba(44,62,80,0.18);
+  --radius-sm: 5px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --shadow-sm: 0 1px 4px rgba(44,62,80,0.08);
+  --shadow-md: 0 4px 16px rgba(44,62,80,0.10);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', Arial, sans-serif;
+  --transition: 0.2s ease;
+}
+
+/* Per-module accent — set dynamically via .mod-N class on #screen-course */
+.mod-0  { --accent: #667eea; --accent-tint: #eef0fd; --accent-text: #fff; --g-accent: var(--g-brand); }
+.mod-1  { --accent: var(--c-monitor);   --accent-tint: var(--tint-monitor);   --accent-text: #fff; --g-accent: var(--g-monitor); }
+.mod-2  { --accent: var(--c-execute);   --accent-tint: var(--tint-execute);   --accent-text: #fff; --g-accent: var(--g-execute); }
+.mod-3  { --accent: var(--c-support);   --accent-tint: var(--tint-support);   --accent-text: #fff; --g-accent: var(--g-support); }
+.mod-4  { --accent: var(--c-surrender); --accent-tint: var(--tint-surrender); --accent-text: var(--text-surrender); --g-accent: var(--g-surrender); }
+.mod-5  { --accent: var(--c-yield);     --accent-tint: var(--tint-yield);     --accent-text: #fff; --g-accent: var(--g-yield); }
+.mod-6  { --accent: var(--c-living);    --accent-tint: var(--tint-living);    --accent-text: #fff; --g-accent: var(--g-living); }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: #faf8f3;
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================ SCREENS */
+.screen { display: none; min-height: 100vh; }
+.screen.active { display: block; }
+
+/* ============================================================
+   LANDING — mirrors homepage aesthetic exactly
+   cream bg, gradient headline, pill loop, hero-bg radial
+============================================================ */
+
+/* Homepage variable aliases for landing */
+#screen-landing {
+  background: #faf8f3;
+  color: #1e2a35;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Radial gradient bg — exact from homepage hero-bg */
+.landing-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(135deg, rgba(102,126,234,0.08), rgba(118,75,162,0.10) 50%, transparent),
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(155,89,182,0.07), transparent 70%),
+    radial-gradient(ellipse 50% 60% at 10% 80%, rgba(39,174,96,0.05), transparent 70%);
+  pointer-events: none;
+}
+
+.landing-inner {
+  position: relative; z-index: 1;
+  max-width: 820px; margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+}
+
+/* Live Messy Project tag — homepage hero-tag style */
+.landing-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid #ddd8cc;
+  border-radius: 2rem;
+  background: white;
+}
+.landing-tag-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #e67e22;
+  animation: lpulse 2s ease-in-out infinite;
+}
+@keyframes lpulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:0.6; transform:scale(0.85); }
+}
+.landing-tag-text {
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #56707f;
+}
+
+/* Gradient headline — exact from homepage hero-title */
+.landing-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.4rem;
+  animation: lfadeUp 0.8s ease both;
+}
+.landing-title-grad {
+  display: inline;
+  background: linear-gradient(135deg, #667eea, #764ba2 60%, #9b59b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+@supports not (-webkit-background-clip: text) {
+  .landing-title-grad { color: #764ba2; background: none; }
+}
+.landing-subtitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-weight: 400; font-style: italic;
+  color: #3d5060;
+  margin-bottom: 2.5rem;
+  animation: lfadeUp 0.8s 0.15s ease both;
+}
+
+@keyframes lfadeUp {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* Pill loop — exact from homepage hero-loop */
+.landing-loop {
+  display: inline-flex; align-items: center;
+  gap: 0.5rem; margin-bottom: 3rem;
+  flex-wrap: wrap; justify-content: center;
+  animation: lfadeUp 0.8s 0.3s ease both;
+}
+.loop-pill {
+  padding: 0.45rem 0.9rem;
+  border-radius: 2rem;
+  font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.06em; color: white;
+  transition: transform 0.2s;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+.loop-pill:hover { transform: translateY(-2px); }
+.loop-pill.lm  { background: #9b59b6; }
+.loop-pill.le  { background: #e67e22; }
+.loop-pill.ls1 { background: #3498db; }
+.loop-pill.ls2 { background: #f1c40f; color: #3d5060; }
+.loop-pill.ly  { background: #27ae60; }
+.loop-arrow-t  { color: #56707f; font-size: 0.9rem; }
+
+/* Resume banner — on cream bg */
+.resume-banner {
+  display: none;
+  align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+  background: white;
+  border: 1px solid #ddd8cc;
+  border-left: 3px solid #667eea;
+  border-radius: 0 10px 10px 0;
+  padding: 12px 18px;
+  margin: 0 auto 2rem;
+  max-width: 600px;
+  text-align: left;
+}
+.resume-banner.show { display: flex; }
+.resume-text { font-size: 13px; color: #3d5060; }
+.btn-resume {
+  padding: 7px 18px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white; font-size: 13px; font-weight: 600;
+  border: none; border-radius: 2rem;
+  cursor: pointer; white-space: nowrap;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  transition: opacity 0.2s;
+}
+.btn-resume:hover { opacity: 0.88; }
+
+/* Description */
+.landing-description {
+  font-size: 1rem; color: #3d5060;
+  line-height: 1.8; margin-bottom: 2.5rem;
+  max-width: 580px; margin-left: auto; margin-right: auto;
+  animation: lfadeUp 0.8s 0.45s ease both;
+}
+
+/* What this course asks — white card, rule border, left accent */
+.landing-outcomes {
+  background: white;
+  border: 1px solid #ddd8cc;
+  border-left: 4px solid #667eea;
+  border-radius: 0 14px 14px 0;
+  padding: 1.6rem 2rem;
+  margin: 0 auto 2.5rem;
+  max-width: 600px;
+  text-align: left;
+}
+.outcomes-eyebrow {
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: #56707f; margin-bottom: 1rem;
+}
+.outcomes-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.outcomes-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.9rem; color: #3d5060; line-height: 1.6;
+}
+.outcomes-list li::before {
+  content: '→'; color: #667eea;
+  font-size: 0.8rem; flex-shrink: 0; margin-top: 3px;
+}
+
+/* Module map — pill style matching homepage loop pills */
+.landing-map {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 8px;
+  margin-bottom: 2.5rem;
+}
+.map-mod {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 4px;
+  padding: 10px 14px;
+  background: white;
+  border: 1px solid #ddd8cc;
+  border-radius: 12px;
+  min-width: 80px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.map-mod:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,0.07); }
+.map-letter {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem; font-weight: 900; display: block;
+}
+.map-mod-0 .map-letter  { color: #667eea; }
+.map-mod-1 .map-letter  { color: #9b59b6; }
+.map-mod-2 .map-letter  { color: #e67e22; }
+.map-mod-3 .map-letter  { color: #3498db; }
+.map-mod-4 .map-letter  { color: #856404; }
+.map-mod-5 .map-letter  { color: #27ae60; }
+.map-mod-6 .map-letter  { color: #2c3e50; }
+.map-name {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #56707f; display: block;
+}
+
+/* CTA button — homepage btn-primary style */
+.landing-cta-row {
+  display: flex; align-items: center;
+  gap: 1rem; justify-content: center;
+  flex-wrap: wrap; margin-bottom: 3rem;
+  animation: lfadeUp 0.8s 0.6s ease both;
+}
+.btn-start {
+  padding: 0.9rem 2.2rem;
+  background: #1e2a35;
+  color: #faf8f3;
+  border: none; border-radius: 2rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.9rem; font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-start:hover {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102,126,234,0.35);
+}
+.landing-meta {
+  font-size: 0.82rem; color: #56707f; font-weight: 500;
+}
+
+/* Arc on landing — contained */
+.arc-landing {
+  width: 100%; max-width: 720px;
+  margin: 0 auto 2.5rem;
+  overflow: hidden;
+}
+
+/* Footer note */
+.landing-footer {
+  border-top: 1px solid #ddd8cc;
+  padding-top: 1.5rem; margin-top: 1rem;
+  font-size: 0.72rem; color: #56707f;
+  line-height: 1.7; max-width: 620px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* ============================================================ COURSE SHELL */
+#screen-course {
+  display: none;
+  grid-template-columns: 268px 1fr;
+  grid-template-rows: 54px 1fr;
+  min-height: 100vh;
+}
+#screen-course.active {
+  display: grid;
+}
+
+/* Top bar */
+.course-topbar {
+  grid-column: 1 / -1;
+  background: var(--navy);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+.topbar-brand {
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 500;
+  color: #f0ece4;
+}
+/* Italic subtitle: white, not amber — amber at 14px fails WCAG AA on navy */
+.topbar-brand em { font-style: italic; color: #f0ece4; }
+.topbar-right { display: flex; align-items: center; gap: 14px; }
+/* Progress text: raised from 0.4 opacity to fully legible #b8cad6 */
+.topbar-prog { font-size: 12px; color: #b8cad6; }
+.btn-home {
+  font-size: 12px; color: #e0ddd8;
+  background: none; border: 1px solid rgba(255,255,255,0.28);
+  border-radius: var(--radius-sm); padding: 5px 12px;
+  cursor: pointer; font-family: var(--font-body);
+  transition: all var(--transition);
+}
+.btn-home:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.5);
+}
+
+/* Sidebar */
+.course-sidebar {
+  background: var(--warm-white);
+  border-right: 1px solid var(--divider);
+  overflow-y: auto; padding: 1rem 0;
+}
+.sidebar-prog-wrap {
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid var(--divider);
+  margin-bottom: 6px;
+}
+.sidebar-prog-labels {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.sidebar-prog-bar {
+  height: 4px; background: var(--divider);
+  border-radius: 2px; overflow: hidden;
+}
+.sidebar-prog-fill {
+  height: 100%; border-radius: 2px;
+  background: var(--g-brand);
+  transition: width 0.4s ease;
+}
+
+.sidebar-section-label {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.11em; text-transform: uppercase;
+  color: var(--text-muted); padding: 0 1.1rem;
+  margin: 14px 0 6px;
+}
+.sidebar-section-label:first-of-type { margin-top: 4px; }
+
+.sidebar-item {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 1.1rem; cursor: pointer;
+  border: none; background: none; width: 100%;
+  text-align: left; font-family: var(--font-body);
+  transition: background var(--transition);
+  border-left: 3px solid transparent;
+}
+.sidebar-item:hover { background: rgba(44,62,80,0.04); }
+.sidebar-item.active { border-left-color: var(--accent, #667eea); background: rgba(44,62,80,0.04); }
+.sidebar-item.completed .sdot { color: #fff; }
+
+.sdot {
+  width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+  font-family: var(--font-display);
+  flex-shrink: 0;
+  border: 1.5px solid var(--border-mid);
+  color: var(--text-muted);
+  background: #faf8f3;
+  transition: all var(--transition);
+}
+/* Active dot uses accent */
+.sidebar-item.active .sdot {
+  background: var(--accent, #667eea);
+  border-color: var(--accent, #667eea);
+  color: #fff;
+}
+/* Completed dots — element specific */
+.sdot-0.done  { background: #667eea; border-color: #667eea; color: #fff; }
+.sdot-1.done  { background: var(--c-monitor);   border-color: var(--c-monitor);   color: #fff; }
+.sdot-2.done  { background: var(--c-execute);   border-color: var(--c-execute);   color: #fff; }
+.sdot-3.done  { background: var(--c-support);   border-color: var(--c-support);   color: #fff; }
+.sdot-4.done  { background: var(--c-surrender); border-color: var(--c-surrender); color: var(--text-surrender); }
+.sdot-5.done  { background: var(--c-yield);     border-color: var(--c-yield);     color: #fff; }
+.sdot-6.done  { background: var(--c-living);    border-color: var(--c-living);    color: #fff; }
+
+.sidebar-item-name {
+  font-size: 13px; color: var(--text-body);
+  display: block; line-height: 1.3;
+}
+.sidebar-item.active .sidebar-item-name { font-weight: 500; color: var(--text-primary); }
+.sidebar-item-sub { font-size: 11px; color: var(--text-muted); display: block; margin-top: 1px; }
+
+/* ============================================================ LESSON AREA */
+.course-lesson {
+  overflow-y: auto;
+  padding: 2.25rem 2.5rem 5rem;
+}
+.lesson-inner { max-width: 660px; margin: 0 auto; }
+
+/* Module color stripe */
+.module-stripe {
+  height: 4px;
+  border-radius: 2px;
+  margin-bottom: 1.75rem;
+}
+
+/* Step dots */
+.step-dots { display: flex; align-items: center; gap: 5px; margin-bottom: 1.75rem; }
+.sdot-step {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--divider); transition: all var(--transition);
+}
+.sdot-step.active { background: var(--accent, #667eea); transform: scale(1.35); }
+.sdot-step.done { background: var(--accent, #667eea); opacity: 0.4; }
+.step-count { font-size: 11px; color: var(--text-muted); margin-left: 8px; }
+
+/* Lesson header */
+.lesson-eyebrow {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent, #667eea); margin-bottom: 7px;
+}
+.lesson-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 1.95rem);
+  font-weight: 700; line-height: 1.25;
+  color: var(--text-primary); margin-bottom: 1.75rem;
+}
+
+/* ============================================================ CONTENT TYPES */
+
+/* Read */
+.prose { font-size: 15px; line-height: 1.82; color: var(--text-body); margin-bottom: 1.1rem; }
+.prose strong { font-weight: 500; color: var(--text-primary); }
+
+.pull-quote {
+  border-left: 3px solid var(--accent, #667eea);
+  padding: 12px 18px;
+  margin: 1.5rem 0;
+  background: var(--accent-tint, #eef0fd);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.pull-quote p {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1rem; color: var(--text-primary); line-height: 1.65;
+}
+
+/* Flashcards */
+.fc-section { margin-bottom: 1.5rem; }
+.fc-header {
+  display: flex; justify-content: space-between;
+  align-items: center; margin-bottom: 10px;
+}
+.fc-label {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent, #667eea);
+}
+.fc-counter { font-size: 12px; color: var(--text-muted); }
+.fc-viewport { perspective: 900px; margin-bottom: 10px; }
+.flashcard {
+  width: 100%; min-height: 148px;
+  position: relative; transform-style: preserve-3d;
+  transition: transform 0.42s ease; cursor: pointer;
+}
+.flashcard.flipped { transform: rotateY(180deg); }
+.fc-face {
+  position: absolute; inset: 0;
+  border-radius: var(--radius-lg);
+  backface-visibility: hidden;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 22px 26px; text-align: center; min-height: 148px;
+}
+.fc-front {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.fc-back {
+  background: var(--accent, #667eea);
+  border: 1.5px solid var(--accent, #667eea);
+  transform: rotateY(180deg);
+}
+/* Surrender back uses dark text */
+.mod-4 .fc-back { background: var(--c-surrender); }
+.fc-face-label {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.fc-front .fc-face-label { color: var(--text-muted); }
+.fc-back .fc-face-label  { color: rgba(255,255,255,0.55); }
+.mod-4 .fc-back .fc-face-label { color: rgba(44,62,80,0.55); }
+.fc-q { font-size: 15px; font-weight: 500; color: var(--text-primary); line-height: 1.5; }
+.fc-a { font-size: 14px; color: #fff; line-height: 1.65; }
+.mod-4 .fc-a { color: var(--text-primary); }
+.fc-hint { font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 10px; }
+.fc-nav { display: flex; gap: 8px; justify-content: center; }
+
+/* Multiple choice */
+.quiz-section { margin-bottom: 1.5rem; }
+.quiz-tag {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent, #667eea); margin-bottom: 10px; display: block;
+}
+.quiz-q {
+  font-size: 15px; font-weight: 500;
+  color: var(--text-primary); line-height: 1.55; margin-bottom: 13px;
+}
+.quiz-opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+.quiz-opt {
+  display: flex; align-items: flex-start; gap: 11px;
+  padding: 11px 15px;
+  border: 1.5px solid var(--border-mid);
+  border-radius: var(--radius-md);
+  cursor: pointer; background: #fff;
+  font-size: 14px; color: var(--text-body);
+  line-height: 1.5; text-align: left;
+  font-family: var(--font-body);
+  transition: border-color var(--transition), background var(--transition);
+  width: 100%;
+}
+.quiz-opt:hover:not(.locked) {
+  border-color: var(--accent, #667eea);
+  background: var(--accent-tint, #eef0fd);
+}
+.quiz-opt.correct { border-color: var(--c-yield); background: var(--tint-yield); }
+.quiz-opt.incorrect { border-color: #e74c3c; background: #fdedec; }
+.quiz-opt.locked { cursor: default; }
+.opt-ind {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 1.5px solid var(--border-mid);
+  flex-shrink: 0; margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700;
+}
+.quiz-opt.correct .opt-ind { background: var(--c-yield); border-color: var(--c-yield); color: #fff; }
+.quiz-opt.incorrect .opt-ind { background: #e74c3c; border-color: #e74c3c; color: #fff; }
+.quiz-fb {
+  padding: 10px 14px; border-radius: var(--radius-md);
+  font-size: 13px; line-height: 1.6; display: none;
+}
+.quiz-fb.show { display: block; }
+.quiz-fb.right { background: var(--tint-yield); color: #1a6935; border: 1px solid rgba(39,174,96,0.3); }
+.quiz-fb.wrong { background: #fdedec; color: #922b21; border: 1px solid rgba(231,76,60,0.25); }
+
+/* Fill in blank */
+.fitb-section { margin-bottom: 1.5rem; }
+.fitb-tag {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent, #667eea); margin-bottom: 10px; display: block;
+}
+.fitb-sentence {
+  font-size: 15px; color: var(--text-body);
+  line-height: 2.2; margin-bottom: 10px;
+  display: flex; flex-wrap: wrap;
+  align-items: center; gap: 4px;
+}
+.fitb-in {
+  border: none; border-bottom: 2px solid var(--accent, #667eea);
+  background: transparent; font-size: 15px;
+  font-family: var(--font-body); color: var(--text-primary);
+  padding: 0 5px 2px; min-width: 90px;
+  width: 150px; outline: none; text-align: center;
+  transition: border-color var(--transition);
+}
+.fitb-in.correct { border-bottom-color: var(--c-yield); color: #1a6935; }
+.fitb-in.incorrect { border-bottom-color: #e74c3c; color: #922b21; }
+.fitb-fb { font-size: 13px; margin-top: 6px; display: none; }
+.fitb-fb.show { display: block; }
+.fitb-fb.right { color: #1a6935; }
+.fitb-fb.wrong { color: #922b21; }
+
+/* Reflection */
+.refl-section { margin-bottom: 1.5rem; }
+.refl-tag {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #e67e22; margin-bottom: 10px; display: block;
+}
+.refl-prompt {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1rem; color: var(--text-primary);
+  line-height: 1.65; margin-bottom: 12px;
+}
+.refl-ta {
+  width: 100%; min-height: 90px;
+  border: 1.5px solid var(--border-mid);
+  border-radius: var(--radius-md);
+  padding: 11px 13px; font-size: 14px;
+  font-family: var(--font-body); color: var(--text-primary);
+  background: #fff; resize: vertical; outline: none;
+  line-height: 1.65; transition: border-color var(--transition);
+}
+.refl-ta:focus { border-color: var(--accent, #667eea); }
+.refl-note { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+
+/* Reality Check card — uses element gradient */
+.rc-card {
+  border-radius: var(--radius-lg);
+  padding: 20px 22px; margin-bottom: 1.5rem;
+  position: relative; overflow: hidden;
+  background: var(--g-accent, var(--g-brand));
+}
+/* Surrender RC needs dark text */
+.mod-4 .rc-card { background: var(--g-surrender); }
+.rc-card::after {
+  content: '↺'; position: absolute;
+  bottom: -24px; right: 8px;
+  font-size: 110px; color: rgba(255,255,255,0.08);
+  font-family: var(--font-display); pointer-events: none;
+  line-height: 1;
+}
+.mod-4 .rc-card::after { color: rgba(44,62,80,0.08); }
+.rc-eye {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.6); margin-bottom: 10px;
+}
+.mod-4 .rc-eye { color: rgba(44,62,80,0.55); }
+.rc-text {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1.05rem; color: #fff; line-height: 1.6;
+}
+.mod-4 .rc-text { color: var(--text-primary); }
+.rc-carry {
+  font-size: 12px; color: rgba(255,255,255,0.82);
+  margin-top: 10px;
+}
+.mod-4 .rc-carry { color: rgba(44,62,80,0.82); }
+
+/* Workbook exercise */
+.wb-section { margin-bottom: 1.5rem; }
+.wb-tag {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--c-yield); margin-bottom: 10px; display: block;
+}
+.wb-title { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; }
+.wb-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; font-style: italic; }
+.wb-label { font-size: 12px; font-weight: 500; color: var(--text-body); margin-bottom: 5px; display: block; }
+.wb-ta {
+  width: 100%;
+  border: 1.5px solid var(--border-mid);
+  border-radius: var(--radius-md);
+  padding: 10px 12px; font-size: 14px;
+  font-family: var(--font-body); color: var(--text-primary);
+  background: #fff; min-height: 58px;
+  resize: vertical; outline: none; line-height: 1.6;
+  display: block; margin-bottom: 12px;
+  transition: border-color var(--transition);
+}
+.wb-ta:focus { border-color: var(--accent, #667eea); }
+.wb-two {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-bottom: 12px;
+}
+
+/* Interstitial */
+.interstitial {
+  background: var(--tint-surrender);
+  border: 1.5px solid rgba(241,196,15,0.45);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px; margin-bottom: 1.5rem;
+}
+.interstitial-eye {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--text-surrender); margin-bottom: 8px;
+}
+.interstitial-title {
+  font-family: var(--font-display); font-size: 1.1rem;
+  font-weight: 700; color: var(--text-primary); margin-bottom: 12px;
+}
+.interstitial-body { font-size: 14px; color: var(--text-body); margin-bottom: 14px; line-height: 1.7; }
+.resets { display: flex; flex-direction: column; gap: 11px; }
+.reset-trigger { font-size: 13px; font-weight: 500; color: var(--text-primary); display: block; }
+.reset-action  { font-size: 13px; color: var(--text-body); display: block; margin-top: 2px; }
+
+/* Activity card */
+.activity-card {
+  background: #fff;
+  border: 1.5px solid var(--accent, #667eea);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px; margin-bottom: 1.5rem;
+  border-top: 4px solid var(--accent, #667eea);
+}
+.act-tag {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent, #667eea); margin-bottom: 8px;
+}
+.act-title { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; }
+.act-sub { font-size: 12px; color: var(--text-muted); font-style: italic; margin-bottom: 12px; }
+.act-body { font-size: 14px; color: var(--text-body); line-height: 1.75; }
+
+/* ============================================================ BUTTONS */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 11px 24px;
+  background: var(--accent, #667eea);
+  color: var(--accent-text, #fff);
+  font-family: var(--font-body); font-size: 14px;
+  font-weight: 500; border: none;
+  border-radius: var(--radius-md); cursor: pointer;
+  transition: opacity var(--transition);
+}
+.btn-primary:hover { opacity: 0.88; }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 11px 22px; background: transparent;
+  color: var(--text-body); font-family: var(--font-body);
+  font-size: 14px; border: 1.5px solid var(--border-mid);
+  border-radius: var(--radius-md); cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-secondary:hover { background: rgba(44,62,80,0.05); }
+
+.btn-check {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 11px 18px; min-height: 44px; background: transparent;
+  color: var(--accent, #667eea); font-family: var(--font-body);
+  font-size: 13px; font-weight: 500;
+  border: 1.5px solid var(--accent, #667eea);
+  border-radius: var(--radius-sm); cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-check:hover { background: var(--accent-tint, #eef0fd); }
+
+.lesson-nav {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--divider);
+  flex-wrap: wrap; gap: 10px;
+}
+
+/* ============================================================ COMPLETION */
+#screen-complete {
+  background: var(--navy);
+  display: flex; align-items: center;
+  justify-content: center; padding: 3rem 2rem;
+}
+.complete-inner { max-width: 560px; width: 100%; text-align: center; }
+.complete-badge {
+  width: 76px; height: 76px; border-radius: 50%;
+  background: var(--g-brand);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 2rem;
+  font-family: var(--font-display);
+  font-size: 2rem; color: #fff;
+}
+.complete-eye {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #f39c12; margin-bottom: 1rem;
+}
+.complete-title {
+  font-family: var(--font-display); font-size: 2.1rem;
+  font-weight: 700; line-height: 1.2;
+  color: var(--off-white); margin-bottom: 1rem;
+}
+.complete-sub {
+  font-size: 1rem; color: rgba(247,244,239,0.6);
+  line-height: 1.8; margin-bottom: 2rem;
+}
+.complete-score {
+  background: rgba(102,126,234,0.14);
+  border: 1px solid rgba(102,126,234,0.28);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem; margin-bottom: 1.75rem;
+}
+.score-num {
+  font-family: var(--font-display); font-size: 2.8rem;
+  font-weight: 700; color: #a29bfe;
+}
+.score-lbl { font-size: 13px; color: #a0b4c0; margin-top: 4px; }
+.complete-quote {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 14px; color: #a0b4c0;
+  margin-bottom: 2rem; line-height: 1.7;
+}
+.complete-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-cp {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 12px 26px; background: var(--g-brand);
+  color: #fff; font-family: var(--font-body);
+  font-size: 14px; font-weight: 500;
+  border: none; border-radius: var(--radius-md);
+  cursor: pointer; text-decoration: none;
+  transition: opacity var(--transition);
+}
+.btn-cp:hover { opacity: 0.88; }
+.btn-cs {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 12px 26px; background: transparent;
+  color: rgba(247,244,239,0.65); font-family: var(--font-body);
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,0.38);
+  border-radius: var(--radius-md); cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-cs:hover { border-color: rgba(255,255,255,0.7); color: var(--off-white); }
+
+
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+.arc-wrap { width: 100%; overflow: hidden; }
+.arc-landing { width: 100%; max-width: 760px; }
+.arc-lesson  { width: 100%; margin: 0 0 1.75rem; }
+
+/* ============================================================
+   MODULE COMPLETE PAUSE SCREEN
+   Sits between modules — a breath before continuing
+============================================================ */
+.mod-complete-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: #faf8f3;
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem;
+  animation: mcFadeIn 0.35s ease both;
+}
+@keyframes mcFadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.mod-complete-inner {
+  max-width: 520px; width: 100%;
+  text-align: center;
+}
+.mod-complete-badge {
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 900;
+  font-family: 'Playfair Display', Georgia, serif;
+  color: white;
+}
+.mod-complete-eyebrow {
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: #56707f; margin-bottom: 0.75rem;
+}
+.mod-complete-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700; line-height: 1.2;
+  color: #1e2a35; margin-bottom: 0.6rem;
+}
+.mod-complete-sub {
+  font-size: 0.95rem; color: #3d5060;
+  line-height: 1.75; margin-bottom: 2rem;
+}
+.mod-complete-rc {
+  background: white;
+  border: 1px solid #ddd8cc;
+  border-left: 4px solid #ccc;
+  border-radius: 0 12px 12px 0;
+  padding: 14px 18px;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+.mod-complete-rc-label {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #56707f; margin-bottom: 6px;
+}
+.mod-complete-rc-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic; font-size: 0.95rem;
+  color: #1e2a35; line-height: 1.6;
+}
+.mod-complete-actions {
+  display: flex; flex-direction: column;
+  gap: 10px; align-items: center;
+}
+.btn-mc-next {
+  width: 100%; max-width: 340px;
+  padding: 0.9rem 2rem;
+  background: #1e2a35; color: #faf8f3;
+  border: none; border-radius: 2rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.9rem; font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-mc-next:hover {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102,126,234,0.3);
+}
+.btn-mc-home {
+  font-size: 0.82rem; font-weight: 500;
+  color: #56707f; background: none; border: none;
+  cursor: pointer; font-family: 'DM Sans', system-ui, sans-serif;
+  transition: color 0.2s;
+  padding: 4px 0;
+}
+.btn-mc-home:hover { color: #1e2a35; }
+.mod-complete-progress {
+  display: flex; align-items: center;
+  justify-content: center; gap: 6px;
+  margin-bottom: 1.75rem; flex-wrap: wrap;
+}
+.mcp-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #ddd8cc; transition: background 0.3s;
+  flex-shrink: 0;
+}
+.mcp-dot.done  { background: #27ae60; }
+.mcp-dot.active { background: #667eea; transform: scale(1.3); }
+
+
+/* ============================================================
+   REDUCED MOTION — respect user preference
+============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   FOCUS VISIBLE — keyboard navigation rings
+   WCAG 2.4.7 / 2.4.11
+============================================================ */
+:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-check:focus-visible,
+.btn-start:focus-visible,
+.btn-resume:focus-visible,
+.btn-home:focus-visible,
+.btn-mc-next:focus-visible,
+.btn-mc-home:focus-visible,
+.btn-cp:focus-visible,
+.btn-cs:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 3px;
+  border-radius: 2rem;
+}
+.sidebar-item:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: -2px;
+  border-radius: 0;
+}
+.flashcard:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 4px;
+  border-radius: 14px;
+}
+.quiz-opt:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   RESPONSIVE + MOBILE-FIRST COURSE SHELL
+   Breakpoint: 700px
+   Mobile approach:
+   - Topbar: brand left, two icon buttons right
+   - Progress: thin bar under topbar
+   - Sidebar: slide-in drawer with backdrop overlay
+   - Lesson: single column, sticky bottom nav
+   - All tap targets: min 48px
+============================================================ */
+
+/* ── Mobile sidebar drawer ── */
+.sidebar-backdrop {
+  display: none;
+  position: fixed; inset: 0; z-index: 149;
+  background: rgba(26,31,58,0.55);
+  animation: backdropIn 0.2s ease;
+}
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.sidebar-backdrop.show { display: block; }
+
+/* ── Mobile topbar icons ── */
+.btn-menu-toggle {
+  display: none;
+  align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: var(--radius-sm);
+  color: #e0ddd8;
+  font-size: 18px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  line-height: 1;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.btn-menu-toggle:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.5);
+  color: #fff;
+}
+
+/* ── Mobile progress strip (shown below topbar on mobile) ── */
+.mobile-progress-strip {
+  display: none;
+  height: 3px;
+  background: var(--divider);
+  position: relative;
+  grid-column: 1 / -1;
+}
+.mobile-progress-strip-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.4s ease;
+}
+
+/* ── Mobile sticky lesson nav ── */
+.lesson-nav-sticky {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  /* Course grid collapses to single column */
+  #screen-course.active {
+    grid-template-columns: 1fr;
+    grid-template-rows: 54px 3px 1fr;
+    position: relative;
+  }
+
+  /* Topbar: brand left, icon buttons right */
+  .course-topbar {
+    padding: 0 1rem;
+    gap: 8px;
+  }
+  .topbar-brand {
+    font-size: 13px;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .topbar-prog { display: none; }
+  .btn-home {
+    width: 44px; height: 44px;
+    padding: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    border-radius: var(--radius-sm);
+  }
+  /* Replace text with home icon on mobile */
+  .btn-home { font-size: 0; }
+  .btn-home::before { content: '⌂'; font-size: 18px; }
+  .btn-menu-toggle { display: flex; }
+
+  /* Mobile progress strip */
+  .mobile-progress-strip { display: block; }
+
+  /* Sidebar becomes a fixed overlay drawer */
+  .course-sidebar {
+    position: fixed;
+    top: 54px; left: 0; bottom: 0;
+    width: min(300px, 85vw);
+    z-index: 150;
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 24px rgba(26,31,58,0.18);
+    grid-row: unset; grid-column: unset;
+    overflow-y: auto;
+    display: block;
+    padding-bottom: 2rem;
+  }
+  .course-sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Lesson area fills full width, padding for readable text */
+  .course-lesson {
+    grid-row: 3;
+    grid-column: 1;
+    padding: 1.5rem 1.1rem 6rem; /* bottom padding for sticky nav */
+    overflow-y: auto;
+  }
+
+  /* Lesson inner max-width for readability */
+  .lesson-inner { max-width: 100%; }
+
+  /* Lesson title smaller on mobile */
+  .lesson-title { font-size: 1.5rem; margin-bottom: 1.25rem; }
+
+  /* Prose text slightly smaller for mobile */
+  .prose { font-size: 14px; }
+
+  /* Workbook two-col to single */
+  .wb-two { grid-template-columns: 1fr; }
+
+  /* Landing map: 4 across then 3 */
+  .landing-map { gap: 6px; }
+  .map-mod { min-width: 60px; padding: 8px 10px; }
+
+  /* Landing padding */
+  .landing-inner { padding: 3.5rem 1.25rem 3rem; }
+  .landing-outcomes { padding: 1.2rem 1.4rem; }
+
+  /* Flashcard min-height smaller on mobile */
+  .flashcard, .fc-face { min-height: 130px; }
+
+  /* Quiz options: more padding for fat fingers */
+  .quiz-opt { padding: 13px 14px; }
+
+  /* Module-complete overlay: full height scroll on tiny screens */
+  .mod-complete-overlay { align-items: flex-start; padding: 1.5rem 1.25rem; overflow-y: auto; }
+  .mod-complete-inner { padding-top: 0.5rem; }
+
+  /* Completion screen padding */
+  #screen-complete { padding: 2rem 1.25rem; }
+
+  /* Sticky bottom nav on lesson area */
+  .lesson-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #faf8f3;
+    border-top: 1px solid #ddd8cc;
+    padding: 10px 1.1rem;
+    margin: 0;
+    z-index: 100;
+    display: flex;
+    gap: 8px;
+    box-shadow: 0 -2px 12px rgba(26,31,58,0.07);
+  }
+  .lesson-nav .btn-secondary,
+  .lesson-nav .btn-primary {
+    flex: 1;
+    justify-content: center;
+    padding: 13px 10px;
+    font-size: 13px;
+    min-height: 48px;
+  }
+
+  /* Sidebar items: bigger touch targets */
+  .sidebar-item { padding: 11px 1.1rem; }
+  .sdot { width: 28px; height: 28px; }
+
+  /* Arc graphic: ensure it doesn't overflow */
+  .arc-lesson, .arc-landing { overflow: hidden; }
+
+  /* Step dots: slightly larger on mobile */
+  .sdot-step { width: 8px; height: 8px; }
+}
+
+/* ── Landing responsive ── */
+@media (max-width: 480px) {
+  .landing-title { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .landing-cta-row { flex-direction: column; align-items: stretch; }
+  .btn-start { text-align: center; justify-content: center; }
+  .landing-meta { text-align: center; }
+  .resume-banner { flex-direction: column; align-items: flex-start; }
+  .btn-resume { align-self: stretch; text-align: center; }
+}
+
+/* ============================================================
+   BEFORE YOU BEGIN SCREEN
+   Sits between landing and Orientation
+   Tone: honest, warm, slightly uncomfortable — like the
+   framework itself. Not a checklist. An invitation.
+============================================================ */
+#screen-before {
+  background: #faf8f3;
+  min-height: 100vh;
+  display: none;
+  position: relative;
+  overflow: hidden;
+}
+#screen-before.active { display: block; }
+
+.before-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(135deg, rgba(102,126,234,0.06), rgba(118,75,162,0.08) 50%, transparent),
+    radial-gradient(ellipse 50% 40% at 90% 10%, rgba(155,89,182,0.05), transparent 70%);
+  pointer-events: none;
+}
+
+.before-inner {
+  position: relative; z-index: 1;
+  max-width: 640px; margin: 0 auto;
+  padding: 4.5rem 2rem 4rem;
+}
+
+.before-eyebrow {
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: #56707f; margin-bottom: 1.25rem;
+}
+
+.before-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700; line-height: 1.15;
+  color: #1e2a35; margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.before-subtitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic; font-size: 1rem;
+  color: #3d5060; margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* Bring section */
+.before-section {
+  margin-bottom: 2rem;
+}
+
+.before-section-label {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.before-section-icon {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; flex-shrink: 0;
+}
+
+.before-section-icon.bring  { background: #eef0fd; color: #667eea; }
+.before-section-icon.leave  { background: #fff3cd; color: #856404; }
+.before-section-icon.time   { background: #e8f5e8; color: #27ae60; }
+.before-section-icon.note   { background: #fdedec; color: #c0392b; }
+
+.before-section-title {
+  font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 0.04em; color: #1e2a35;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  font-size: 0.72rem;
+}
+
+/* Bring examples list */
+.bring-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid #ddd8cc;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+.bring-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 13px 16px;
+  border-bottom: 1px solid #f0ede7;
+  font-size: 0.9rem; color: #3d5060;
+  line-height: 1.55;
+  transition: background 0.15s;
+}
+
+.bring-item:last-child { border-bottom: none; }
+.bring-item:hover { background: #faf8f3; }
+
+.bring-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 6px;
+}
+
+/* Simple leave-behind + logistics cards */
+.before-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.before-card {
+  background: white;
+  border: 1px solid #ddd8cc;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.before-card-label {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #56707f; margin-bottom: 8px; display: block;
+}
+
+.before-card-body {
+  font-size: 0.88rem; color: #3d5060; line-height: 1.6;
+}
+
+.before-card-body strong { color: #1e2a35; font-weight: 500; }
+
+/* Disclaimer */
+.before-disclaimer {
+  background: #fff3cd;
+  border: 1px solid rgba(241,196,15,0.4);
+  border-radius: 10px;
+  padding: 13px 16px;
+  margin-bottom: 2.5rem;
+  font-size: 0.82rem;
+  color: #3d5060;
+  line-height: 1.65;
+}
+
+.before-disclaimer strong { color: #856404; font-weight: 500; }
+
+/* CTA */
+.before-cta-row {
+  display: flex; align-items: center;
+  gap: 1rem; flex-wrap: wrap;
+}
+
+.btn-begin {
+  padding: 0.9rem 2.2rem;
+  background: #1e2a35; color: #faf8f3;
+  border: none; border-radius: 2rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.9rem; font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-begin:hover {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102,126,234,0.3);
+}
+.btn-begin:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 3px;
+  border-radius: 2rem;
+}
+
+.before-back {
+  font-size: 0.82rem; color: #56707f;
+  background: none; border: none;
+  cursor: pointer; font-family: 'DM Sans', system-ui, sans-serif;
+  transition: color 0.2s; padding: 4px 0;
+}
+.before-back:hover { color: #1e2a35; }
+
+@media (max-width: 700px) {
+  .before-inner { padding: 3rem 1.25rem 3rem; }
+  .before-cards { grid-template-columns: 1fr; }
+  .before-cta-row { flex-direction: column; align-items: stretch; }
+  .btn-begin { text-align: center; justify-content: center; }
+}
+
+
+/* ============================================================
+   LIVING MESSY CALLOUT + INTEGRAL EXPLAINER
+============================================================ */
+
+/* Expandable callout on Before You Begin screen */
+.living-messy-callout {
+  margin-top: 1.25rem;
+  border: 1px solid #ddd8cc;
+  border-left: 4px solid #2c3e50;
+  border-radius: 0 12px 12px 0;
+  overflow: hidden;
+  background: white;
+}
+
+.lm-callout-trigger {
+  width: 100%;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 12px;
+  padding: 13px 16px;
+  background: none; border: none;
+  cursor: pointer; text-align: left;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  transition: background 0.15s;
+}
+.lm-callout-trigger:hover { background: #faf8f3; }
+
+.lm-trigger-left {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.lm-trigger-badge {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: #2c3e50; color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
+}
+
+.lm-trigger-text {
+  font-size: 0.85rem; font-weight: 600; color: #1e2a35;
+}
+
+.lm-trigger-text span {
+  display: block;
+  font-size: 0.75rem; font-weight: 400; color: #56707f;
+  margin-top: 1px;
+}
+
+.lm-chevron {
+  font-size: 11px; color: #56707f;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+.lm-callout-trigger[aria-expanded="true"] .lm-chevron {
+  transform: rotate(180deg);
+}
+
+.lm-callout-body {
+  display: none;
+  padding: 0 16px 16px;
+  border-top: 1px solid #f0ede7;
+}
+.lm-callout-body.open { display: block; }
+
+.lm-body-text {
+  font-size: 0.88rem; color: #3d5060;
+  line-height: 1.75; margin-top: 12px;
+}
+
+.lm-body-text em {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic; color: #1e2a35;
+}
+
+/* Integral symbol explainer — used in Orientation module */
+.integral-explainer {
+  background: white;
+  border: 1px solid #ddd8cc;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 1.5rem;
+  display: flex; align-items: flex-start; gap: 16px;
+}
+
+.integral-symbol {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3rem; font-weight: 700;
+  color: #2c3e50; line-height: 1;
+  flex-shrink: 0; padding-top: 2px;
+  width: 44px; text-align: center;
+}
+
+.integral-content { flex: 1; }
+
+.integral-title {
+  font-size: 0.85rem; font-weight: 600;
+  color: #1e2a35; margin-bottom: 6px;
+}
+
+.integral-body {
+  font-size: 0.88rem; color: #3d5060;
+  line-height: 1.7;
+}
+
+.integral-body em {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic; color: #1e2a35;
+}
+
+@media (max-width: 480px) {
+  .integral-explainer { flex-direction: column; gap: 10px; }
+  .integral-symbol { font-size: 2.2rem; width: auto; }
+}
+
+
+/* ============================================================
+   MODULE LEARNING OBJECTIVES (Bloom's in MESSY voice)
+   Displayed as first content after module header
+============================================================ */
+.module-obj {
+  background: white;
+  border: 1px solid #ddd8cc;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 1.75rem;
+}
+.module-obj-label {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent, #667eea);
+  margin-bottom: 10px; display: block;
+}
+.module-obj-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 7px;
+}
+.module-obj-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.88rem; color: #3d5060; line-height: 1.55;
+}
+.module-obj-list li::before {
+  content: '→';
+  color: var(--accent, #667eea);
+  font-size: 0.8rem; flex-shrink: 0; margin-top: 2px;
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   PRE-ASSESSMENT SELF-CHECK (Before You Begin screen)
+   Not graded — activates prior knowledge, sets expectations
+============================================================ */
+.pre-assess {
+  margin-bottom: 2rem;
+}
+.pre-assess-label {
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #56707f; margin-bottom: 0.75rem; display: block;
+}
+.pre-assess-intro {
+  font-size: 0.88rem; color: #3d5060;
+  line-height: 1.65; margin-bottom: 1rem;
+}
+.pre-assess-questions {
+  display: flex; flex-direction: column; gap: 14px;
+}
+.pa-question { }
+.pa-q-text {
+  font-size: 0.9rem; font-weight: 500;
+  color: #1e2a35; margin-bottom: 8px; display: block;
+}
+.pa-options {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.pa-option {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 13px;
+  border: 1px solid #ddd8cc;
+  border-radius: 8px; background: white;
+  cursor: pointer; font-size: 0.85rem; color: #3d5060;
+  transition: border-color 0.15s, background 0.15s;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  text-align: left; width: 100%;
+}
+.pa-option:hover { border-color: #667eea; background: #f5f5ff; }
+.pa-option.selected {
+  border-color: #667eea;
+  background: #eef0fd; color: #1e2a35;
+}
+.pa-option-dot {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 1.5px solid #ddd8cc; flex-shrink: 0;
+  transition: all 0.15s;
+}
+.pa-option.selected .pa-option-dot {
+  background: #667eea; border-color: #667eea;
+}
+.pa-note {
+  font-size: 0.78rem; color: #56707f;
+  margin-top: 10px; font-style: italic; line-height: 1.6;
+}
+
+
+/* ============================================================
+   POST-COURSE FEEDBACK SURVEY (Completion screen)
+   Kirkpatrick Level 1 — learner reaction
+   Stored locally only, consistent with privacy promise
+============================================================ */
+.completion-survey {
+  background: rgba(102,126,234,0.08);
+  border: 1px solid rgba(102,126,234,0.2);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+.survey-label {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #a29bfe; margin-bottom: 4px; display: block;
+}
+.survey-intro {
+  font-size: 0.85rem; color: rgba(247,244,239,0.65);
+  margin-bottom: 1.25rem; line-height: 1.6;
+}
+.survey-q {
+  margin-bottom: 14px;
+}
+.survey-q-text {
+  font-size: 0.88rem; color: rgba(247,244,239,0.85);
+  margin-bottom: 8px; display: block; font-weight: 500;
+}
+.survey-stars {
+  display: flex; gap: 6px;
+}
+.survey-star {
+  width: 36px; height: 36px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; transition: all 0.15s;
+  font-family: inherit;
+  color: rgba(247,244,239,0.5);
+}
+.survey-star:hover, .survey-star.active {
+  background: rgba(102,126,234,0.3);
+  border-color: rgba(102,126,234,0.5);
+  color: #fff;
+}
+.survey-textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: rgba(247,244,239,0.85);
+  resize: vertical; min-height: 64px;
+  outline: none; line-height: 1.6;
+}
+.survey-textarea::placeholder { color: rgba(247,244,239,0.3); }
+.survey-textarea:focus { border-color: rgba(102,126,234,0.5); }
+.survey-submit {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 20px; margin-top: 14px;
+  background: rgba(102,126,234,0.25);
+  color: rgba(247,244,239,0.9);
+  border: 1px solid rgba(102,126,234,0.4);
+  border-radius: 2rem; cursor: pointer;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.82rem; font-weight: 500;
+  transition: all 0.2s;
+}
+.survey-submit:hover {
+  background: rgba(102,126,234,0.4);
+  border-color: rgba(102,126,234,0.6);
+}
+.survey-thanks {
+  display: none;
+  font-size: 0.88rem; color: rgba(247,244,239,0.6);
+  font-style: italic; padding: 8px 0;
+}
+
+
+/* ============================================================
+   WORKED EXAMPLES (Gagné Event 5 — learning guidance)
+   Modeled example before learner attempts the workbook
+============================================================ */
+.worked-example {
+  background: #f8f9fa;
+  border: 1px solid #ddd8cc;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.we-label {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #56707f; margin-bottom: 10px; display: block;
+}
+.we-title {
+  font-size: 0.92rem; font-weight: 600;
+  color: #1e2a35; margin-bottom: 10px;
+}
+.we-example {
+  border-left: 3px solid var(--accent, #667eea);
+  padding-left: 14px; margin-bottom: 10px;
+}
+.we-field-label {
+  font-size: 0.75rem; font-weight: 600;
+  color: #56707f; margin-bottom: 4px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.we-field-text {
+  font-size: 0.88rem; color: #3d5060;
+  line-height: 1.65; font-style: italic;
+  margin-bottom: 10px;
+}
+.we-field-text:last-child { margin-bottom: 0; }
+.we-note {
+  font-size: 0.8rem; color: #56707f;
+  line-height: 1.6; margin-top: 8px;
+}
+
+
+/* ============================================================
+   MID-COURSE FORMATIVE CHECK
+   Appears on Module 3 (Support) completion screen
+============================================================ */
+.midcourse-check {
+  background: white;
+  border: 1px solid #ddd8cc;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 1.75rem;
+  text-align: left;
+}
+.mc-check-label {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #3498db; margin-bottom: 8px; display: block;
+}
+.mc-check-q {
+  font-size: 0.9rem; font-weight: 500;
+  color: #1e2a35; margin-bottom: 10px; line-height: 1.5;
+}
+.mc-check-options {
+  display: flex; flex-direction: column; gap: 6px;
+  margin-bottom: 8px;
+}
+.mc-check-opt {
+  display: flex; align-items: flex-start; gap: 9px;
+  padding: 9px 12px;
+  border: 1px solid #ddd8cc;
+  border-radius: 8px; background: #faf8f3;
+  cursor: pointer; font-size: 0.83rem; color: #3d5060;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  text-align: left; width: 100%;
+  transition: border-color 0.15s, background 0.15s;
+}
+.mc-check-opt:hover { border-color: #3498db; background: #e8f4fd; }
+.mc-check-opt.picked { border-color: #3498db; background: #e8f4fd; }
+.mc-check-note {
+  font-size: 0.78rem; color: #56707f;
+  font-style: italic; line-height: 1.6;
+}
+
+
+/* ============================================================
+   MODULE SCORE BREAKDOWN (Completion screen)
+   Per-module mastery instead of raw total count
+============================================================ */
+.score-breakdown {
+  margin-top: 12px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.score-row {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 10px;
+}
+.score-row-label {
+  font-size: 0.78rem; color: rgba(247,244,239,0.55);
+  flex: 1;
+}
+.score-row-bar-wrap {
+  flex: 2;
+  height: 6px; background: rgba(255,255,255,0.1);
+  border-radius: 3px; overflow: hidden;
+}
+.score-row-bar {
+  height: 100%; border-radius: 3px;
+  transition: width 0.6s ease;
+}
+.score-row-pct {
+  font-size: 0.78rem; color: rgba(247,244,239,0.7);
+  min-width: 32px; text-align: right;
+}
+
+
+/* ============================================================
+   REFLECTION SCAFFOLDING — sentence starters
+   Collapsible, opt-in, non-intrusive
+============================================================ */
+.refl-scaffold {
+  margin-top: 8px;
+}
+.refl-scaffold-trigger {
+  background: none; border: none;
+  font-size: 0.78rem; color: #56707f;
+  cursor: pointer; padding: 0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  text-decoration: underline;
+  text-decoration-color: rgba(86,112,127,0.4);
+  transition: color 0.15s;
+}
+.refl-scaffold-trigger:hover { color: #1e2a35; }
+.refl-starters {
+  display: none;
+  margin-top: 8px;
+  padding: 10px 14px;
+  background: white;
+  border: 1px solid #ddd8cc;
+  border-radius: 8px;
+}
+.refl-starters.open { display: block; }
+.refl-starters p {
+  font-size: 0.82rem; color: #56707f;
+  margin-bottom: 4px; line-height: 1.6;
+}
+.refl-starters p:last-child { margin-bottom: 0; }
+.refl-starters strong { color: #3d5060; font-weight: 500; }
+
+
+/* ============================================================
+   LEARNER NAME FIELD (Before You Begin)
+============================================================ */
+.before-name-wrap {
+  margin-bottom: 2rem;
+}
+.before-name-label {
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #56707f; margin-bottom: 0.6rem; display: block;
+}
+.before-name-input {
+  width: 100%; max-width: 360px;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #ddd8cc;
+  border-radius: 2rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 16px; color: #1e2a35;
+  background: white; outline: none;
+  transition: border-color 0.2s;
+}
+.before-name-input:focus { border-color: #667eea; }
+.before-name-note {
+  font-size: 0.78rem; color: #56707f;
+  margin-top: 6px; font-style: italic;
+}
+
+
+/* ============================================================
+   COPY RESPONSES BUTTON
+============================================================ */
+.btn-copy-responses {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 0.75rem 1.6rem;
+  background: white;
+  color: #1e2a35;
+  border: 1.5px solid #ddd8cc;
+  border-radius: 2rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.85rem; font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-copy-responses:hover {
+  border-color: #667eea;
+  background: #eef0fd;
+}
+.btn-copy-responses:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 3px;
+  border-radius: 2rem;
+}
+.copy-confirm {
+  font-size: 0.78rem; color: #27ae60;
+  margin-top: 6px; display: none;
+  font-style: italic;
+}
+
+/* ============================================================
+   COMPLETION SCREEN NEXT STEPS
+============================================================ */
+.complete-next-steps {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+.next-step-card {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.next-step-card:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.22);
+}
+.next-step-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+.next-step-text { flex: 1; }
+.next-step-title {
+  font-size: 0.88rem; font-weight: 600;
+  color: rgba(247,244,239,0.9);
+  display: block; margin-bottom: 2px;
+}
+.next-step-sub {
+  font-size: 0.78rem;
+  color: rgba(247,244,239,0.5);
+  display: block; line-height: 1.5;
+}
+.next-step-arrow {
+  font-size: 0.8rem;
+  color: rgba(247,244,239,0.35);
+  align-self: center; flex-shrink: 0;
+}
+
+.complete-copy-wrap {
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+
+/* ── iOS: prevent auto-zoom on textarea/input focus ── */
+@media (max-width: 700px) {
+  textarea, input[type="text"] {
+    font-size: 16px !important;
+  }
+}
+
+/* ── iOS / Android polish ─────────────────────────────── */
+* { -webkit-tap-highlight-color: transparent; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+/* Safe area insets for iPhone notch and home indicator */
+.lesson-nav {
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+}
+@supports not (padding-bottom: env(safe-area-inset-bottom)) {
+  .lesson-nav { padding-bottom: 10px; }
+}
+
+
+/* ── Skip navigation (accessibility) ─────────────────── */
+.skip-nav {
+  position: absolute; top: -100%; left: 1rem;
+  z-index: 9999; padding: 0.75rem 1.5rem;
+  background: #1e2a35; color: #faf8f3;
+  font-weight: 600; font-size: 0.9rem;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+.skip-nav:focus { top: 0; outline: 3px solid #667eea; }
+
+</style>
+</head>
+<body>
+
+<a href="#screen-course" class="skip-nav">Skip to course content</a>
+
+<!-- ============================================================ LANDING -->
+<div class="screen active" id="screen-landing">
+  <div class="landing-hero-bg" aria-hidden="true"></div>
+  <div class="landing-inner">
+
+    <div class="landing-tag">
+      <span class="landing-tag-dot" aria-hidden="true"></span>
+      <span class="landing-tag-text">The Live Messy Project</span>
+    </div>
+
+    <h1 class="landing-title">
+      <span class="landing-title-grad">The MESSY Playbook<sup style="font-size:0.35em;vertical-align:super;font-weight:400;">™</sup></span>
+    </h1>
+    <p class="landing-subtitle">Self-Paced Course</p>
+
+    <div style="margin-bottom:2.5rem;animation:lfadeUp 0.8s 0.3s ease both;"><div class="arc-landing" role="img" aria-label="The MESSY loop: Monitor, Execute, Support, Surrender, Yield"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 160" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;"><defs><linearGradient id="lgm" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#9b59b6"/><stop offset="100%" style="stop-color:#8e44ad"/></linearGradient><linearGradient id="lge" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#e67e22"/><stop offset="100%" style="stop-color:#d35400"/></linearGradient><linearGradient id="lgs1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3498db"/><stop offset="100%" style="stop-color:#2980b9"/></linearGradient><linearGradient id="lgs2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f1c40f"/><stop offset="100%" style="stop-color:#f39c12"/></linearGradient><linearGradient id="lgy" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#27ae60"/><stop offset="100%" style="stop-color:#229954"/></linearGradient><filter id="lbs"><feMorphology operator="dilate" radius="0.6"/></filter></defs><circle cx="60" cy="70" r="50" fill="url(#lgm)"/><text x="60" y="84" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle">M</text><text x="60" y="142" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Monitor</text><text x="138" y="78" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="#2c3e50" text-anchor="middle" filter="url(#lbs)">→</text><circle cx="210" cy="70" r="50" fill="url(#lge)"/><text x="210" y="84" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle">E</text><text x="210" y="142" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Execute</text><text x="288" y="78" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="#2c3e50" text-anchor="middle" filter="url(#lbs)">→</text><circle cx="360" cy="70" r="50" fill="url(#lgs1)"/><text x="360" y="84" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle">S</text><text x="360" y="142" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Support</text><text x="438" y="78" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="#2c3e50" text-anchor="middle" filter="url(#lbs)">→</text><circle cx="510" cy="70" r="50" fill="url(#lgs2)"/><text x="510" y="84" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="#856404" text-anchor="middle">S</text><text x="510" y="142" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Surrender</text><text x="588" y="78" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="#2c3e50" text-anchor="middle" filter="url(#lbs)">→</text><circle cx="660" cy="70" r="50" fill="url(#lgy)"/><text x="660" y="84" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle">Y</text><text x="660" y="142" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Yield</text><g transform="translate(730,48) scale(0.35)" filter="url(#lbs)"><path d="m64.5 10c-0.92578-0.011719-1.8516-0.003906-2.7812 0.03125-4.9375 0.19141-9.8711 1.0938-14.656 2.6875-0.011719 0.003906-0.023438-0.003906-0.03125 0-12.32 4.0078-22.844 12.512-29.438 23.625-0.007812 0.011719-0.023438 0.019531-0.03125 0.03125-4.9531 8.3438-7.5547 17.965-7.5625 27.625h-10l14 24 14-24h-10c0.015625-8.2422 2.2305-16.48 6.4375-23.562 5.6016-9.4531 14.645-16.734 25.094-20.125h0.03125v-0.03125c16.223-5.4062 34.816-0.96484 47.031 11.156l5.625-5.6875c-10.113-10.039-23.812-15.57-37.719-15.75zm49.5 30-14 24h10c-0.03125 8.2109-2.2461 16.414-6.4375 23.469-5.6016 9.4531-14.645 16.734-25.094 20.125h-0.03125c-16.332 5.4141-34.895 0.98047-47-11.125l-5.6562 5.6562c14.285 14.285 35.895 19.434 55.156 13.062 0.003906-0.007812 0.023438 0.003906 0.03125 0 12.332-4.0156 22.875-12.523 29.469-23.656 4.9453-8.3242 7.543-17.895 7.5625-27.531h10z" fill="#2c3e50"/></g></svg></div></div>
+
+    <div class="resume-banner" id="resumeBanner">
+      <span class="resume-text" id="resumeText">You have progress saved.</span>
+      <button type="button" class="btn-resume" onclick="resumeCourse()">Continue →</button>
+    </div>
+
+    <p class="landing-description">This course walks you through all five MESSY practices plus a final integration module — Living MESSY. About 45–60 minutes total, at whatever pace fits your life. Your progress saves automatically.</p>
+
+    <div class="landing-outcomes">
+      <p class="outcomes-eyebrow">What this course asks of you</p>
+      <ul class="outcomes-list">
+        <li>Notice the gap between your "should" story and your actual one</li>
+        <li>Recognize which MESSY dimension you naturally resist</li>
+        <li>Design one support structure for your worst day, not your best</li>
+        <li>Share something unfinished with someone you trust</li>
+        <li>Turn at least one recent experience into something that teaches you</li>
+        <li>Leave with a daily practice that fits your real life, not your aspirational one</li>
+      </ul>
+    </div>
+
+    <div class="landing-map" aria-label="Course modules">
+      <div class="map-mod map-mod-0"><span class="map-letter">0</span><span class="map-name">Orientation</span></div>
+      <div class="map-mod map-mod-1"><span class="map-letter">M</span><span class="map-name">Monitor</span></div>
+      <div class="map-mod map-mod-2"><span class="map-letter">E</span><span class="map-name">Execute</span></div>
+      <div class="map-mod map-mod-3"><span class="map-letter">S</span><span class="map-name">Support</span></div>
+      <div class="map-mod map-mod-4"><span class="map-letter">S</span><span class="map-name">Surrender</span></div>
+      <div class="map-mod map-mod-5"><span class="map-letter">Y</span><span class="map-name">Yield</span></div>
+      <div class="map-mod map-mod-6"><span class="map-letter">∫</span><span class="map-name">Living MESSY</span></div>
+    </div>
+
+    <div class="landing-cta-row">
+      <button type="button" class="btn-start" onclick="startCourse()" id="startBtn">Start course →</button>
+      <span class="landing-meta">7 modules · ~50 min · Progress saves automatically</span>
+    </div>
+
+    <p class="landing-footer">The MESSY Playbook™ is for personal exploration and educational purposes only — not therapy or professional counseling. The creator is not a psychologist or licensed mental health professional. © 2026 Live Messy Project.</p>
+  </div>
+</div>
+
+<!-- ============================================================ BEFORE YOU BEGIN -->
+<div class="screen" id="screen-before" aria-label="Before you begin">
+  <div class="before-hero-bg" aria-hidden="true"></div>
+  <div class="before-inner">
+
+    <p class="before-eyebrow">The Live Messy Project · Before You Begin</p>
+    <h1 class="before-title">A few things<br>before we start.</h1>
+    <p class="before-subtitle">This isn't a checklist. It's an invitation to show up honestly.</p>
+
+    <!-- BRING -->
+    <div class="before-section">
+      <div class="before-section-label">
+        <div class="before-section-icon bring" aria-hidden="true">↓</div>
+        <span class="before-section-title">Bring something real with you</span>
+      </div>
+      <ul class="bring-list" aria-label="Examples of what to bring">
+        <li class="bring-item">
+          <span class="bring-dot" style="background:#9b59b6;" aria-hidden="true"></span>
+          A project you keep almost starting — but never quite do
+        </li>
+        <li class="bring-item">
+          <span class="bring-dot" style="background:#e67e22;" aria-hidden="true"></span>
+          Something you're waiting to feel "ready" for, even though ready never quite arrives
+        </li>
+        <li class="bring-item">
+          <span class="bring-dot" style="background:#3498db;" aria-hidden="true"></span>
+          A habit you've tried to build three times and abandoned each time
+        </li>
+        <li class="bring-item">
+          <span class="bring-dot" style="background:#f1c40f;" aria-hidden="true"></span>
+          A version of yourself you perform at work that doesn't feel like the whole picture
+        </li>
+        <li class="bring-item">
+          <span class="bring-dot" style="background:#27ae60;" aria-hidden="true"></span>
+          A goal you achieved that didn't feel the way you expected it to
+        </li>
+        <li class="bring-item">
+          <span class="bring-dot" style="background:#2c3e50;" aria-hidden="true"></span>
+          A relationship dynamic you've noticed but haven't named out loud yet
+        </li>
+      </ul>
+      <p style="font-size:0.82rem;color:#56707f;margin-top:10px;line-height:1.6;">
+        You don't need to have it figured out. You don't need to know which one applies. Just bring whatever is most alive for you right now.
+      </p>
+
+      <!-- Living MESSY expandable callout -->
+      <div class="living-messy-callout" id="lmCallout">
+        <button type="button" class="lm-callout-trigger" aria-expanded="false"
+          aria-controls="lmCalloutBody" onclick="toggleLMCallout()">
+          <div class="lm-trigger-left">
+            <div class="lm-trigger-badge" aria-hidden="true">∫</div>
+            <div class="lm-trigger-text">
+              What does it mean to Live MESSY?
+              <span>The last example above — the relationship dynamic — is a clue</span>
+            </div>
+          </div>
+          <span class="lm-chevron" aria-hidden="true">▼</span>
+        </button>
+        <div class="lm-callout-body" id="lmCalloutBody" role="region" aria-label="What Living MESSY means">
+          <p class="lm-body-text">
+            <em>Living MESSY</em> isn't a technique. It's what happens when the five practices stop being something you do in a course and start being how you pay attention to your life.
+          </p>
+          <p class="lm-body-text">
+            The relationship dynamic example — something real, cross-domain, not yet resolved — is a Living MESSY moment. It doesn't fit neatly into Monitor or Surrender or Yield. It belongs to all of them at once. That's the point. Real life doesn't arrive one dimension at a time.
+          </p>
+          <p class="lm-body-text">
+            The ∫ symbol is an integral sign — from mathematics. The integral accumulates. It's the sum of everything underneath the curve, across time. That's exactly what Living MESSY is: the accumulated wisdom of every cycle of the framework you've moved through, applied to the full texture of your actual life.
+          </p>
+          <p class="lm-body-text">
+            The course ends. The practice doesn't.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+      <!-- Learner name -->
+      <div class="before-name-wrap">
+        <label class="before-name-label" for="learnerName">What should I call you? <span style="font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label>
+        <input type="text" class="before-name-input" id="learnerName"
+          placeholder="Your first name" autocomplete="given-name"
+          oninput="S.learnerName=this.value;save()" />
+        <p class="before-name-note">Used only on the completion screen. Never stored anywhere else.</p>
+      </div>
+
+      <!-- Pre-assessment self-check -->
+      <div class="pre-assess">
+        <span class="pre-assess-label">Quick self-check — no right answers</span>
+        <p class="pre-assess-intro">Three questions to help you notice where you are starting from. Nothing is submitted or scored. There is no right answer.</p>
+        <div class="pre-assess-questions">
+
+          <div class="pa-question">
+            <span class="pa-q-text">1. When a personal development system stops working for you, what do you usually do?</span>
+            <div class="pa-options">
+              <button type="button" class="pa-option" onclick="selectPA(this, 1)"><span class="pa-option-dot"></span>Try harder to make it work</button>
+              <button type="button" class="pa-option" onclick="selectPA(this, 1)"><span class="pa-option-dot"></span>Find a new system and start over</button>
+              <button type="button" class="pa-option" onclick="selectPA(this, 1)"><span class="pa-option-dot"></span>Blame yourself for not sticking with it</button>
+              <button type="button" class="pa-option" onclick="selectPA(this, 1)"><span class="pa-option-dot"></span>Stop using systems altogether for a while</button>
+            </div>
+          </div>
+
+          <div class="pa-question">
+            <span class="pa-q-text">2. How comfortable are you right now with things in your life being unresolved?</span>
+            <div class="pa-options">
+              <button type="button" class="pa-option" onclick="selectPA(this, 2)"><span class="pa-option-dot"></span>Very uncomfortable — I need resolution</button>
+              <button type="button" class="pa-option" onclick="selectPA(this, 2)"><span class="pa-option-dot"></span>Somewhat uncomfortable but I can sit with it</button>
+              <button type="button" class="pa-option" onclick="selectPA(this, 2)"><span class="pa-option-dot"></span>Mostly okay — I have learned to tolerate uncertainty</button>
+              <button type="button" class="pa-option" onclick="selectPA(this, 2)"><span class="pa-option-dot"></span>I do not think about it that way</button>
+            </div>
+          </div>
+
+          <div class="pa-question">
+            <span class="pa-q-text">3. When was the last time you shared something unfinished or imperfect with someone you trust?</span>
+            <div class="pa-options">
+              <button type="button" class="pa-option" onclick="selectPA(this, 3)"><span class="pa-option-dot"></span>Recently — I do this regularly</button>
+              <button type="button" class="pa-option" onclick="selectPA(this, 3)"><span class="pa-option-dot"></span>Occasionally, when it feels safe</button>
+              <button type="button" class="pa-option" onclick="selectPA(this, 3)"><span class="pa-option-dot"></span>Rarely — I prefer to wait until things are ready</button>
+              <button type="button" class="pa-option" onclick="selectPA(this, 3)"><span class="pa-option-dot"></span>I cannot remember the last time</button>
+            </div>
+          </div>
+
+        </div>
+        <p class="pa-note">Notice what your answers reveal — not what they say about you, but what they say about where you are right now. That is the starting point.</p>
+      </div>
+
+    <!-- LEAVE BEHIND + LOGISTICS -->
+    <div class="before-cards">
+      <div class="before-card">
+        <span class="before-card-label">Leave at the door</span>
+        <div class="before-card-body">
+          The expectation of having answers by the end. This course asks questions more than it provides solutions. <strong>Curiosity over resolution.</strong>
+        </div>
+      </div>
+      <div class="before-card">
+        <span class="before-card-label">Time &amp; format</span>
+        <div class="before-card-body">
+          About <strong>45–60 minutes total</strong>, across 7 modules. Stop and return anytime — progress saves automatically on this device.
+        </div>
+      </div>
+      <div class="before-card">
+        <span class="before-card-label">Your responses</span>
+        <div class="before-card-body">
+          Everything you write stays <strong>on your device only.</strong> Nothing is submitted, stored, or seen by anyone else. No account needed.
+        </div>
+      </div>
+      <div class="before-card">
+        <span class="before-card-label">No prerequisites</span>
+        <div class="before-card-body">
+          You don't need to know anything about MESSY before you start. The course teaches you everything as you go.
+        </div>
+      </div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="before-disclaimer" role="note" style="border-color:rgba(102,126,234,0.35);background:#eef0fd;">
+      <strong>Your privacy.</strong> Nothing you write in this course is ever seen by anyone but you. There is no account, no login, no submission, and no data collection of any kind. Your name, responses, and progress live only in your browser’s local storage — on this device — and nowhere else. We do not collect, store, share, or sell personal information. That’s not a policy. It’s how the course is built.
+    </div>
+    <div class="before-disclaimer" role="note">
+      <strong>A note:</strong> The MESSY Playbook is for personal exploration and educational purposes only — not therapy or professional counseling. The creator is not a psychologist or licensed mental health professional. If you're navigating serious mental health challenges, please connect with a qualified professional. MESSY can complement that work — it's not a substitute for it.
+    </div>
+
+    <!-- CTA -->
+    <div class="before-cta-row">
+      <button type="button" class="btn-begin" onclick="beginCourse()">
+        I'm ready — let's begin →
+      </button>
+      <button type="button" class="before-back" onclick="goHome()">
+        ← Back to course home
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================ COURSE -->
+<div class="screen" id="screen-course">
+  <!-- Sidebar backdrop (mobile only) -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeSidebar()" aria-hidden="true"></div>
+
+  <header class="course-topbar">
+    <div class="topbar-brand">The MESSY Playbook™ — <em>Self-Paced Course</em></div>
+    <div class="topbar-right">
+      <span class="topbar-prog" id="topbarProg">0 of 7 complete</span>
+      <button type="button" class="btn-menu-toggle" onclick="toggleSidebar()" aria-label="Open module navigation" aria-expanded="false" aria-controls="courseSidebar" id="menuToggle">☰</button>
+      <button type="button" class="btn-home" onclick="goHome()" aria-label="Back to course home">← Course home</button>
+    </div>
+  </header>
+  <!-- Mobile progress strip -->
+  <div class="mobile-progress-strip" aria-hidden="true">
+    <div class="mobile-progress-strip-fill" id="mobileProgFill" style="width:0%"></div>
+  </div>
+
+  <nav class="course-sidebar" id="courseSidebar" aria-label="Course modules">
+    <div class="sidebar-prog-wrap">
+      <div class="sidebar-prog-labels">
+        <span>Your progress</span>
+        <span id="sidePct">0%</span>
+      </div>
+      <div class="sidebar-prog-bar">
+        <div class="sidebar-prog-fill" id="sideFill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <p class="sidebar-section-label">Introduction</p>
+    <button type="button" class="sidebar-item" id="sn-0" onclick="goToModule(0)">
+      <div class="sdot sdot-0" id="sd-0">0</div>
+      <div><span class="sidebar-item-name">Orientation</span><span class="sidebar-item-sub">What is MESSY?</span></div>
+    </button>
+
+    <p class="sidebar-section-label">The Five Practices</p>
+    <button type="button" class="sidebar-item" id="sn-1" onclick="goToModule(1)">
+      <div class="sdot sdot-1" id="sd-1">M</div>
+      <div><span class="sidebar-item-name">Monitor</span><span class="sidebar-item-sub">Cultivate self-awareness</span></div>
+    </button>
+    <button type="button" class="sidebar-item" id="sn-2" onclick="goToModule(2)">
+      <div class="sdot sdot-2" id="sd-2">E</div>
+      <div><span class="sidebar-item-name">Execute</span><span class="sidebar-item-sub">Take aligned action</span></div>
+    </button>
+    <button type="button" class="sidebar-item" id="sn-3" onclick="goToModule(3)">
+      <div class="sdot sdot-3" id="sd-3">S</div>
+      <div><span class="sidebar-item-name">Support</span><span class="sidebar-item-sub">Design for real life</span></div>
+    </button>
+    <button type="button" class="sidebar-item" id="sn-4" onclick="goToModule(4)">
+      <div class="sdot sdot-4" id="sd-4">S</div>
+      <div><span class="sidebar-item-name">Surrender</span><span class="sidebar-item-sub">Embrace imperfection</span></div>
+    </button>
+    <button type="button" class="sidebar-item" id="sn-5" onclick="goToModule(5)">
+      <div class="sdot sdot-5" id="sd-5">Y</div>
+      <div><span class="sidebar-item-name">Yield</span><span class="sidebar-item-sub">Reflect and grow</span></div>
+    </button>
+
+    <p class="sidebar-section-label">Integration</p>
+    <button type="button" class="sidebar-item" id="sn-6" onclick="goToModule(6)">
+      <div class="sdot sdot-6" id="sd-6">∫</div>
+      <div><span class="sidebar-item-name">Living MESSY</span><span class="sidebar-item-sub">Ongoing practice</span></div>
+    </button>
+  </nav>
+
+  <main class="course-lesson" id="lessonArea" aria-live="polite">
+    <div class="lesson-inner" id="lessonInner"></div>
+  </main>
+</div>
+
+<!-- ============================================================ COMPLETE -->
+<div class="screen" id="screen-complete">
+  <div class="complete-inner">
+    <div class="complete-badge" aria-hidden="true">↺</div>
+    <p class="complete-eye">The Live Messy Project</p>
+    <h1 class="complete-title" id="completeTitle">You finished the course.</h1>
+    <p class="complete-sub" id="completeSub">Not because you optimized your way through it.<br>Because you paid honest attention. That's the practice.</p>
+    <div class="complete-score">
+      <div class="score-num" id="finalScore">—</div>
+      <div class="score-lbl">knowledge checks answered correctly</div>
+      <div id="scoreBreakdown"></div>
+    </div>
+    <p class="complete-quote">"The program ends, but the practice continues. Go live it."</p>
+
+    <!-- What's next -->
+    <div class="complete-next-steps" aria-label="What to do next">
+
+      <a href="https://messy-playbook.vercel.app/thinking.html#course-design"
+         class="next-step-card" target="_blank" rel="noopener noreferrer">
+        <div class="next-step-icon" style="background:rgba(102,126,234,0.25);color:#a29bfe;">↺</div>
+        <div class="next-step-text">
+          <span class="next-step-title">How this course was designed</span>
+          <span class="next-step-sub">The instructional methodology behind what you just experienced — ADDIE, Gagné, Bloom, and Kolb.</span>
+        </div>
+        <span class="next-step-arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a href="https://messy-playbook.vercel.app/micro-messes.html"
+         class="next-step-card" target="_blank" rel="noopener noreferrer">
+        <div class="next-step-icon" style="background:rgba(39,174,96,0.2);color:#7dcea0;">M</div>
+        <div class="next-step-text">
+          <span class="next-step-title">Keep the practice going — Micro Messes™</span>
+          <span class="next-step-sub">Free. Under 15 minutes. One honest encounter with a single MESSY dimension, any time you need it.</span>
+        </div>
+        <span class="next-step-arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a href="https://livemessy.gumroad.com/l/messy-self-study"
+         class="next-step-card" target="_blank" rel="noopener noreferrer">
+        <div class="next-step-icon" style="background:rgba(232,168,56,0.2);color:#f39c12;">↓</div>
+        <div class="next-step-text">
+          <span class="next-step-title">Get the full Self-Study Program</span>
+          <span class="next-step-sub">Workbook, activity cards, reflection tools, and framework overview. Pay what's right for where you are.</span>
+        </div>
+        <span class="next-step-arrow" aria-hidden="true">↗</span>
+      </a>
+
+    </div>
+
+    <!-- Copy responses -->
+    <div class="complete-copy-wrap">
+      <button type="button" class="btn-copy-responses" onclick="copyAllResponses()">
+        ↓ Copy my reflections &amp; workbook responses
+      </button>
+      <p class="copy-confirm" id="copyConfirm">Copied to clipboard — paste into any notes app to keep them.</p>
+      <p style="font-size:0.72rem;color:rgba(247,244,239,0.3);margin-top:6px;">Your responses only ever existed on this device. Copying them is the only way to keep them.</p>
+    </div>
+
+    <!-- Post-course feedback survey (Kirkpatrick L1) -->
+    <div class="completion-survey" id="courseSurvey">
+      <span class="survey-label">Before you go — 2 minutes</span>
+      <p class="survey-intro">Your feedback stays on your device only. It helps you reflect and helps the course improve.</p>
+
+      <div class="survey-q">
+        <span class="survey-q-text">How useful was this course overall?</span>
+        <div class="survey-stars" role="group" aria-label="Rate usefulness 1 to 5">
+          <button type="button" class="survey-star" onclick="rateSurvey(this,1)" aria-label="1 — not useful">1</button>
+          <button type="button" class="survey-star" onclick="rateSurvey(this,2)" aria-label="2">2</button>
+          <button type="button" class="survey-star" onclick="rateSurvey(this,3)" aria-label="3 — somewhat useful">3</button>
+          <button type="button" class="survey-star" onclick="rateSurvey(this,4)" aria-label="4">4</button>
+          <button type="button" class="survey-star" onclick="rateSurvey(this,5)" aria-label="5 — very useful">5</button>
+        </div>
+      </div>
+
+      <div class="survey-q">
+        <span class="survey-q-text">What is one thing you are taking with you?</span>
+        <textarea class="survey-textarea" id="surveyTakeaway" placeholder="Write freely — this stays on your device only." rows="2"></textarea>
+      </div>
+
+      <div class="survey-q">
+        <span class="survey-q-text">What could be clearer, more useful, or different?</span>
+        <textarea class="survey-textarea" id="surveyImprove" placeholder="Any dimension, any step — honest feedback welcome." rows="2"></textarea>
+      </div>
+
+      <button type="button" class="survey-submit" onclick="submitSurvey()">Save my feedback locally →</button>
+      <p class="survey-thanks" id="surveyThanks">Saved. It stays here on your device — no one else sees it.</p>
+    </div>
+
+    <div class="complete-actions">
+      <a href="https://messy-playbook.vercel.app" class="btn-cp">Back to The MESSY Playbook →</a>
+      <button type="button" class="btn-cs" onclick="goHome()">Review the course</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// BRAND COLORS (mirror CSS vars for JS use)
+// ============================================================
+const ELEMENT = {
+  0: { color:'#667eea', tint:'#eef0fd', text:'#fff', label:'Orientation' },
+  1: { color:'#9b59b6', tint:'#f5eef8', text:'#fff', label:'M — Monitor' },
+  2: { color:'#e67e22', tint:'#fef0e6', text:'#fff', label:'E — Execute' },
+  3: { color:'#3498db', tint:'#e8f4fd', text:'#fff', label:'S — Support' },
+  4: { color:'#f1c40f', tint:'#fff3cd', text:'#856404', label:'S — Surrender' },
+  5: { color:'#27ae60', tint:'#e8f5e8', text:'#fff', label:'Y — Yield' },
+  6: { color:'#2c3e50', tint:'#eaecee', text:'#fff', label:'∫ Living MESSY' }
+};
+
+// ============================================================
+// COURSE DATA
+// ============================================================
+const MODULES = [
+  // MODULE 0 — ORIENTATION
+  { id:0, title:'What Is The MESSY Playbook?', steps:[
+    { type:'module-obj', objectives:['Describe what the MESSY framework is and where it came from', 'Explain why anti-optimization is a different premise than self-improvement', 'Recognize the difference between treating humans as machines vs. complex systems'] },
+    { type:'read', html:`
+      <p class="prose">Most personal development systems treat you like a problem to be solved. The MESSY Playbook takes a different position: <strong>you’re not broken — you’re complex.</strong></p>
+      <p class="prose">MESSY is an anti-optimization framework. Instead of giving you another system to follow perfectly, it gives you five honest practices for working with your life as it actually is — not the idealized version you perform for everyone else.</p>
+      <div class="pull-quote"><p>"The goal isn’t to be better at being human. The goal is to be more honest about it."</p></div>
+      <p class="prose">The name is intentional. MESSY is an acronym — Monitor, Execute, Support, Surrender, Yield — but the word itself is the point. Mess isn’t the problem. Mess is information. Growth doesn’t occur after you clean it up. It occurs in it.</p>`
+    },
+    { type:'arc' },
+    { type:'read', html:`
+      <p class="prose">The framework grew out of an unlikely source: Manufacturing Execution Systems — software designed to help factories work with real, messy production conditions rather than ideal ones. The best industrial systems don’t try to eliminate complexity. They work with it.</p>
+      <p class="prose">The same principle applies to being human. You are not a complicated machine that just needs the right settings. You are a complex adaptive system. And the frameworks that treat you like the former are why they eventually stop working.</p>
+      <div class="pull-quote"><p>"You don’t need to be fixed, optimized, or improved. You need to be human. Growth happens IN the mess, not after you clean it up."</p></div>
+      <p class="prose">This course walks you through each of the five MESSY practices, one at a time. There are no grades, no failure states on reflection prompts, and no score that tells you how well you’re doing at being human. There is only honest attention — and that’s enough.</p>`
+    },
+    { type:'integral-explainer' },
+    { type:'fc', cards:[
+      { q:'What does MESSY stand for?', a:'Monitor → Execute → Support → Surrender → Yield. Five practices of self-honest living, used as a continuous loop — not a linear checklist.' },
+      { q:'What kind of framework is The MESSY Playbook?', a:'An anti-optimization framework. It helps you work with your complexity instead of against it — not fix, perfect, or upgrade you.' },
+      { q:'Where did the MESSY framework originate?', a:'Manufacturing Execution Systems (MES) — software designed to help factories work with real, messy conditions rather than ideal ones. Same principle, applied to being human.' },
+      { q:'What does MESSY say about mess itself?', a:'Mess is information. Mess is where real life happens. Growth occurs in the mess — not after you clean it up.' }
+    ]},
+    { type:'mc', q:'Which statement best captures what makes The MESSY Playbook different from most personal development systems?',
+      opts:['It gives you a more effective morning routine to follow.','It treats you as a complex human being, not a problem to optimize.','It helps you set better goals and track them consistently.','It focuses on accountability and community support.'],
+      correct:1, right:"Exactly. MESSY doesn’t try to fix you — it helps you work honestly with who you already are.", wrong:"That’s closer to what MESSY argues against. Its core distinction is treating you as a complex human, not an efficiency problem." },
+    { type:'fitb', before:'The MESSY framework was inspired by', blank:'Manufacturing', after:'Execution Systems — software designed to work with real complexity rather than ideal conditions.', hint:'Think: industrial software, factory floor' },
+    { type:'refl', prompt:'Think of a personal development system you tried that worked for a while and then stopped. What do you think got in the way — and was any part of that just you being human?', starters:['<strong>I notice that when systems stop working, I tend to...</strong>', '<strong>The part of that failure that was just human was...</strong>', '<strong>What I have not been willing to admit about it is...</strong>'] },
+    { type:'rc', text:"What if the problem isn’t you? What if every system that failed you was designed for a version of human that doesn’t actually exist?" }
+  ]},
+
+  // MODULE 1 — MONITOR
+  { id:1, title:'Cultivate Self-Awareness', steps:[
+    { type:'module-obj', objectives:["Notice at least one gap between your 'should' story and your actual story", 'Identify something you have been deliberately not seeing', 'Name what honest self-awareness feels like in your own life'] },
+    { type:'read', html:`
+      <p class="prose">Monitor is the first practice — and the one everything else depends on. Before you can take meaningful action, you need to see clearly what’s actually happening. Not what should be happening. Not what you wish were happening. What is.</p>
+      <p class="prose">Most of us live in constant tension between our actual experience and our aspirational story. We say "I’m fine" when we’re not. We keep busy so we don’t have to notice what’s underneath. We mistake the polished story we tell for reality.</p>
+      <div class="pull-quote"><p>"You can’t shift what you don’t see — whether it’s a pattern in your marriage or dysfunction in your team."</p></div>
+      <p class="prose">The Monitor practice is simple: notice what’s actually happening. Your real energy before a difficult conversation. The actual dynamic in a room where everyone’s saying "everything’s fine." The pattern that keeps showing up in your relationships. The thing you’ve been pretending isn’t there.</p>`
+    },
+    { type:'worked-example',
+      title:"Here is how one person worked through this exercise",
+      fields: [
+        { label:'"Should" story — what you tell yourself or others',
+          text:'I should have my career figured out by now. I\'ve been in this role for three years and I\'m still not sure it\'s the right fit — but I tell everyone I\'m happy with it.' },
+        { label:'"Actual" story — what\'s really happening',
+          text:'I feel stuck and slightly embarrassed by that. I compare myself to people who seem more certain. On good days I think I\'m fine. On hard days I wonder if I\'m wasting time.' },
+        { label:'What resistance comes up when acknowledging the actual story?',
+          text:'If I admit I\'m not happy, then I have to do something about it. And I\'m not sure I\'m ready for that conversation — with myself or anyone else.' }
+      ],
+      note: 'Your version does not need to look like this. It just needs to be honest. The gap between "should" and "actual" is where Monitor lives.'
+    },
+    { type:'wb', title:'The Reality vs. Should Gap', sub:'Most of us live in tension between our actual experience and our aspirational story.', prompt:'What\'s one area of your life right now where your "should" story doesn\'t match your "actual" story?',
+      fields:[
+        { label:'"Should" story — what you tell yourself or others', id:'w1_should', rows:3 },
+        { label:'"Actual" story — what\'s really happening', id:'w1_actual', rows:3 }
+      ],
+      followup:{ label:'What resistance comes up when you think about acknowledging the actual story?', id:'w1_resist', rows:2 }
+    },
+    { type:'fc', cards:[
+      { q:'What is the Monitor practice?', a:'Cultivating self-awareness. Noticing what\'s actually happening — in yourself, your relationships, your environment — not what should be happening.' },
+      { q:'What\'s the hardest part of Monitor?', a:'Being willing to notice what you\'d rather avoid. The discomfort isn\'t in the seeing — it\'s in the honesty required to see clearly.' },
+      { q:'What does Monitor ask every morning?', a:'What\'s my energy today? What am I deliberately not noticing? What would a trusted friend say I\'m avoiding?' }
+    ]},
+    { type:'mc', q:'Marcus has a big presentation today. He feels anxious but tells himself "I\'m fine, just focus." Which MESSY practice is he skipping?',
+      opts:['Execute — he should take action on the feeling.','Surrender — he needs to let go of the anxiety.','Monitor — he\'s not acknowledging what\'s actually happening inside him.','Support — he hasn\'t built enough support for high-stakes moments.'],
+      correct:2, right:"Right. Telling yourself 'I’m fine' when you’re not is the opposite of Monitor. You can’t work with what you won’t see.", wrong:"The core issue is that Marcus isn’t acknowledging his actual internal state. That gap between 'should' and 'actual' is what Monitor addresses." },
+    { type:'fitb', before:'Monitor asks: what am I deliberately', blank:'NOT', after:"noticing? What would a trusted friend say I’m avoiding?", hint:'The gap between what is and what we admit' },
+    { type:'refl', prompt:"What’s one thing you’ve been deliberately not noticing lately — at work, at home, or in yourself? What would it cost you to actually look at it?", starters:['<strong>The thing I keep looking away from is...</strong>', '<strong>If I actually looked at it, I might have to...</strong>', '<strong>The cost of not looking is...</strong>'] },
+    { type:'rc', text:"What am I deliberately NOT noticing? What would a trusted friend say I’m avoiding?" }
+  ]},
+
+  // MODULE 2 — EXECUTE
+  { id:2, title:'Take Aligned Action', steps:[
+    { type:'module-obj', objectives:['Distinguish between aligned action and performance-driven action', "Identify one thing you have been waiting to be 'ready' for", 'Take or commit to one imperfect step based on what Monitor revealed'] },
+    { type:'read', html:`
+      <p class="prose">Execute is not about hustle. It’s not about doing more, moving faster, or grinding harder. It’s about taking action that’s <strong>aligned with what’s actually real</strong> — what you saw when you practiced Monitor honestly.</p>
+      <p class="prose">One real step beats a dozen perfect plans. That might mean sending the difficult email you’ve been avoiding, having the uncomfortable conversation, or — just as legitimately — resting when you’re genuinely depleted. Execute follows reality, not aspiration.</p>
+      <div class="pull-quote"><p>"Progress doesn’t need to be dramatic to be meaningful — whether you’re working on a project or working on yourself."</p></div>
+      <p class="prose">The perfectionism trap: we keep waiting until conditions are right, until we’re ready, until the thing is polished enough to show. Execute is the practice of taking one imperfect step anyway — and noticing what you learn, not measuring what you achieved.</p>`
+    },
+    { type:'worked-example',
+      title:"Here is how one person worked through this exercise",
+      fields: [
+        { label:'The thing I keep preparing for but not starting',
+          text:'Writing the proposal for the project I want to pitch to my manager. I have been "almost ready" for four months.' },
+        { label:'Why I\'m waiting — what "ready" would look like',
+          text:'I keep thinking I need a stronger evidence base, clearer numbers, more confidence in the idea. Ready means I would know it won\'t fail. Which means ready is never coming.' },
+        { label:'The smallest, messiest first step I could take in the next 48 hours',
+          text:'Send my manager a one-paragraph message that says "I have an idea I want to share with you — can we find 15 minutes this week?" That\'s it. Just open the door.' }
+      ],
+      note: 'Notice that the smallest step is not the proposal. It is the message that makes the proposal possible. That is what Execute means by one real step.'
+    },
+    { type:'wb', title:'The Messy Action Inventory', sub:'Start before you\'re ready.', prompt:'What\'s one thing you\'ve been waiting to be "ready" for?',
+      fields:[
+        { label:'The thing I keep preparing for but not starting', id:'w2_thing', rows:2 },
+        { label:'Why I\'m waiting — what "ready" would look like', id:'w2_why', rows:3 }
+      ],
+      followup:{ label:'What\'s the smallest, messiest first step I could take in the next 48 hours?', id:'w2_step', rows:2 }
+    },
+    { type:'fc', cards:[
+      { q:'What makes an action "aligned"?', a:'It comes from what you actually observed in Monitor — your real state, real priorities, real capacity — not from obligation or what looks good to others.' },
+      { q:'Is resting an Execute action?', a:"Yes. Execute includes rest when you’re genuinely depleted. Aligned action sometimes means stopping, not pushing through." },
+      { q:'What\'s the Execute principle for perfectionism?', a:'One real step beats a dozen perfect plans. Document what you notice, not what you achieve. Track curiosity, not success.' }
+    ]},
+    { type:'mc', q:"Priya has a difficult email to send to a client. She’s been rewriting it for three days and it’s still not 'quite right.' What does Execute suggest?",
+      opts:['Keep rewriting until it feels right — quality matters.','Ask a colleague to write it for her.','Send a good-enough version now rather than waiting for the perfect one.','Schedule a call instead to avoid the discomfort of writing.'],
+      correct:2, right:"That’s Execute. One real step beats a dozen perfect plans. Send the good-enough version.", wrong:"MESSY’s Execute principle cuts through perfectionism: the good-enough email, sent today, is the aligned action." },
+    { type:'fitb', before:"Execute is not about hustle. It’s about", blank:'aligned', after:"action — steps that come from what you actually see, not from obligation or performance.", hint:'The opposite of going through the motions' },
+    { type:'refl', prompt:"What’s one action you’ve been waiting to take until conditions are 'perfect'? What would imperfect action look like — and what’s the real cost of not taking it?", starters:['<strong>The thing I keep waiting to be ready for is...</strong>', '<strong>Imperfect action would look like...</strong>', '<strong>What I am really protecting by waiting is...</strong>'] },
+    { type:'rc', text:'What if I took imperfect action today? What would "good enough" look like in this project or relationship?' }
+  ]},
+
+  // MODULE 3 — SUPPORT
+  { id:3, title:'Design for Real Life', steps:[
+    { type:'module-obj', objectives:['Design one support structure built for your worst day, not your best', 'Recognize when a support system is aspirational rather than real', "Articulate what 'enough' looks like for your actual life"] },
+    { type:'interstitial' },
+    { type:'read', html:`
+      <p class="prose">Goals are easy. Support systems are hard. This is the dimension most people skip — and it’s why most personal development practices fade after the first few weeks. We design support for our best day and then feel like failures on regular ones.</p>
+      <p class="prose">Support isn’t about rigid productivity systems or habit-tracking apps. It’s about creating rhythms that hold you when things get overwhelming — the kind of scaffolding that works on a bad Tuesday, not just a motivated Monday.</p>
+      <div class="pull-quote"><p>"Most people design support for their best day — then feel like failures on regular ones."</p></div>
+      <p class="prose">The key question Support keeps asking: what does your practice look like when you’re tired, stressed, or depleted? Design for that version of yourself. Build scaffolding for your worst day, not your best one.</p>`
+    },
+    { type:'wb', title:'Design One Bad Day Support', sub:"Think about your actual bad days — when you’re overwhelmed, tired, stressed, or just human.", prompt:'What does your support system look like right now — and how could you make one version of it easier, not harder?',
+      fields:[
+        { label:'My current support system on a hard day (be honest)', id:'w3_current', rows:3 },
+        { label:'One support structure that would be EASIER, not harder', id:'w3_easier', rows:3 }
+      ],
+      followup:{ label:'When do you feel like a failure for needing support? What would you say to a friend who felt that way?', id:'w3_failure', rows:2 }
+    },
+    { type:'fc', cards:[
+      { q:'What is the Support practice?', a:"Designing habits, rhythms, and scaffolding that work for your actual life — especially on bad days — not your best-case aspirational life." },
+      { q:'Why do most support systems fail?', a:"They’re designed for your best day. When a regular or hard day arrives, the system requires more than you have — so it collapses, and you blame yourself." },
+      { q:'What does "scaffolding for bad days" mean?', a:'Having a minimal version of your practice that still counts. Not zero, not the full version. Just enough to stay connected on the hard days.' }
+    ]},
+    { type:'mc', q:"Jordan has a morning journaling practice. When he’s stressed or short on time, he skips it entirely and feels guilty. What would a better Support system look like for Jordan?",
+      opts:['A stricter accountability system to make sure he never misses.','A minimal version — even one sentence — that still counts on hard days.','Switching to a different journaling method that takes less time.','Setting an alarm 30 minutes earlier to protect the full practice.'],
+      correct:1, right:"That’s Support. Design for the hard day, not the ideal day. One sentence still counts.", wrong:"Adding more pressure to a struggling system usually makes it collapse faster. Support is about sustainability on your worst day." },
+    { type:'fitb', before:'Most people design support for their', blank:'best', after:'day — then feel like failures on regular ones. MESSY says: design for the hard day instead.', hint:'The motivated version vs. the depleted version' },
+    { type:'refl', prompt:"Think about a habit or practice you want to sustain. What’s the smallest version of it that would still count when you’re exhausted? Write that version down as a real option, not a fallback.", starters:['<strong>The practice I keep designing for my best day is...</strong>', '<strong>On my worst day, the smallest version that would still count is...</strong>', '<strong>What makes it hard to accept that as "enough" is...</strong>'] },
+    { type:'rc', text:'What would my system look like if I designed it for my worst day? How can I make this sustainable when I\'m overwhelmed?' }
+  ]},
+
+  // MODULE 4 — SURRENDER
+  { id:4, title:'Embrace Imperfection', steps:[
+    { type:'module-obj', objectives:['Identify something you are protecting by only sharing polished results', 'Distinguish between vulnerability and performance in your own behavior', 'Name one person with whom you could share something unfinished'] },
+    { type:'read', html:`
+      <p class="prose">This is where most optimization systems break down. And where real life actually begins.</p>
+      <p class="prose">Surrender is not giving up. It’s not passivity. It’s letting go of the exhausting story that things must look a certain way to count — that you must have it together before your experience is valid. That you can only show the polished version.</p>
+      <div class="pull-quote"><p>"Growth is not tidy. Relationships are not predictable. You are allowed to be human in all of it."</p></div>
+      <p class="prose">In practice, Surrender means sharing your process, not just your polish. The thing you’re working on that isn’t ready to show anyone yet — consider showing it anyway, to one person you trust. Vulnerability creates connection. Performance creates distance.</p>`
+    },
+    { type:'wb', title:'The Process Sharing Commitment', sub:'Process over polish.', prompt:"Identify something you’re working on that isn’t ready to show anyone.",
+      fields:[
+        { label:"Something I’m working on that isn’t ready to show anyone yet", id:'w4_unfinished', rows:3 },
+        { label:'What am I protecting by keeping it hidden?', id:'w4_protecting', rows:2 }
+      ],
+      followup:{ label:'Who is one person I could share this with — and what would I want them to know before I shared it?', id:'w4_who', rows:2 }
+    },
+    { type:'fc', cards:[
+      { q:'What is Surrender in the MESSY framework?', a:"Letting go of the myth that things must look a certain way to be valid. Releasing the need for control and polish before your experience counts." },
+      { q:"What’s the difference between vulnerability and performance?", a:"Performance creates distance — you’re managing how you look. Vulnerability creates connection — you’re sharing what’s actually true." },
+      { q:'What does Surrender ask you to share?', a:'Your process, not just your polished results. The messy middle, not just the wins and insights. Something unfinished, to someone you trust.' }
+    ]},
+    { type:'mc', q:"Alex only shares project updates when things are going well. When something struggles, she goes quiet. What does Surrender suggest?",
+      opts:["Wait until the project is back on track before communicating anything.","Share more wins to compensate for the difficulty.","Share the messy middle — the process, not just the polished outcome.","Focus on what she can control and let go of outcomes."],
+      correct:2, right:"That’s Surrender. Sharing only the wins is a performance. Sharing the process — the real middle of the work — creates genuine connection.", wrong:"Surrender asks for honesty about the process itself. Waiting for polish, or compensating with wins, is still performance." },
+    { type:'fitb', before:'Performance creates', blank:'distance', after:'. Vulnerability creates connection. Surrender asks you to stop managing how you look and start sharing what\'s actually true.', hint:'What happens when we only share the polished version' },
+    { type:'refl', prompt:"What are you protecting by only sharing the polished version? What would it actually feel like to share your process with someone you trust?", starters:['<strong>What I am protecting is...</strong>', '<strong>The person I could share the unfinished version with is...</strong>', '<strong>What I am afraid they would think is...</strong>'] },
+    { type:'rc', text:"What am I protecting by only sharing polished results? Where am I performing control instead of actually having it?" }
+  ]},
+
+  // MODULE 5 — YIELD
+  { id:5, title:'Reflect and Grow', steps:[
+    { type:'module-obj', objectives:['Extract at least one genuine learning from a recent real experience', 'Connect what you are harvesting in Yield back to your next Monitor session', 'Describe how the M→E→S→S→Y loop functions as a continuous practice'] },
+    { type:'read', html:`
+      <p class="prose">The final dimension is where experience becomes wisdom. Yield asks one question: <em>What is this actually teaching me?</em></p>
+      <p class="prose">Not just the successes. The project that didn’t go as planned. The argument that revealed something important. The failure that stung more than it should have. You don’t just act. You harvest.</p>
+      <div class="pull-quote"><p>"We don’t just act. We harvest. What is this experience actually teaching me?"</p></div>
+      <p class="prose">And here’s what makes MESSY a loop, not a list: the insights you harvest in Yield become the material for your next Monitor session. Each cycle builds on the last. That’s how experience turns into wisdom — not by optimizing, but by paying honest attention over time.</p>`
+    },
+    { type:'wb', title:'Pivot Mapping', sub:'Think of a recent change, setback, or pivot in your life.', prompt:'Map what happened — not to judge it, but to harvest from it.',
+      fields:[{ label:'What the change or pivot was', id:'w5_change', rows:2 }],
+      twoCol:[
+        { label:'What was lost', id:'w5_lost', rows:3 },
+        { label:'What was gained', id:'w5_gained', rows:3 }
+      ],
+      followup:{ label:'What is this experience actually teaching me right now?', id:'w5_teaching', rows:3 }
+    },
+    { type:'fc', cards:[
+      { q:'What is the Yield practice?', a:'Turning experience into wisdom by reflecting honestly — not just on wins, but on setbacks, friction, and unexpected outcomes. Integration over optimization.' },
+      { q:'What does "harvest" mean in MESSY?', a:"To actively extract learning from an experience. Not just to have experiences, but to ask what they’re teaching you — and to let that inform what comes next." },
+      { q:'How does Yield connect back to Monitor?', a:'Yield insights feed your next Monitor session, creating a continuous loop. Each cycle of the framework builds on the last. This is how experience becomes wisdom.' }
+    ]},
+    { type:'mc', q:"A project wraps up — it mostly worked, but one part failed unexpectedly. What does Yield suggest?",
+      opts:["Move on quickly to the next project so the failure doesn’t linger.","Document what went wrong and identify who was responsible.","Celebrate the wins and put the failed part aside.","Reflect honestly on what the failure revealed — what it taught you about the work and yourself."],
+      correct:3, right:"That’s Yield. The failure isn’t something to move past — it’s often where the most useful learning lives.", wrong:"Yield says: don’t skip over the hard parts. The friction is the teaching. What did the failure reveal that a success wouldn’t have?" },
+    { type:'fitb', before:'Yield insights inform your next', blank:'Monitor', after:'session, creating a continuous loop where each cycle of the framework builds on the last.', hint:'The first dimension of the framework' },
+    { type:'refl', prompt:"What’s one recent experience you haven’t fully reflected on yet? What might it be trying to teach you, if you let it?", starters:['<strong>The experience I have been avoiding reflecting on is...</strong>', '<strong>What it might be trying to teach me is...</strong>', '<strong>What I would discover if I let myself look honestly is...</strong>'] },
+    { type:'rc', text:'What is this experience actually teaching me? What would I discover if I reflected through curiosity instead of analysis?' }
+  ]},
+
+  // MODULE 6 — LIVING MESSY
+  { id:6, title:'Your Ongoing Practice', steps:[
+    { type:'module-obj', objectives:['Design a sustainable daily MESSY rhythm for your real life', 'Articulate what Living MESSY means beyond the course', 'Identify the one dimension you commit to deepening first'] },
+    { type:'read', html:`
+      <p class="prose">You’ve worked through all five MESSY practices. This final module isn’t a summary — it’s a consolidation. The goal is to turn what you’ve explored here into something you can actually carry into your life.</p>
+      <p class="prose">The MESSY framework is designed for daily use. The morning check-in takes 3–5 minutes. The evening reflection takes 2 minutes. The weekly review takes 15–20 minutes. None of it is mandatory. All of it compounds over time.</p>
+      <div class="pull-quote"><p>"The power isn’t in completing all the practices. It’s in finding the ones that meet you where you are — and returning to them as you grow."</p></div>
+      <p class="prose">Before you leave, spend a few minutes with the questions below. They’re the ones the framework keeps asking — across all of life, not just this course.</p>`
+    },
+    { type:'arc' },
+    { type:'living-review' },
+    { type:'mc', q:'Which statement best describes how Yield connects back to Monitor?',
+      opts:['Yield is the end of the cycle — after Yield, you start a fresh, unrelated cycle.','Yield insights feed the next Monitor session, creating a continuous learning loop.','Yield replaces Monitor once you\'re more experienced with the framework.','They\'re independent practices — Yield is for reflection, Monitor is for awareness.'],
+      correct:1, right:"Exactly. The loop is the method. Yield isn’t the end — it’s the bridge to the next Monitor. Each cycle builds on the last.", wrong:"The continuous loop is central to how MESSY works. Yield feeds Monitor, which informs Execute, and so on. It’s a practice that deepens over time, not a path with an end." },
+    { type:'fitb', before:"The goal isn’t to master the mess. The goal is to", blank:'dance', after:"with it — and return to the practices as you grow.", hint:"MESSY’s language for ongoing engagement" },
+    { type:'daily-practice' },
+    { type:'activity', title:'The Living MESSY Card', sub:'Your ongoing practice — take this with you.',
+      body:`<strong>Morning (3–5 min)</strong><br>M: What’s my energy today?<br>E: What one thing matters most?<br>S: What support do I need?<br><br><strong>Evening (2 min)</strong><br>S: What can I let go of?<br>Y: What did today teach me?<br><br><strong>Weekly (15–20 min)</strong><br>Review across all five elements. Notice cross-domain patterns. Where am I trying to be perfect instead of real?<br><br><strong>When MESSY starts feeling like work:</strong> Stop. Drop everything except noticing. Just Monitor for a week. No action required.` },
+    { type:'refl', prompt:'Complete this sentence: "After this course, the one thing I want to carry into this week is ___." Write whatever is honestly true right now.', starters:['<strong>The one thing I want to carry into this week is...</strong>', '<strong>What surprised me most about this course was...</strong>', '<strong>The dimension I most want to deepen is...</strong>'] }
+  ]}
+];
+
+// ============================================================
+// STATE + LOCALSTORAGE
+// ============================================================
+const SKEY = 'messy_course_v2';
+let S = { mod:0, step:0, done:[], qTotal:0, qRight:0, fcIdx:{}, fcFlip:{}, learnerName:'' };
+
+function load() {
+  try { const d=localStorage.getItem(SKEY); if(d) S={...S,...JSON.parse(d)}; } catch(e){}
+  // Restore name field if returning learner
+  const nameEl = document.getElementById('learnerName');
+  if (nameEl && S.learnerName) nameEl.value = S.learnerName;
+}
+function save() {
+  try { localStorage.setItem(SKEY, JSON.stringify(S)); } catch(e){}
+}
+
+// ============================================================
+// SCREENS
+// ============================================================
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s=>{
+    s.classList.remove('active');
+    s.setAttribute('aria-hidden', 'true');
+  });
+  const el=document.getElementById(id);
+  el.classList.add('active');
+  el.setAttribute('aria-hidden', 'false');
+}
+
+function goHome() {
+  showScreen('screen-landing');
+  updateLanding();
+}
+
+function startCourse() {
+  // Show the Before You Begin screen first
+  showScreen('screen-before');
+}
+
+function beginCourse() {
+  // Called from the Before You Begin screen
+  S.mod=0; S.step=0; save();
+  showScreen('screen-course');
+  render();
+}
+
+function resumeCourse() {
+  showScreen('screen-course');
+  render();
+}
+
+function goToModule(i) {
+  S.mod=i; S.step=0;
+  S.fcIdx[i]=0; S.fcFlip[i]=false;
+  save(); render();
+  document.getElementById('lessonArea').scrollTop=0;
+  // Auto-close sidebar on mobile after selection
+  if (window.innerWidth <= 700) closeSidebar();
+}
+
+// ============================================================
+// LANDING
+// ============================================================
+function updateLanding() {
+  const done=S.done.length, total=MODULES.length;
+  const banner=document.getElementById('resumeBanner');
+  const btn=document.getElementById('startBtn');
+  if(done>0&&done<total){
+    banner.classList.add('show');
+    document.getElementById('resumeText').textContent=
+      `You’ve completed ${done} of ${total} modules. Continue with ${ELEMENT[S.mod]?.label||'next module'}.`;
+    btn.textContent='Restart from beginning →';
+  } else if(done===total){
+    banner.classList.add('show');
+    document.getElementById('resumeText').textContent='You\'ve completed the full course.';
+    btn.textContent='Review the course →';
+  } else {
+    banner.classList.remove('show');
+    btn.textContent='Start course →';
+  }
+}
+
+// ============================================================
+// SIDEBAR + TOPBAR
+// ============================================================
+function updateNav() {
+  const done=S.done.length, total=MODULES.length;
+  const pct=Math.round((done/total)*100);
+  document.getElementById('sidePct').textContent=pct+'%';
+  document.getElementById('sideFill').style.width=pct+'%';
+  document.getElementById('topbarProg').textContent=done+' of '+total+' complete';
+  // Update mobile progress strip
+  const mstrip=document.getElementById('mobileProgFill');
+  if(mstrip) mstrip.style.width=pct+'%';
+
+  // Module class on course shell for CSS accent vars
+  const shell=document.getElementById('screen-course');
+  for(let i=0;i<7;i++) shell.classList.remove('mod-'+i);
+  shell.classList.add('mod-'+S.mod);
+
+  MODULES.forEach((_,i)=>{
+    const sn=document.getElementById('sn-'+i);
+    const sd=document.getElementById('sd-'+i);
+    if(!sn) return;
+    sn.classList.toggle('active', i===S.mod);
+    sn.classList.toggle('completed', S.done.includes(i));
+    sd.classList.toggle('done', S.done.includes(i));
+    if(S.done.includes(i)) sd.innerHTML='✓';
+    else sd.innerHTML=['0','M','E','S','S','Y','∫'][i];
+  });
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function render() {
+  updateNav();
+  const mod=MODULES[S.mod];
+  const step=mod.steps[S.step];
+  const total=mod.steps.length;
+  const el=ELEMENT[S.mod];
+
+  // Step dots
+  let dots=mod.steps.map((_,i)=>{
+    let c='sdot-step';
+    if(i===S.step) c+=' active';
+    else if(i<S.step) c+=' done';
+    return `<span class="${c}" aria-hidden="true"></span>`;
+  }).join('');
+
+  // Build step content
+  let body='';
+  if(step.type==='read')         body=buildRead(step);
+  else if(step.type==='fc')      body=buildFC(step);
+  else if(step.type==='mc')      body=buildMC(step);
+  else if(step.type==='fitb')    body=buildFITB(step);
+  else if(step.type==='refl')    body=buildRefl(step);
+  else if(step.type==='rc')      body=buildRC(step);
+  else if(step.type==='wb')      body=buildWB(step);
+  else if(step.type==='interstitial') body=buildInterstitial();
+  else if(step.type==='activity')     body=buildActivity(step);
+  else if(step.type==='arc')           body=buildArc();
+  else if(step.type==='integral-explainer') body=buildIntegralExplainer();
+  else if(step.type==='module-obj')         body=buildModuleObj(step);
+  else if(step.type==='worked-example')    body=buildWorkedExample(step);
+  else if(step.type==='living-review') body=buildLivingReview();
+  else if(step.type==='daily-practice') body=buildDailyPractice();
+
+  const isFirst= S.step===0;
+  const isLast = S.step===total-1;
+  const isLastMod = S.mod===MODULES.length-1;
+
+  const prevLabel = isFirst
+    ? (S.mod>0 ? '← Previous module' : '← Course home')
+    : '← Back';
+  const nextLabel = isLast
+    ? (isLastMod ? 'Finish course →' : 'Next module →')
+    : 'Continue →';
+
+  document.getElementById('lessonInner').innerHTML=`
+    <div class="module-stripe" style="background:${el.color};"></div>
+    <div class="step-dots" aria-label="Step ${S.step+1} of ${total}">
+      ${dots}<span class="step-count">${S.step+1} / ${total}</span>
+    </div>
+    <p class="lesson-eyebrow">${el.label}</p>
+    <h2 class="lesson-title">${mod.title}</h2>
+    ${body}
+    <nav class="lesson-nav">
+      <button class="btn-secondary" onclick="prevStep()">${prevLabel}</button>
+      <button class="btn-primary" onclick="nextStep()" id="nextBtn">${nextLabel}</button>
+    </nav>
+  `;
+  document.getElementById('lessonArea').scrollTop=0;
+
+  if(step.type==='fc') refreshFC();
+}
+
+// ============================================================
+// STEP BUILDERS
+// ============================================================
+
+function buildArc() {
+  return '<div class="arc-lesson"><div class="arc-wrap" role="img" aria-label="The MESSY loop: Monitor, Execute, Support, Surrender, Yield"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 160" style="width:100%;max-width:820px;height:auto;display:block;"><defs><linearGradient id="gm" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#9b59b6"/><stop offset="100%" style="stop-color:#8e44ad"/></linearGradient><linearGradient id="ge" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#e67e22"/><stop offset="100%" style="stop-color:#d35400"/></linearGradient><linearGradient id="gs1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3498db"/><stop offset="100%" style="stop-color:#2980b9"/></linearGradient><linearGradient id="gs2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f1c40f"/><stop offset="100%" style="stop-color:#f39c12"/></linearGradient><linearGradient id="gy" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#27ae60"/><stop offset="100%" style="stop-color:#229954"/></linearGradient><filter id="bs"><feMorphology operator="dilate" radius="0.6"/></filter></defs><circle cx="60" cy="70" r="50" fill="url(#gm)"/><text x="60" y="84" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle">M</text><text x="60" y="142" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Monitor</text><text x="138" y="78" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="#2c3e50" text-anchor="middle" filter="url(#bs)">→</text><circle cx="210" cy="70" r="50" fill="url(#ge)"/><text x="210" y="84" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle">E</text><text x="210" y="142" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Execute</text><text x="288" y="78" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="#2c3e50" text-anchor="middle" filter="url(#bs)">→</text><circle cx="360" cy="70" r="50" fill="url(#gs1)"/><text x="360" y="84" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle">S</text><text x="360" y="142" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Support</text><text x="438" y="78" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="#2c3e50" text-anchor="middle" filter="url(#bs)">→</text><circle cx="510" cy="70" r="50" fill="url(#gs2)"/><text x="510" y="84" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="#856404" text-anchor="middle">S</text><text x="510" y="142" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Surrender</text><text x="588" y="78" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="#2c3e50" text-anchor="middle" filter="url(#bs)">→</text><circle cx="660" cy="70" r="50" fill="url(#gy)"/><text x="660" y="84" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle">Y</text><text x="660" y="142" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#2c3e50" text-anchor="middle">Yield</text><g transform="translate(730,48) scale(0.35)" filter="url(#bs)"><path d="m64.5 10c-0.92578-0.011719-1.8516-0.003906-2.7812 0.03125-4.9375 0.19141-9.8711 1.0938-14.656 2.6875-0.011719 0.003906-0.023438-0.003906-0.03125 0-12.32 4.0078-22.844 12.512-29.438 23.625-0.007812 0.011719-0.023438 0.019531-0.03125 0.03125-4.9531 8.3438-7.5547 17.965-7.5625 27.625h-10l14 24 14-24h-10c0.015625-8.2422 2.2305-16.48 6.4375-23.562 5.6016-9.4531 14.645-16.734 25.094-20.125h0.03125v-0.03125c16.223-5.4062 34.816-0.96484 47.031 11.156l5.625-5.6875c-10.113-10.039-23.812-15.57-37.719-15.75zm49.5 30-14 24h10c-0.03125 8.2109-2.2461 16.414-6.4375 23.469-5.6016 9.4531-14.645 16.734-25.094 20.125h-0.03125c-16.332 5.4141-34.895 0.98047-47-11.125l-5.6562 5.6562c14.285 14.285 35.895 19.434 55.156 13.062 0.003906-0.007812 0.023438 0.003906 0.03125 0 12.332-4.0156 22.875-12.523 29.469-23.656 4.9453-8.3242 7.543-17.895 7.5625-27.531h10z" fill="#2c3e50"/></g></svg></div></div>';
+}
+function buildIntegralExplainer() {
+  return `<div class="integral-explainer">
+    <div class="integral-symbol" aria-hidden="true">∫</div>
+    <div class="integral-content">
+      <p class="integral-title">Why the ∫ symbol?</p>
+      <p class="integral-body">
+        The ∫ is an integral sign — from mathematics. The integral accumulates. It calculates the sum of everything underneath the curve, across time. That’s exactly what <em>Living MESSY</em> represents: the accumulated wisdom of every cycle of the framework you’ve moved through, applied to the full texture of your actual life.
+      </p>
+      <p class="integral-body" style="margin-top:8px;">
+        The five practices — M, E, S, S, Y — are the individual moments. Living MESSY is what they add up to. Not a sixth practice, but the ongoing orientation that emerges when the five become second nature.
+      </p>
+    </div>
+  </div>`;
+}
+
+function buildModuleObj(s) {
+  const items = s.objectives.map(o =>
+    '<li>' + o + '</li>'
+  ).join('');
+  return '<div class="module-obj">' +
+    '<span class="module-obj-label">After this module, you will have…</span>' +
+    '<ul class="module-obj-list">' + items + '</ul>' +
+    '</div>';
+}
+
+function buildRead(s) { return `<div>${s.html}</div>`; }
+
+function buildFC(s) {
+  const mi=S.mod, tot=s.cards.length;
+  return `<div class="fc-section">
+    <div class="fc-header">
+      <span class="fc-label">Flashcards</span>
+      <span class="fc-counter" id="fcc">${(S.fcIdx[mi]||0)+1} / ${tot}</span>
+    </div>
+    <div class="fc-viewport">
+      <div class="flashcard" id="fccard" onclick="flipFC()" role="button" tabindex="0"
+        aria-label="Flashcard — tap to flip" onkeydown="if(event.key==='Enter'||event.key===' ')flipFC()">
+        <div class="fc-face fc-front">
+          <span class="fc-face-label">Question</span>
+          <div class="fc-q" id="fcq"></div>
+        </div>
+        <div class="fc-face fc-back">
+          <span class="fc-face-label">Answer</span>
+          <div class="fc-a" id="fca"></div>
+        </div>
+      </div>
+    </div>
+    <p class="fc-hint" id="fch">Tap card to flip</p>
+    <div class="fc-nav">
+      <button type="button" class="btn-secondary" onclick="fcPrev()" style="padding:11px 18px;font-size:13px;">← Prev</button>
+      <button type="button" class="btn-secondary" onclick="fcNext()" style="padding:11px 18px;font-size:13px;">Next →</button>
+    </div>
+  </div>`;
+}
+
+function refreshFC() {
+  const mi=S.mod;
+  const step=MODULES[mi].steps[S.step];
+  if(!step||step.type!=='fc') return;
+  const idx=S.fcIdx[mi]||0;
+  const card=step.cards[idx];
+  const flipped=S.fcFlip[mi]||false;
+  const q=document.getElementById('fcq');
+  const a=document.getElementById('fca');
+  const ctr=document.getElementById('fcc');
+  const hint=document.getElementById('fch');
+  const fc=document.getElementById('fccard');
+  if(!q) return;
+  q.textContent=card.q;
+  a.textContent=card.a;
+  ctr.textContent=(idx+1)+' / '+step.cards.length;
+  fc.classList.toggle('flipped',flipped);
+  hint.textContent=flipped?'Tap to flip back':'Tap card to flip';
+}
+
+function flipFC() { S.fcFlip[S.mod]=!S.fcFlip[S.mod]; refreshFC(); }
+function fcNext() {
+  const step=MODULES[S.mod].steps[S.step];
+  S.fcIdx[S.mod]=Math.min((S.fcIdx[S.mod]||0)+1,step.cards.length-1);
+  S.fcFlip[S.mod]=false; refreshFC();
+}
+function fcPrev() {
+  S.fcIdx[S.mod]=Math.max((S.fcIdx[S.mod]||0)-1,0);
+  S.fcFlip[S.mod]=false; refreshFC();
+}
+
+function buildMC(s) {
+  const opts=s.opts.map((o,i)=>`
+    <button type="button" class="quiz-opt" id="qo${i}" onclick="pickMC(${i},${s.correct})" data-i="${i}">
+      <span class="opt-ind" id="qi${i}"></span><span>${o}</span>
+    </button>`).join('');
+  return `<div class="quiz-section">
+    <span class="quiz-tag">Knowledge check</span>
+    <p class="quiz-q">${s.q}</p>
+    <div class="quiz-opts">${opts}</div>
+    <div class="quiz-fb" id="qfb"></div>
+  </div>`;
+}
+
+function pickMC(i,correct) {
+  const s=MODULES[S.mod].steps[S.step];
+  const ok=i===correct;
+  document.querySelectorAll('.quiz-opt').forEach((el,j)=>{
+    el.classList.add('locked');
+    if(j===correct){el.classList.add('correct');document.getElementById('qi'+j).textContent='✓';}
+    if(j===i&&!ok){el.classList.add('incorrect');document.getElementById('qi'+j).textContent='✕';}
+  });
+  const fb=document.getElementById('qfb');
+  fb.className='quiz-fb show '+(ok?'right':'wrong');
+  fb.textContent=ok?s.right:s.wrong;
+  S.qTotal++; if(ok) S.qRight++; save();
+}
+
+function buildFITB(s) {
+  return `<div class="fitb-section">
+    <span class="fitb-tag">Fill in the blank</span>
+    <div class="fitb-sentence">
+      <span>${s.before}</span>
+      <input class="fitb-in" id="ftin" type="text" placeholder="${s.hint}" autocomplete="off"/>
+      <span>${s.after}</span>
+    </div>
+    <button type="button" class="btn-check" onclick="checkFITB('${s.blank}')">Check answer</button>
+    <div class="fitb-fb" id="ftfb"></div>
+  </div>`;
+}
+
+function checkFITB(correct) {
+  const val=(document.getElementById('ftin').value||'').trim().toLowerCase();
+  const ok=val===correct.toLowerCase()||
+    val.replace(/[^a-z]/g,'').startsWith(correct.toLowerCase().replace(/[^a-z]/g,'').substring(0,4));
+  const inp=document.getElementById('ftin');
+  inp.classList.remove('correct','incorrect');
+  inp.classList.add(ok?'correct':'incorrect');
+  const fb=document.getElementById('ftfb');
+  fb.className='fitb-fb show '+(ok?'right':'wrong');
+  fb.textContent=ok?'Correct.':`The answer is "${correct}".`;
+  if(!ok){inp.value=correct;inp.classList.remove('incorrect');inp.classList.add('correct');}
+  S.qTotal++; if(ok) S.qRight++; save();
+}
+
+// buildRefl defined above in FIX 7 block
+
+function buildRC(s) {
+  return `<div class="rc-card" role="complementary" aria-label="Reality Check">
+    <p class="rc-eye">Reality Check — carry this with you</p>
+    <p class="rc-text">${s.text}</p>
+    <p class="rc-carry">This is the question this dimension keeps asking.</p>
+  </div>`;
+}
+
+function buildWB(s) {
+  let flds='';
+  (s.fields||[]).forEach(f=>{
+    flds+=`<span class="wb-label">${f.label}</span>
+      <textarea class="wb-ta" id="${f.id}" rows="${f.rows}" placeholder="Write freely…"></textarea>`;
+  });
+  if(s.twoCol){
+    flds+=`<div class="wb-two">`;
+    s.twoCol.forEach(f=>{
+      flds+=`<div><span class="wb-label">${f.label}</span>
+        <textarea class="wb-ta" id="${f.id}" rows="${f.rows}" placeholder="…"></textarea></div>`;
+    });
+    flds+=`</div>`;
+  }
+  const fu=s.followup?`<span class="wb-label" style="margin-top:2px;">${s.followup.label}</span>
+    <textarea class="wb-ta" id="${s.followup.id}" rows="${s.followup.rows}" placeholder="Write freely…"></textarea>`:'';
+  return `<div class="wb-section">
+    <span class="wb-tag">Workbook exercise</span>
+    <p class="wb-title">${s.title}</p>
+    <p class="wb-sub">${s.sub}</p>
+    <p class="wb-label" style="margin-bottom:12px;">${s.prompt}</p>
+    ${flds}${fu}
+    <p class="refl-note" style="margin-top:4px;">Your responses stay on your device and are never submitted.</p>
+  </div>`;
+}
+
+function buildInterstitial() {
+  return `<div class="interstitial">
+    <p class="interstitial-eye">A note before you continue</p>
+    <p class="interstitial-title">When MESSY starts feeling like work</p>
+    <p class="interstitial-body">If this course — or the MESSY framework — starts to feel like another obligation, that’s the signal. Not a failure. A signal. Here’s what to do:</p>
+    <div class="resets">
+      <div><span class="reset-trigger">"I’m tracking my MESSY progress"</span><span class="reset-action">→ Delete the tracking. There’s no score, no leaderboard. There’s just you being human.</span></div>
+      <div><span class="reset-trigger">"This feels like another to-do"</span><span class="reset-action">→ Drop everything except noticing. Just Monitor for a week. No action required.</span></div>
+      <div><span class="reset-trigger">"I’m performing imperfection"</span><span class="reset-action">→ Ask what you’re trying to prove. Real mess doesn’t need an audience.</span></div>
+      <div><span class="reset-trigger">"I want to get really good at this"</span><span class="reset-action">→ There’s no "good at" being human. The goal is authenticity, not mastery.</span></div>
+    </div>
+  </div>`;
+}
+
+function buildActivity(s) {
+  return `<div class="activity-card">
+    <p class="act-tag">Activity card — take this with you</p>
+    <p class="act-title">${s.title}</p>
+    <p class="act-sub">${s.sub}</p>
+    <div class="act-body">${s.body}</div>
+  </div>`;
+}
+
+function buildLivingReview() {
+  return `<div class="wb-section">
+    <span class="wb-tag">Integration — then and now</span>
+    <p class="wb-title">The MESSY Review</p>
+    <p class="wb-sub">Look back across all five practices.</p>
+    <span class="wb-label">Which MESSY element felt most natural? Why?</span>
+    <textarea class="wb-ta" id="lr_natural" rows="3" placeholder="Write freely…"></textarea>
+    <span class="wb-label">Which element felt like the most resistance? What did that tell you?</span>
+    <textarea class="wb-ta" id="lr_resist" rows="3" placeholder="Write freely…"></textarea>
+    <span class="wb-label">What theme or pattern kept appearing across modules?</span>
+    <textarea class="wb-ta" id="lr_pattern" rows="3" placeholder="Write freely…"></textarea>
+    <span class="wb-label">What’s one thing you’ve already done differently because of something you noticed here?</span>
+    <textarea class="wb-ta" id="lr_diff" rows="3" placeholder="Write freely…"></textarea>
+    <span class="wb-label">My one word for how I feel about my mess right now:</span>
+    <textarea class="wb-ta" id="lr_word" rows="1" placeholder="Just one word…" style="min-height:44px;resize:none;"></textarea>
+    <p class="refl-note" style="margin-top:4px;">Your responses stay on your device and are never submitted.</p>
+  </div>`;
+}
+
+function buildDailyPractice() {
+  return `<div class="wb-section">
+    <span class="wb-tag">Your ongoing practice</span>
+    <p class="wb-title">Design your daily MESSY rhythm</p>
+    <p class="wb-sub">Not the aspirational version. The version that would actually survive a hard week.</p>
+    <span class="wb-label">One element I commit to deepening (not all five — just one):</span>
+    <textarea class="wb-ta" id="dp_elem" rows="2" placeholder="Which dimension calls to you most?"></textarea>
+    <span class="wb-label">The smallest daily version of my practice that would still count:</span>
+    <textarea class="wb-ta" id="dp_min" rows="2" placeholder="What does it look like on your worst day?"></textarea>
+    <span class="wb-label">Best day and time for a weekly MESSY reflection:</span>
+    <textarea class="wb-ta" id="dp_when" rows="1" placeholder="e.g., Sunday evening, 10 minutes" style="min-height:44px;resize:none;"></textarea>
+    <span class="wb-label">One thing I’m taking with me from this course:</span>
+    <textarea class="wb-ta" id="dp_take" rows="2" placeholder="Write whatever is honestly true right now."></textarea>
+    <p class="refl-note" style="margin-top:4px;">Your responses stay on your device and are never submitted.</p>
+  </div>`;
+}
+
+
+// ============================================================
+// MODULE COMPLETE PAUSE SCREEN
+// ============================================================
+function showModuleComplete(modIdx) {
+  const titles = ['Orientation complete.', 'Monitor complete.', 'Execute complete.', 'Support complete.', 'Surrender complete.', 'Yield complete.', 'Course complete.'];
+  const subs   = ["You’ve got the premise. Now the practice begins.", "You’ve named what’s actually there. That’s the hardest part.", "One real step. That’s all it ever takes.", "You’ve designed for your real self — not your aspirational one.", "You’ve let go of something. Notice what that feels like.", "You’ve turned experience into something that teaches. That’s wisdom.", 'The program ends. The practice continues.'];
+  const nextLabels = ['Begin: Monitor →', 'Begin: Execute →', 'Begin: Support →', 'Begin: Surrender →', 'Begin: Yield →', 'Begin: Living MESSY →', ''];
+  const rcTexts = ["What if the problem isn’t you? What if every system that failed you was designed for a version of human that doesn’t actually exist?", "What am I deliberately NOT noticing? What would a trusted friend say I’m avoiding?", 'What if I took imperfect action today? What would "good enough" look like in this project or relationship?', "What would my system look like if I designed it for my worst day? How can I make this sustainable when I’m overwhelmed?", 'What am I protecting by only sharing polished results? Where am I performing control instead of actually having it?', 'What is this experience actually teaching me? What would I discover if I reflected through curiosity instead of analysis?', ''];
+  const colors  = ['#667eea', '#9b59b6', '#e67e22', '#3498db', '#f1c40f', '#27ae60', '#2c3e50'];
+  const elLabels = ['Orientation','M — Monitor','E — Execute','S — Support','S — Surrender','Y — Yield','∫ Living MESSY'];
+  const elLetters = ['0','M','E','S','S','Y','∫'];
+  const total = 7;
+
+  // Build progress dots
+  let dots = '';
+  for (let i = 0; i < total; i++) {
+    let cls = 'mcp-dot';
+    if (i < modIdx + 1) cls += ' done';
+    if (i === modIdx) cls += ' active';
+    dots += '<span class="' + cls + '" aria-hidden="true"></span>';
+  }
+
+  // RC card only if there’s text
+  const rcHtml = rcTexts[modIdx] ? '<div class="mod-complete-rc" style="border-left-color:' + colors[modIdx] + ';"><p class="mod-complete-rc-label">Reality check — carry this with you</p><p class="mod-complete-rc-text">' + rcTexts[modIdx] + '</p></div>' : '';
+
+  // Next button — last module goes to full completion screen
+  const isLast = modIdx === total - 1;
+  const nextBtnHtml = isLast
+    ? '<button type="button" class="btn-mc-next" onclick="removeModComplete();showCompletion()">See your results →</button>'
+    : '<button type="button" class="btn-mc-next" onclick="removeModComplete();goToModule(' + (modIdx + 1) + ')">' + nextLabels[modIdx] + '</button>';
+
+  const overlay = document.createElement('div');
+  overlay.className = 'mod-complete-overlay';
+  overlay.id = 'modCompleteOverlay';
+  // FIX 8: Bridge text between modules
+  const bridgeHtml = (MODULE_BRIDGES[modIdx] && !isLast)
+    ? '<p style="font-size:0.82rem;color:#56707f;font-style:italic;line-height:1.6;margin-bottom:1.5rem;border-top:1px solid #ddd8cc;padding-top:1rem;">' + MODULE_BRIDGES[modIdx] + '</p>'
+    : '';
+
+  // FIX 5: Mid-course formative check at Module 3 (Support)
+  const midCheckHtml = (modIdx === 3)
+    ? '<div class="midcourse-check">' +
+        '<span class="mc-check-label">Halfway check — how is this landing?</span>' +
+        '<p class="mc-check-q">You have completed the first three practices. Which best describes where you are right now?</p>' +
+        '<div class="mc-check-options">' +
+          '<button type="button" class="mc-check-opt" onclick="this.classList.add(\'picked\')">Making sense — I can see how this applies to my life</button>' +
+          '<button type="button" class="mc-check-opt" onclick="this.classList.add(\'picked\')">Interesting but I have not fully connected it to my situation yet</button>' +
+          '<button type="button" class="mc-check-opt" onclick="this.classList.add(\'picked\')">Feeling a bit like another system I have to follow</button>' +
+          '<button type="button" class="mc-check-opt" onclick="this.classList.add(\'picked\')">Something landed that I did not expect</button>' +
+        '</div>' +
+        '<p class="mc-check-note">Whatever you picked — that is useful information. Notice it and carry it into the second half.</p>' +
+      '</div>'
+    : '';
+
+  overlay.innerHTML =
+    '<div class="mod-complete-inner">' +
+      '<div class="mod-complete-badge" style="background:' + colors[modIdx] + (colors[modIdx]==='#f1c40f' ? ';color:#856404' : '') + ';">' + elLetters[modIdx] + '</div>' +
+      '<p class="mod-complete-eyebrow">' + elLabels[modIdx] + '</p>' +
+      '<h2 class="mod-complete-title">' + titles[modIdx] + '</h2>' +
+      '<p class="mod-complete-sub">' + subs[modIdx] + '</p>' +
+      '<div class="mod-complete-progress" aria-label="' + (modIdx+1) + ' of ' + total + ' modules complete">' + dots + '</div>' +
+      midCheckHtml +
+      rcHtml +
+      bridgeHtml +
+      '<div class="mod-complete-actions">' +
+        nextBtnHtml +
+        '<button type="button" class="btn-mc-home" onclick="removeModComplete();goHome()">← Back to course home</button>' +
+      '</div>' +
+    '</div>';
+
+  document.body.appendChild(overlay);
+}
+
+function removeModComplete() {
+  const el = document.getElementById('modCompleteOverlay');
+  if (el) el.remove();
+}
+
+function showCompletion() {
+  document.getElementById('finalScore').textContent = S.qRight + ' / ' + S.qTotal;
+  const breakdown = document.getElementById('scoreBreakdown');
+  if (breakdown) breakdown.innerHTML = buildScoreBreakdown();
+  // Personalize with learner name if provided
+  const name = (S.learnerName || '').trim();
+  const titleEl = document.getElementById('completeTitle');
+  const subEl   = document.getElementById('completeSub');
+  if (name && titleEl) {
+    titleEl.textContent = name + ', you finished the course.';
+  }
+  if (name && subEl) {
+    subEl.innerHTML = "Not because you optimized your way through it, " + name + ".<br>Because you paid honest attention. That’s the practice.";
+  }
+  showScreen('screen-complete');
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function nextStep() {
+  const mod=MODULES[S.mod];
+  const lastStep=S.step===mod.steps.length-1;
+  if(lastStep){
+    if(!S.done.includes(S.mod)) S.done.push(S.mod);
+    save();
+    // Show module-complete pause screen instead of auto-advancing
+    showModuleComplete(S.mod);
+  } else {
+    S.step+=1; save(); render();
+  }
+}
+
+function prevStep() {
+  if(S.step>0){
+    S.step-=1; S.fcFlip[S.mod]=false; save(); render();
+  } else if(S.mod>0){
+    S.mod-=1; S.step=MODULES[S.mod].steps.length-1; save(); render();
+  } else {
+    goHome();
+  }
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('courseSidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  const btn = document.getElementById('menuToggle');
+  const isOpen = sidebar.classList.toggle('open');
+  backdrop.classList.toggle('show', isOpen);
+  btn.setAttribute('aria-expanded', String(isOpen));
+  btn.setAttribute('aria-label', isOpen ? 'Close module navigation' : 'Open module navigation');
+  btn.textContent = isOpen ? '✕' : '☰';
+  if (isOpen) {
+    // Trap focus within sidebar on mobile
+    sidebar.querySelector('.sidebar-item').focus();
+  }
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+function closeSidebar() {
+  const sidebar = document.getElementById('courseSidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  const btn = document.getElementById('menuToggle');
+  sidebar.classList.remove('open');
+  backdrop.classList.remove('show');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('aria-label', 'Open module navigation');
+  btn.textContent = '☰';
+  document.body.style.overflow = '';
+}
+
+// Close sidebar when module selected on mobile, then navigate
+const _origGoToModule = goToModule;
+
+
+// ============================================================
+// FIX 4 — buildWorkedExample
+// ============================================================
+function buildWorkedExample(s) {
+  let fieldsHtml = '';
+  if (s.fields) {
+    s.fields.forEach(f => {
+      fieldsHtml += '<div class="we-field-label">' + f.label + '</div>' +
+        '<p class="we-field-text">' + f.text + '</p>';
+    });
+  }
+  return '<div class="worked-example">' +
+    '<span class="we-label">Worked example — see how this might look before you try it</span>' +
+    '<p class="we-title">' + (s.title||'') + '</p>' +
+    '<div class="we-example">' + fieldsHtml + '</div>' +
+    '<p class="we-note">' + (s.note||'') + '</p>' +
+    '</div>';
+}
+
+// ============================================================
+// FIX 6 — Per-module score tracking
+// ============================================================
+// Augment state to track per-module scores
+// We track which module each question belongs to via S.modScores
+if (!S.modScores) S.modScores = {};
+
+const _origPickMC = pickMC;
+pickMC = function(i, correct) {
+  const ok = i === correct;
+  if (!S.modScores[S.mod]) S.modScores[S.mod] = {t:0,r:0};
+  S.modScores[S.mod].t++;
+  if (ok) S.modScores[S.mod].r++;
+  _origPickMC(i, correct);
+};
+
+const _origCheckFITB = checkFITB;
+checkFITB = function(correct) {
+  const val = (document.getElementById('ftin').value||'').trim().toLowerCase();
+  const ok = val === correct.toLowerCase() ||
+    val.replace(/[^a-z]/g,'').startsWith(correct.toLowerCase().replace(/[^a-z]/g,'').substring(0,4));
+  if (!S.modScores[S.mod]) S.modScores[S.mod] = {t:0,r:0};
+  S.modScores[S.mod].t++;
+  if (ok) S.modScores[S.mod].r++;
+  _origCheckFITB(correct);
+};
+
+function buildScoreBreakdown() {
+  const modNames = ['Orientation','Monitor','Execute','Support','Surrender','Yield','Living MESSY'];
+  const modColors = ['#667eea','#9b59b6','#e67e22','#3498db','#f1c40f','#27ae60','#2c3e50'];
+  let rows = '';
+  let hasAny = false;
+  modNames.forEach((name, i) => {
+    const ms = (S.modScores||{})[i];
+    if (!ms || ms.t === 0) return;
+    hasAny = true;
+    const pct = Math.round((ms.r / ms.t) * 100);
+    rows += '<div class="score-row">' +
+      '<span class="score-row-label">' + name + '</span>' +
+      '<div class="score-row-bar-wrap"><div class="score-row-bar" style="width:' + pct + '%;background:' + modColors[i] + ';"></div></div>' +
+      '<span class="score-row-pct">' + ms.r + '/' + ms.t + '</span>' +
+      '</div>';
+  });
+  return hasAny ? '<div class="score-breakdown">' + rows + '</div>' : '';
+}
+
+// ============================================================
+// FIX 7 — Reflection scaffold toggle
+// ============================================================
+function toggleReflScaffold(id) {
+  const el = document.getElementById(id);
+  const btn = el.previousElementSibling;
+  const isOpen = el.classList.toggle('open');
+  btn.textContent = isOpen ? 'Hide starters ↑' : 'Need a sentence starter? ↓';
+}
+
+// Updated buildRefl with scaffold
+function buildRefl(s) {
+  const rfId = 'rs_' + S.mod + '_' + S.step;
+  const startersHtml = s.starters
+    ? '<div class="refl-scaffold">' +
+        '<button type="button" class="refl-scaffold-trigger" onclick="toggleReflScaffold(\'' + rfId + '\')">' +
+        'Need a sentence starter? ↓</button>' +
+        '<div class="refl-starters" id="' + rfId + '">' +
+        s.starters.map(function(st){ return '<p>' + st + '</p>'; }).join('') +
+        '</div></div>'
+    : '';
+  return '<div class="refl-section">' +
+    '<span class="refl-tag">Reflection</span>' +
+    '<p class="refl-prompt">' + s.prompt + '</p>' +
+    '<textarea class="refl-ta" placeholder="Write freely. No right answer here — stays on your device only." rows="5"></textarea>' +
+    startersHtml +
+    '<p class="refl-note" style="margin-top:8px;">Your reflection is private and never leaves your device.</p>' +
+    '</div>';
+}
+
+// ============================================================
+// FIX 3 — Survey JS
+// ============================================================
+let surveyRating = 0;
+function rateSurvey(btn, val) {
+  surveyRating = val;
+  document.querySelectorAll('.survey-star').forEach((s, i) => {
+    s.classList.toggle('active', i < val);
+  });
+}
+function submitSurvey() {
+  const takeaway = document.getElementById('surveyTakeaway')?.value || '';
+  const improve  = document.getElementById('surveyImprove')?.value || '';
+  try {
+    localStorage.setItem('messy_survey_v1', JSON.stringify({
+      rating: surveyRating, takeaway, improve,
+      date: new Date().toISOString()
+    }));
+  } catch(e) {}
+  document.getElementById('courseSurvey').style.opacity = '0.6';
+  document.getElementById('surveyThanks').style.display = 'block';
+  document.querySelector('.survey-submit').style.display = 'none';
+}
+
+// ============================================================
+// FIX 2 — Pre-assessment JS
+// ============================================================
+function selectPA(btn, qNum) {
+  const group = btn.closest('.pa-question').querySelectorAll('.pa-option');
+  group.forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+// ============================================================
+// FIX 8 — Module bridges (used in showModuleComplete)
+// ============================================================
+const MODULE_BRIDGES = [
+  'The framework is now yours to understand. Monitor is where you begin using it — by looking honestly at what is actually happening in your life.',
+  'You have named what is actually there. Execute asks: now that you can see it clearly, what is one real step you can take — not a perfect one, just a real one?',
+  'Action without support is the reason most practices fade. Support asks: what structures will hold you on the days when motivation is nowhere to be found?',
+  'You have designed for your real self. Surrender asks you to go one step further — to stop protecting the polished version and share what is actually happening.',
+  'You have let something go. Yield asks: what is that experience actually teaching you? Not what it should have taught you — what it did.',
+  'You have moved through all five practices. Living MESSY is what happens when they stop being something you do and become how you pay attention to your life.',
+  ''
+];
+
+
+// ============================================================
+// COPY ALL RESPONSES TO CLIPBOARD
+// Collects all textarea values across the course
+// ============================================================
+function copyAllResponses() {
+  const modNames = ['Orientation','Monitor','Execute','Support','Surrender','Yield','Living MESSY'];
+  const textareas = document.querySelectorAll('.wb-ta, .refl-ta, .survey-textarea');
+  let output = 'THE MESSY PLAYBOOK — My Reflections & Workbook Responses\n';
+  output += '='.repeat(52) + '\n';
+  output += 'Copied: ' + new Date().toLocaleDateString() + '\n\n';
+
+  // Collect all filled textareas with their labels
+  let hasContent = false;
+  document.querySelectorAll('.wb-section, .refl-section').forEach(section => {
+    const labels = section.querySelectorAll('.wb-label, .refl-prompt');
+    const tas    = section.querySelectorAll('.wb-ta, .refl-ta');
+    let sectionContent = '';
+    tas.forEach((ta, i) => {
+      if (ta.value && ta.value.trim()) {
+        const label = labels[i] ? labels[i].textContent.trim() : 'Response';
+        sectionContent += label + '\n' + ta.value.trim() + '\n\n';
+        hasContent = true;
+      }
+    });
+    if (sectionContent) output += sectionContent;
+  });
+
+  // Survey responses
+  const takeaway = document.getElementById('surveyTakeaway');
+  const improve  = document.getElementById('surveyImprove');
+  if ((takeaway && takeaway.value) || (improve && improve.value)) {
+    output += '--- Feedback ---\n';
+    if (takeaway && takeaway.value) output += 'One thing I am taking with me:\n' + takeaway.value.trim() + '\n\n';
+    if (improve  && improve.value)  output += 'What could be clearer:\n' + improve.value.trim() + '\n\n';
+  }
+
+  if (!hasContent) {
+    output += '(No responses were written during this session.)\n';
+  }
+
+  output += '='.repeat(52) + '\n';
+  output += 'The MESSY Playbook™ · messy-playbook.vercel.app\n';
+  output += 'These responses only ever existed on this device.\n';
+
+  navigator.clipboard.writeText(output).then(function() {
+    const confirm = document.getElementById('copyConfirm');
+    if (confirm) {
+      confirm.style.display = 'block';
+      setTimeout(function() { confirm.style.display = 'none'; }, 4000);
+    }
+  }).catch(function() {
+    // Fallback: show content in a prompt
+    prompt('Copy the text below (Ctrl+A, then Ctrl+C):', output);
+  });
+}
+
+// ============================================================
+// INIT
+// ============================================================
+
+
+function toggleLMCallout() {
+  const body = document.getElementById('lmCalloutBody');
+  const trigger = document.querySelector('.lm-callout-trigger');
+  const isOpen = body.classList.toggle('open');
+  trigger.setAttribute('aria-expanded', String(isOpen));
+}
+
+// Escape key closes sidebar on mobile
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const sidebar = document.getElementById('courseSidebar');
+    if (sidebar && sidebar.classList.contains('open')) closeSidebar();
+  }
+});
+
+load();
+updateLanding();
+</script>
+</body>
+</html>

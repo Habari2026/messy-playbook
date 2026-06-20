@@ -325,6 +325,10 @@
     details.faq-item:nth-child(15) .faq-num { background: var(--m); }
     details.faq-item:nth-child(16) summary, details.faq-item:nth-child(16)[open] .faq-body { border-left-color: var(--y); }
     details.faq-item:nth-child(16) .faq-num { background: var(--y); }
+    details.faq-item:nth-child(17) summary, details.faq-item:nth-child(17)[open] .faq-body { border-left-color: var(--grad-start); }
+    details.faq-item:nth-child(17) .faq-num { background: var(--grad-start); }
+    details.faq-item:nth-child(18) summary, details.faq-item:nth-child(18)[open] .faq-body { border-left-color: var(--y); }
+    details.faq-item:nth-child(18) .faq-num { background: var(--y); }
 
     /* ── Get MESSY! ────────────────────────────────────── */
     #get { padding: clamp(4rem,8vw,7rem) 0; background: var(--dark); }
@@ -532,7 +536,8 @@
         <li><a href="#why">Why MESSY?</a></li>
         <li><a href="#what">The Playbook</a></li>
         <li><a href="#tiers">How It Works</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#tiers">The Course</a></li>
+              <li><a href="#faq">FAQ</a></li>
         <li class="nav-dropdown">
           <a href="javascript:void(0)" tabindex="0">Explore ▾</a>
           <div class="dropdown-menu">
@@ -546,7 +551,7 @@
           </div>
         </li>
       </ul>
-      <a href="#get" class="nav-cta">Get MESSY!</a>
+      <a href="#tiers" class="nav-cta">Start the Course &rarr;</a>
       <button
         class="nav-menu-btn"
         aria-label="Open navigation menu"
@@ -597,7 +602,7 @@
           <span class="loop-pill y" aria-hidden="true">Y</span><span class="loop-arrow" aria-hidden="true">↺</span>
         </div>
         <div class="hero-cta">
-          <a href="#what" class="btn-primary">Explore the Playbook</a>
+          <a href="#tiers" class="btn-primary">Start the Course &rarr;</a>
           <a href="#get" class="btn-ghost">Get MESSY!</a>
         </div>
       </div>
@@ -912,38 +917,46 @@
 
         <div class="tiers-intro">
           <h2 id="tiers-heading">Start where you are.<br>Go at your own pace.</h2>
-          <p>One program. Self-directed. No facilitator needed. Work through all five MESSY practices on your own schedule — one element per week, or however the pace fits your life.</p>
+          <p>One course. Self-directed. No facilitator needed. At whatever pace fits your life.</p>
         </div>
 
         <div class="tiers-two-col">
           <div class="tier-card self-study">
-            <div class="tier-badge"><span class="tier-dot" aria-hidden="true"></span>Self-Directed · No Facilitator Needed</div>
-            <div class="tier-name">Self-Study Program</div>
-            <div class="tier-duration">6 weeks · Self-directed · No facilitator needed</div>
-            <p class="tier-desc">A structured independent journey through all five MESSY practices. One element per week, at your own pace. No tracking, no grades, no performance. The Self-Study Guide even tells you what to do when MESSY starts feeling like work.</p>
+            <div class="tier-badge"><span class="tier-dot" aria-hidden="true"></span>Self-Paced &middot; No Facilitator Needed</div>
+            <div class="tier-name">Self-Paced Course</div>
+            <div class="tier-duration">7 modules &middot; ~45&ndash;60 min &middot; Progress saves automatically</div>
+            <p class="tier-desc">Reading about a framework doesn&#8217;t change behavior. Working through it does. The Self-Paced Course exists because the difference between understanding MESSY and actually practicing it is the difference between knowing what honest attention means and developing the habit of paying it. Seven modules. Worked examples, knowledge checks, and reflection prompts grounded in your own real experience. No grades. No performance. Just the practice.</p>
             <ul class="tier-includes">
-              <li>Self-Study Guide with 6-week structure</li>
-              <li>Program Workbook (all five sessions)</li>
-              <li>11 Activity Cards for ongoing practice</li>
-              <li>Weekly + 30-day Reflection Tools</li>
+              <li>7 modules covering all five MESSY practices + Living MESSY</li>
+              <li>Knowledge checks, workbook exercises, and reflection prompts</li>
+              <li>Reality Check cards to carry into real life</li>
+              <li>Progress saves automatically on your device</li>
             </ul>
-            <a href="#get" class="tier-cta">Get the Self-Study Program →</a>
+            <a href="#get" class="tier-cta">Start the Course →</a>
           </div>
 
           <div class="tiers-pricing-callout" aria-label="Pricing">
-            <span class="pricing-eyebrow">Pricing</span>
+            <span class="pricing-eyebrow">What&#8217;s Included</span>
             <div class="price-block">
-              <div class="price-label">Suggested price</div>
-              <div class="price-amount large">$9</div>
-              <div class="price-sub">pay what you want</div>
+              <div class="price-label" style="font-weight:700;color:var(--dark);">With the course</div>
+              <div class="price-sub" style="margin-top:6px;font-size:0.88rem;color:var(--mid);line-height:1.65;">Three companion resources surface inside the course at the right moment &mdash; not as a separate download folder to figure out on your own.</div>
             </div>
             <hr class="price-divider" aria-hidden="true" />
-            <div class="price-block">
-              <div class="price-label">Minimum</div>
-              <div class="price-amount small">$5</div>
-            </div>
-            <p class="price-copy">Every document is included at any price. Pay more if you want to support the work. Pay the minimum if that's what makes sense right now.</p>
-            <a href="#get" class="price-cta">Get it now →</a>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:1.25rem;">
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:0.85rem;color:var(--mid);line-height:1.6;">
+                <span style="color:var(--grad-start);font-weight:700;flex-shrink:0;margin-top:1px;">→</span>
+                <span><strong style="color:var(--dark);">Program Workbook</strong> &mdash; for learners who prefer pen and paper alongside the course</span>
+              </li>
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:0.85rem;color:var(--mid);line-height:1.6;">
+                <span style="color:var(--grad-start);font-weight:700;flex-shrink:0;margin-top:1px;">→</span>
+                <span><strong style="color:var(--dark);">Activity Cards</strong> &mdash; 11 small experiments for ongoing practice after you finish</span>
+              </li>
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:0.85rem;color:var(--mid);line-height:1.6;">
+                <span style="color:var(--grad-start);font-weight:700;flex-shrink:0;margin-top:1px;">→</span>
+                <span><strong style="color:var(--dark);">Framework Overview</strong> &mdash; a free standalone reference, always available</span>
+              </li>
+            </ul>
+            <a href="#get" class="price-cta">Get it now &rarr;</a>
           </div>
         </div>
 
@@ -959,32 +972,34 @@
       <div class="wrap">
 
         <div class="slabel" aria-hidden="true">
-          <span class="slabel-word" style="color:var(--e);">What's Inside</span>
+          <span class="slabel-word" style="color:var(--e);">What&#8217;s Inside</span>
           <span class="slabel-line" style="background:rgba(255,255,255,0.1);"></span>
-          <span class="slabel-desc" style="color:var(--on-dark-sub);">The Complete System</span>
+          <span class="slabel-desc" style="color:var(--on-dark-sub);">The Complete Experience</span>
         </div>
 
         <div class="inside-intro">
-          <h2 id="inside-heading">Everything you need.<br>Nothing you don't.</h2>
-          <p>Every document in the Self-Study Program is designed to work alone and together. There's nothing missing — you have everything you need from day one.</p>
+          <h2 id="inside-heading">Everything you need.<br>Nothing you don&#8217;t.</h2>
+          <p>The Self-Paced Course is the experience. Three companion resources support it &mdash; each with a specific job and a specific moment in the journey where it surfaces.</p>
         </div>
 
         <div class="inside-grid">
           <div>
-            <p class="inside-col-label">Participant &amp; Practice Resources</p>
-            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Self-Study Guide</strong>How to use the resources independently, a 6-week structure, and what to do when MESSY starts feeling like work.</div></div>
-            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Digital Activity Cards</strong>11 small, low-stakes experiments for ongoing practice — organized by element.</div></div>
-            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Do You Recognize Yourself?</strong>The entry-point piece for anyone encountering MESSY for the first time.</div></div>
-            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>What Is The MESSY Playbook?</strong>A full overview with elevator pitches, audience fit, and program options.</div></div>
-            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>A Different Kind of Coaching</strong>For coaches who want to understand how MESSY integrates personal and professional development.</div></div>
+            <p class="inside-col-label">The Course</p>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Self-Paced Course</strong>Seven interactive modules covering all five MESSY practices plus Living MESSY. Knowledge checks, workbook exercises, reflection prompts, and Reality Check cards. About 45&ndash;60 minutes. Progress saves on your device.</div></div>
+          </div>
+          <div style="margin-top:1.5rem;">
+            <p class="inside-col-label">Companion Resources</p>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Program Workbook</strong>For learners who prefer pen and paper alongside the course. Same prompts and exercises as the course &mdash; printable, writeable, yours to keep.</div></div>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Activity Cards</strong>11 small, low-stakes experiments for ongoing practice &mdash; organized by element. Designed for after the course, when you want to keep the cycle going.</div></div>
+            <div class="inside-item"><span class="inside-item-dot" aria-hidden="true"></span><div><strong>Framework Overview</strong>A free standalone reference covering the full MESSY framework. Available anytime &mdash; no purchase required. <a href="https://livemessy.gumroad.com/l/messy-overview" target="_blank" rel="noopener noreferrer" style="color:var(--e);font-weight:600;">Get it free &rarr;</a></div></div>
           </div>
         </div>
 
         <div class="inside-free-note">
-          <div class="free-badge" aria-hidden="true">$9</div>
+          <div class="free-badge" aria-hidden="true">&#9654;</div>
           <div class="free-text">
-            <h3>Pay what's right for where you are.</h3>
-            <p>The Self-Study Program is Pay What You Want with a $5 minimum and $9 suggested price. Every document above is included and ready to use from day one. Pay the suggested price if you want to support the work. Pay the minimum if that's what makes sense right now. If you genuinely can't afford it, <a href="#contact" style="color:var(--e);font-weight:600;">get in touch</a>.</p>
+            <h3>The course is the product.</h3>
+            <p>The companion resources don&#8217;t exist separately from the course &mdash; they surface inside it, at the right moment, in the right module. You don&#8217;t need to figure out where to start or which document comes first. The course handles that. You just show up.</p>
           </div>
         </div>
 
@@ -1080,14 +1095,21 @@
           </details>
 
           <details class="faq-item" role="listitem">
-            <summary><span class="faq-num" aria-hidden="true">6</span>How does the Self-Study Program work?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <summary><span class="faq-num" aria-hidden="true">6</span>How does the Self-Paced Course work?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
             <div class="faq-body">
-              <p>The Self-Study Program is a structured independent journey through all five MESSY practices. One element per week, at your own pace.</p>
+              <p>The Self-Paced Course is a complete interactive learning experience delivered as a single webpage &mdash; no app, no login, no platform. Seven modules covering all five MESSY practices plus a final integration module called Living MESSY. About 45&ndash;60 minutes total, at whatever pace fits your life.</p>
               <div class="faq-highlight">
-                <strong>Self-Directed · No Facilitator Needed — Self-Study Program</strong>
-                6 weeks, self-directed, works through all five elements using the workbook, activity cards, and reflection tools. No facilitator needed. Some partner-dependent exercises have solo adaptations built in.
+                <strong>What each module includes</strong>
+                <ul>
+                  <li>Learning objectives written in plain language (not corporate training speak)</li>
+                  <li>Read steps that introduce each practice in context</li>
+                  <li>Flashcard sets, multiple-choice, and fill-in-the-blank knowledge checks</li>
+                  <li>A workbook exercise grounded in your own real experience</li>
+                  <li>A reflection prompt with optional sentence starters</li>
+                  <li>A Reality Check card to carry forward into the week</li>
+                </ul>
               </div>
-              <p>The Self-Study Guide even includes a dedicated section called "When MESSY Starts Feeling Like Work" — for when the framework itself starts feeling like another obligation.</p>
+              <p>Progress saves automatically on your device. Nothing is submitted or stored anywhere else. You can stop and return anytime &mdash; the course picks up exactly where you left off. And if the course starts feeling like another obligation, Module 3 has something to say about that.</p>
             </div>
           </details>
 
@@ -1245,6 +1267,42 @@
             </div>
           </details>
 
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">17</span>Is the Self-Paced Course instructionally sound?<span class="faq-chevron" aria-hidden="true">▼</span></summary>
+            <div class="faq-body">
+              <p>Yes &mdash; and it can be backed up. The course was designed using a layered instructional framework: ADDIE as the development process, Gagn&#233;&#8217;s Nine Events of Instruction as the lesson architecture, Bloom&#8217;s Taxonomy (revised) as the cognitive framework, and constructivist learning theory as the underlying model of how learning actually happens.</p>
+              <div class="faq-highlight">
+                <strong>What that means inside the course</strong>
+                <ul>
+                  <li><strong>ADDIE</strong> &mdash; the course was built through all five phases: analysis, design, development, implementation, and evaluation. Formative checks, a mid-course question, and a post-course feedback survey are built in.</li>
+                  <li><strong>Gagn&#233;&#8217;s Nine Events</strong> &mdash; every module follows the same sequence: gain attention, state objectives, activate prior knowledge, present content, provide guidance, elicit performance, give feedback, assess, and transfer.</li>
+                  <li><strong>Bloom&#8217;s Taxonomy</strong> &mdash; module objectives use Bloom&#8217;s verb list and progress from lower-order cognitive demands (Notice, Identify) to higher-order ones (Articulate, Connect, Create) across the seven modules.</li>
+                  <li><strong>Constructivism / Kolb</strong> &mdash; workbook exercises surface the learner&#8217;s own experience. Reflection prompts build meaning from it. The Living MESSY daily practice is active experimentation. Learning is built, not transmitted.</li>
+                </ul>
+              </div>
+              <p>The full methodology &mdash; with sources and citations &mdash; is documented on <a href="thinking.html#course-design" style="font-weight: 700;">The Thinking page &rarr;</a></p>
+            </div>
+          </details>
+
+          <details class="faq-item" role="listitem">
+            <summary><span class="faq-num" aria-hidden="true">18</span>What happens to what I write in the course?<span class="faq-chevron" aria-hidden="true">&#9660;</span></summary>
+            <div class="faq-body">
+              <p>Nothing you write in this course is ever seen by anyone but you. There is no account, no login, no submission mechanism, no backend server, and no data collection of any kind. Your responses live on your device and nowhere else.</p>
+              <div class="faq-highlight">
+                <strong>What this means in practice</strong>
+                <ul>
+                  <li>Workbook exercises, reflection prompts, and the pre-assessment self-check are never submitted or transmitted anywhere.</li>
+                  <li>Your name, if you enter one, stays in your browser&#8217;s local storage and is never sent to us or anyone else.</li>
+                  <li>The post-course feedback survey saves locally on your device only &#8212; we never see it.</li>
+                  <li>Progress tracking is stored only in your browser&#8217;s local storage and is erased when you clear your browser data.</li>
+                  <li>We do not use cookies, tracking pixels, analytics scripts, or any third-party data tools inside the course.</li>
+                </ul>
+              </div>
+              <p>This isn&#8217;t a privacy policy written by lawyers to limit liability. It&#8217;s a technical fact: the course has no mechanism to collect your data because it was deliberately built without one. The only external dependency is Google Fonts for typography &#8212; which loads font files but has no access to anything you write.</p>
+              <p style="margin-top:0.75rem;">If you want to keep what you write, use the <strong>&#8220;Copy my reflections&#8221;</strong> button on the completion screen. That assembles everything into a plain-text document you can save anywhere you choose.</p>
+            </div>
+          </details>
+
         </div>
 
         <div class="faq-disclaimer">
@@ -1365,37 +1423,37 @@
 
         <div class="get-intro">
           <span class="eyebrow">Get MESSY!</span>
-          <h2 id="get-heading">Pay what's right<br>for <em>where you are.</em></h2>
-          <p>Pay What You Want. Every document included — ready to use immediately.</p>
+          <h2 id="get-heading">Pay what&#8217;s right<br>for <em>where you are.</em></h2>
+          <p>Pay What You Want. The course and all companion resources &mdash; ready to start immediately.</p>
         </div>
 
         <div class="get-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:0;">
 
           <div class="get-card">
             <div class="get-card-badge"><span style="width:8px;height:8px;background:var(--m);border-radius:50%;flex-shrink:0;display:inline-block;" aria-hidden="true"></span>For Yourself</div>
-            <div class="get-card-name">Self-Study Program</div>
-            <div class="get-card-sub">6 weeks · Self-directed · No facilitator</div>
+            <div class="get-card-name">Self-Paced Course</div>
+            <div class="get-card-sub">7 modules &middot; ~45&ndash;60 min &middot; Self-directed &middot; No facilitator</div>
             <div class="get-card-price">
-              <p class="price-min">Minimum $5 · Suggested</p>
+              <p class="price-min">Minimum $5 &middot; Suggested</p>
               <p class="price-suggested">$9 <span>/ pay what you want</span></p>
             </div>
-            <p class="get-card-desc">The complete self-study package. Self-Study Guide, Program Workbook, Activity Cards, Reflection Tools, and Framework Overview. Everything you need to work through all five practices independently.</p>
-            <a href="https://livemessy.gumroad.com/l/messy-self-study" class="get-card-btn" target="_blank" rel="noopener noreferrer">Get Self-Study Program →</a>
+            <p class="get-card-desc">The complete interactive course. Seven modules covering all five MESSY practices plus Living MESSY. Includes companion resources: Program Workbook, Activity Cards, and Framework Overview. Everything in one place &mdash; no assembly required.</p>
+            <a href="https://livemessy.gumroad.com/l/messy-self-study" class="get-card-btn" target="_blank" rel="noopener noreferrer">Start the Course &rarr;</a>
           </div>
 
           <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:2rem;display:flex;flex-direction:column;">
             <p style="font-size:0.7rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--grad-start);margin-bottom:1rem;">Built on Real Research</p>
             <p style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:white;margin-bottom:1.25rem;line-height:1.25;">Why it works.</p>
-            <p style="font-size:0.87rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:0.9rem;"><strong style="color:white;">The MESSY Playbook™</strong> didn't come from a productivity blog or a coaching certification. It came from four research pillars that most personal development frameworks ignore entirely.</p>
-            <p style="font-size:0.87rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:0.9rem;">Complexity theory. Emotional science. The actual mechanics of behavior change. And the operational logic of systems designed to work with messy, real-world conditions — not ideal ones.</p>
+            <p style="font-size:0.87rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:0.9rem;"><strong style="color:white;">The MESSY Playbook&#8482;</strong> didn&#8217;t come from a productivity blog or a coaching certification. It came from four research pillars that most personal development frameworks ignore entirely.</p>
+            <p style="font-size:0.87rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:0.9rem;">Complexity theory. Emotional science. The actual mechanics of behavior change. And the operational logic of systems designed to work with messy, real-world conditions &mdash; not ideal ones.</p>
             <p style="font-size:0.87rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:1.5rem;flex:1;">If you want to understand why <strong style="color:white;">MESSY</strong> works before you commit to it, The Thinking is where that answer lives.</p>
-            <a href="thinking.html" style="display:inline-flex;align-items:center;justify-content:center;padding:0.8rem 1.5rem;border-radius:2rem;font-size:0.85rem;font-weight:700;background:linear-gradient(135deg,var(--grad-start),var(--grad-end));color:white;text-decoration:none;min-height:44px;text-align:center;transition:opacity 0.2s,transform 0.15s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">Explore The Thinking →</a>
+            <a href="thinking.html" style="display:inline-flex;align-items:center;justify-content:center;padding:0.8rem 1.5rem;border-radius:2rem;font-size:0.85rem;font-weight:700;background:linear-gradient(135deg,var(--grad-start),var(--grad-end));color:white;text-decoration:none;min-height:44px;text-align:center;transition:opacity 0.2s,transform 0.15s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">Explore The Thinking &rarr;</a>
           </div>
 
         </div>
 
         <p class="get-pwyw-note">
-          The Self-Study Program is Pay What You Want with a minimum floor. The suggested price is pre-filled — pay more if you want to support the project, pay the minimum if that's what's right for you right now. If you genuinely can't afford it, <a href="#contact">get in touch</a>.
+          The course is Pay What You Want with a minimum floor. The suggested price is pre-filled &mdash; pay more if you want to support the project, pay the minimum if that&#8217;s what&#8217;s right for you right now. If you genuinely can&#8217;t afford it, <a href="#contact">get in touch</a>.
         </p>
 
       </div>
@@ -1483,6 +1541,7 @@
     </div>
     <p class="footer-copy">© 2026 Live Messy Project. The MESSY Playbook™ framework is created by The Live Messy Project and licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline;">CC BY-NC 4.0</a> — free to use and share with attribution, not for commercial use without permission.</p>
     <p class="footer-copy" style="margin-top:0.5rem;">For educational purposes and personal exploration only. Not therapy or professional counseling.</p>
+    <p class="footer-copy" style="margin-top:0.5rem;">We do not collect, store, share, or sell personal information. Nothing you write in the course ever leaves your device.</p>
   </footer>
 
   <script>
